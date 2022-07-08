@@ -1,0 +1,14 @@
+name: GraphQL Resource Catalog schema
+type: module
+description: 'Schema of Resource Catalog for the GraphQL module.'
+package: GraphQL
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - graphql:graphql
+  - node:node
+
+# Information added by Drupal.org packaging script on 2019-11-01
+version: '8.x-4.0-alpha3'
+project: 'graphql'
+datestamp: 1572605586

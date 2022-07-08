@@ -1,0 +1,89 @@
+schema {
+  query: Query
+}
+
+type Query {
+  article(id: Int!): Article
+  articles(
+    offset: Int = 0
+    limit: Int = 10
+  ): ArticleConnection!
+  project(id: Int!): Project
+  projects(
+    offset: Int = 0
+    limit: Int = 10
+  ): ProjectConnection!
+}
+
+type Article {
+  id: Int!
+  title: String!
+  author: String
+}
+
+type ArticleConnection {
+  total: Int!
+  items: [Article!]
+}
+
+type Project implements NodeInterface {
+  id: Int!
+  headline: String
+  description: String
+  startDate: Int
+  endDate: Int
+  redmineId: Int
+  datasets: [Dataset]
+  institutionRelations: [Institution] 
+  personRelations: [Person]
+}
+
+type ProjectConnection {
+  total: Int!
+  items: [Project!]
+}
+
+type Dataset implements NodeInterface {
+  id: Int!
+  headline: String
+  datasetInstance: [DatasetInstance]
+}
+
+type DatasetsConnection {
+  total: Int!
+  items: [Dataset!]
+}
+
+type DatasetInstance implements NodeInterface {
+  id: Int!
+  headline: String
+  description: String
+  harvestingStatus: String
+  lastharvestDate: Int
+  license: String
+  location: String
+  personRelations: [Person]
+  size: Int
+}
+
+type Institution implements NodeInterface {
+  id: Int!
+}
+
+type InstitutionConnection {
+  total: Int!
+  items: [Institution!]    
+}
+
+type Person implements NodeInterface {
+  id: Int!
+}
+
+type PersonConnection {
+  total: Int!
+  items: [Person!]
+}
+
+interface NodeInterface {
+  id: Int!
+}
