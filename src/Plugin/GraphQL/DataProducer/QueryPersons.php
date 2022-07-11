@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   name = @Translation("Load persons"),
  *   description = @Translation("Loads a list of persons."),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("Project connection")
+ *     label = @Translation("Person connection")
  *   ),
  *   consumes = {
  *     "offset" = @ContextDefinition("integer",
@@ -30,7 +30,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   }
  * )
  */
-class QueryProjects extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class QueryPersons extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
   const MAX_LIMIT = 100;
 
@@ -54,7 +54,7 @@ class QueryProjects extends DataProducerPluginBase implements ContainerFactoryPl
   }
 
   /**
-   * Projects constructor.
+   * Persons constructor.
    *
    * @param array $configuration
    *   The plugin configuration.

@@ -13,6 +13,27 @@ type Query {
     offset: Int = 0
     limit: Int = 10
   ): ProjectConnection!
+  person(id: Int!): Person
+  persons(
+    offset: Int = 0
+    limit: Int = 10
+  ): PersonConnection!
+  dataset(id: Int!): Dataset
+  datasets(
+    offset: Int = 0
+    limit: Int = 10
+  ): DatasetConnection!
+  dataset_instance(id: Int!): DatasetInstance
+  dataset_instances(
+    offset: Int = 0
+    limit: Int = 10
+  ): DatasetInstanceConnection!
+  institution(id: Int!): Institution
+  institutions(
+    offset: Int = 0
+    limit: Int = 10
+  ): InstitutionConnection!   
+
 }
 
 type Article {
@@ -33,6 +54,7 @@ type Project implements NodeInterface {
   startDate: Int
   endDate: Int
   redmineId: Int
+  test: String
   datasets: [Dataset]
   institutionRelations: [Institution] 
   personRelations: [Person]
@@ -45,11 +67,11 @@ type ProjectConnection {
 
 type Dataset implements NodeInterface {
   id: Int!
-  headline: String
+  title: String
   datasetInstance: [DatasetInstance]
 }
 
-type DatasetsConnection {
+type DatasetConnection {
   total: Int!
   items: [Dataset!]
 }
@@ -59,15 +81,22 @@ type DatasetInstance implements NodeInterface {
   headline: String
   description: String
   harvestingStatus: String
-  lastharvestDate: Int
+  lastHarvestDate: Int
   license: String
   location: String
   personRelations: [Person]
   size: Int
 }
 
+type DatasetInstanceConnection {
+  total: Int!
+  items: [Dataset!]
+}
+
 type Institution implements NodeInterface {
   id: Int!
+  title: String
+  identifierRelations: Int
 }
 
 type InstitutionConnection {
@@ -77,6 +106,7 @@ type InstitutionConnection {
 
 type Person implements NodeInterface {
   id: Int!
+  title: String
   identifierRelations: Int
 }
 
