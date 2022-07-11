@@ -49,14 +49,17 @@ type ArticleConnection {
 
 type Project implements NodeInterface {
   id: Int!
+  uuid: String
   headline: String
   description: String
   startDate: Int
   endDate: Int
   redmineId: Int
-  test: String
+  test: Int
+  test2: Int
+  identifier: String
   datasets: [Dataset]
-  institutionRelations: [Institution] 
+  organizer: [InstitutionsTerm]
   personRelations: [Person]
 }
 
@@ -65,8 +68,21 @@ type ProjectConnection {
   items: [Project!]
 }
 
+
+type InstitutionsTerm {
+  tid: Int
+  title: String
+  link: String
+}
+
+type PersonRelation {
+ id: Int!
+}
+
+
 type Dataset implements NodeInterface {
   id: Int!
+  uuid: String
   title: String
   datasetInstance: [DatasetInstance]
 }
@@ -95,6 +111,7 @@ type DatasetInstanceConnection {
 
 type Institution implements NodeInterface {
   id: Int!
+  uuid: String
   title: String
   identifierRelations: Int
 }
@@ -106,6 +123,7 @@ type InstitutionConnection {
 
 type Person implements NodeInterface {
   id: Int!
+  uuid: String
   title: String
   identifierRelations: Int
 }
