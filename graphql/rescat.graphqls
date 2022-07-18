@@ -3,11 +3,6 @@ schema {
 }
 
 type Query {
-  article(id: Int!): Article
-  articles(
-    offset: Int = 0
-    limit: Int = 10
-  ): ArticleConnection!
   project(id: Int!): Project
   projects(
     offset: Int = 0
@@ -36,31 +31,17 @@ type Query {
 
 }
 
-type Article {
-  id: Int!
-  title: String!
-  author: String
-}
-
-type ArticleConnection {
-  total: Int!
-  items: [Article!]
-}
-
 type Project implements NodeInterface {
   id: Int!
-  uuid: String
   headline: String
-  description: String
+  description: String  
   startDate: Int
   endDate: Int
   redmineId: Int
-  test: Int
-  test2: Int
-  identifier: String
   datasets: [Dataset]
-  organizer: [InstitutionsTerm]
-  personRelations: [Person]
+  affilatedInstitutions: [Institution]
+  contributors: [Person]
+  principalInvestigators: [Person]
 }
 
 type ProjectConnection {
@@ -68,21 +49,41 @@ type ProjectConnection {
   items: [Project!]
 }
 
+type Person implements NodeInterface {
+  id: Int!
+  title: String
+}
+
+type PersonConnection {
+  total: Int!
+  items: [Person!]
+}
 
 type InstitutionsTerm {
-  tid: Int
+  id: String
   title: String
   link: String
 }
 
-type PersonRelation {
- id: Int!
+type PersonTerm {
+  id: String
+  title: String
+  link: String
 }
 
+type DatasetTerm {
+  id: String
+  title: String
+  description: String
+  harvestingStatus: String
+  lastHarvestDate: Int
+  license: String
+  location: [String]
+  size: Int
+}
 
 type Dataset implements NodeInterface {
   id: Int!
-  uuid: String
   title: String
   datasetInstance: [DatasetInstance]
 }
@@ -99,7 +100,7 @@ type DatasetInstance implements NodeInterface {
   harvestingStatus: String
   lastHarvestDate: Int
   license: String
-  location: String
+  location: [String]
   personRelations: [Person]
   size: Int
 }
@@ -111,26 +112,14 @@ type DatasetInstanceConnection {
 
 type Institution implements NodeInterface {
   id: Int!
-  uuid: String
   title: String
-  identifierRelations: Int
+  identifiers: [String]
+  description: String
 }
 
 type InstitutionConnection {
   total: Int!
   items: [Institution!]    
-}
-
-type Person implements NodeInterface {
-  id: Int!
-  uuid: String
-  title: String
-  identifierRelations: Int
-}
-
-type PersonConnection {
-  total: Int!
-  items: [Person!]
 }
 
 interface NodeInterface {
