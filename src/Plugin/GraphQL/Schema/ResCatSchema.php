@@ -111,13 +111,11 @@ class ResCatSchema extends SdlSchemaPluginBase {
         );
 
         $registry->addFieldResolver('DatasetInstance', 'lastHarvestDate', $builder->compose(
-                        $builder->produce('property_path')
-                                ->map('type', $builder->fromValue('entity:node'))
-                                ->map('value', $builder->fromParent())
-                                ->map('path', $builder->fromValue('field_harvest_date.value')),
-                        $builder->callback(function ($entity) {
-                            return strtotime($entity);
-                        })
+            $builder->produce('property_path')
+                    ->map('type', $builder->fromValue('entity:node'))
+                    ->map('value', $builder->fromParent())
+                    ->map('path', $builder->fromValue('field_last_harvest_date.value')),
+                       
         ));
 
         $registry->addFieldResolver('DatasetInstance', 'harvestingStatus',
@@ -141,17 +139,26 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('path', $builder->fromValue('field_size.value'))
         );
 
-        $registry->addFieldResolver('DatasetInstance', 'personRelations',
+        
+        $registry->addFieldResolver('DatasetInstance', 'contributors',
                 $builder->produce('entity_reference')
                         ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_person_relations'))
+                        ->map('field', $builder->fromValue('field_contributors'))
         );
-
-        ///// URL COVERT!!!!
-        $registry->addFieldResolver('DatasetInstance', 'location',
-                $builder->produce('entity_reference')
-                        ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_location'))
+          
+        $this->createPersonTermFieldResolver($registry, $builder);
+       
+        $registry->addFieldResolver('DatasetInstance', 'locationUri',
+                $builder->produce('property_path')
+                        ->map('type', $builder->fromValue('entity:node'))
+                        ->map('value', $builder->fromParent())
+                        ->map('path', $builder->fromValue('field_location.uri'))
+        );
+         $registry->addFieldResolver('DatasetInstance', 'locationTitle',
+                $builder->produce('property_path')
+                        ->map('type', $builder->fromValue('entity:node'))
+                        ->map('value', $builder->fromParent())
+                        ->map('path', $builder->fromValue('field_location.title'))
         );
     }
 
@@ -182,7 +189,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
                 $builder->produce('property_path')
                         ->map('type', $builder->fromValue('entity:node'))
                         ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('field_identifiers'))
+                        ->map('path', $builder->fromValue('field_identifiers.value'))
         );
     }
     
@@ -198,11 +205,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
                 $builder->produce('entity_id')
                         ->map('entity', $builder->fromParent())
         );
-        $registry->addFieldResolver('Person', 'uuid',
-                $builder->produce('entity_uuid')
-                        ->map('entity', $builder->fromParent())
-        );
-
+        
         $registry->addFieldResolver('Person', 'identifierRelations',
                 $builder->produce('entity_reference')
                         ->map('entity', $builder->fromParent())
@@ -214,6 +217,13 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('type', $builder->fromValue('entity:node'))
                         ->map('value', $builder->fromParent())
                         ->map('path', $builder->fromValue('title.value'))
+        );
+        
+        $registry->addFieldResolver('Person', 'identifiers',
+                $builder->produce('property_path')
+                        ->map('type', $builder->fromValue('entity:node'))
+                        ->map('value', $builder->fromParent())
+                        ->map('path', $builder->fromValue('field_identifiers.value'))
         );
     }
 
@@ -275,20 +285,14 @@ class ResCatSchema extends SdlSchemaPluginBase {
             $builder->produce('property_path')
                     ->map('type', $builder->fromValue('entity:node'))
                     ->map('value', $builder->fromParent())
-                    ->map('path', $builder->fromValue('field_start.value')),
-            $builder->callback(function ($entity) {
-                return strtotime($entity);
-            })
+                    ->map('path', $builder->fromValue('field_start.value'))            
         ));
 
         $registry->addFieldResolver('Project', 'endDate', $builder->compose(
             $builder->produce('property_path')
                     ->map('type', $builder->fromValue('entity:node'))
                     ->map('value', $builder->fromParent())
-                    ->map('path', $builder->fromValue('field_end.value')),
-            $builder->callback(function ($entity) {
-                return strtotime($entity);
-            })
+                    ->map('path', $builder->fromValue('field_end.value'))
         ));
 
         $registry->addFieldResolver('Project', 'redmineId',
@@ -339,6 +343,13 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('type', $builder->fromValue('entity:node:person'))
                         ->map('value', $builder->fromParent())
                         ->map('path', $builder->fromValue('type.target_id'))
+        );
+        
+        $registry->addFieldResolver('PersonTerm', 'identifiers',
+                $builder->produce('property_path')
+                        ->map('type', $builder->fromValue('entity:node:person'))
+                        ->map('value', $builder->fromParent())
+                        ->map('path', $builder->fromValue('field_identifiers.value'))
         );
     }
     

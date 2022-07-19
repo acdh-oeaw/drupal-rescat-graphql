@@ -35,8 +35,8 @@ type Project implements NodeInterface {
   id: Int!
   headline: String
   description: String  
-  startDate: Int
-  endDate: Int
+  startDate: String
+  endDate: String
   redmineId: Int
   datasets: [Dataset]
   affilatedInstitutions: [Institution]
@@ -52,6 +52,7 @@ type ProjectConnection {
 type Person implements NodeInterface {
   id: Int!
   title: String
+  identifiers: String
 }
 
 type PersonConnection {
@@ -68,7 +69,7 @@ type InstitutionsTerm {
 type PersonTerm {
   id: String
   title: String
-  link: String
+  identifiers: String
 }
 
 type DatasetTerm {
@@ -76,11 +77,14 @@ type DatasetTerm {
   title: String
   description: String
   harvestingStatus: String
-  lastHarvestDate: Int
+  lastHarvestDate: String
   license: String
-  location: [String]
+  locationUri: String
+  locationTitle: String
+  contributors: [Person]
   size: Int
 }
+
 
 type Dataset implements NodeInterface {
   id: Int!
@@ -98,22 +102,24 @@ type DatasetInstance implements NodeInterface {
   headline: String
   description: String
   harvestingStatus: String
-  lastHarvestDate: Int
-  license: String
-  location: [String]
-  personRelations: [Person]
+  lastHarvestDate: String
+  license: String  
+  locationUri: String
+  locationTitle: String
+  contributors: [Person]
   size: Int
 }
 
 type DatasetInstanceConnection {
   total: Int!
-  items: [Dataset!]
+  items: [DatasetInstance!]
 }
 
 type Institution implements NodeInterface {
   id: Int!
   title: String
-  identifiers: [String]
+  identifiers: String
+  identifier_relations: [String]
   description: String
 }
 
@@ -125,3 +131,4 @@ type InstitutionConnection {
 interface NodeInterface {
   id: Int!
 }
+
