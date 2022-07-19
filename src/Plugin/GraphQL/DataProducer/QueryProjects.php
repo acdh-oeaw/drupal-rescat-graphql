@@ -82,7 +82,7 @@ class QueryProjects extends DataProducerPluginBase implements ContainerFactoryPl
    * @param $limit
    * @param \Drupal\Core\Cache\RefinableCacheableDependencyInterface $metadata
    *
-   * @return \Drupal\rescat_graphql\Wrappers\QueryConnection
+   * @return \Drupal\graphql_dha\Wrappers\QueryConnection
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */

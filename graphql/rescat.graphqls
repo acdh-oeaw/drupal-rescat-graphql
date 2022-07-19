@@ -119,7 +119,6 @@ type Institution implements NodeInterface {
   id: Int!
   title: String
   identifiers: String
-  identifier_relations: [String]
   description: String
 }
 

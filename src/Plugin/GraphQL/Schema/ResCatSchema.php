@@ -206,12 +206,6 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('entity', $builder->fromParent())
         );
         
-        $registry->addFieldResolver('Person', 'identifierRelations',
-                $builder->produce('entity_reference')
-                        ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_identifier_relations'))
-        );
-        
         $registry->addFieldResolver('Person', 'title',
                 $builder->produce('property_path')
                         ->map('type', $builder->fromValue('entity:node'))
@@ -383,15 +377,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
      */
     protected function addQueryFields(ResolverRegistry $registry, ResolverBuilder $builder) {
 
-        /*         * * ARTICLE ** */
-        $registry->addFieldResolver('Query', 'article',
-                $builder->produce('entity_load')
-                        ->map('type', $builder->fromValue('node'))
-                        ->map('bundles', $builder->fromValue(['article']))
-                        ->map('id', $builder->fromArgument('id'))
-        );
-
-       
+     
         /*         * * PROJECT ** */
         $registry->addFieldResolver('Query', 'project',
                 $builder->produce('entity_load')

@@ -23,27 +23,6 @@ class ResCatSchemaExtension extends SdlSchemaExtensionPluginBase {
     $builder = new ResolverBuilder();
 
     $this->addQueryFields($registry, $builder);
-    $this->addPageFields($registry, $builder);
-  }
-
-  /**
-   * @param \Drupal\graphql\GraphQL\ResolverRegistryInterface $registry
-   * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
-   */
-  protected function addPageFields(ResolverRegistryInterface $registry, ResolverBuilder $builder) {
-    $registry->addFieldResolver('Page', 'id',
-      $builder->produce('entity_id')
-        ->map('entity', $builder->fromParent())
-    );
-
-    $registry->addFieldResolver('Page', 'title',
-      $builder->compose(
-        $builder->produce('entity_label')
-          ->map('entity', $builder->fromParent()),
-        $builder->produce('uppercase')
-          ->map('string', $builder->fromParent())
-      )
-    );
   }
 
   /**
