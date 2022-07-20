@@ -1,5 +1,6 @@
 schema {
   query: Query
+  mutation: Mutation
 }
 
 type Query {
@@ -129,5 +130,14 @@ type InstitutionConnection {
 
 interface NodeInterface {
   id: Int!
+}
+
+type Mutation
+
+scalar Violation
+
+input PersonInput {
+  title: String!
+  description: String
 }
 
