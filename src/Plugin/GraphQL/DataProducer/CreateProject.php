@@ -9,23 +9,23 @@ use Drupal\node\Entity\Node;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Creates a new dataset instance entity.
+ * Creates a new project entity.
  *
  * @DataProducer(
- *   id = "create_datasetinstance",
- *   name = @Translation("Create Dataset Instance"),
- *   description = @Translation("Creates a new Dataset Instance."),
+ *   id = "create_project",
+ *   name = @Translation("Create project"),
+ *   description = @Translation("Creates a new project."),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("DatasetInstance")
+ *     label = @Translation("Project")
  *   ),
  *   consumes = {
  *     "data" = @ContextDefinition("any",
- *       label = @Translation("Dataset Instance data")
+ *       label = @Translation("Project data")
  *     )
  *   }
  * )
  */
-class CreateDatasetInstance extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class CreateProject extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
   /**
    * The current user.
@@ -47,7 +47,7 @@ class CreateDatasetInstance extends DataProducerPluginBase implements ContainerF
   }
 
   /**
-   * CreateDatasetInstance constructor.
+   * CreateProject constructor.
    *
    * @param array $configuration
    *   A configuration array containing information about the plugin instance.
@@ -64,38 +64,39 @@ class CreateDatasetInstance extends DataProducerPluginBase implements ContainerF
   }
 
   /**
-   * Creates an person.
+   * Creates an Project.
    *
    * @param array $data
    *   The title of the job.
    *
    * @return \Drupal\Core\Entity\EntityBase|\Drupal\Core\Entity\EntityInterface
-   *   The newly created person.
+   *   The newly created project.
    *
    * @throws \Exception
    */
   public function resolve(array $data) {
-      error_log("CREATE Dataset Instance");
+      error_log("CREATE project");
       error_log(print_r($data, true));
-    if ($this->currentUser->hasPermission("create Dataset Instance content")) {
+    if ($this->currentUser->hasPermission("create Project content")) {
       $values = [
-        'type' => 'dataset_instance',
+        'type' => 'dataset_project',
         'headline' => $data['headline'],
         'title' => $data['headline'],
         'body' => $data['description'],
-        'field_harvesting_status' => $data['harvestingStatus'],
-        'field_last_harvest_date' => $data['lastHarvestDate'],
-        'field_license' => $data['license'],
-        'field_location' => array('title' => $data['locationTitle'], 'uri' =>  $data['locationUri']),
-        'field_size' => $data['size'],
-        'relationships.field_contributors' => array('title' => $data['contributors']['title'], 'id' =>  $data['contributors']['id'])
+        'field_start' => $data['harvestingStatus'],
+        'field_end' => $data['lastHarvestDate'],
+        'field_redmine_issue_id' => $data['license']
+        /*'relationships.field_datasets' => array('title' => $data['datasets']['title'], 'id' =>  $data['datasets']['id']),
+        'relationships.field_contributors' => array('title' => $data['contributors']['title'], 'id' =>  $data['contributors']['id']),
+        'relationships.field_institutions' => array('title' => $data['institutions']['title'], 'id' =>  $data['institutions']['id']),
+        'relationships.field_principal_investigators' => array('title' => $data['investigators']['title'], 'id' =>  $data['investigators']['id'])*/
       ];
       $node = Node::create($values);
       $node->save();
       return $node;
     } else {
       $response->addViolation(
-        $this->t('You do not have permissions to create dataset instance.')
+        $this->t('You do not have permissions to create project.')
       );
     }
     return $response;

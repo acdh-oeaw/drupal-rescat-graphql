@@ -24,10 +24,10 @@ mutation{
 
 ## ingest dataset instance
 mutation{
-  createDatasetInstance(data: { headline: "test DTI 1", description: "DTi1 description", 
+  createDatasetInstance(data: { headline: "test DTI 2", description: "DTi1 description", 
     harvestingStatus: "harvesting..", lastHarvestDate: "2022-02-14 00:00:00", 
     license: "license test", locationTitle: "location title test", locationUri: "location uri test",
-  	size: 929921}) {
+  	size: 929921, contributors: { id: 10, title: "klaus"}}) {
     ... on DatasetInstance {
       id
       headline
@@ -38,6 +38,10 @@ mutation{
       locationTitle
       locationUri
       size
+      contributors {
+        id
+        title
+      }
     }
   }
 }

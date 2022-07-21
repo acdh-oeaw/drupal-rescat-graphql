@@ -40,6 +40,11 @@ class ResCatSchema extends SdlSchemaPluginBase {
             ->map('data', $builder->fromArgument('data'))
         ); 
         
+        $registry->addFieldResolver('Mutation', 'createProject',
+            $builder->produce('create_project')
+            ->map('data', $builder->fromArgument('data'))
+        ); 
+        
         $registry->addTypeResolver('NodeInterface', function ($value) {
             if ($value instanceof NodeInterface) {
                 switch ($value->bundle()) {

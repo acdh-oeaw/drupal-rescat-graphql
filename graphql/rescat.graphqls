@@ -156,3 +156,12 @@ input DatasetInstanceInput {
   locationUri: String
   size: Int
 }
+
+
+input ProjectInput {
+  headline: String!
+  description: String
+  endDate: String
+  startDate: String
+  redmineId: Int
+}

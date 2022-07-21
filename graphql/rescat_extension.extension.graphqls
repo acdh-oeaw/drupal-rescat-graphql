@@ -2,4 +2,5 @@ extend type Mutation {
   createPerson(data: PersonInput): Person
   createInstitution(data: InstitutionInput): Institution
   createDatasetInstance(data: DatasetInstanceInput): DatasetInstance
+  createProject(data: ProjectInput): Project
 }
