@@ -25,10 +25,20 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $builder = new ResolverBuilder();
         $registry = new ResolverRegistry();
 
-         $registry->addFieldResolver('Mutation', 'createPerson',
+        $registry->addFieldResolver('Mutation', 'createPerson',
             $builder->produce('create_person')
             ->map('data', $builder->fromArgument('data'))
-            );
+        );
+         
+        $registry->addFieldResolver('Mutation', 'createInstitution',
+            $builder->produce('create_institution')
+            ->map('data', $builder->fromArgument('data'))
+        ); 
+        
+        $registry->addFieldResolver('Mutation', 'createDatasetInstance',
+            $builder->produce('create_datasetinstance')
+            ->map('data', $builder->fromArgument('data'))
+        ); 
         
         $registry->addTypeResolver('NodeInterface', function ($value) {
             if ($value instanceof NodeInterface) {

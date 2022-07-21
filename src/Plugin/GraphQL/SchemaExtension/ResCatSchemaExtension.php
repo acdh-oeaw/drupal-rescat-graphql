@@ -21,8 +21,6 @@ class ResCatSchemaExtension extends SdlSchemaExtensionPluginBase {
    */
   public function registerResolvers(ResolverRegistryInterface $registry) {
     $builder = new ResolverBuilder();
-
-    
      
     $this->addQueryFields($registry, $builder);
     

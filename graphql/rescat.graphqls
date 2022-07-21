@@ -141,3 +141,18 @@ input PersonInput {
   description: String
 }
 
+input InstitutionInput {
+  title: String!
+  identifiers: String
+}
+
+input DatasetInstanceInput {
+  headline: String!
+  harvestingStatus: String
+  description: String
+  lastHarvestDate: String
+  license: String
+  locationTitle: String
+  locationUri: String
+  size: Int
+}
