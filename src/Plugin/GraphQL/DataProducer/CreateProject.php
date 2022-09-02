@@ -81,6 +81,7 @@ class CreateProject extends DataProducerPluginBase implements ContainerFactoryPl
       $values = [
         'type' => 'dataset_project',
         'headline' => $data['headline'],
+        'identifier' => $data['identifier'],
         'title' => $data['headline'],
         'body' => $data['description'],
         'field_start' => $data['harvestingStatus'],

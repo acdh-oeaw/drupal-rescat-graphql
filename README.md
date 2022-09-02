@@ -102,3 +102,26 @@ mutation{
   }
 }
 ```
+
+
+
+
+## query paragraphs
+```
+query MyQuery {
+  project(id: 49) {
+    id
+    headline
+    personRelations {
+      id
+      ... on PersonRelation {
+        id
+        uuid
+        
+      }
+    }
+    
+  }
+}
+
+```

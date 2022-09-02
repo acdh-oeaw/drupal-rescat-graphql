@@ -34,6 +34,8 @@ type Query {
 
 type Project implements NodeInterface {
   id: Int!
+  personRelations: [Paragraph]!
+  personData: [Paragraph]!
   headline: String
   description: String  
   startDate: String
@@ -43,6 +45,7 @@ type Project implements NodeInterface {
   affilatedInstitutions: [Institution]
   contributors: [Person]
   principalInvestigators: [Person]
+  relperson: [Person]
 }
 
 type ProjectConnection {
@@ -164,4 +167,22 @@ input ProjectInput {
   endDate: String
   startDate: String
   redmineId: Int
+}
+
+
+interface Paragraph {
+  id: Int!
+}
+
+type PersonRelation implements Paragraph {
+  id: Int!
+  uuid: String
+  person: [Person]
+}
+
+
+type PersonData implements Paragraph {
+  id: Int!
+  uuid: String
+  person: [Person]
 }
