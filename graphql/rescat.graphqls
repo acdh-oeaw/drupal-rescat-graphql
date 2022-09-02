@@ -35,6 +35,7 @@ type Query {
 type Project implements NodeInterface {
   id: Int!
   personRelations: [Paragraph]!
+  institutionRelations: [Paragraph]!
   personData: [Paragraph]!
   headline: String
   description: String  
@@ -180,9 +181,10 @@ type PersonRelation implements Paragraph {
   person: [Person]
 }
 
-
-type PersonData implements Paragraph {
+type InstitutionRelation implements Paragraph {
   id: Int!
   uuid: String
-  person: [Person]
+  institution: [Institution]
 }
+
+

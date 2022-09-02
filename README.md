@@ -112,16 +112,30 @@ query MyQuery {
   project(id: 49) {
     id
     headline
+    institutionRelations {
+      id
+      ... on InstitutionRelation {
+        id
+        uuid
+        institution {
+          id
+          title
+        }
+      }
+    }
     personRelations {
       id
       ... on PersonRelation {
         id
         uuid
-        
+        person {
+          id
+          title
+        }
       }
     }
-    
   }
 }
+
 
 ```
