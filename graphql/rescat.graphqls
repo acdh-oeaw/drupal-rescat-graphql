@@ -175,9 +175,15 @@ interface Paragraph {
   id: Int!
 }
 
+type Relation {
+  id: Int
+  name: String
+}
+
 type PersonRelation implements Paragraph {
   id: Int!
   uuid: String
+  relation: [Relation]
   person: [Person]
 }
 

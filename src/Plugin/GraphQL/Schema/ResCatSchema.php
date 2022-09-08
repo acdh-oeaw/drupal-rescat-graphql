@@ -284,6 +284,21 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('field', $builder->fromValue('field_person'))
         );
 
+        // Reading the relation of the person paragraph, pointing to a taxonomy
+        $registry->addFieldResolver('PersonRelation', 'relation',
+                $builder->produce('entity_reference')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_relation'))
+        );
+        $registry->addFieldResolver('Relation', 'id',
+          $builder->produce('entity_id')
+            ->map('entity', $builder->fromParent())
+        ); 
+        $registry->addFieldResolver('Relation', 'name',
+          $builder->produce('entity_label')
+            ->map('entity', $builder->fromParent())
+        );
+
         $this->createPersonTermFieldResolver($registry, $builder);
     
         // Institution Relation
