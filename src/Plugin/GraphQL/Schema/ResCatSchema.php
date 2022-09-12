@@ -76,32 +76,66 @@ class ResCatSchema extends SdlSchemaPluginBase {
     }
 
     /**
+     *  fetch the base values
+     * @param ResolverRegistry $registry
+     * @param ResolverBuilder $builder
+     * @param string $type
+     * @param string $field
+     * @param string $producer
+     */
+    private function getValueFromParent(ResolverRegistry &$registry, ResolverBuilder &$builder, string $type, string $field, string $producer) {
+        $registry->addFieldResolver($type, $field,
+                $builder->produce($producer)
+                        ->map('entity', $builder->fromParent())
+        );
+    }
+    
+    /**
+     * Get base value by field
+     * @param ResolverRegistry $registry
+     * @param ResolverBuilder $builder
+     * @param string $type
+     * @param string $field
+     * @param string $producer
+     * @param string $fromValue
+     */
+    private function getValueByField(ResolverRegistry &$registry, ResolverBuilder &$builder, string $type, string $field, string $producer, string $fromValue) {
+        $registry->addFieldResolver($type, $field,
+                $builder->produce($producer)
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue($fromValue))
+        );
+    }
+    
+    
+    /**
+     * get value from entity:node
+     * @param ResolverRegistry $registry
+     * @param ResolverBuilder $builder
+     * @param string $type
+     * @param string $field
+     * @param string $producer
+     * @param string $fromValue
+     */
+    private function getValueByEntityNode(ResolverRegistry &$registry, ResolverBuilder &$builder, string $type, string $field, string $producer, string $fromValue) {
+         $registry->addFieldResolver($type, $field,
+                $builder->produce($producer)
+                        ->map('type', $builder->fromValue('entity:node'))
+                        ->map('value', $builder->fromParent())
+                        ->map('path', $builder->fromValue($fromValue))
+        );
+    }
+    
+    /**
      * @param \Drupal\graphql\GraphQL\ResolverRegistry $registry
      * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
      */
     protected function addDatasetFields(ResolverRegistry $registry, ResolverBuilder $builder) {
-        $registry->addFieldResolver('Dataset', 'id',
-                $builder->produce('entity_id')
-                        ->map('entity', $builder->fromParent())
-        );
-
-        $registry->addFieldResolver('Dataset', 'uuid',
-                $builder->produce('entity_uuid')
-                        ->map('entity', $builder->fromParent())
-        );
-
-        $registry->addFieldResolver('Dataset', 'datasetInstance',
-                $builder->produce('entity_reference')
-                        ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_dataset_instances'))
-        );
-
-        $registry->addFieldResolver('Dataset', 'title',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('title.value'))
-        );
+        
+        $this->getValueFromParent($registry, $builder, 'Dataset', 'id', 'entity_id');
+        $this->getValueFromParent($registry, $builder, 'Dataset', 'uuid', 'entity_uuid');
+        $this->getValueByField($registry, $builder, 'Dataset', 'datasetInstance', 'entity_reference', 'field_dataset_instances' );
+        $this->getValueByEntityNode($registry, $builder, 'Dataset', 'title', 'property_path', 'title.value');
     }
 
     /**
@@ -109,50 +143,15 @@ class ResCatSchema extends SdlSchemaPluginBase {
      * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
      */
     protected function addDatasetInstanceFields(ResolverRegistry $registry, ResolverBuilder $builder) {
-        $registry->addFieldResolver('DatasetInstance', 'id',
-                $builder->produce('entity_id')
-                        ->map('entity', $builder->fromParent())
-        );
-
-        $registry->addFieldResolver('DatasetInstance', 'headline',
-                $builder->produce('entity_label')
-                        ->map('entity', $builder->fromParent())
-        );
-
-        $registry->addFieldResolver('DatasetInstance', 'description',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('body.value'))
-        );
-
-        $registry->addFieldResolver('DatasetInstance', 'lastHarvestDate', $builder->compose(
-                        $builder->produce('property_path')
-                                ->map('type', $builder->fromValue('entity:node'))
-                                ->map('value', $builder->fromParent())
-                                ->map('path', $builder->fromValue('field_last_harvest_date.value')),
-        ));
-
-        $registry->addFieldResolver('DatasetInstance', 'harvestingStatus',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('field_harvesting_status.value'))
-        );
-
-        $registry->addFieldResolver('DatasetInstance', 'license',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('field_license.value'))
-        );
-
-        $registry->addFieldResolver('DatasetInstance', 'size',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('field_size.value'))
-        );
+        
+        $this->getValueFromParent($registry, $builder, 'DatasetInstance', 'id', 'entity_id');
+        $this->getValueFromParent($registry, $builder, 'DatasetInstance', 'headline', 'entity_label');
+       
+        $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'description', 'property_path', 'body.value');
+        $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'lastHarvestDate', 'property_path', 'field_last_harvest_date.value');
+        $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'harvestingStatus', 'property_path', 'field_harvesting_status.value');
+        $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'license', 'property_path', 'field_license.value');
+        $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'size', 'property_path', 'field_size.value');
 
         $registry->addFieldResolver('DatasetInstance', 'contributors',
                 $builder->produce('entity_reference')
@@ -162,18 +161,8 @@ class ResCatSchema extends SdlSchemaPluginBase {
 
         $this->createPersonTermFieldResolver($registry, $builder);
 
-        $registry->addFieldResolver('DatasetInstance', 'locationUri',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('field_location.uri'))
-        );
-        $registry->addFieldResolver('DatasetInstance', 'locationTitle',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('field_location.title'))
-        );
+        $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'locationUri', 'property_path', 'field_location.value');
+        $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'locationTitle', 'property_path', 'field_location.value');
     }
 
     /**
@@ -181,29 +170,13 @@ class ResCatSchema extends SdlSchemaPluginBase {
      * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
      */
     protected function addInstitutionFields(ResolverRegistry $registry, ResolverBuilder $builder) {
-        $registry->addFieldResolver('Institution', 'id',
-                $builder->produce('entity_id')
-                        ->map('entity', $builder->fromParent())
-        );
+        $this->getValueFromParent($registry, $builder, 'Institution', 'id', 'entity_id');
+       
+        $this->getValueFromParent($registry, $builder, 'Institution', 'title', 'entity_label');
 
-        $registry->addFieldResolver('Institution', 'title',
-                $builder->produce('entity_label')
-                        ->map('entity', $builder->fromParent())
-        );
+        $this->getValueByEntityNode($registry, $builder, 'Institution', 'description', 'property_path', 'body.value');
 
-        $registry->addFieldResolver('Institution', 'description',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('body.value'))
-        );
-
-        $registry->addFieldResolver('Institution', 'identifiers',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('field_identifiers.value'))
-        );
+        $this->getValueByEntityNode($registry, $builder, 'Institution', 'identifiers', 'property_path', 'field_identifiers.value');
     }
 
     /**
@@ -211,25 +184,11 @@ class ResCatSchema extends SdlSchemaPluginBase {
      * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
      */
     protected function addPersonFields(ResolverRegistry $registry, ResolverBuilder $builder) {
-
-        $registry->addFieldResolver('Person', 'id',
-                $builder->produce('entity_id')
-                        ->map('entity', $builder->fromParent())
-        );
-
-        $registry->addFieldResolver('Person', 'title',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('title.value'))
-        );
-
-        $registry->addFieldResolver('Person', 'identifiers',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('field_identifiers.value'))
-        );
+        $this->getValueFromParent($registry, $builder, 'Person', 'id', 'entity_id');
+      
+        $this->getValueByEntityNode($registry, $builder, 'Person', 'title', 'property_path', 'title.value');
+      
+        $this->getValueByEntityNode($registry, $builder, 'Person', 'identifiers', 'property_path', 'field_identifiers.value');
     }
 
     /**
@@ -238,11 +197,41 @@ class ResCatSchema extends SdlSchemaPluginBase {
      */
     protected function addProjectFields(ResolverRegistry $registry, ResolverBuilder $builder) {
 
-        $registry->addFieldResolver('Project', 'id',
-                $builder->produce('entity_id')
+        $this->getValueFromParent($registry, $builder, 'Project', 'id', 'entity_id');
+       
+        $this->getValueFromParent($registry, $builder, 'Project', 'headline', 'entity_label');
+        
+        $this->getValueByEntityNode($registry, $builder, 'Project', 'description', 'property_path', 'body.value');
+       
+        $this->getValueByField($registry, $builder, 'Project', 'affilatedInstitutions', 'entity_reference', 'field_institutions');
+       
+        $this->createInstitutionsTermFieldResolver($registry, $builder);
+
+        $this->getValueByField($registry, $builder, 'Project', 'contributors', 'entity_reference', 'field_contributors');
+       
+        $this->createPersonTermFieldResolver($registry, $builder);
+
+        $this->getValueByField($registry, $builder, 'Project', 'principalInvestigators', 'entity_reference', 'field_principal_investigators');
+      
+        $this->createPersonTermFieldResolver($registry, $builder);
+
+        $this->getValueByEntityNode($registry, $builder, 'Project', 'startDate', 'property_path', 'field_start.value');
+        
+        $this->getValueByEntityNode($registry, $builder, 'Project', 'endDate', 'property_path', 'field_end.value');
+        
+        $this->getValueByEntityNode($registry, $builder, 'Project', 'redmineId', 'property_path', 'field_redmine_id.value');
+      
+        $registry->addFieldResolver('Project', 'datasets',
+                $builder->produce('entity_reference')
                         ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_datasets'))
         );
 
+        $this->createDatasetTermFieldResolver($registry, $builder);
+        
+        
+        ///////////////// Relations //////////////////
+        
         $registry->addFieldResolver('Project', 'personRelations',
                 $builder->produce('entity_reference_revisions')
                         ->map('entity', $builder->fromParent())
@@ -321,72 +310,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
 
         $this->createInstitutionsTermFieldResolver($registry, $builder);
         
-        
-        
-        $registry->addFieldResolver('Project', 'headline',
-                $builder->produce('entity_label')
-                        ->map('entity', $builder->fromParent())
-        );
-
-        $registry->addFieldResolver('Project', 'description',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('body.value'))
-        );
-
-        $registry->addFieldResolver('Project', 'affilatedInstitutions',
-                $builder->produce('entity_reference')
-                        ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_institutions'))
-        );
-
-        $this->createInstitutionsTermFieldResolver($registry, $builder);
-
-        $registry->addFieldResolver('Project', 'contributors',
-                $builder->produce('entity_reference')
-                        ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_contributors'))
-        );
-
-        $this->createPersonTermFieldResolver($registry, $builder);
-
-        $registry->addFieldResolver('Project', 'principalInvestigators',
-                $builder->produce('entity_reference')
-                        ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_principal_investigators'))
-        );
-
-        $this->createPersonTermFieldResolver($registry, $builder);
-
-        $registry->addFieldResolver('Project', 'startDate', $builder->compose(
-                        $builder->produce('property_path')
-                                ->map('type', $builder->fromValue('entity:node'))
-                                ->map('value', $builder->fromParent())
-                                ->map('path', $builder->fromValue('field_start.value'))
-        ));
-
-        $registry->addFieldResolver('Project', 'endDate', $builder->compose(
-                        $builder->produce('property_path')
-                                ->map('type', $builder->fromValue('entity:node'))
-                                ->map('value', $builder->fromParent())
-                                ->map('path', $builder->fromValue('field_end.value'))
-        ));
-
-        $registry->addFieldResolver('Project', 'redmineId',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('field_redmine_issue_id.value'))
-        );
-
-        $registry->addFieldResolver('Project', 'datasets',
-                $builder->produce('entity_reference')
-                        ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_datasets'))
-        );
-
-        $this->createDatasetTermFieldResolver($registry, $builder);
+      
     }
 
     private function createDatasetTermFieldResolver(ResolverRegistry &$registry, ResolverBuilder &$builder) {
