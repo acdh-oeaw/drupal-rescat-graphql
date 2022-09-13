@@ -13,6 +13,7 @@ type Query {
   persons(
     offset: Int = 0
     limit: Int = 10
+    title: String
   ): PersonConnection!
   dataset(id: Int!): Dataset
   datasets(
@@ -56,7 +57,7 @@ type ProjectConnection {
 
 type Person implements NodeInterface {
   id: Int!
-  title: String
+  title: String 
   identifiers: String
 }
 

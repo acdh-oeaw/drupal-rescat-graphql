@@ -58,6 +58,9 @@ class ResCatSchema extends SdlSchemaPluginBase {
             throw new Error('Could not resolve content type.');
         });
 
+      
+
+        
         $this->addQueryFields($registry, $builder);
         $this->addDatasetFields($registry, $builder);
         $this->addDatasetInstanceFields($registry, $builder);
@@ -399,11 +402,12 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('bundles', $builder->fromValue(['person']))
                         ->map('id', $builder->fromArgument('id'))
         );
-
+        
         $registry->addFieldResolver('Query', 'persons',
                 $builder->produce('query_persons')
                         ->map('offset', $builder->fromArgument('offset'))
                         ->map('limit', $builder->fromArgument('limit'))
+                        ->map('title', $builder->fromArgument('title'))
         );
 
         /*         * * DATASET ** */
