@@ -84,7 +84,7 @@ class QueryPersons extends DataProducerPluginBase implements ContainerFactoryPlu
   /**
    * @param $offset
    * @param $limit
-   * @param $titlet
+   * @param $title
    * @param \Drupal\Core\Cache\RefinableCacheableDependencyInterface $metadata
    *
    * @return \Drupal\rescat_graphql\Wrappers\QueryConnection

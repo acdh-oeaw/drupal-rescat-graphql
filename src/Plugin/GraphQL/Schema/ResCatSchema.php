@@ -393,6 +393,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
                 $builder->produce('query_projects')
                         ->map('offset', $builder->fromArgument('offset'))
                         ->map('limit', $builder->fromArgument('limit'))
+                        ->map('title', $builder->fromArgument('title'))
         );
 
         /*         * * PERSON** */
@@ -410,7 +411,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('title', $builder->fromArgument('title'))
         );
 
-        /*         * * DATASET ** */
+        /** * DATASET ** */
         $registry->addFieldResolver('Query', 'dataset',
                 $builder->produce('entity_load')
                         ->map('type', $builder->fromValue('node'))
@@ -422,9 +423,10 @@ class ResCatSchema extends SdlSchemaPluginBase {
                 $builder->produce('query_datasets')
                         ->map('offset', $builder->fromArgument('offset'))
                         ->map('limit', $builder->fromArgument('limit'))
+                        ->map('title', $builder->fromArgument('title'))
         );
 
-        /**         * DATASET INSTANCE ** */
+        /*** DATASET INSTANCE ** */
         $registry->addFieldResolver('Query', 'dataset_instance',
                 $builder->produce('entity_load')
                         ->map('type', $builder->fromValue('node'))
@@ -436,6 +438,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
                 $builder->produce('query_dataset_instances')
                         ->map('offset', $builder->fromArgument('offset'))
                         ->map('limit', $builder->fromArgument('limit'))
+                        ->map('title', $builder->fromArgument('title'))
         );
 
         /*         * * Institution ** */
@@ -450,6 +453,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
                 $builder->produce('query_institutions')
                         ->map('offset', $builder->fromArgument('offset'))
                         ->map('limit', $builder->fromArgument('limit'))
+                        ->map('title', $builder->fromArgument('title'))
         );
     }
 

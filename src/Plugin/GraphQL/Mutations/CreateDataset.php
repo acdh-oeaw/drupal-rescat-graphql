@@ -8,21 +8,21 @@ use Drupal\graphql_core\Plugin\GraphQL\Mutations\Entity\CreateEntityBase;
 use GraphQL\Type\Definition\ResolveInfo;
 
 /**
- * Simple mutation for creating a new Project node.
+ * Simple mutation for creating a new Dataset node.
  *
  * @GraphQLMutation(
- *   id = "create_project",
+ *   id = "create_dataset",
  *   entity_type = "node",
- *   entity_bundle = "project",
+ *   entity_bundle = "dataset",
  *   secure = true,
- *   name = "createProject",
+ *   name = "createDataset",
  *   type = "EntityCrudOutput!",
  *   arguments = {
- *     "input" = "ProjectInput"
+ *     "input" = "DatasetInput"
  *   }
  * )
  */
-class CreateProject extends CreateEntityBase {
+class CreateDataset extends CreateEntityBase {
 
   /**
    * {@inheritdoc}
@@ -34,17 +34,8 @@ class CreateProject extends CreateEntityBase {
     ResolveInfo $info
   ) {
     return [
-        'type' => 'project',
       'headline' => $args['input']['headline'],
       'description' => $args['input']['description']
-            /*,
-             * ,        
-      'endDate' => $args['input']['endDate'],
-      'startDate' => $args['input']['startDate'],
-      'redmineId' => $args['input']['redmineId']
-      'institutions' => $args['input']['institutions'],
-      'investigators' => $args['input']['investigators'],
-      'contributors' => $args['input']['contributors'],*/
     ];
   }
 

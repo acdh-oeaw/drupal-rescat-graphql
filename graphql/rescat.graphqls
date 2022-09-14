@@ -8,6 +8,7 @@ type Query {
   projects(
     offset: Int = 0
     limit: Int = 10
+    title: String
   ): ProjectConnection!
   person(id: Int!): Person
   persons(
@@ -19,16 +20,19 @@ type Query {
   datasets(
     offset: Int = 0
     limit: Int = 10
+    title: String
   ): DatasetConnection!
   dataset_instance(id: Int!): DatasetInstance
   dataset_instances(
     offset: Int = 0
     limit: Int = 10
+    title: String
   ): DatasetInstanceConnection!
   institution(id: Int!): Institution
   institutions(
     offset: Int = 0
     limit: Int = 10
+    title: String
   ): InstitutionConnection!   
 
 }
@@ -160,6 +164,11 @@ input DatasetInstanceInput {
   locationTitle: String
   locationUri: String
   size: Int
+}
+
+input DatasetInput {
+  headline: String!
+  description: String
 }
 
 

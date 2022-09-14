@@ -26,6 +26,10 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *     "limit" = @ContextDefinition("integer",
  *       label = @Translation("Limit"),
  *       required = FALSE
+ *     ),
+ *     "title" = @ContextDefinition("string",
+ *       label = @Translation("Title"),
+ *       required = FALSE
  *     )
  *   }
  * )
@@ -80,13 +84,14 @@ class QueryProjects extends DataProducerPluginBase implements ContainerFactoryPl
   /**
    * @param $offset
    * @param $limit
+   * @param $title
    * @param \Drupal\Core\Cache\RefinableCacheableDependencyInterface $metadata
    *
    * @return \Drupal\graphql_dha\Wrappers\QueryConnection
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function resolve($offset, $limit, RefinableCacheableDependencyInterface $metadata) {
+  public function resolve($offset, $limit, $title, RefinableCacheableDependencyInterface $metadata) {
     if (!$limit > static::MAX_LIMIT) {
       throw new UserError(sprintf('Exceeded maximum query limit: %s.', static::MAX_LIMIT));
     }
@@ -98,6 +103,7 @@ class QueryProjects extends DataProducerPluginBase implements ContainerFactoryPl
       ->accessCheck();
 
     $query->condition($type->getKey('bundle'), 'project');
+    $query->condition($type->getKey('label'), $title);    
     $query->range($offset, $limit);
 
     $metadata->addCacheTags($type->getListCacheTags());

@@ -12,11 +12,11 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * @DataProducer(
- *   id = "query_institutions",
- *   name = @Translation("Load Institutions"),
- *   description = @Translation("Loads a list of Institutions."),
+ *   id = "query_dataset_instances",
+ *   name = @Translation("Load dataset instances"),
+ *   description = @Translation("Loads a list of dataset instances."),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("Institution connection")
+ *     label = @Translation("Dataset instances connection")
  *   ),
  *   consumes = {
  *     "offset" = @ContextDefinition("integer",
@@ -34,7 +34,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   }
  * )
  */
-class QueryInstitutions extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class QueryDatasetInstances extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
   const MAX_LIMIT = 100;
 
@@ -58,7 +58,7 @@ class QueryInstitutions extends DataProducerPluginBase implements ContainerFacto
   }
 
   /**
-   * Institutions constructor.
+   * DatasetInstances constructor.
    *
    * @param array $configuration
    *   The plugin configuration.
@@ -101,8 +101,9 @@ class QueryInstitutions extends DataProducerPluginBase implements ContainerFacto
     $query = $storage->getQuery()
       ->currentRevision()
       ->accessCheck();
-
-    $query->condition($type->getKey('bundle'), 'institution');
+    error_log(print_r($title, true));
+    $query->condition($type->getKey('bundle'), 'dataset_instances');
+    error_log(print_r($type->getKeys(), true));
     $query->condition($type->getKey('label'), $title);
     $query->range($offset, $limit);
 
