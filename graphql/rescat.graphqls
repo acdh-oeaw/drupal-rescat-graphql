@@ -95,7 +95,6 @@ type DatasetTerm {
   size: Int
 }
 
-
 type Dataset implements NodeInterface {
   id: Int!
   title: String
@@ -137,8 +136,22 @@ type InstitutionConnection {
   items: [Institution!]    
 }
 
-interface NodeInterface {
+type Relation {
+  id: Int
+  name: String
+}
+
+type PersonRelation implements Paragraph {
   id: Int!
+  uuid: String
+  relation: [Relation]
+  person: [Person]
+}
+
+type InstitutionRelation implements Paragraph {
+  id: Int!
+  uuid: String
+  institution: [Institution]
 }
 
 type Mutation
@@ -171,7 +184,6 @@ input DatasetInput {
   description: String
 }
 
-
 input ProjectInput {
   headline: String!
   description: String
@@ -180,27 +192,18 @@ input ProjectInput {
   redmineId: Int
 }
 
+input PersonRelationInput {
+  target_id: String
+  parent_id: String  
+}
+
 
 interface Paragraph {
   id: Int!
 }
 
-type Relation {
-  id: Int
-  name: String
-}
 
-type PersonRelation implements Paragraph {
+interface NodeInterface {
   id: Int!
-  uuid: String
-  relation: [Relation]
-  person: [Person]
 }
-
-type InstitutionRelation implements Paragraph {
-  id: Int!
-  uuid: String
-  institution: [Institution]
-}
-
 
