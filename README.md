@@ -77,36 +77,69 @@ mutation{
 ```
 
 
-## ingest dataset instance
+## Ingest project/person/dataset/dataset instance/institution
+
+### Institution
 ```
-mutation{
-  createDatasetInstance(data: { headline: "test DTI 2", description: "DTi1 description", 
-    harvestingStatus: "harvesting..", lastHarvestDate: "2022-02-14 00:00:00", 
-    license: "license test", locationTitle: "location title test", locationUri: "location uri test",
-  	size: 929921, contributors: { id: 10, title: "klaus"}}) {
-    ... on DatasetInstance {
-      id
-      headline
-      description
-      harvestingStatus
-      lastHarvestDate
-      license
-      locationTitle
-      locationUri
-      size
-      contributors {
-        id
-        title
-      }
-    }
+mutation InstitutionIngest {
+  createInstitution(data: {title: "ACDH-CH", identifiers: "https://www.oeaw.ac.at/acdh/acdh-ch-home"}) {
+    description
+    id
+    identifiers
+    title
+  }
+}
+
+```
+
+### Person
+```
+mutation PersonIngest {
+  createPerson(data: {title: "Ingestion User", description: "Example User for ingestion"}) {
+    id
+    identifiers
+    title
+  }
+}
+```
+
+### Project
+```
+mutation ProjectIngest {
+  
+}
+```
+
+### Dataset
+```
+mutation DatasetIngest {
+  
+}
+```
+
+### DatasetInstance
+```
+mutation DatasetInstanceIngest {
+  
+}
+```
+
+
+## Ingest Relations
+
+### PersonRelation Ingest
+Parent_id is the node id which will contains the relation and the target_id is the actual Person node id.
+```
+mutation PersonRelationMutation {
+  createPersonRelation(data: {parent_id: "73", target_id: "11"}) {
+    id
+    uuid
   }
 }
 ```
 
 
-
-
-## query paragraphs
+## Query Paragraphs
 ```
 query MyQuery {
   project(id: 49) {
