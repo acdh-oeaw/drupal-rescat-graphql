@@ -28,12 +28,15 @@ class ResCatSchema extends SdlSchemaPluginBase {
         /**
          * Mutations
          */
-        $this->includeMutations($registry, $builder, 'createPerson', 'create_person');
-        $this->includeMutations($registry, $builder, 'createInstitution', 'create_institution');
-        $this->includeMutations($registry, $builder, 'createDatasetInstance', 'create_datasetinstance');
-        $this->includeMutations($registry, $builder, 'createPersonRelation', 'create_person_relation');
         $this->includeMutations($registry, $builder, 'createProject', 'create_project');
-
+        $this->includeMutations($registry, $builder, 'createPerson', 'create_person');
+        $this->includeMutations($registry, $builder, 'createPersonRelation', 'create_person_relation');
+        $this->includeMutations($registry, $builder, 'createInstitution', 'create_institution');
+        $this->includeMutations($registry, $builder, 'createInstitutionRelation', 'create_institution_relation');
+        $this->includeMutations($registry, $builder, 'createDataset', 'create_dataset');
+        $this->includeMutations($registry, $builder, 'createDatasetRelation', 'create_dataset_relation');
+        $this->includeMutations($registry, $builder, 'createDatasetInstance', 'create_datasetinstance');
+        
         $registry->addTypeResolver('NodeInterface', function ($value) {
             if ($value instanceof NodeInterface) {
                 switch ($value->bundle()) {

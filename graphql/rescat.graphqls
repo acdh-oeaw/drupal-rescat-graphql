@@ -154,6 +154,12 @@ type InstitutionRelation implements Paragraph {
   institution: [Institution]
 }
 
+type DatasetRelation implements Paragraph {
+  id: Int!
+  uuid: String
+  dataset: [Dataset]
+}
+
 type Mutation
 
 scalar Violation
@@ -197,6 +203,15 @@ input PersonRelationInput {
   parent_id: String  
 }
 
+input InstitutionRelationInput {
+  target_id: String
+  parent_id: String  
+}
+
+input DatasetRelationInput {
+  target_id: String
+  parent_id: String  
+}
 
 interface Paragraph {
   id: Int!
