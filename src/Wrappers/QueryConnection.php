@@ -35,6 +35,7 @@ class QueryConnection {
    */
   public function items() {
     $result = $this->query->execute();
+   
     if (empty($result)) {
       return [];
     }

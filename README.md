@@ -49,32 +49,6 @@ query MyQuery {
   }
 }
 
-```
-## ingest person example
-```
-mutation{
-  createPerson(data: { title: "test person ingest"}) {
-    ... on Person {
-      id
-      title
-    }
-  }
-}
-```
-
-
-## ingest institution example
-
-```
-mutation{
-  createInstitution(data: { title: "test person ingest"}) {
-    ... on Institution {
-      id
-      title
-    }
-  }
-}
-```
 
 
 ## Ingest project/person/dataset/dataset instance/institution
@@ -106,7 +80,12 @@ mutation PersonIngest {
 ### Project
 ```
 mutation ProjectIngest {
-  
+  createProject(
+    data: {headline: "Example Project", description: "example project description", redmineId: 10}
+  ) {
+    id
+    headline
+  }
 }
 ```
 
@@ -172,3 +151,22 @@ query MyQuery {
 
 
 ```
+
+##Query Taxonomies
+We have taxonomies like connections between Person and Project -> has contributor, etc...
+
+
+```
+query PersonTaxonomyQuery {
+  personstaxonomy(name: "has contributor") {
+    items {
+      id
+      name
+    }
+  }
+}
+
+```
+
+
+

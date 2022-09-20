@@ -8,6 +8,7 @@ use Drupal\graphql\GraphQL\ResolverRegistry;
 use Drupal\graphql\Plugin\GraphQL\Schema\SdlSchemaPluginBase;
 use Drupal\rescat_graphql\Wrappers\QueryConnection;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\taxonomy\Entity\Term;
 use GraphQL\Error\Error;
 
 /**
@@ -44,17 +45,21 @@ class ResCatSchema extends SdlSchemaPluginBase {
                     case 'dataset_instance': return 'DatasetInstance';
                     case 'institution': return 'Institution';
                     case 'person': return 'Person';
+                    case 'persontaxonomy': return 'PersonTaxonomy';
                     case 'project': return 'Project';
                 }
             }
             throw new Error('Could not resolve content type.');
         });
         
+       
+        
         $this->addQueryFields($registry, $builder);
         $this->addDatasetFields($registry, $builder);
         $this->addDatasetInstanceFields($registry, $builder);
         $this->addInstitutionFields($registry, $builder);
         $this->addPersonFields($registry, $builder);
+        $this->addPersonTaxonomyFields($registry, $builder);
         $this->addProjectFields($registry, $builder);
 
         // Re-usable connection type fields.
@@ -63,6 +68,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->addConnectionFields('InstitutionConnection', $registry, $builder);
         $this->addConnectionFields('PersonConnection', $registry, $builder);
         $this->addConnectionFields('ProjectConnection', $registry, $builder);
+        $this->addConnectionFields('PersonsTaxonomyConnection', $registry, $builder);
 
         return $registry;
     }
@@ -194,6 +200,15 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->getValueByEntityNode($registry, $builder, 'Person', 'title', 'property_path', 'title.value');
         $this->getValueByEntityNode($registry, $builder, 'Person', 'identifiers', 'property_path', 'field_identifiers.value');
     }
+    
+    protected function addPersonTaxonomyFields(ResolverRegistry $registry, ResolverBuilder $builder) {
+        $this->getValueFromParent($registry, $builder, 'PersonTaxonomy', 'id', 'entity_id');
+        $this->getValueByEntityNode($registry, $builder, 'PersonTaxonomy', 'title', 'property_path', 'title.value');
+        $this->getValueByEntityNode($registry, $builder, 'PersonTaxonomy', 'name', 'property_path', 'name.value');
+        $this->getValueByEntityNode($registry, $builder, 'PersonTaxonomy', 'identifiers', 'property_path', 'field_identifiers.value');
+    }
+    
+    
 
     /**
      * @param \Drupal\graphql\GraphQL\ResolverRegistry $registry
@@ -282,7 +297,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
             ->map('entity', $builder->fromParent())
         );
 
-        $this->createPersonTermFieldResolver($registry, $builder);
+        //$this->createPersonTermFieldResolver($registry, $builder);
     
         // Institution Relation
         $registry->addFieldResolver('InstitutionRelation', 'id',
@@ -301,10 +316,10 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('field', $builder->fromValue('field_institution'))
         );
 
-        $this->createInstitutionsTermFieldResolver($registry, $builder);
+        //$this->createInstitutionsTermFieldResolver($registry, $builder);
        
     }
-
+    
     private function createDatasetTermFieldResolver(ResolverRegistry &$registry, ResolverBuilder &$builder) {
 
         $registry->addFieldResolver('DatasetTerm', 'id',
@@ -396,6 +411,13 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('offset', $builder->fromArgument('offset'))
                         ->map('limit', $builder->fromArgument('limit'))
                         ->map('title', $builder->fromArgument('title'))
+        );
+        
+        $registry->addFieldResolver('Query', 'personstaxonomy',
+                $builder->produce('query_personstaxonomy')
+                        ->map('offset', $builder->fromArgument('offset'))
+                        ->map('limit', $builder->fromArgument('limit'))
+                        ->map('name', $builder->fromArgument('name'))
         );
 
         /** * DATASET ** */

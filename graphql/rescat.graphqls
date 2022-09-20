@@ -34,7 +34,18 @@ type Query {
     limit: Int = 10
     title: String
   ): InstitutionConnection!   
+  personstaxonomy(
+    offset: Int = 0
+    limit: Int = 10
+    name: String
+  ): PersonsTaxonomyConnection!   
+  persontaxonomy(id: Int!): PersonTaxonomy
+}
 
+type PersonTaxonomy  {
+  id: Int!
+  headline: String
+  name: String
 }
 
 type Project implements NodeInterface {
@@ -48,10 +59,6 @@ type Project implements NodeInterface {
   endDate: String
   redmineId: Int
   datasets: [Dataset]
-  affilatedInstitutions: [Institution]
-  contributors: [Person]
-  principalInvestigators: [Person]
-  relperson: [Person]
 }
 
 type ProjectConnection {
@@ -136,6 +143,11 @@ type InstitutionConnection {
   items: [Institution!]    
 }
 
+type PersonsTaxonomyConnection {
+  total: Int!
+  items: [PersonTaxonomy!]    
+}
+
 type Relation {
   id: Int
   name: String
@@ -159,6 +171,7 @@ type DatasetRelation implements Paragraph {
   uuid: String
   dataset: [Dataset]
 }
+
 
 type Mutation
 
