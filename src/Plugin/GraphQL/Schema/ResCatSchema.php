@@ -31,12 +31,15 @@ class ResCatSchema extends SdlSchemaPluginBase {
          */
         $this->includeMutations($registry, $builder, 'createProject', 'create_project');
         $this->includeMutations($registry, $builder, 'createPerson', 'create_person');
+        $this->includeMutations($registry, $builder, 'deletePerson', 'delete_person');
+        $this->includeMutations($registry, $builder, 'updatePerson', 'update_person');
         $this->includeMutations($registry, $builder, 'createPersonRelation', 'create_person_relation');
         $this->includeMutations($registry, $builder, 'createInstitution', 'create_institution');
         $this->includeMutations($registry, $builder, 'createInstitutionRelation', 'create_institution_relation');
         $this->includeMutations($registry, $builder, 'createDataset', 'create_dataset');
         $this->includeMutations($registry, $builder, 'createDatasetRelation', 'create_dataset_relation');
         $this->includeMutations($registry, $builder, 'createDatasetInstance', 'create_datasetinstance');
+        
         
         $registry->addTypeResolver('NodeInterface', function ($value) {
             if ($value instanceof NodeInterface) {
@@ -51,8 +54,6 @@ class ResCatSchema extends SdlSchemaPluginBase {
             }
             throw new Error('Could not resolve content type.');
         });
-        
-       
         
         $this->addQueryFields($registry, $builder);
         $this->addDatasetFields($registry, $builder);

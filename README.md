@@ -170,4 +170,17 @@ query PersonTaxonomyQuery {
 ```
 
 
+###Delete
+
+##Delete Person
+Where the id the person node id.
+
+```
+mutation DeleteMutation {
+  deletePerson(data: {id: 78}) {
+    id
+  }
+}
+```
+
 

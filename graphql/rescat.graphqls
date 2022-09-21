@@ -172,7 +172,6 @@ type DatasetRelation implements Paragraph {
   dataset: [Dataset]
 }
 
-
 type Mutation
 
 scalar Violation
@@ -180,6 +179,10 @@ scalar Violation
 input PersonInput {
   title: String!
   description: String
+}
+
+input PersonDeleteInput {
+    id: Int!
 }
 
 input InstitutionInput {

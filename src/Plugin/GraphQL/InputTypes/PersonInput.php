@@ -12,6 +12,7 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *   id = "person_input",
  *   name = "PersonInput",
  *   fields = {
+ *     "nid" = "Int",
  *     "title" = "String",
  *     "body" = {
  *        "type" = "String",

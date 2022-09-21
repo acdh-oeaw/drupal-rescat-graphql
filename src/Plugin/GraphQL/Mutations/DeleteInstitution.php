@@ -5,19 +5,19 @@ namespace Drupal\rescat_graphql\Plugin\GraphQL\Mutations;
 use Drupal\graphql_core\Plugin\GraphQL\Mutations\Entity\DeleteEntityBase;
 
 /**
- * Simple mutation for deleting an person node.
+ * Simple mutation for deleting an institution node.
  *
  * @GraphQLMutation(
- *   id = "delete_person",
+ *   id = "delete_institution",
  *   entity_type = "node",
- *   entity_bundle = "person",
+ *   entity_bundle = "institution",
  *   secure = true,
- *   name = "deletePerson",
+ *   name = "deleteInstitution",
  *   type = "EntityCrudOutput!",
  *   arguments = {
  *     "id" = "String"
  *   }
  * )
  */
-class DeletePerson extends DeleteEntityBase {
+class DeleteInstitution extends DeleteEntityBase {
 }
