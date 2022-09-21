@@ -84,6 +84,9 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
                         'parent_field_name' =>'field_person_relations',
                         'field_person' => array(
                             'target_id' => $data['target_id']
+                        ),
+                        'field_relation' => array(
+                            'target_id' => $data['relation_id']
                         )
             ]);
             $paragraph->isNew();

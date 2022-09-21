@@ -107,10 +107,11 @@ mutation DatasetInstanceIngest {
 ## Ingest Relations
 
 ### PersonRelation Ingest
-Parent_id is the node id which will contains the relation and the target_id is the actual Person node id.
+Parent_id is the node id which will contains the relation and the target_id is the actual Person node id. The relation id is the 
+Id of the person relation (f.e.: 8 has contributor) -> You can find them in the Query Taxonomies section
 ```
 mutation PersonRelationMutation {
-  createPersonRelation(data: {parent_id: "73", target_id: "11"}) {
+  createPersonRelation(data: {parent_id: "73", target_id: "11", relation_id: "8"}) {
     id
     uuid
   }

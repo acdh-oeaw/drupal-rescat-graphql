@@ -214,6 +214,7 @@ input ProjectInput {
 input PersonRelationInput {
   target_id: String
   parent_id: String  
+  relation_id: String  
 }
 
 input InstitutionRelationInput {

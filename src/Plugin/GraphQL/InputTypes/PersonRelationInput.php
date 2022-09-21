@@ -13,7 +13,8 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *   name = "PersonRelationInput",
  *   fields = {
  *     "target_id" = "String",
- *     "parent_id" = "String"
+ *     "parent_id" = "String",
+ *     "relation_id" = "String"
  *   }
  * )
  */
