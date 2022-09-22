@@ -52,7 +52,6 @@ type Project implements NodeInterface {
   id: Int!
   personRelations: [Paragraph]!
   institutionRelations: [Paragraph]!
-  personData: [Paragraph]!
   headline: String
   description: String  
   startDate: String
@@ -179,10 +178,18 @@ scalar Violation
 input PersonInput {
   title: String!
   description: String
+  identifiers: String
 }
 
 input PersonDeleteInput {
     id: Int!
+}
+
+input PersonUpdateInput {
+  id: Int!
+  title: String!
+  description: String
+  identifiers: String
 }
 
 input InstitutionInput {

@@ -179,20 +179,21 @@ class ResCatSchema extends SdlSchemaPluginBase {
     }
 
     /**
+     * The base Institution node fields
+     * 
      * @param \Drupal\graphql\GraphQL\ResolverRegistry $registry
      * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
      */
     protected function addInstitutionFields(ResolverRegistry $registry, ResolverBuilder $builder) {
         $this->getValueFromParent($registry, $builder, 'Institution', 'id', 'entity_id');
-       
         $this->getValueFromParent($registry, $builder, 'Institution', 'title', 'entity_label');
-
         $this->getValueByEntityNode($registry, $builder, 'Institution', 'description', 'property_path', 'body.value');
-
         $this->getValueByEntityNode($registry, $builder, 'Institution', 'identifiers', 'property_path', 'field_identifiers.value');
     }
 
     /**
+     * The Base Person Node fields
+     * 
      * @param \Drupal\graphql\GraphQL\ResolverRegistry $registry
      * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
      */
@@ -202,13 +203,18 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->getValueByEntityNode($registry, $builder, 'Person', 'identifiers', 'property_path', 'field_identifiers.value');
     }
     
+    /**
+     * The person taxonomy fields like has contributor, etc
+     * 
+     * @param ResolverRegistry $registry
+     * @param ResolverBuilder $builder
+     */
     protected function addPersonTaxonomyFields(ResolverRegistry $registry, ResolverBuilder $builder) {
         $this->getValueFromParent($registry, $builder, 'PersonTaxonomy', 'id', 'entity_id');
         $this->getValueByEntityNode($registry, $builder, 'PersonTaxonomy', 'title', 'property_path', 'title.value');
         $this->getValueByEntityNode($registry, $builder, 'PersonTaxonomy', 'name', 'property_path', 'name.value');
         $this->getValueByEntityNode($registry, $builder, 'PersonTaxonomy', 'identifiers', 'property_path', 'field_identifiers.value');
     }
-    
     
 
     /**
@@ -301,6 +307,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
         //$this->createPersonTermFieldResolver($registry, $builder);
     
         // Institution Relation
+        
         $registry->addFieldResolver('InstitutionRelation', 'id',
                 $builder->produce('entity_id')
                         ->map('entity', $builder->fromParent())

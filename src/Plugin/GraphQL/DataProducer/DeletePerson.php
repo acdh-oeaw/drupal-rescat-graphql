@@ -70,7 +70,7 @@ class DeletePerson extends DataProducerPluginBase implements ContainerFactoryPlu
    *   The title of the job.
    *
    * @return \Drupal\Core\Entity\EntityBase|\Drupal\Core\Entity\EntityInterface
-   *   The newly created person.
+   *   The deleted person.
    *
    * @throws \Exception
    */
@@ -86,6 +86,7 @@ class DeletePerson extends DataProducerPluginBase implements ContainerFactoryPlu
         if ($node) {
           $node->delete();
         }
+        return $node;
     }
     return NULL;
   }

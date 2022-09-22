@@ -1,6 +1,6 @@
 extend type Mutation {
   createPerson(data: PersonInput): Person
-  updatePerson(data: PersonInput): Person
+  updatePerson(data: PersonUpdateInput): Person
   deletePerson(data: PersonDeleteInput): Person
   createPersonRelation(data: PersonRelationInput): PersonRelation
   createInstitution(data: InstitutionInput): Institution

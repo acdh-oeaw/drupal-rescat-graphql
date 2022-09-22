@@ -103,7 +103,9 @@ class QueryInstitutions extends DataProducerPluginBase implements ContainerFacto
       ->accessCheck();
 
     $query->condition($type->getKey('bundle'), 'institution');
-    $query->condition($type->getKey('label'), $title);
+    if($title) {
+        $query->condition($type->getKey('label'), $title);    
+    }
     $query->range($offset, $limit);
 
     $metadata->addCacheTags($type->getListCacheTags());

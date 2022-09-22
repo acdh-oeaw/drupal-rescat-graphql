@@ -75,8 +75,6 @@ class CreateDataset extends DataProducerPluginBase implements ContainerFactoryPl
    * @throws \Exception
    */
   public function resolve(array $data) {
-      error_log("CREATE Dataset");
-      error_log(print_r($data, true));
     if ($this->currentUser->hasPermission("create Dataset content")) {
       $values = [
         'type' => 'dataset',

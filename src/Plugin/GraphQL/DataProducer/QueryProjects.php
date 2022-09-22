@@ -101,9 +101,12 @@ class QueryProjects extends DataProducerPluginBase implements ContainerFactoryPl
     $query = $storage->getQuery()
       ->currentRevision()
       ->accessCheck();
-
+    
     $query->condition($type->getKey('bundle'), 'project');
-    $query->condition($type->getKey('label'), $title);    
+    if($title) {
+        $query->condition($type->getKey('label'), $title);  
+    }
+      
     $query->range($offset, $limit);
 
     $metadata->addCacheTags($type->getListCacheTags());

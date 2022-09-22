@@ -101,10 +101,11 @@ class QueryDatasetInstances extends DataProducerPluginBase implements ContainerF
     $query = $storage->getQuery()
       ->currentRevision()
       ->accessCheck();
-    error_log(print_r($title, true));
-    $query->condition($type->getKey('bundle'), 'dataset_instances');
-    error_log(print_r($type->getKeys(), true));
-    $query->condition($type->getKey('label'), $title);
+    
+    $query->condition($type->getKey('bundle'), 'dataset_instance');
+    if($title) {
+        $query->condition($type->getKey('label'), $title);
+    }
     $query->range($offset, $limit);
 
     $metadata->addCacheTags($type->getListCacheTags());

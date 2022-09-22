@@ -103,7 +103,9 @@ class QueryDatasets extends DataProducerPluginBase implements ContainerFactoryPl
       ->accessCheck();
 
     $query->condition($type->getKey('bundle'), 'dataset');
-    $query->condition($type->getKey('label'), $title);
+    if($title){
+        $query->condition($type->getKey('label'), $title);
+    }
     $query->range($offset, $limit);
 
     $metadata->addCacheTags($type->getListCacheTags());
