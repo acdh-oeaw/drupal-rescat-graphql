@@ -4,6 +4,8 @@ extend type Mutation {
   deletePerson(data: PersonDeleteInput): Person
   createPersonRelation(data: PersonRelationInput): PersonRelation
   createInstitution(data: InstitutionInput): Institution
+  updateInstitution(data: InstitutionUpdateInput): Institution
+  deleteInstitution(data: InstitutionDeleteInput): Institution
   createInstitutionRelation(data: InstitutionRelationInput): InstitutionRelation
   createDataset(data: DatasetInput): Dataset
   createDatasetRelation(data: DatasetRelationInput): DatasetRelation

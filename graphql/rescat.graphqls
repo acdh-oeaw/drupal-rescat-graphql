@@ -197,6 +197,17 @@ input InstitutionInput {
   identifiers: String
 }
 
+input InstitutionDeleteInput {
+    id: Int!
+}
+
+input InstitutionUpdateInput {
+  id: Int!
+  title: String!
+  description: String
+  identifiers: String
+}
+
 input DatasetInstanceInput {
   headline: String!
   harvestingStatus: String

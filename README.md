@@ -42,8 +42,8 @@ The parent_id is the Dataset node id, target_id the DatasetInstance node id. - N
 - Institution Taxonomy - not working
 
 ###### Update Queries: 
-- Person (params: id, title, identifiers) - update the person node
-- Institution - not working
+- Person (params: id, title, identifiers) - update the Person node
+- Institution - (params: id, title, identifiers) - update the Institution node
 - Dataset - not working
 - DatasetInstance - not working
 - Project - not working
@@ -55,8 +55,8 @@ The parent_id is the Dataset node id, target_id the DatasetInstance node id. - N
 - Institution Taxonomy - not working
 
 ###### Delete Queries: 
-- Person (params: id) - deletes the node type person based on the node id
-- Institution - not working
+- Person (params: id) - deletes the node type Person based on the node id
+- Institution - (params: id) - deletes the node type Institution based on the node id
 - Dataset - not working
 - DatasetInstance - not working
 - Project - not working

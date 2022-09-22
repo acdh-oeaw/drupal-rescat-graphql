@@ -10,23 +10,23 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\rescat_graphql\Helper\UpdateHelper;
 
 /**
- * Update a new person entity.
+ * Update a Institution entity.
  *
  * @DataProducer(
- *   id = "update_person",
- *   name = @Translation("Update Person"),
- *   description = @Translation("Update a person."),
+ *   id = "update_institution",
+ *   name = @Translation("Update Institution"),
+ *   description = @Translation("Update a Institution."),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("Person")
+ *     label = @Translation("Institution")
  *   ),
  *   consumes = {
  *     "data" = @ContextDefinition("any",
- *       label = @Translation("Person data")
+ *       label = @Translation("Institution data")
  *     )
  *   }
  * )
  */
-class UpdatePerson extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class UpdateInstitution extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
     /**
      * The current user.
@@ -34,10 +34,9 @@ class UpdatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
-
     
     private $helper;
-    
+
     /**
      * {@inheritdoc}
      */
@@ -51,7 +50,7 @@ class UpdatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
     }
 
     /**
-     * CreateArticle constructor.
+     * Update Institution constructor.
      *
      * @param array $configuration
      *   A configuration array containing information about the plugin instance.
@@ -69,7 +68,7 @@ class UpdatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
     }
 
     /**
-     * Creates an person.
+     * Update an Institution.
      *
      * @param array $data
      *   The title of the job.
@@ -80,7 +79,7 @@ class UpdatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("Update person content")) {
+        if ($this->currentUser->hasPermission("Update Institution content")) {
             $nid = $data['id'];
             $node = Node::load($nid);
             // or
@@ -88,7 +87,7 @@ class UpdatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
 
             if ($node) {
                 $this->helper->updateProperty($node, $data, "title", "title");
-                $this->helper->updateProperty($node, $data, "field_identifiers.value", "identifiers");
+                $this->helper->updateMultiLevelProperty($node, $data, "field_identifiers", "value", "identifiers");
                 $this->helper->updateBody($node, $data, "description");
                 $node->save();
             }
@@ -98,6 +97,6 @@ class UpdatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
         return NULL;
     }
 
-   
+    
 
 }

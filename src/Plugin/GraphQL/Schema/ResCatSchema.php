@@ -35,6 +35,8 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->includeMutations($registry, $builder, 'updatePerson', 'update_person');
         $this->includeMutations($registry, $builder, 'createPersonRelation', 'create_person_relation');
         $this->includeMutations($registry, $builder, 'createInstitution', 'create_institution');
+        $this->includeMutations($registry, $builder, 'updateInstitution', 'update_institution');
+        $this->includeMutations($registry, $builder, 'deleteInstitution', 'delete_institution');
         $this->includeMutations($registry, $builder, 'createInstitutionRelation', 'create_institution_relation');
         $this->includeMutations($registry, $builder, 'createDataset', 'create_dataset');
         $this->includeMutations($registry, $builder, 'createDatasetRelation', 'create_dataset_relation');

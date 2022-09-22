@@ -9,23 +9,23 @@ use Drupal\node\Entity\Node;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Delete a person entity.
+ * Delete a institution entity.
  *
  * @DataProducer(
- *   id = "delete_person",
- *   name = @Translation("Delete Person"),
- *   description = @Translation("Delete a person."),
+ *   id = "delete_institution",
+ *   name = @Translation("Delete institution"),
+ *   description = @Translation("Delete a institution."),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("Person")
+ *     label = @Translation("Institution")
  *   ),
  *   consumes = {
  *     "data" = @ContextDefinition("any",
- *       label = @Translation("Person data")
+ *       label = @Translation("institution data")
  *     )
  *   }
  * )
  */
-class DeletePerson extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class DeleteInstitution extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
   /**
    * The current user.
@@ -47,7 +47,7 @@ class DeletePerson extends DataProducerPluginBase implements ContainerFactoryPlu
   }
 
   /**
-   * Delete Person constructor.
+   * Delete institution constructor.
    *
    * @param array $configuration
    *   A configuration array containing information about the plugin instance.
@@ -64,7 +64,7 @@ class DeletePerson extends DataProducerPluginBase implements ContainerFactoryPlu
   }
 
   /**
-   * Delete an person.
+   * Delete a institution
    *
    * @param array $data
    *   The title of the job.
@@ -75,8 +75,8 @@ class DeletePerson extends DataProducerPluginBase implements ContainerFactoryPlu
    * @throws \Exception
    */
   public function resolve(array $data) {
-    if ($this->currentUser->hasPermission("delete person content")) {
-        error_log('person delete');
+    if ($this->currentUser->hasPermission("delete institution content")) {
+      
         $nid = $data['id'];
         $node = Node::load($nid);
         // or
