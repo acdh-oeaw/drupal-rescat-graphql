@@ -1,8 +1,8 @@
 ## drupal resource catalog
 The GraphQL Query plugin for the Resource Catalog.
 
-##Available queries:
-###Select Queries: 
+## Available queries:
+###### Select Queries: 
 - Person (params: id) - Query the base Person Data
 - Persons (params: title, limit, offset) - Query Persons base data 
 - Project (params: id) - Query the Project and the relations data
@@ -24,7 +24,7 @@ If we will use paragraphs for the Dataset and DatasetInstance then we need the T
 - DatasetInstancesTaxonomy (params: name, limit, offset) - not working 
 
 
-###Create Queries: 
+###### Create Queries: 
 - Person (params: title, description) - Ingest the base data for the Person node type
 - Institution (params: title, identifiers) - Ingest the base data for the Person node type
 - Dataset (params: headline, description) - Ingest the base data for the Dataset node type
@@ -41,7 +41,7 @@ The parent_id is the Dataset node id, target_id the DatasetInstance node id. - N
 - Person Taxonomy - not working
 - Institution Taxonomy - not working
 
-###Update Queries: 
+###### Update Queries: 
 - Person (params: id, title, identifiers) - update the person node
 - Institution - not working
 - Dataset - not working
@@ -54,7 +54,7 @@ The parent_id is the Dataset node id, target_id the DatasetInstance node id. - N
 - Person Taxonomy - not working
 - Institution Taxonomy - not working
 
-###Delete Queries: 
+###### Delete Queries: 
 - Person (params: id) - deletes the node type person based on the node id
 - Institution - not working
 - Dataset - not working
@@ -67,9 +67,9 @@ The parent_id is the Dataset node id, target_id the DatasetInstance node id. - N
 - Person Taxonomy - not working
 - Institution Taxonomy - not working
 
-#Examples
+# Examples
 
-## query project
+###### query project
 ```
 query MyQuery {
   project(id: 9) {
@@ -117,12 +117,12 @@ query MyQuery {
     startDate
   }
 }
-
+```
 
 
 ## Ingest project/person/dataset/dataset instance/institution
 
-### Institution
+###### Institution
 ```
 mutation InstitutionIngest {
   createInstitution(data: {title: "ACDH-CH", identifiers: "https://www.oeaw.ac.at/acdh/acdh-ch-home"}) {
@@ -135,7 +135,7 @@ mutation InstitutionIngest {
 
 ```
 
-### Person
+###### Person
 ```
 mutation PersonIngest {
   createPerson(data: {title: "Ingestion User", description: "Example User for ingestion"}) {
@@ -146,7 +146,7 @@ mutation PersonIngest {
 }
 ```
 
-### Project
+###### Project
 ```
 mutation ProjectIngest {
   createProject(
@@ -158,14 +158,14 @@ mutation ProjectIngest {
 }
 ```
 
-### Dataset
+###### Dataset
 ```
 mutation DatasetIngest {
   
 }
 ```
 
-### DatasetInstance
+###### DatasetInstance
 ```
 mutation DatasetInstanceIngest {
   
@@ -175,7 +175,7 @@ mutation DatasetInstanceIngest {
 
 ## Ingest Relations
 
-### PersonRelation Ingest
+###### PersonRelation Ingest
 Parent_id is the node id which will contains the relation and the target_id is the actual Person node id. The relation id is the 
 Id of the person relation (f.e.: 8 has contributor) -> You can find them in the Query Taxonomies section
 ```
@@ -222,7 +222,7 @@ query MyQuery {
 
 ```
 
-##Query Taxonomies
+## Query Taxonomies
 We have taxonomies like connections between Person and Project -> has contributor, etc...
 
 
@@ -239,9 +239,9 @@ query PersonTaxonomyQuery {
 ```
 
 
-###Delete
+## Delete
 
-##Delete Person
+###### Delete Person
 Where the id the person node id.
 
 ```
