@@ -85,9 +85,8 @@ class UpdateInstitution extends DataProducerPluginBase implements ContainerFacto
             // or
             $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
-            if ($node) {
+            if ($node && strtolower($node->bundle()) == "institution") {
                 $this->helper->updateProperty($node, $data, "title", "title");
-                $this->helper->updateMultiLevelProperty($node, $data, "field_identifiers", "value", "identifiers");
                 $this->helper->updateBody($node, $data, "description");
                 $node->save();
             }

@@ -2,13 +2,26 @@ extend type Mutation {
   createPerson(data: PersonInput): Person
   updatePerson(data: PersonUpdateInput): Person
   deletePerson(data: PersonDeleteInput): Person
+
   createPersonRelation(data: PersonRelationInput): PersonRelation
+  
   createInstitution(data: InstitutionInput): Institution
   updateInstitution(data: InstitutionUpdateInput): Institution
   deleteInstitution(data: InstitutionDeleteInput): Institution
+  
   createInstitutionRelation(data: InstitutionRelationInput): InstitutionRelation
+
   createDataset(data: DatasetInput): Dataset
+  updateDataset(data: DatasetUpdateInput): Dataset
+  deleteDataset(data: DatasetDeleteInput): Dataset
+
   createDatasetRelation(data: DatasetRelationInput): DatasetRelation
+
   createDatasetInstance(data: DatasetInstanceInput): DatasetInstance
+  updateDatasetInstance(data: DatasetInstanceUpdateInput): DatasetInstance
+  deleteDatasetInstance(data: DatasetInstanceDeleteInput): DatasetInstance
+
   createProject(data: ProjectInput): Project
+  updateProject(data: ProjectUpdateInput): Project
+  deleteProject(data: ProjectDeleteInput): Project
 }

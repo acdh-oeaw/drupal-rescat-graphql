@@ -3,6 +3,7 @@ schema {
   mutation: Mutation
 }
 
+########## QUERY ##########
 type Query {
   project(id: Int!): Project
   projects(
@@ -42,11 +43,52 @@ type Query {
   persontaxonomy(id: Int!): PersonTaxonomy
 }
 
+########## TYPE ##########
+
+type Relation {
+  id: Int
+  name: String
+}
+
+
+##### Person #####
 type PersonTaxonomy  {
   id: Int!
   headline: String
   name: String
 }
+
+type Person implements NodeInterface {
+  id: Int!
+  title: String 
+  identifiers: String
+}
+
+type PersonConnection {
+  total: Int!
+  items: [Person!]
+}
+
+type PersonTerm {
+  id: String
+  title: String
+  identifiers: String
+}
+
+type PersonsTaxonomyConnection {
+  total: Int!
+  items: [PersonTaxonomy!]    
+}
+
+type PersonRelation implements Paragraph {
+  id: Int!
+  uuid: String
+  relation: [Relation]
+  person: [Person]
+}
+
+
+##### Project #####
 
 type Project implements NodeInterface {
   id: Int!
@@ -65,16 +107,7 @@ type ProjectConnection {
   items: [Project!]
 }
 
-type Person implements NodeInterface {
-  id: Int!
-  title: String 
-  identifiers: String
-}
-
-type PersonConnection {
-  total: Int!
-  items: [Person!]
-}
+##### Institution #####
 
 type InstitutionsTerm {
   id: String
@@ -82,11 +115,25 @@ type InstitutionsTerm {
   link: String
 }
 
-type PersonTerm {
-  id: String
+type Institution implements NodeInterface {
+  id: Int!
   title: String
   identifiers: String
+  description: String
 }
+
+type InstitutionConnection {
+  total: Int!
+  items: [Institution!]    
+}
+
+type InstitutionRelation implements Paragraph {
+  id: Int!
+  uuid: String
+  institution: [Institution]
+}
+
+##### Dataset #####
 
 type DatasetTerm {
   id: String
@@ -112,6 +159,14 @@ type DatasetConnection {
   items: [Dataset!]
 }
 
+type DatasetRelation implements Paragraph {
+  id: Int!
+  uuid: String
+  dataset: [Dataset]
+}
+
+##### DatasetInstance #####
+
 type DatasetInstance implements NodeInterface {
   id: Int!
   headline: String
@@ -130,50 +185,15 @@ type DatasetInstanceConnection {
   items: [DatasetInstance!]
 }
 
-type Institution implements NodeInterface {
-  id: Int!
-  title: String
-  identifiers: String
-  description: String
-}
-
-type InstitutionConnection {
-  total: Int!
-  items: [Institution!]    
-}
-
-type PersonsTaxonomyConnection {
-  total: Int!
-  items: [PersonTaxonomy!]    
-}
-
-type Relation {
-  id: Int
-  name: String
-}
-
-type PersonRelation implements Paragraph {
-  id: Int!
-  uuid: String
-  relation: [Relation]
-  person: [Person]
-}
-
-type InstitutionRelation implements Paragraph {
-  id: Int!
-  uuid: String
-  institution: [Institution]
-}
-
-type DatasetRelation implements Paragraph {
-  id: Int!
-  uuid: String
-  dataset: [Dataset]
-}
 
 type Mutation
 
 scalar Violation
+
+
+############### INPUT ###############
+
+##### Person #####
 
 input PersonInput {
   title: String!
@@ -192,6 +212,8 @@ input PersonUpdateInput {
   identifiers: String
 }
 
+##### Institution #####
+
 input InstitutionInput {
   title: String!
   identifiers: String
@@ -208,6 +230,9 @@ input InstitutionUpdateInput {
   identifiers: String
 }
 
+
+##### DatasetInstance #####
+
 input DatasetInstanceInput {
   headline: String!
   harvestingStatus: String
@@ -219,10 +244,40 @@ input DatasetInstanceInput {
   size: Int
 }
 
+input DatasetInstanceUpdateInput {
+  id: Int!
+  headline: String
+  harvestingStatus: String
+  description: String
+  lastHarvestDate: String
+  license: String
+  locationTitle: String
+  locationUri: String
+  size: Int
+}
+
+input DatasetInstanceDeleteInput {
+  id: Int!
+}
+
+##### Dataset  #####
+
 input DatasetInput {
   headline: String!
   description: String
 }
+
+input DatasetDeleteInput {
+  id: Int!
+}
+
+input DatasetUpdateInput {
+  id: Int!  
+  headline: String
+  description: String
+}
+ 
+##### Project #####
 
 input ProjectInput {
   headline: String!
@@ -231,6 +286,21 @@ input ProjectInput {
   startDate: String
   redmineId: Int
 }
+
+input ProjectUpdateInput {
+  id: Int!
+  headline: String
+  description: String
+  endDate: String
+  startDate: String
+  redmineId: Int
+}
+
+input ProjectDeleteInput {
+  id: Int!
+}
+
+##### Relations #####
 
 input PersonRelationInput {
   target_id: String
@@ -247,6 +317,9 @@ input DatasetRelationInput {
   target_id: String
   parent_id: String  
 }
+
+
+##### Interface #####
 
 interface Paragraph {
   id: Int!

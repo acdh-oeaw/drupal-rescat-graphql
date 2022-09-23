@@ -13,20 +13,20 @@ use Drupal\rescat_graphql\Helper\UpdateHelper;
  * Update a new person entity.
  *
  * @DataProducer(
- *   id = "update_person",
- *   name = @Translation("Update Person"),
- *   description = @Translation("Update a person."),
+ *   id = "update_dataset_instance",
+ *   name = @Translation("Update DatasetInstance"),
+ *   description = @Translation("Update DatasetInstance"),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("Person")
+ *     label = @Translation("DatasetInstance")
  *   ),
  *   consumes = {
  *     "data" = @ContextDefinition("any",
- *       label = @Translation("Person data")
+ *       label = @Translation("DatasetInstance data")
  *     )
  *   }
  * )
  */
-class UpdatePerson extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class UpdateDatasetInstance extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
     /**
      * The current user.
@@ -51,7 +51,7 @@ class UpdatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
     }
 
     /**
-     * Create Person constructor.
+     * Create DatasetInstance constructor.
      *
      * @param array $configuration
      *   A configuration array containing information about the plugin instance.
@@ -69,7 +69,7 @@ class UpdatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
     }
 
     /**
-     * Creates an person.
+     * Creates a DatasetInstance.
      *
      * @param array $data
      *   The title of the job.
@@ -80,15 +80,22 @@ class UpdatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("Update person content")) {
+        if ($this->currentUser->hasPermission("Update DatasetInstance content")) {
             $nid = $data['id'];
             $node = Node::load($nid);
             // or
             $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
-            if ($node && strtolower($node->bundle()) == "person") {
-                $this->helper->updateProperty($node, $data, "title", "title");
+            if ($node && strtolower($node->bundle()) == "dataset_instance") {
+                $this->helper->updateProperty($node, $data, "title", "headline");
                 $this->helper->updateBody($node, $data, "description");
+                //harvestingStatus
+                //lastHarvestDate
+                //license
+                //locationTitle
+                //locationUrl
+                //size
+                
                 $node->save();
             }
             return $node;

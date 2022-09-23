@@ -30,17 +30,30 @@ class ResCatSchema extends SdlSchemaPluginBase {
          * Mutations
          */
         $this->includeMutations($registry, $builder, 'createProject', 'create_project');
+        $this->includeMutations($registry, $builder, 'updateProject', 'update_project');
+        $this->includeMutations($registry, $builder, 'deleteProject', 'delete_project');
+        
         $this->includeMutations($registry, $builder, 'createPerson', 'create_person');
         $this->includeMutations($registry, $builder, 'deletePerson', 'delete_person');
         $this->includeMutations($registry, $builder, 'updatePerson', 'update_person');
+        
         $this->includeMutations($registry, $builder, 'createPersonRelation', 'create_person_relation');
+        
         $this->includeMutations($registry, $builder, 'createInstitution', 'create_institution');
         $this->includeMutations($registry, $builder, 'updateInstitution', 'update_institution');
         $this->includeMutations($registry, $builder, 'deleteInstitution', 'delete_institution');
+        
         $this->includeMutations($registry, $builder, 'createInstitutionRelation', 'create_institution_relation');
+        
         $this->includeMutations($registry, $builder, 'createDataset', 'create_dataset');
+        $this->includeMutations($registry, $builder, 'updateDataset', 'update_dataset');
+        $this->includeMutations($registry, $builder, 'deleteDataset', 'delete_dataset');
+        
         $this->includeMutations($registry, $builder, 'createDatasetRelation', 'create_dataset_relation');
-        $this->includeMutations($registry, $builder, 'createDatasetInstance', 'create_datasetinstance');
+        
+        $this->includeMutations($registry, $builder, 'createDatasetInstance', 'create_dataset_instance');
+        $this->includeMutations($registry, $builder, 'updateDatasetInstance', 'update_dataset_instance');
+        $this->includeMutations($registry, $builder, 'deleteDatasetInstance', 'delete_dataset_instance');
         
         
         $registry->addTypeResolver('NodeInterface', function ($value) {
