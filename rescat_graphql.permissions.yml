@@ -1,0 +1,4 @@
+'execute graphql create requests on persons':
+  title: 'Execute GraphQL requests On Persons'
+  description: 'Allows users to execute GraphQL requests on Persons.'
+  

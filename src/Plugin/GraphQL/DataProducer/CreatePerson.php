@@ -75,7 +75,7 @@ class CreatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
    * @throws \Exception
    */
   public function resolve(array $data) {
-    if ($this->currentUser->hasPermission("create person content")) {
+    if ($this->currentUser->hasPermission("execute graphql create requests on persons")) {
       $values = [
         'type' => 'person',
         'title' => $data['title'],
