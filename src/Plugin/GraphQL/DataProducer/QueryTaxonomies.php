@@ -17,11 +17,11 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * @DataProducer(
- *   id = "query_personstaxonomy",
- *   name = @Translation("Load persons taxonomy"),
- *   description = @Translation("Loads a list of persons taxonomy."),
+ *   id = "query_taxonomies",
+ *   name = @Translation("Load taxonomy"),
+ *   description = @Translation("Loads a list of taxonomy."),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("Person taxonomy")
+ *     label = @Translation("Taxonomy")
  *   ),
  *   consumes = {
  *     "offset" = @ContextDefinition("integer",
@@ -39,7 +39,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   }
  * )
  */
-class QueryPersonsTaxonomy extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class QueryTaxonomies extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
   const MAX_LIMIT = 100;
 
@@ -71,7 +71,7 @@ class QueryPersonsTaxonomy extends DataProducerPluginBase implements ContainerFa
   }
 
   /**
-   * Persons constructor.
+   * Taxonomy constructor.
    *
    * @param array $configuration
    *   The plugin configuration.
@@ -110,8 +110,7 @@ class QueryPersonsTaxonomy extends DataProducerPluginBase implements ContainerFa
     if (!$limit > static::MAX_LIMIT) {
       throw new UserError(sprintf('Exceeded maximum query limit: %s.', static::MAX_LIMIT));
     }
-    
-    error_log(print_r($name, true));
+  
     $storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
     $type = $storage->getEntityType();
     $query = $storage->getQuery()
@@ -126,7 +125,7 @@ class QueryPersonsTaxonomy extends DataProducerPluginBase implements ContainerFa
 
     $metadata->addCacheTags($type->getListCacheTags());
     $metadata->addCacheContexts($type->getListCacheContexts());
-    
+  
     return new QueryConnection($query);
     
     /*

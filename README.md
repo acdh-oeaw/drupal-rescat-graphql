@@ -13,15 +13,7 @@ The GraphQL Query plugin for the Resource Catalog.
 - Datasets (params: title, limit, offset) - Query the Datasets (only the non paragraph instance fetching is working atm.)
 - DatasetInstance (params: id) - Query the DatasetInstance (only the non paragraph instance fetching is working atm.)
 - DatasetInstances (params: title, limit, offset) - Query the DatasetInstances (only the non paragraph instance fetching is working atm.)
-- PersonTaxonomy - not working
-- PersonsTaxonomy (params: name, limit, offset) - Query the relations (Taxonomies) for the Node Person types (f.e. "has contributor", etc...)
-- InstitutionTaxonomy - not working
-- InstitutionsTaxonomy (params: name, limit, offset) - not working - Query the relations (Taxonomies) for the Node Institution types (f.e. "has contributor", etc...)
-If we will use paragraphs for the Dataset and DatasetInstance then we need the Taxonomy Queries for these node types too.
-- DatasetTaxonomy - not working
-- DatasetsTaxonomy (params: name, limit, offset) - not working 
-- DatasetInstanceTaxonomy - not working
-- DatasetInstancesTaxonomy (params: name, limit, offset) - not working 
+- Taxonomies (params: name, limit, offset) - Query the relations (Taxonomies) (f.e. "has contributor", etc...)
 
 
 ###### Create Queries: 
@@ -33,13 +25,12 @@ If we will use paragraphs for the Dataset and DatasetInstance then we need the T
 - Person Relation (params: parent_id, target_id, relation_id) - Ingest the relation between the Person and the Project and also between the Person and Taxonomy ('has contributor', etc...). 
 The parent_id is the project node id, target_id the Person node id, relation_id is the relation id. (You can fetch the ids from the PersonsTaxonomy)
 - Institution Relation (params: parent_id, target_id, relation_id) - Ingest the relation between the Institution and the Project and also between the Institution and Taxonomy ('has contributor', etc...). 
-The parent_id is the project node id, target_id the Institution node id, relation_id is the relation id. (You can fetch the ids from the InstitutionsTaxonomy) - Not Working
+The parent_id is the project node id, target_id the Institution node id, relation_id is the relation id. (You can fetch the ids from the InstitutionsTaxonomy) 
 - Dataset Relation (params: parent_id, target_id) - Ingest the relation between the Dataset and the Project. 
 The parent_id is the project node id, target_id the Dataset node id. - Not Working
 - DatasetInstance Relation (params: parent_id, target_id) - Ingest the relation between the Dataset and the DatasetInstance. 
 The parent_id is the Dataset node id, target_id the DatasetInstance node id. - Not Working
-- Person Taxonomy - not working
-- Institution Taxonomy - not working
+- Taxonomy - not working
 
 ###### Update Queries: 
 - Person (params: id, title, identifiers) - update the Person node
@@ -51,8 +42,7 @@ The parent_id is the Dataset node id, target_id the DatasetInstance node id. - N
 - Institution Relation  - not working
 - Dataset Relation - not working
 - DatasetInstance Relation - not working
-- Person Taxonomy - not working
-- Institution Taxonomy - not working
+- Taxonomy - not working
 
 ###### Delete Queries: 
 - Person (params: id) - deletes the node type Person based on the node id
@@ -64,10 +54,9 @@ The parent_id is the Dataset node id, target_id the DatasetInstance node id. - N
 - Institution Relation  - not working
 - Dataset Relation - not working
 - DatasetInstance Relation - not working
-- Person Taxonomy - not working
-- Institution Taxonomy - not working
+- Taxonomy - not working
 
 
-## Permisions:
+## Permissions:
 
 You have to define the permission inside the rescat_graphql.permissions.yml file and then you can implement it in the requests file. f.e.: [https://github.com/acdh-oeaw/drupal-rescat-graphql/blob/master/src/Plugin/GraphQL/DataProducer/CreatePerson.php#L78]

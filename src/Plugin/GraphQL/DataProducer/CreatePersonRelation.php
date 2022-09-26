@@ -110,12 +110,8 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
             }
            
             $node->save();
-            
             return $paragraph;
-          
-
         }
         return NULL;
     }
-
 }

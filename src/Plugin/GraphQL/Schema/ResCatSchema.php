@@ -63,7 +63,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
                     case 'dataset_instance': return 'DatasetInstance';
                     case 'institution': return 'Institution';
                     case 'person': return 'Person';
-                    case 'persontaxonomy': return 'PersonTaxonomy';
+                    case 'taxonomy': return 'Taxonomy';
                     case 'project': return 'Project';
                 }
             }
@@ -75,7 +75,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->addDatasetInstanceFields($registry, $builder);
         $this->addInstitutionFields($registry, $builder);
         $this->addPersonFields($registry, $builder);
-        $this->addPersonTaxonomyFields($registry, $builder);
+        $this->addTaxonomyFields($registry, $builder);
         $this->addProjectFields($registry, $builder);
 
         // Re-usable connection type fields.
@@ -84,7 +84,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->addConnectionFields('InstitutionConnection', $registry, $builder);
         $this->addConnectionFields('PersonConnection', $registry, $builder);
         $this->addConnectionFields('ProjectConnection', $registry, $builder);
-        $this->addConnectionFields('PersonsTaxonomyConnection', $registry, $builder);
+        $this->addConnectionFields('TaxonomyConnection', $registry, $builder);
 
         return $registry;
     }
@@ -219,16 +219,16 @@ class ResCatSchema extends SdlSchemaPluginBase {
     }
     
     /**
-     * The person taxonomy fields like has contributor, etc
+     * The taxonomy fields like has contributor, etc
      * 
      * @param ResolverRegistry $registry
      * @param ResolverBuilder $builder
      */
-    protected function addPersonTaxonomyFields(ResolverRegistry $registry, ResolverBuilder $builder) {
-        $this->getValueFromParent($registry, $builder, 'PersonTaxonomy', 'id', 'entity_id');
-        $this->getValueByEntityNode($registry, $builder, 'PersonTaxonomy', 'title', 'property_path', 'title.value');
-        $this->getValueByEntityNode($registry, $builder, 'PersonTaxonomy', 'name', 'property_path', 'name.value');
-        $this->getValueByEntityNode($registry, $builder, 'PersonTaxonomy', 'identifiers', 'property_path', 'field_identifiers.value');
+    protected function addTaxonomyFields(ResolverRegistry $registry, ResolverBuilder $builder) {
+        $this->getValueFromParent($registry, $builder, 'Taxonomy', 'id', 'entity_id');
+        $this->getValueByEntityNode($registry, $builder, 'Taxonomy', 'title', 'property_path', 'title.value');
+        $this->getValueByEntityNode($registry, $builder, 'Taxonomy', 'name', 'property_path', 'name.value');
+        $this->getValueByEntityNode($registry, $builder, 'Taxonomy', 'identifiers', 'property_path', 'field_identifiers.value');
     }
     
 
@@ -436,8 +436,8 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('title', $builder->fromArgument('title'))
         );
         
-        $registry->addFieldResolver('Query', 'personstaxonomy',
-                $builder->produce('query_personstaxonomy')
+        $registry->addFieldResolver('Query', 'taxonomies',
+                $builder->produce('query_taxonomies')
                         ->map('offset', $builder->fromArgument('offset'))
                         ->map('limit', $builder->fromArgument('limit'))
                         ->map('name', $builder->fromArgument('name'))

@@ -6,27 +6,27 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\graphql\Plugin\GraphQL\DataProducer\DataProducerPluginBase;
 use Drupal\node\Entity\Node;
-use Drupal\paragraphs\Entity\Paragraph;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\rescat_graphql\Helper\UpdateHelper;
 
 /**
- * Creates a new Institution relation.
+ * Update a person relation entity.
  *
  * @DataProducer(
- *   id = "create_institution_relation",
- *   name = @Translation("Create Institution Relation"),
- *   description = @Translation("Creates a new Institution relation."),
+ *   id = "update_person_relation",
+ *   name = @Translation("Update Person Relation"),
+ *   description = @Translation("Update a person Relation."),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("Institution Relation")
+ *     label = @Translation("Person Relation")
  *   ),
  *   consumes = {
  *     "data" = @ContextDefinition("any",
- *       label = @Translation("Institution relation data")
+ *       label = @Translation("Person Relation data")
  *     )
  *   }
  * )
  */
-class CreateInstitutionRelation extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
     /**
      * The current user.
@@ -35,6 +35,9 @@ class CreateInstitutionRelation extends DataProducerPluginBase implements Contai
      */
     protected $currentUser;
 
+    
+    private $helper;
+    
     /**
      * {@inheritdoc}
      */
@@ -48,7 +51,7 @@ class CreateInstitutionRelation extends DataProducerPluginBase implements Contai
     }
 
     /**
-     * CreateInstitution constructor.
+     * Update Person Relation constructor.
      *
      * @param array $configuration
      *   A configuration array containing information about the plugin instance.
@@ -62,56 +65,47 @@ class CreateInstitutionRelation extends DataProducerPluginBase implements Contai
     public function __construct(array $configuration, string $plugin_id, array $plugin_definition, AccountInterface $current_user) {
         parent::__construct($configuration, $plugin_id, $plugin_definition);
         $this->currentUser = $current_user;
+        $this->helper = new \Drupal\rescat_graphql\Helper\UpdateHelper();
     }
 
     /**
-     * Creates an Institution Relation.
+     * Creates an person.
      *
      * @param array $data
      *   The title of the job.
      *
      * @return \Drupal\Core\Entity\EntityBase|\Drupal\Core\Entity\EntityInterface
-     *   The newly created Institution.
+     *   The deleted person.
      *
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("create Institution relation content")) {
-            $paragraph = Paragraph::create([
-                        'type' => 'institution_relations',
-                        'parent_id' => $data['parent_id'],
-                        'parent_type' => 'node',
-                        'parent_field_name' =>'field_institution_relations',
-                        'field_institution' => array(
-                            'target_id' => $data['target_id']
-                        ),
-                        'field_relation' => array(
-                            'target_id' => $data['relation_id']
-                        )
-            ]);
-            $paragraph->isNew();
-            $paragraph->save();
-
-            $node = Node::load($data['parent_id']);
-            $val = $node->get('field_institution_relations')->getValue();
-         
-            $newVal = 
-                array(
-                    'target_id' => $paragraph->id(),
-                    'target_revision_id' => $paragraph->getRevisionId(),
-                
-            );
+        if ($this->currentUser->hasPermission("Update person relation content")) {
             
-            if(count($val) > 0) {
-                $val[] = $newVal;
-                $node->field_institution_relations  = $val;
-            } else {
-                $node->field_institution_relations = $newVal;
+            $pid = $data['id'];
+            $paragraph = Paragraph::load($target_id);
+            $paragraph_field_value = $paragraph->get('field_some_name')->value;
+            // Do something with the $paragraph_field_value
+            // Update the field.
+            $paragraph->set('field_some_name', $paragraph_field_value);
+            // Save the Paragraph.
+            $paragraph->save();
+            
+            
+            //$node = Node::load($nid);
+            // or
+            $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
+
+            if ($node && strtolower($node->bundle()) == "person") {
+                $this->helper->updateProperty($node, $data, "title", "title");
+                $this->helper->updateBody($node, $data, "description");
+                $node->save();
             }
-           
-            $node->save();
-            return $paragraph;
+            return $node;
         }
         return NULL;
     }
+
+   
+
 }
