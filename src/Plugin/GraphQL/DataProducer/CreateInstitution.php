@@ -75,8 +75,6 @@ class CreateInstitution extends DataProducerPluginBase implements ContainerFacto
    * @throws \Exception
    */
   public function resolve(array $data) {
-      error_log("CREATE INSTITUTION");
-      error_log(print_r($data, true));
     if ($this->currentUser->hasPermission("create institution content")) {
       $values = [
         'type' => 'institution',

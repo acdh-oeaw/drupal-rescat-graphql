@@ -89,6 +89,9 @@ class UpdateProject extends DataProducerPluginBase implements ContainerFactoryPl
             if ($node && strtolower($node->bundle()) == "project") {
                 $this->helper->updateProperty($node, $data, "title", "headline");
                 $this->helper->updateBody($node, $data, "description");
+                $this->helper->updateProperty($node, $data, "field_start", "startDate");
+                $this->helper->updateProperty($node, $data, "field_end", "endDate");
+                $this->helper->updateProperty($node, $data, "field_redmine_id", "redmineId");
                 $node->save();
             }
             return $node;

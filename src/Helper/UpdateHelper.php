@@ -13,9 +13,7 @@ class UpdateHelper {
      */
     public function updateProperty(\Drupal\node\Entity\Node &$node, array &$data, string $property, string $value = "") {
         if(!empty($value) && isset($data[$value])) {
-            error_log('itt');
             if(isset($node->{$property})) {
-                error_log('itt 2');
                 $node->{$property} = $data[$value];
             }
         }

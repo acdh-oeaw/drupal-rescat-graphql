@@ -75,8 +75,6 @@ class CreateDatasetInstance extends DataProducerPluginBase implements ContainerF
    * @throws \Exception
    */
   public function resolve(array $data) {
-      error_log("CREATE Dataset Instance");
-      error_log(print_r($data, true));
     if ($this->currentUser->hasPermission("create Dataset Instance content")) {
       $values = [
         'type' => 'dataset_instance',

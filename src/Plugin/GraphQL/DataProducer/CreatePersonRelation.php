@@ -76,7 +76,7 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("create person relation content")) {
+        if ($this->currentUser->hasPermission("create person relation")) {
             $paragraph = Paragraph::create([
                         'type' => 'person_relations',
                         'parent_id' => $data['parent_id'],

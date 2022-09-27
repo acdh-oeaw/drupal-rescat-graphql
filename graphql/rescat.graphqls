@@ -17,6 +17,11 @@ type Query {
     limit: Int = 10
     title: String
   ): PersonConnection!
+  person_relations(
+    offset: Int = 0
+    limit: Int = 10
+    title: String
+  ): PersonRelationConnection!  
   dataset(id: Int!): Dataset
   datasets(
     offset: Int = 0
@@ -35,12 +40,11 @@ type Query {
     limit: Int = 10
     title: String
   ): InstitutionConnection!   
-  personstaxonomy(
+  taxonomies(
     offset: Int = 0
     limit: Int = 10
     name: String
-  ): PersonsTaxonomyConnection!   
-  persontaxonomy(id: Int!): PersonTaxonomy
+  ): TaxonomyConnection!
 }
 
 ########## TYPE ##########
@@ -50,18 +54,24 @@ type Relation {
   name: String
 }
 
-
-##### Person #####
-type PersonTaxonomy  {
+##### Taxonomy #####
+type Taxonomy  {
   id: Int!
   headline: String
   name: String
 }
 
+type TaxonomyConnection {
+  total: Int!
+  items: [Taxonomy!]    
+}
+
+##### Person #####
+
 type Person implements NodeInterface {
   id: Int!
   title: String 
-  identifiers: String
+  identifiers: [Paragraph]!
 }
 
 type PersonConnection {
@@ -69,22 +79,16 @@ type PersonConnection {
   items: [Person!]
 }
 
-type PersonTerm {
-  id: String
-  title: String
-  identifiers: String
-}
-
-type PersonsTaxonomyConnection {
-  total: Int!
-  items: [PersonTaxonomy!]    
-}
-
 type PersonRelation implements Paragraph {
   id: Int!
   uuid: String
   relation: [Relation]
   person: [Person]
+}
+
+type PersonRelationConnection {
+  total: Int!
+  items: [PersonRelation!]
 }
 
 
@@ -99,7 +103,7 @@ type Project implements NodeInterface {
   startDate: String
   endDate: String
   redmineId: Int
-  datasets: [Dataset]
+  datasets: [Paragraph]!
 }
 
 type ProjectConnection {
@@ -107,18 +111,18 @@ type ProjectConnection {
   items: [Project!]
 }
 
-##### Institution #####
-
-type InstitutionsTerm {
-  id: String
-  title: String
-  link: String
+type ProjectDatasetRelation implements Paragraph {
+  id: Int!
+  uuid: String
+  datasets: [Dataset]
 }
+
+##### Institution #####
 
 type Institution implements NodeInterface {
   id: Int!
   title: String
-  identifiers: String
+  identifiers: [Paragraph]!
   description: String
 }
 
@@ -135,23 +139,13 @@ type InstitutionRelation implements Paragraph {
 
 ##### Dataset #####
 
-type DatasetTerm {
-  id: String
-  title: String
-  description: String
-  harvestingStatus: String
-  lastHarvestDate: String
-  license: String
-  locationUri: String
-  locationTitle: String
-  contributors: [Person]
-  size: Int
-}
-
 type Dataset implements NodeInterface {
   id: Int!
   title: String
-  datasetInstance: [DatasetInstance]
+  description: String
+  redmineId: Int
+  projectId: Int
+  datasetInstance: [Paragraph]!
 }
 
 type DatasetConnection {
@@ -170,13 +164,11 @@ type DatasetRelation implements Paragraph {
 type DatasetInstance implements NodeInterface {
   id: Int!
   headline: String
-  description: String
   harvestingStatus: String
   lastHarvestDate: String
   license: String  
   locationUri: String
   locationTitle: String
-  contributors: [Person]
   size: Int
 }
 
@@ -265,6 +257,8 @@ input DatasetInstanceDeleteInput {
 input DatasetInput {
   headline: String!
   description: String
+  projectId: Int
+  redmineId: Int
 }
 
 input DatasetDeleteInput {
@@ -275,6 +269,8 @@ input DatasetUpdateInput {
   id: Int!  
   headline: String
   description: String
+  projectId: Int
+  redmineId: Int
 }
  
 ##### Project #####
@@ -303,19 +299,43 @@ input ProjectDeleteInput {
 ##### Relations #####
 
 input PersonRelationInput {
+  target_id: String!
+  parent_id: String!  
+  relation_id: String!  
+}
+
+input PersonRelationDeleteInput {
+  id: Int!  
+}
+
+input PersonRelationUpdateInput {
+  id: String!
   target_id: String
   parent_id: String  
   relation_id: String  
 }
 
 input InstitutionRelationInput {
-  target_id: String
-  parent_id: String  
+  target_id: String!
+  parent_id: String! 
+  relation_id: String!  
 }
 
+input InstitutionRelationUpdateInput {
+  id: String!
+  target_id: String!
+  parent_id: String! 
+  relation_id: String!  
+}
+
+input InstitutionRelationDeleteInput {
+  id: Int!
+}
+
+
 input DatasetRelationInput {
-  target_id: String
-  parent_id: String  
+  target_id: String!
+  parent_id: String!  
 }
 
 

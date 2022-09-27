@@ -158,8 +158,8 @@ We have taxonomies like connections between Person and Project -> has contributo
 
 
 ```
-query PersonTaxonomyQuery {
-  personstaxonomy(name: "has contributor") {
+query TaxonomyQuery {
+  taxonomy(name: "has contributor") {
     items {
       id
       name

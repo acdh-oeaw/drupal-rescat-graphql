@@ -80,15 +80,16 @@ class UpdateDataset extends DataProducerPluginBase implements ContainerFactoryPl
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("Update Dataset content")) {
+        if ($this->currentUser->hasPermission("update dataset content")) {
             $nid = $data['id'];
-            $node = Node::load($nid);
-            // or
             $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
             
+            error_log(print_r($data, true));
             if ($node && strtolower($node->bundle()) == "dataset") {
                 $this->helper->updateProperty($node, $data, "title", "headline");
-                $this->helper->updateBody($node, $data, "description");
+                $this->helper->updateProperty($node, $data, "field_description", "description");
+                $this->helper->updateProperty($node, $data, "field_redmineid", "redmineId");
+                $this->helper->updateProperty($node, $data, "field_projectid", "projectId");
                 $node->save();
             } else {
                 return null;

@@ -75,22 +75,16 @@ class CreateProject extends DataProducerPluginBase implements ContainerFactoryPl
    * @throws \Exception
    */
   public function resolve(array $data) {
-      error_log("CREATE project");
-      error_log(print_r($data, true));
-    if ($this->currentUser->hasPermission("create Project content")) {
+      
+    if ($this->currentUser->hasPermission("create project content")) {
       $values = [
         'type' => 'project',
         'headline' => $data['headline'],
         'title' => $data['headline'],
-        'identifier' => $data['identifier'],
         'body' => $data['description'],
-        'field_start' => $data['harvestingStatus'],
-        'field_end' => $data['lastHarvestDate'],
-        'field_redmine_id' => $data['license']
-        /*'relationships.field_datasets' => array('title' => $data['datasets']['title'], 'id' =>  $data['datasets']['id']),
-        'relationships.field_contributors' => array('title' => $data['contributors']['title'], 'id' =>  $data['contributors']['id']),
-        'relationships.field_institutions' => array('title' => $data['institutions']['title'], 'id' =>  $data['institutions']['id']),
-        'relationships.field_principal_investigators' => array('title' => $data['investigators']['title'], 'id' =>  $data['investigators']['id'])*/
+        'field_start' => $data['startDate'],
+        'field_end' => $data['endDate'],
+        'field_redmine_id' => $data['redmineId']
       ];
       $node = Node::create($values);
       $node->save();

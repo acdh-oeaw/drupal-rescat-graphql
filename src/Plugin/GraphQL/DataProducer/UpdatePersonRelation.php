@@ -83,6 +83,10 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
         if ($this->currentUser->hasPermission("Update person relation content")) {
             
             $pid = $data['id'];
+            
+            $data['parent_id'];
+            $data['target_id'];
+            
             $paragraph = Paragraph::load($target_id);
             $paragraph_field_value = $paragraph->get('field_some_name')->value;
             // Do something with the $paragraph_field_value

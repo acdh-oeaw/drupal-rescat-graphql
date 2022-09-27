@@ -9,23 +9,23 @@ use Drupal\node\Entity\Node;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Delete a person entity.
+ * Delete a person relation entity.
  *
  * @DataProducer(
- *   id = "delete_person",
- *   name = @Translation("Delete Person"),
- *   description = @Translation("Delete a person."),
+ *   id = "delete_person_relation",
+ *   name = @Translation("Delete Person Relation"),
+ *   description = @Translation("Delete a person Relation."),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("Person")
+ *     label = @Translation("Person Relation")
  *   ),
  *   consumes = {
  *     "data" = @ContextDefinition("any",
- *       label = @Translation("Person data")
+ *       label = @Translation("Person Relation data")
  *     )
  *   }
  * )
  */
-class DeletePerson extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class DeletePersonRelation extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
   /**
    * The current user.
@@ -47,7 +47,7 @@ class DeletePerson extends DataProducerPluginBase implements ContainerFactoryPlu
   }
 
   /**
-   * Delete Person constructor.
+   * Delete Person Relation constructor.
    *
    * @param array $configuration
    *   A configuration array containing information about the plugin instance.
@@ -64,7 +64,7 @@ class DeletePerson extends DataProducerPluginBase implements ContainerFactoryPlu
   }
 
   /**
-   * Delete an person.
+   * Delete an person Relation.
    *
    * @param array $data
    *   The title of the job.
@@ -75,8 +75,12 @@ class DeletePerson extends DataProducerPluginBase implements ContainerFactoryPlu
    * @throws \Exception
    */
   public function resolve(array $data) {
-    if ($this->currentUser->hasPermission("delete person content")) {
+    if ($this->currentUser->hasPermission("delete person relation")) {
+       
+        // not implemented
         $nid = $data['id'];
+        $node = Node::load($nid);
+        // or
         $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
         // Check if node exists with the given nid.

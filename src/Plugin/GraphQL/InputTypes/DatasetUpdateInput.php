@@ -17,6 +17,14 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *     "description" = {
  *        "type" = "String",
  *        "nullable" = "TRUE"
+ *     },
+ *     "projectId" = {
+ *        "type" = "Int",
+ *        "nullable" = "TRUE"
+ *     },
+ *     "redmineId" = {
+ *        "type" = "Int",
+ *        "nullable" = "TRUE"
  *     }
  *   }
  * )

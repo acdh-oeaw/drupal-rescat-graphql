@@ -38,6 +38,8 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->includeMutations($registry, $builder, 'updatePerson', 'update_person');
         
         $this->includeMutations($registry, $builder, 'createPersonRelation', 'create_person_relation');
+        $this->includeMutations($registry, $builder, 'updatePersonRelation', 'update_person_relation');
+        $this->includeMutations($registry, $builder, 'deletePersonRelation', 'delete_person_relation');
         
         $this->includeMutations($registry, $builder, 'createInstitution', 'create_institution');
         $this->includeMutations($registry, $builder, 'updateInstitution', 'update_institution');
@@ -77,7 +79,8 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->addPersonFields($registry, $builder);
         $this->addTaxonomyFields($registry, $builder);
         $this->addProjectFields($registry, $builder);
-
+        $this->addPersonRelationsFields($registry, $builder);
+        
         // Re-usable connection type fields.
         $this->addConnectionFields('DatasetConnection', $registry, $builder);
         $this->addConnectionFields('DatasetInstanceConnection', $registry, $builder);
@@ -85,6 +88,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->addConnectionFields('PersonConnection', $registry, $builder);
         $this->addConnectionFields('ProjectConnection', $registry, $builder);
         $this->addConnectionFields('TaxonomyConnection', $registry, $builder);
+        $this->addConnectionFields('PersonRelationsConnection', $registry, $builder);
 
         return $registry;
     }
@@ -164,6 +168,9 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->getValueFromParent($registry, $builder, 'Dataset', 'uuid', 'entity_uuid');
         $this->getValueByField($registry, $builder, 'Dataset', 'datasetInstance', 'entity_reference', 'field_dataset_instances' );
         $this->getValueByEntityNode($registry, $builder, 'Dataset', 'title', 'property_path', 'title.value');
+        $this->getValueByEntityNode($registry, $builder, 'Dataset', 'redmineId', 'property_path', 'field_redmineid.value');
+        $this->getValueByEntityNode($registry, $builder, 'Dataset', 'projectId', 'property_path', 'field_projectid.value');
+        $this->getValueByEntityNode($registry, $builder, 'Dataset', 'description', 'property_path', 'field_description.value');
     }
 
     /**
@@ -187,7 +194,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('field', $builder->fromValue('field_contributors'))
         );
 
-        $this->createPersonTermFieldResolver($registry, $builder);
+        //$this->createPersonTermFieldResolver($registry, $builder);
 
         $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'locationUri', 'property_path', 'field_location.value');
         $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'locationTitle', 'property_path', 'field_location.value');
@@ -206,6 +213,42 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->getValueByEntityNode($registry, $builder, 'Institution', 'identifiers', 'property_path', 'field_identifiers.value');
     }
 
+    protected function addPersonRelationsFields(ResolverRegistry $registry, ResolverBuilder $builder) {
+        
+         // Person relation
+        $registry->addFieldResolver('PersonRelation', 'id',
+                $builder->produce('entity_id')
+                        ->map('entity', $builder->fromParent())
+        );
+
+        $registry->addFieldResolver('PersonRelation', 'uuid',
+                $builder->produce('entity_uuid')
+                        ->map('entity', $builder->fromParent())
+        );
+        
+
+        $registry->addFieldResolver('PersonRelation', 'person',
+                $builder->produce('entity_reference')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_person'))
+        );
+
+        // Reading the relation of the person paragraph, pointing to a taxonomy
+        $registry->addFieldResolver('PersonRelation', 'relation',
+                $builder->produce('entity_reference')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_relation'))
+        );
+        $registry->addFieldResolver('Relation', 'id',
+          $builder->produce('entity_id')
+            ->map('entity', $builder->fromParent())
+        ); 
+        $registry->addFieldResolver('Relation', 'name',
+          $builder->produce('entity_label')
+            ->map('entity', $builder->fromParent())
+        );
+    }
+    
     /**
      * The Base Person Node fields
      * 
@@ -241,26 +284,18 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->getValueFromParent($registry, $builder, 'Project', 'headline', 'entity_label');
         $this->getValueByEntityNode($registry, $builder, 'Project', 'description', 'property_path', 'body.value');
         
-        $this->getValueByField($registry, $builder, 'Project', 'affilatedInstitutions', 'entity_reference', 'field_institutions');
-        $this->createInstitutionsTermFieldResolver($registry, $builder);
-        
-        $this->getValueByField($registry, $builder, 'Project', 'contributors', 'entity_reference', 'field_contributors');
-        $this->createPersonTermFieldResolver($registry, $builder);
-        
-        $this->getValueByField($registry, $builder, 'Project', 'principalInvestigators', 'entity_reference', 'field_principal_investigators');
-        $this->createPersonTermFieldResolver($registry, $builder);
-
         $this->getValueByEntityNode($registry, $builder, 'Project', 'startDate', 'property_path', 'field_start.value');
         $this->getValueByEntityNode($registry, $builder, 'Project', 'endDate', 'property_path', 'field_end.value');
         $this->getValueByEntityNode($registry, $builder, 'Project', 'redmineId', 'property_path', 'field_redmine_id.value');
       
+        /*
         $registry->addFieldResolver('Project', 'datasets',
                 $builder->produce('entity_reference')
                         ->map('entity', $builder->fromParent())
                         ->map('field', $builder->fromValue('field_datasets'))
         );
         $this->createDatasetTermFieldResolver($registry, $builder);
-        
+        */
         ///////////////// Relations //////////////////
         
         $registry->addFieldResolver('Project', 'personRelations',
@@ -343,64 +378,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
        
     }
     
-    private function createDatasetTermFieldResolver(ResolverRegistry &$registry, ResolverBuilder &$builder) {
-
-        $registry->addFieldResolver('DatasetTerm', 'id',
-                $builder->produce('entity_id')
-                        ->map('entity', $builder->fromParent())
-        );
-
-        $registry->addFieldResolver('DatasetTerm', 'title',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node:dataset'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('type.target_id'))
-        );
-    }
-
-    private function createPersonTermFieldResolver(ResolverRegistry &$registry, ResolverBuilder &$builder) {
-
-        $registry->addFieldResolver('PersonTerm', 'id',
-                $builder->produce('entity_id')
-                        ->map('entity', $builder->fromParent())
-        );
-
-        $registry->addFieldResolver('PersonTerm', 'title',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node:person'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('type.target_id'))
-        );
-
-        $registry->addFieldResolver('PersonTerm', 'identifiers',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node:person'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('field_identifiers.value'))
-        );
-    }
-
-    private function createInstitutionsTermFieldResolver(ResolverRegistry &$registry, ResolverBuilder &$builder) {
-        $registry->addFieldResolver('InstitutionsTerm', 'id',
-                $builder->produce('entity_id')
-                        ->map('entity', $builder->fromParent())
-        );
-
-        $registry->addFieldResolver('InstitutionsTerm', 'title',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:node:institution'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('type.target_id'))
-        );
-
-        $registry->addFieldResolver('InstitutionsTerm', 'link',
-                $builder->produce('property_path')
-                        ->map('type', $builder->fromValue('entity:taxonomy_term'))
-                        ->map('value', $builder->fromParent())
-                        ->map('path', $builder->fromValue('field_link.uri'))
-        );
-    }
-
+   
     /**
      * @param \Drupal\graphql\GraphQL\ResolverRegistry $registry
      * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
@@ -430,6 +408,13 @@ class ResCatSchema extends SdlSchemaPluginBase {
         );
         
         $registry->addFieldResolver('Query', 'persons',
+                $builder->produce('query_persons')
+                        ->map('offset', $builder->fromArgument('offset'))
+                        ->map('limit', $builder->fromArgument('limit'))
+                        ->map('title', $builder->fromArgument('title'))
+        );
+        
+         $registry->addFieldResolver('Query', 'person_relations',
                 $builder->produce('query_persons')
                         ->map('offset', $builder->fromArgument('offset'))
                         ->map('limit', $builder->fromArgument('limit'))
