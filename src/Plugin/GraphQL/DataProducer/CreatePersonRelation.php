@@ -34,6 +34,9 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
+    
+    
+    private $fields = ["person" => "field_person_relations", "dataset" => "field_person_dataset_relations"];
 
     /**
      * {@inheritdoc}
@@ -77,11 +80,18 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
      */
     public function resolve(array $data) {
         if ($this->currentUser->hasPermission("create person relation")) {
+            
+            $node = Node::load($data['parent_id']);
+            //checking the submitted parent node type, because they are storing the
+            //relation in a different field
+            $type = strtolower($node->getType());
+            $field = (isset($this->fields[$type])) ? $this->fields[$type] : $this->fields['person'];
+            
             $paragraph = Paragraph::create([
                         'type' => 'person_relations',
                         'parent_id' => $data['parent_id'],
                         'parent_type' => 'node',
-                        'parent_field_name' =>'field_person_relations',
+                        'parent_field_name' => $field,
                         'field_person' => array(
                             'target_id' => $data['target_id']
                         ),
@@ -92,9 +102,9 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
             $paragraph->isNew();
             $paragraph->save();
 
-            $node = Node::load($data['parent_id']);
-            $val = $node->get('field_person_relations')->getValue();
-         
+            //$node = Node::load($data['parent_id']);
+            $val = $node->get($field)->getValue();
+            
             $newVal = 
                 array(
                     'target_id' => $paragraph->id(),
@@ -104,9 +114,9 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
             
             if(count($val) > 0) {
                 $val[] = $newVal;
-                $node->field_person_relations  = $val;
+                $node->{$field}  = $val;
             } else {
-                $node->field_person_relations = $newVal;
+                $node->{$field} = $newVal;
             }
            
             $node->save();
