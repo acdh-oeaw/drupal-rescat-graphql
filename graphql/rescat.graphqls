@@ -344,7 +344,6 @@ interface Paragraph {
   id: Int!
 }
 
-
 interface NodeInterface {
   id: Int!
 }

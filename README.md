@@ -40,7 +40,7 @@ The parent_id is the Dataset node id, target_id the DatasetInstance node id. - N
 - Project - (params: id, headine, description) - update the Project node (Other fields are not working yet, we have to clarify the necessary fields)
 - Person Relation  - (params: parent_id, target_id, relation_id) - Update the person relation based on the Node Id and the person id.
 - Institution Relation  - not working
-- Dataset Relation - not working
+- Dataset Relation - (params: parent_id, target_id) - Update Relation between Project and Dataset - not working
 - DatasetInstance Relation - not working
 - Taxonomy - not working
 

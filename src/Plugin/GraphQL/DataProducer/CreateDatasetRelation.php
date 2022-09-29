@@ -77,6 +77,8 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
      */
     public function resolve(array $data) {
         if ($this->currentUser->hasPermission("create Dataset relation content")) {
+          
+          
             $paragraph = Paragraph::create([
                         'type' => 'dataset_relations',
                         'parent_id' => $data['parent_id'],
@@ -86,12 +88,16 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
                             'target_id' => $data['target_id']
                         )
             ]);
-            $paragraph->isNew();
-            $paragraph->save();
-
+            try {
+                $paragraph->isNew();
+                $paragraph->save();
+            } catch (\Exception $ex) {
+                throw new Exception('Dataset Relation Paragraph save error.');
+            }
+            
             $node = Node::load($data['parent_id']);
             $val = $node->get('field_dataset_relations')->getValue();
-         
+            
             $newVal = 
                 array(
                     'target_id' => $paragraph->id(),
@@ -105,8 +111,13 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
             } else {
                 $node->field_dataset_relations = $newVal;
             }
-           
-            $node->save();
+            
+             try {
+                 $node->save();
+            } catch (\Exception $ex) {
+                throw new Exception('Dataset Relation Node save error.');
+            }
+            
             return $paragraph;
         }
         return NULL;
