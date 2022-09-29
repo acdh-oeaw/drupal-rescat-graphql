@@ -6,6 +6,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\graphql\Plugin\GraphQL\DataProducer\DataProducerPluginBase;
 use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraph;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\rescat_graphql\Helper\UpdateHelper;
 
@@ -37,6 +38,9 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
 
     
     private $helper;
+    
+    
+    private $fields = ["person" => "field_person_relations", "dataset" => "field_person_dataset_relations"];
     
     /**
      * {@inheritdoc}
@@ -82,34 +86,68 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
     public function resolve(array $data) {
         if ($this->currentUser->hasPermission("Update person relation content")) {
             
-            $pid = $data['id'];
+            $node = Node::load($data['parent_id']);
+            $type = strtolower($node->getType());
             
-            $data['parent_id'];
-            $data['target_id'];
+            //set the field by the node type (person/dataset)
+            $field = (isset($this->fields[$type])) ? $this->fields[$type] : $this->fields['person'];
+            //fetch the values
+            $nodeValues = ($node->get($field)->getValue()) ?  $node->get($field)->getValue() : [];
             
-            $paragraph = Paragraph::load($target_id);
-            $paragraph_field_value = $paragraph->get('field_some_name')->value;
-            // Do something with the $paragraph_field_value
-            // Update the field.
-            $paragraph->set('field_some_name', $paragraph_field_value);
-            // Save the Paragraph.
-            $paragraph->save();
-            
-            
-            //$node = Node::load($nid);
-            // or
-            $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
-
-            if ($node && strtolower($node->bundle()) == "person") {
-                $this->helper->updateProperty($node, $data, "title", "title");
-                $this->helper->updateBody($node, $data, "description");
-                $node->save();
+            if(count($nodeValues) > 0 ){
+                foreach($nodeValues as $k => $v) {
+                    if(isset($v['target_id'])) {
+                        $paragraph = Paragraph::load($v['target_id']);
+                        if(count($paragraph->get('field_person')->getValue()) > 0 ) {
+                            if($this->checkPerson($paragraph->get('field_person')->getValue(), $data['target_id'])) {
+                                if(!$this->changeRelation($paragraph, $k, $data['relation_id'])) {
+                                    throw new \Exception('Dataset relation field saving error.');
+                                }
+                            }
+                        }
+                    }
+                }
             }
             return $node;
         }
-        return NULL;
+        throw new \Exception('You have no rights!');
     }
 
-   
+    /**
+     * check person exists in our paragraph
+     * @param array $data
+     * @param int $personId
+     * @return bool
+     */
+    private function checkPerson(array $data, int $personId): bool {
+        foreach($data as $k => $v) {
+            if($v['target_id'] == $personId) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * change the person relation id
+     * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+     * @param int $key
+     * @param int $newRelationID
+     * @return bool
+     */
+    private function changeRelation(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $key, int $newRelationID): bool {
+        $relations = $paragraph->get('field_relation');
+        if(isset($relations[$key])) {
+            $relations[$key]->target_id = $newRelationID;
+            $paragraph->field_relation = $relations;
+            try {
+                $paragraph->save();
+            } catch (\Exception $exc) {
+                return false;
+            }
+            return true;
+        } 
+        return false;
+    }
 
 }

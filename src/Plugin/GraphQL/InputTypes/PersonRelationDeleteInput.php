@@ -12,7 +12,8 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *   id = "person_relation_delete_input",
  *   name = "PersonRelationDeleteInput",
  *   fields = {
- *     "id" = "Int"
+ *     "id" = "Int",
+ *     "target_id" = "Int" 
  *   }
  * )
  */

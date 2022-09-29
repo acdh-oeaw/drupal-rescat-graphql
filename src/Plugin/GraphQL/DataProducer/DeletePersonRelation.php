@@ -35,6 +35,12 @@ class DeletePersonRelation extends DataProducerPluginBase implements ContainerFa
   protected $currentUser;
 
   /**
+   * The person node type relation fields
+   * @var type
+   */
+  private $fields = ["person" => "field_person_relations", "dataset" => "field_person_dataset_relations"];
+  
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -77,16 +83,21 @@ class DeletePersonRelation extends DataProducerPluginBase implements ContainerFa
   public function resolve(array $data) {
     if ($this->currentUser->hasPermission("delete person relation")) {
        
-        // not implemented
-        $nid = $data['id'];
-        $node = Node::load($nid);
-        // or
-        $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
-
-        // Check if node exists with the given nid.
-        if ($node) {
-          $node->delete();
+        $node = Node::load($data['id']);
+        $paragraphId = $data['target_id'];
+        //checking the submitted parent node type, because they are storing the
+        //relation in a different field
+        $type = strtolower($node->getType());
+        $field = (isset($this->fields[$type])) ? $this->fields[$type] : $this->fields['person'];
+        $values = ($node->get($field)->getValue()) ? $node->get($field)->getValue() : [];
+        
+        foreach($values as $k=> $v) {
+            if(isset($v['target_id']) && $v['target_id'] == $paragraphId) {
+                unset($values[$k]);
+            }
         }
+        $node->{$field}  = $values;
+        $node->save();
         return $node;
     }
     return NULL;

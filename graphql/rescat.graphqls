@@ -299,33 +299,32 @@ input ProjectDeleteInput {
 ##### Relations #####
 
 input PersonRelationInput {
-  target_id: String!
-  parent_id: String!  
-  relation_id: String!  
+  target_id: Int!
+  parent_id: Int!  
+  relation_id: Int!  
 }
 
 input PersonRelationDeleteInput {
   id: Int!  
+  target_id: Int!
 }
 
 input PersonRelationUpdateInput {
-  id: String!
-  target_id: String
-  parent_id: String  
-  relation_id: String  
+  target_id: Int!
+  parent_id: Int! 
+  relation_id: Int!  
 }
 
 input InstitutionRelationInput {
-  target_id: String!
-  parent_id: String! 
-  relation_id: String!  
+  target_id: Int!
+  parent_id: Int! 
+  relation_id: Int!  
 }
 
 input InstitutionRelationUpdateInput {
-  id: String!
-  target_id: String!
-  parent_id: String! 
-  relation_id: String!  
+  target_id: Int!
+  parent_id: Int! 
+  relation_id: Int!  
 }
 
 input InstitutionRelationDeleteInput {
@@ -334,8 +333,8 @@ input InstitutionRelationDeleteInput {
 
 
 input DatasetRelationInput {
-  target_id: String!
-  parent_id: String!  
+  target_id: Int!
+  parent_id: Int!  
 }
 
 

@@ -12,8 +12,8 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *   id = "institution_relation_input",
  *   name = "InstitutionRelationInput",
  *   fields = {
- *     "target_id" = "String",
- *     "parent_id" = "String"
+ *     "target_id" = "Int",
+ *     "parent_id" = "Int"
  *   }
  * )
  */

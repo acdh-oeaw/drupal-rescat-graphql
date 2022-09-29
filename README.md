@@ -38,7 +38,7 @@ The parent_id is the Dataset node id, target_id the DatasetInstance node id. - N
 - Dataset - (params: id, headine, description) - update the Dataset node
 - DatasetInstance - (params: id, headine, description) - update the DatasetInstance node (Other fields are not working yet, we have to clarify the necessary fields)
 - Project - (params: id, headine, description) - update the Project node (Other fields are not working yet, we have to clarify the necessary fields)
-- Person Relation  - not working
+- Person Relation  - (params: parent_id, target_id, relation_id) - Update the person relation based on the Node Id and the person id.
 - Institution Relation  - not working
 - Dataset Relation - not working
 - DatasetInstance Relation - not working
@@ -50,7 +50,7 @@ The parent_id is the Dataset node id, target_id the DatasetInstance node id. - N
 - Dataset - (params: id) - deletes the node type Dataset based on the node id
 - DatasetInstance - (params: id) - deletes the node type DatasetInstance based on the node id
 - Project - (params: id) - deletes the node type Project based on the node id
-- Person Relation  - not working
+- Person Relation  - (params: id, target_id) - deletes the Person relation from the node. Id = the node id for and the target id is the drupal internal target id for the relation.
 - Institution Relation  - not working
 - Dataset Relation - not working
 - DatasetInstance Relation - not working
