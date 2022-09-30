@@ -52,10 +52,14 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->includeMutations($registry, $builder, 'deleteDataset', 'delete_dataset');
         
         $this->includeMutations($registry, $builder, 'createDatasetRelation', 'create_dataset_relation');
+        //$this->includeMutations($registry, $builder, 'updateDatasetRelation', 'update_dataset_relation');
+        //$this->includeMutations($registry, $builder, 'deleteDatasetRelation', 'delete_dataset_relation');
         
         $this->includeMutations($registry, $builder, 'createDatasetInstance', 'create_dataset_instance');
         $this->includeMutations($registry, $builder, 'updateDatasetInstance', 'update_dataset_instance');
         $this->includeMutations($registry, $builder, 'deleteDatasetInstance', 'delete_dataset_instance');
+        
+        $this->includeMutations($registry, $builder, 'createDatasetInstanceRelation', 'create_dataset_instance_relation');
         
         
         $registry->addTypeResolver('NodeInterface', function ($value) {
@@ -188,12 +192,13 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'license', 'property_path', 'field_license.value');
         $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'size', 'property_path', 'field_size.value');
 
+        /*
         $registry->addFieldResolver('DatasetInstance', 'contributors',
                 $builder->produce('entity_reference')
                         ->map('entity', $builder->fromParent())
                         ->map('field', $builder->fromValue('field_contributors'))
         );
-
+        */
         //$this->createPersonTermFieldResolver($registry, $builder);
 
         $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'locationUri', 'property_path', 'field_location.value');

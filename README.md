@@ -27,7 +27,7 @@ The parent_id is the project node id, target_id the Person node id, relation_id 
 - Institution Relation (params: parent_id, target_id, relation_id) - Ingest the relation between the Institution and the Project and also between the Institution and Taxonomy ('has contributor', etc...). 
 The parent_id is the project node id, target_id the Institution node id, relation_id is the relation id. (You can fetch the ids from the InstitutionsTaxonomy) 
 - Dataset Relation (params: parent_id, target_id) - Ingest the relation between the Dataset and the Project. 
-The parent_id is the project node id, target_id the Dataset node id. - Not Working
+The parent_id is the project node id, target_id the Dataset node id. 
 - DatasetInstance Relation (params: parent_id, target_id) - Ingest the relation between the Dataset and the DatasetInstance. 
 The parent_id is the Dataset node id, target_id the DatasetInstance node id. - Not Working
 - Taxonomy - not working
@@ -38,15 +38,15 @@ The parent_id is the Dataset node id, target_id the DatasetInstance node id. - N
 - Dataset - (params: id, headine, description) - update the Dataset node
 - DatasetInstance - (params: id, headine, description) - update the DatasetInstance node (Other fields are not working yet, we have to clarify the necessary fields)
 - Project - (params: id, headine, description) - update the Project node (Other fields are not working yet, we have to clarify the necessary fields)
-- Person Relation  - (params: parent_id, target_id, relation_id) - Update the person relation based on the Node Id and the person id.
+- Person Relation  - (params: parent_id, targl,,et_id, relation_id) - Update the person relation based on the Node Id and the person id.
 - Institution Relation  - not working
 - Dataset Relation - (params: parent_id, target_id) - Update Relation between Project and Dataset - not working
 - DatasetInstance Relation - not working
 - Taxonomy - not working
-
+ 
 ###### Delete Queries: 
 - Person (params: id) - deletes the node type Person based on the node id
-- Institution - (params: id) - deletes the node type Institution based on the node id
+- Institution - (params: id) - deletes theg node type Institution based on the node id
 - Dataset - (params: id) - deletes the node type Dataset based on the node id
 - DatasetInstance - (params: id) - deletes the node type DatasetInstance based on the node id
 - Project - (params: id) - deletes the node type Project based on the node id

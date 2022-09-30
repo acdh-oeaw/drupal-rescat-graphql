@@ -10,23 +10,23 @@ use Drupal\paragraphs\Entity\Paragraph;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Creates a new Dataset relation.
+ * Creates a new DatasetInstance relation.
  *
  * @DataProducer(
- *   id = "create_dataset_relation",
- *   name = @Translation("Create Dataset Relation"),
- *   description = @Translation("Creates a new Dataset relation."),
+ *   id = "create_dataset_instance_relation",
+ *   name = @Translation("Create DatasetInstance Relation"),
+ *   description = @Translation("Creates a new DatasetInstance relation."),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("Dataset Relation")
+ *     label = @Translation("DatasetInstance Relation")
  *   ),
  *   consumes = {
  *     "data" = @ContextDefinition("any",
- *       label = @Translation("Dataset relation data")
+ *       label = @Translation("DatasetInstance relation data")
  *     )
  *   }
  * )
  */
-class CreateDatasetRelation extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class CreateDatasetInstanceRelation extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
     /**
      * The current user.
@@ -34,7 +34,7 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
-
+    
     /**
      * {@inheritdoc}
      */
@@ -48,7 +48,7 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
     }
 
     /**
-     * CreateArticle constructor.
+     * DatasetInstance Relation constructor.
      *
      * @param array $configuration
      *   A configuration array containing information about the plugin instance.
@@ -65,39 +65,43 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
     }
 
     /**
-     * Creates a Dataset.
+     * Creates an DatasetInstance Relation.
      *
      * @param array $data
      *   The title of the job.
      *
      * @return \Drupal\Core\Entity\EntityBase|\Drupal\Core\Entity\EntityInterface
-     *   The newly created Dataset.
+     *   The newly created person.
      *
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("create Dataset relation content")) {
-          
-            $paragraph = Paragraph::create([
-                        'type' => 'dataset_relation',
-                        'parent_id' => $data['parent_id'],
-                        'parent_type' => 'node',
-                        'parent_field_name' =>'field_dataset_relation',
-                        'field_dataset_relation' => array(
-                            'target_id' => $data['target_id']
-                        )
-            ]);
-            
-            try {
-                $paragraph->isNew();
-                $paragraph->save();
-            } catch (\Exception $ex) {
-                throw new \Exception('Dataset Relation Paragraph save error.');
-            }
+        if ($this->currentUser->hasPermission("create dataset instance relation")) {
             
             $node = Node::load($data['parent_id']);
-            $val = $node->get('field_dataset_relations')->getValue();
-           
+            //checking the submitted parent node type, because they are storing the
+            //relation in a different field
+            $type = strtolower($node->getType());
+            $field = (isset($this->fields[$type])) ? $this->fields[$type] : $this->fields['person'];
+            
+            $paragraph = Paragraph::create([
+                        'type' => 'person_relations',
+                        'parent_id' => $data['parent_id'],
+                        'parent_type' => 'node',
+                        'parent_field_name' => $field,
+                        'field_person' => array(
+                            'target_id' => $data['target_id']
+                        ),
+                        'field_relation' => array(
+                            'target_id' => $data['relation_id']
+                        )
+            ]);
+            $paragraph->isNew();
+            $paragraph->save();
+
+            //$node = Node::load($data['parent_id']);
+            $val = $node->get($field)->getValue();
+            
             $newVal = 
                 array(
                     'target_id' => $paragraph->id(),
@@ -107,19 +111,14 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
             
             if(count($val) > 0) {
                 $val[] = $newVal;
-                $node->field_dataset_relations  = $val;
+                $node->{$field}  = $val;
             } else {
-                $node->field_dataset_relations = $newVal;
+                $node->{$field} = $newVal;
             }
-            
-            try {
-                 $node->save();
-                 return $paragraph;
-            } catch (\Exception $ex) {
-                throw new \Exception('Dataset Relation Node save error.');
-            }
+           
+            $node->save();
+            return $paragraph;
         }
-        throw new \Exception('Dataset Relation Node save error.');
+        return NULL;
     }
-
 }

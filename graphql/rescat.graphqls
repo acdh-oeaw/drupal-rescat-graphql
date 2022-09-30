@@ -111,12 +111,6 @@ type ProjectConnection {
   items: [Project!]
 }
 
-type ProjectDatasetRelation implements Paragraph {
-  id: Int!
-  uuid: String
-  datasets: [Dataset]
-}
-
 ##### Institution #####
 
 type Institution implements NodeInterface {
@@ -175,6 +169,12 @@ type DatasetInstance implements NodeInterface {
 type DatasetInstanceConnection {
   total: Int!
   items: [DatasetInstance!]
+}
+
+type DatasetInstanceRelation implements Paragraph {
+  id: Int!
+  uuid: String
+  datasetInstance: [DatasetInstance]
 }
 
 
@@ -331,8 +331,22 @@ input InstitutionRelationDeleteInput {
   id: Int!
 }
 
-
 input DatasetRelationInput {
+  target_id: Int!
+  parent_id: Int!  
+}
+
+input DatasetRelationUpdateInput {
+  target_id: Int!
+  parent_id: Int!  
+}
+
+input DatasetRelationDeleteInput {
+  id: Int!  
+  target_id: Int!  
+}
+
+input DatasetInstanceRelationInput {
   target_id: Int!
   parent_id: Int!  
 }

@@ -51,7 +51,7 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
     }
 
     /**
-     * CreateArticle constructor.
+     * CreatePerson relation constructor.
      *
      * @param array $configuration
      *   A configuration array containing information about the plugin instance.
