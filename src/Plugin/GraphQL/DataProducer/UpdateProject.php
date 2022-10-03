@@ -34,10 +34,8 @@ class UpdateProject extends DataProducerPluginBase implements ContainerFactoryPl
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
-
-    
     private $helper;
-    
+
     /**
      * {@inheritdoc}
      */
@@ -80,10 +78,8 @@ class UpdateProject extends DataProducerPluginBase implements ContainerFactoryPl
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("Update Project content")) {
+        //if ($this->currentUser->hasPermission("Update Project content")) {
             $nid = $data['id'];
-            $node = Node::load($nid);
-            // or
             $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
             if ($node && strtolower($node->bundle()) == "project") {
@@ -95,10 +91,7 @@ class UpdateProject extends DataProducerPluginBase implements ContainerFactoryPl
                 $node->save();
             }
             return $node;
-        }
-        return NULL;
+        //}
     }
-
-   
 
 }

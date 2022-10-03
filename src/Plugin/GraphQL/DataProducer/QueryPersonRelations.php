@@ -36,92 +36,87 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class QueryPersonRelations extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
-  const MAX_LIMIT = 100;
+    const MAX_LIMIT = 100;
 
-  /**
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected $entityManager;
+    /**
+     * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+     */
+    protected $entityManager;
 
-  /**
-   * {@inheritdoc}
-   *
-   * @codeCoverageIgnore
-   */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('entity_type.manager')
-    );
-  }
-
-  /**
-   * Persons Relation constructor.
-   *
-   * @param array $configuration
-   *   The plugin configuration.
-   * @param string $pluginId
-   *   The plugin id.
-   * @param mixed $pluginDefinition
-   *   The plugin definition.
-   *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityManager
-   *
-   * @codeCoverageIgnore
-   */
-  public function __construct(          
-    array $configuration,
-    $pluginId,
-    $pluginDefinition,
-    EntityTypeManagerInterface $entityManager
-  ) {
-    parent::__construct($configuration, $pluginId, $pluginDefinition);
-    $this->entityManager = $entityManager;
-  }
-
-  /**
-   * @param $offset
-   * @param $limit
-   * @param $title
-   * @param \Drupal\Core\Cache\RefinableCacheableDependencyInterface $metadata
-   *
-   * @return \Drupal\rescat_graphql\Wrappers\QueryConnection
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
-   */
-  public function resolve($offset, $limit, $title, RefinableCacheableDependencyInterface $metadata) {
-    if (!$limit > static::MAX_LIMIT) {
-      throw new UserError(sprintf('Exceeded maximum query limit: %s.', static::MAX_LIMIT));
+    /**
+     * {@inheritdoc}
+     *
+     * @codeCoverageIgnore
+     */
+    public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+        return new static(
+                $configuration,
+                $plugin_id,
+                $plugin_definition,
+                $container->get('entity_type.manager')
+        );
     }
-    
-    
-    $pids = \Drupal::entityQuery('paragraph')
-  ->condition('type', 'person_relations')
-  ->execute();
 
-    error_log(print_r($pids, true));
-    
-    $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
-    $type = $storage->getEntityType();
-    $query = $storage->getQuery()
-      ->currentRevision()
-      ->accessCheck();
-
-    $query->condition($type->getKey('type'), 'person_relations');
-    //$query->condition($type->getKey('entity_id'), "76");
-    if($name) {
-        $query->condition($type->getKey('entity_id'), "76");
+    /**
+     * Persons Relation constructor.
+     *
+     * @param array $configuration
+     *   The plugin configuration.
+     * @param string $pluginId
+     *   The plugin id.
+     * @param mixed $pluginDefinition
+     *   The plugin definition.
+     *
+     * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityManager
+     *
+     * @codeCoverageIgnore
+     */
+    public function __construct(
+            array $configuration,
+            $pluginId,
+            $pluginDefinition,
+            EntityTypeManagerInterface $entityManager
+    ) {
+        parent::__construct($configuration, $pluginId, $pluginDefinition);
+        $this->entityManager = $entityManager;
     }
-    $query->range($offset, $limit);
 
-    $metadata->addCacheTags($type->getListCacheTags());
-    $metadata->addCacheContexts($type->getListCacheContexts());
-  
-    error_log(print_r($query, true));
-    
-    return new QueryConnection($query->execute());
+    /**
+     * @param $offset
+     * @param $limit
+     * @param $title
+     * @param \Drupal\Core\Cache\RefinableCacheableDependencyInterface $metadata
+     *
+     * @return \Drupal\rescat_graphql\Wrappers\QueryConnection
+     * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+     * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+     */
+    public function resolve($offset, $limit, $title, RefinableCacheableDependencyInterface $metadata) {
+        if (!$limit > static::MAX_LIMIT) {
+            throw new UserError(sprintf('Exceeded maximum query limit: %s.', static::MAX_LIMIT));
+        }
 
-  }
+        $pids = \Drupal::entityQuery('paragraph')
+                ->condition('type', 'person_relations')
+                ->execute();
+
+        $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+        $type = $storage->getEntityType();
+        $query = $storage->getQuery()
+                ->currentRevision()
+                ->accessCheck();
+
+        $query->condition($type->getKey('type'), 'person_relations');
+        //$query->condition($type->getKey('entity_id'), "76");
+        if ($name) {
+            $query->condition($type->getKey('entity_id'), "76");
+        }
+        $query->range($offset, $limit);
+
+        $metadata->addCacheTags($type->getListCacheTags());
+        $metadata->addCacheContexts($type->getListCacheContexts());
+
+        return new QueryConnection($query->execute());
+    }
+
 }

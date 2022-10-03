@@ -34,10 +34,8 @@ class UpdateDataset extends DataProducerPluginBase implements ContainerFactoryPl
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
-
-    
     private $helper;
-    
+
     /**
      * {@inheritdoc}
      */
@@ -80,11 +78,10 @@ class UpdateDataset extends DataProducerPluginBase implements ContainerFactoryPl
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("update dataset content")) {
+        //if ($this->currentUser->hasPermission("update dataset content")) {
             $nid = $data['id'];
             $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
-            
-            error_log(print_r($data, true));
+
             if ($node && strtolower($node->bundle()) == "dataset") {
                 $this->helper->updateProperty($node, $data, "title", "headline");
                 $this->helper->updateProperty($node, $data, "field_description", "description");
@@ -95,10 +92,7 @@ class UpdateDataset extends DataProducerPluginBase implements ContainerFactoryPl
                 return null;
             }
             return $node;
-        }
-        return NULL;
+        //}
     }
-
-   
 
 }

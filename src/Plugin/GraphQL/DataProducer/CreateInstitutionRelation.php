@@ -76,12 +76,12 @@ class CreateInstitutionRelation extends DataProducerPluginBase implements Contai
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("create Institution relation content")) {
+        //if ($this->currentUser->hasPermission("create Institution relation content")) {
             $paragraph = Paragraph::create([
                         'type' => 'institution_relations',
                         'parent_id' => $data['parent_id'],
                         'parent_type' => 'node',
-                        'parent_field_name' =>'field_institution_relations',
+                        'parent_field_name' => 'field_institution_relations',
                         'field_institution' => array(
                             'target_id' => $data['target_id']
                         ),
@@ -94,24 +94,23 @@ class CreateInstitutionRelation extends DataProducerPluginBase implements Contai
 
             $node = Node::load($data['parent_id']);
             $val = $node->get('field_institution_relations')->getValue();
-         
-            $newVal = 
-                array(
-                    'target_id' => $paragraph->id(),
-                    'target_revision_id' => $paragraph->getRevisionId(),
-                
+
+            $newVal = array(
+                        'target_id' => $paragraph->id(),
+                        'target_revision_id' => $paragraph->getRevisionId(),
             );
-            
-            if(count($val) > 0) {
+
+            if (count($val) > 0) {
                 $val[] = $newVal;
-                $node->field_institution_relations  = $val;
+                $node->field_institution_relations = $val;
             } else {
                 $node->field_institution_relations = $newVal;
             }
-           
+
             $node->save();
             return $paragraph;
-        }
-        return NULL;
+        //}
+        // throw new \Exception('You dont have enough permission to create institution relation.');
     }
+
 }

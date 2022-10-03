@@ -80,27 +80,20 @@ class CreateDatasetInstanceRelation extends DataProducerPluginBase implements Co
             
             $node = Node::load($data['parent_id']);
             //checking the submitted parent node type, because they are storing the
-            //relation in a different field
-            $type = strtolower($node->getType());
-            $field = (isset($this->fields[$type])) ? $this->fields[$type] : $this->fields['person'];
             
             $paragraph = Paragraph::create([
-                        'type' => 'person_relations',
+                        'type' => 'dataset_instance_relations',
                         'parent_id' => $data['parent_id'],
                         'parent_type' => 'node',
-                        'parent_field_name' => $field,
-                        'field_person' => array(
+                        'parent_field_name' => 'field_dataset_instance_relations',
+                        'field_dataset_instance_relation' => array(
                             'target_id' => $data['target_id']
-                        ),
-                        'field_relation' => array(
-                            'target_id' => $data['relation_id']
                         )
             ]);
             $paragraph->isNew();
             $paragraph->save();
 
-            //$node = Node::load($data['parent_id']);
-            $val = $node->get($field)->getValue();
+            $val = $node->get('field_dataset_instance_relations')->getValue();
             
             $newVal = 
                 array(
@@ -111,12 +104,17 @@ class CreateDatasetInstanceRelation extends DataProducerPluginBase implements Co
             
             if(count($val) > 0) {
                 $val[] = $newVal;
-                $node->{$field}  = $val;
+                $node->field_dataset_instance_relations  = $val;
             } else {
-                $node->{$field} = $newVal;
+                $node->field_dataset_instance_relations = $newVal;
             }
            
             $node->save();
+            foreach($paragraph as $k => $v) {
+            error_log(print_r($k, true));
+            error_log(print_r($v->getValue(), true));
+                
+            }
             return $paragraph;
         }
         return NULL;

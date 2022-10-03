@@ -34,7 +34,6 @@ class UpdateInstitution extends DataProducerPluginBase implements ContainerFacto
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
-    
     private $helper;
 
     /**
@@ -79,10 +78,8 @@ class UpdateInstitution extends DataProducerPluginBase implements ContainerFacto
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("Update Institution content")) {
+       // if ($this->currentUser->hasPermission("Update Institution content")) {
             $nid = $data['id'];
-            $node = Node::load($nid);
-            // or
             $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
             if ($node && strtolower($node->bundle()) == "institution") {
@@ -90,12 +87,8 @@ class UpdateInstitution extends DataProducerPluginBase implements ContainerFacto
                 $this->helper->updateBody($node, $data, "description");
                 $node->save();
             }
-           
             return $node;
-        }
-        return NULL;
+        //}
     }
-
-    
 
 }

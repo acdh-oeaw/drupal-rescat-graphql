@@ -34,10 +34,8 @@ class UpdateDatasetInstance extends DataProducerPluginBase implements ContainerF
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
-
-    
     private $helper;
-    
+
     /**
      * {@inheritdoc}
      */
@@ -80,10 +78,8 @@ class UpdateDatasetInstance extends DataProducerPluginBase implements ContainerF
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("Update DatasetInstance content")) {
+        //if ($this->currentUser->hasPermission("Update DatasetInstance content")) {
             $nid = $data['id'];
-            $node = Node::load($nid);
-            // or
             $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
             if ($node && strtolower($node->bundle()) == "dataset_instance") {
@@ -95,14 +91,11 @@ class UpdateDatasetInstance extends DataProducerPluginBase implements ContainerF
                 //locationTitle
                 //locationUrl
                 //size
-                
+
                 $node->save();
             }
             return $node;
-        }
-        return NULL;
+        //}
     }
-
-   
 
 }

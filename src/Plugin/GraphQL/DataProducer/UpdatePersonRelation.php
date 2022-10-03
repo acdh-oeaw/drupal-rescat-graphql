@@ -35,13 +35,9 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
-
-    
     private $helper;
-    
-    
     private $fields = ["person" => "field_person_relations", "dataset" => "field_person_dataset_relations"];
-    
+
     /**
      * {@inheritdoc}
      */
@@ -84,23 +80,23 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("Update person relation content")) {
-            
+        //if ($this->currentUser->hasPermission("Update person relation content")) {
+
             $node = Node::load($data['parent_id']);
             $type = strtolower($node->getType());
-            
+
             //set the field by the node type (person/dataset)
             $field = (isset($this->fields[$type])) ? $this->fields[$type] : $this->fields['person'];
             //fetch the values
-            $nodeValues = ($node->get($field)->getValue()) ?  $node->get($field)->getValue() : [];
-            
-            if(count($nodeValues) > 0 ){
-                foreach($nodeValues as $k => $v) {
-                    if(isset($v['target_id'])) {
+            $nodeValues = ($node->get($field)->getValue()) ? $node->get($field)->getValue() : [];
+
+            if (count($nodeValues) > 0) {
+                foreach ($nodeValues as $k => $v) {
+                    if (isset($v['target_id'])) {
                         $paragraph = Paragraph::load($v['target_id']);
-                        if(count($paragraph->get('field_person')->getValue()) > 0 ) {
-                            if($this->checkPerson($paragraph->get('field_person')->getValue(), $data['target_id'])) {
-                                if(!$this->changeRelation($paragraph, $k, $data['relation_id'])) {
+                        if (count($paragraph->get('field_person')->getValue()) > 0) {
+                            if ($this->checkPerson($paragraph->get('field_person')->getValue(), $data['target_id'])) {
+                                if (!$this->changeRelation($paragraph, $k, $data['relation_id'])) {
                                     throw new \Exception('Dataset relation field saving error.');
                                 }
                             }
@@ -109,8 +105,8 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
                 }
             }
             return $node;
-        }
-        throw new \Exception('You have no rights!');
+        //}
+        //throw new \Exception('You have no rights!');
     }
 
     /**
@@ -120,8 +116,8 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
      * @return bool
      */
     private function checkPerson(array $data, int $personId): bool {
-        foreach($data as $k => $v) {
-            if($v['target_id'] == $personId) {
+        foreach ($data as $k => $v) {
+            if ($v['target_id'] == $personId) {
                 return true;
             }
         }
@@ -137,7 +133,7 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
      */
     private function changeRelation(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $key, int $newRelationID): bool {
         $relations = $paragraph->get('field_relation');
-        if(isset($relations[$key])) {
+        if (isset($relations[$key])) {
             $relations[$key]->target_id = $newRelationID;
             $paragraph->field_relation = $relations;
             try {
@@ -146,7 +142,7 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
                 return false;
             }
             return true;
-        } 
+        }
         return false;
     }
 

@@ -34,8 +34,6 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
-    
-    
     private $fields = ["person" => "field_person_relations", "dataset" => "field_person_dataset_relations"];
 
     /**
@@ -79,14 +77,14 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("create person relation")) {
-            
+        //if ($this->currentUser->hasPermission("create person relation")) {
+
             $node = Node::load($data['parent_id']);
             //checking the submitted parent node type, because they are storing the
             //relation in a different field
             $type = strtolower($node->getType());
             $field = (isset($this->fields[$type])) ? $this->fields[$type] : $this->fields['person'];
-            
+
             $paragraph = Paragraph::create([
                         'type' => 'person_relations',
                         'parent_id' => $data['parent_id'],
@@ -104,24 +102,24 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
 
             //$node = Node::load($data['parent_id']);
             $val = $node->get($field)->getValue();
-            
-            $newVal = 
-                array(
-                    'target_id' => $paragraph->id(),
-                    'target_revision_id' => $paragraph->getRevisionId(),
-                
+
+            $newVal = array(
+                        'target_id' => $paragraph->id(),
+                        'target_revision_id' => $paragraph->getRevisionId(),
             );
-            
-            if(count($val) > 0) {
+
+            if (count($val) > 0) {
                 $val[] = $newVal;
-                $node->{$field}  = $val;
+                $node->{$field} = $val;
             } else {
                 $node->{$field} = $newVal;
             }
-           
+
             $node->save();
             return $paragraph;
-        }
-        return NULL;
+        //}
+        
+        // throw new \Exception('You dont have enough permission to create a person relation.');    
     }
+
 }
