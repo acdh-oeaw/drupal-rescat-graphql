@@ -96,20 +96,22 @@ class QueryPersonRelations extends DataProducerPluginBase implements ContainerFa
             throw new UserError(sprintf('Exceeded maximum query limit: %s.', static::MAX_LIMIT));
         }
 
+        error_log('here');
         $pids = \Drupal::entityQuery('paragraph')
                 ->condition('type', 'person_relations')
                 ->execute();
 
-        $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+        error_log(print_r($pids, true));
+        
+         $storage = \Drupal::entityTypeManager()->getStorage('paragraphs');
         $type = $storage->getEntityType();
         $query = $storage->getQuery()
                 ->currentRevision()
                 ->accessCheck();
 
-        $query->condition($type->getKey('type'), 'person_relations');
-        //$query->condition($type->getKey('entity_id'), "76");
+        $query->condition($type->getKey('bundle'), 'entity_relations');
         if ($name) {
-            $query->condition($type->getKey('entity_id'), "76");
+            $query->condition($type->getKey('label'), $name);
         }
         $query->range($offset, $limit);
 

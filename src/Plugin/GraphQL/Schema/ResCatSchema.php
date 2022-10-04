@@ -314,11 +314,18 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('entity', $builder->fromParent())
                         ->map('field', $builder->fromValue('field_institution_relations'))
         );
+        
+        $registry->addFieldResolver('Project', 'datasetRelations',
+                $builder->produce('entity_reference_revisions')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_dataset_relations'))
+        );
 
         $registry->addTypeResolver('Paragraph', function ($value) {
             if ($value instanceof Paragraph) {
                 switch ($value->bundle()) {
                     case 'person_relations': return 'PersonRelation';
+                    case 'dataset_relation': return 'DatasetRelation';
                     case 'institution_relations': return 'InstitutionRelation';
                 }
             }
@@ -350,6 +357,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('entity', $builder->fromParent())
                         ->map('field', $builder->fromValue('field_relation'))
         );
+        
         $registry->addFieldResolver('Relation', 'id',
           $builder->produce('entity_id')
             ->map('entity', $builder->fromParent())
@@ -381,6 +389,22 @@ class ResCatSchema extends SdlSchemaPluginBase {
 
         //$this->createInstitutionsTermFieldResolver($registry, $builder);
        
+        $registry->addFieldResolver('DatasetRelation', 'id',
+                $builder->produce('entity_id')
+                        ->map('entity', $builder->fromParent())
+        );
+
+        $registry->addFieldResolver('DatasetRelation', 'uuid',
+                $builder->produce('entity_uuid')
+                        ->map('entity', $builder->fromParent())
+        );
+       
+        $registry->addFieldResolver('DatasetRelation', 'dataset',
+                $builder->produce('entity_reference')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_dataset_relation'))
+        );
+        
     }
     
    

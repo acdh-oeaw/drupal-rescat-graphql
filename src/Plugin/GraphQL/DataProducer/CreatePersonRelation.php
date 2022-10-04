@@ -100,12 +100,11 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
             $paragraph->isNew();
             $paragraph->save();
 
-            //$node = Node::load($data['parent_id']);
             $val = $node->get($field)->getValue();
 
             $newVal = array(
-                        'target_id' => $paragraph->id(),
-                        'target_revision_id' => $paragraph->getRevisionId(),
+                'target_id' => $paragraph->id(),
+                'target_revision_id' => $paragraph->getRevisionId(),
             );
 
             if (count($val) > 0) {
@@ -116,6 +115,7 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
             }
 
             $node->save();
+         
             return $paragraph;
         //}
         

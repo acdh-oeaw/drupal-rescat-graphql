@@ -78,14 +78,16 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
     public function resolve(array $data) {
         //if ($this->currentUser->hasPermission("create Dataset relation content")) {
 
+            $node = Node::load($data['parent_id']);
+            
             $paragraph = Paragraph::create([
-                        'type' => 'dataset_relation',
-                        'parent_id' => $data['parent_id'],
-                        'parent_type' => 'node',
-                        'parent_field_name' => 'field_dataset_relation',
-                        'field_dataset_relation' => array(
-                            'target_id' => $data['target_id']
-                        )
+                'type' => 'dataset_relation',
+                'parent_id' => $data['parent_id'],
+                'parent_type' => 'node',
+                'parent_field_name' => 'field_dataset_relation',
+                'field_dataset_relation' => array(
+                    'target_id' => $data['target_id']
+                )
             ]);
 
             try {
@@ -95,12 +97,12 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
                 throw new \Exception('Dataset Relation Paragraph save error.');
             }
 
-            $node = Node::load($data['parent_id']);
+            
             $val = $node->get('field_dataset_relations')->getValue();
 
             $newVal = array(
-                        'target_id' => $paragraph->id(),
-                        'target_revision_id' => $paragraph->getRevisionId(),
+                'target_id' => $paragraph->id(),
+                'target_revision_id' => $paragraph->getRevisionId(),
             );
 
             if (count($val) > 0) {
@@ -110,12 +112,12 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
                 $node->field_dataset_relations = $newVal;
             }
 
-            try {
-                $node->save();
-                return $paragraph;
-            } catch (\Exception $ex) {
-                throw new \Exception('Dataset Relation Node save error.');
-            }
+           
+            $node->save();
+              
+                
+            return $paragraph;
+            
         //}
         //throw new \Exception('Dataset Relation Node save error.');
     }

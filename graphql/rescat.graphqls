@@ -103,7 +103,7 @@ type Project implements NodeInterface {
   startDate: String
   endDate: String
   redmineId: Int
-  datasets: [Paragraph]!
+  datasetRelations: [Paragraph]!
 }
 
 type ProjectConnection {
@@ -150,7 +150,7 @@ type DatasetConnection {
 type DatasetRelation implements Paragraph {
   id: Int!
   uuid: String
-  dataset: [Dataset]
+  dataset: [Dataset]!
 }
 
 ##### DatasetInstance #####
