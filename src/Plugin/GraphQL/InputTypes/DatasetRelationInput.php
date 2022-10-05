@@ -6,7 +6,7 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
 
 
 /**
- * The input type for person mutations.
+ * The input type for DatasetRelationInput mutations.
  *
  * @GraphQLInputType(
  *   id = "dataset_relation_input",

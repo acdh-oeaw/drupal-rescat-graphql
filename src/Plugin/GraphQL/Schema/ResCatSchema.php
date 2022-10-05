@@ -29,39 +29,8 @@ class ResCatSchema extends SdlSchemaPluginBase {
         /**
          * Mutations
          */
-        $this->includeMutations($registry, $builder, 'createProject', 'create_project');
-        $this->includeMutations($registry, $builder, 'updateProject', 'update_project');
-        $this->includeMutations($registry, $builder, 'deleteProject', 'delete_project');
-        
-        $this->includeMutations($registry, $builder, 'createPerson', 'create_person');
-        $this->includeMutations($registry, $builder, 'deletePerson', 'delete_person');
-        $this->includeMutations($registry, $builder, 'updatePerson', 'update_person');
-        
-        $this->includeMutations($registry, $builder, 'createPersonRelation', 'create_person_relation');
-        $this->includeMutations($registry, $builder, 'updatePersonRelation', 'update_person_relation');
-        $this->includeMutations($registry, $builder, 'deletePersonRelation', 'delete_person_relation');
-        
-        $this->includeMutations($registry, $builder, 'createInstitution', 'create_institution');
-        $this->includeMutations($registry, $builder, 'updateInstitution', 'update_institution');
-        $this->includeMutations($registry, $builder, 'deleteInstitution', 'delete_institution');
-        
-        $this->includeMutations($registry, $builder, 'createInstitutionRelation', 'create_institution_relation');
-        
-        $this->includeMutations($registry, $builder, 'createDataset', 'create_dataset');
-        $this->includeMutations($registry, $builder, 'updateDataset', 'update_dataset');
-        $this->includeMutations($registry, $builder, 'deleteDataset', 'delete_dataset');
-        
-        $this->includeMutations($registry, $builder, 'createDatasetRelation', 'create_dataset_relation');
-        //$this->includeMutations($registry, $builder, 'updateDatasetRelation', 'update_dataset_relation');
-        //$this->includeMutations($registry, $builder, 'deleteDatasetRelation', 'delete_dataset_relation');
-        
-        $this->includeMutations($registry, $builder, 'createDatasetInstance', 'create_dataset_instance');
-        $this->includeMutations($registry, $builder, 'updateDatasetInstance', 'update_dataset_instance');
-        $this->includeMutations($registry, $builder, 'deleteDatasetInstance', 'delete_dataset_instance');
-        
-        $this->includeMutations($registry, $builder, 'createDatasetInstanceRelation', 'create_dataset_instance_relation');
-        
-        
+        $this->addMutations($registry, $builder);
+       
         $registry->addTypeResolver('NodeInterface', function ($value) {
             if ($value instanceof NodeInterface) {
                 switch ($value->bundle()) {
@@ -170,7 +139,42 @@ class ResCatSchema extends SdlSchemaPluginBase {
         
         $this->getValueFromParent($registry, $builder, 'Dataset', 'id', 'entity_id');
         $this->getValueFromParent($registry, $builder, 'Dataset', 'uuid', 'entity_uuid');
-        $this->getValueByField($registry, $builder, 'Dataset', 'datasetInstance', 'entity_reference', 'field_dataset_instances' );
+         
+        
+        $registry->addFieldResolver('Dataset', 'datasetInstanceRelations',
+                $builder->produce('entity_reference_revisions')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_dataset_instance_relations'))
+        );
+     
+        $registry->addTypeResolver('Paragraph', function ($value) {
+            if ($value instanceof Paragraph) {
+                switch ($value->bundle()) {
+                    case 'dataset_instance_relations': return 'DatasetInstanceRelation';
+                }
+            }
+            //https://github.com/drupal-graphql/graphql/pull/968
+            throw new Error('Could not resolve Paragraph type. ' . $value->bundle());
+        });
+        
+        
+        $registry->addFieldResolver('DatasetInstanceRelation', 'id',
+                $builder->produce('entity_id')
+                        ->map('entity', $builder->fromParent())
+        );
+
+        $registry->addFieldResolver('DatasetInstanceRelation', 'uuid',
+                $builder->produce('entity_uuid')
+                        ->map('entity', $builder->fromParent())
+        );
+       
+        $registry->addFieldResolver('DatasetInstanceRelation', 'datasetInstance',
+                $builder->produce('entity_reference')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_dataset_instance_relation'))
+        );
+        
+        //$this->getValueByField($registry, $builder, 'Dataset', 'datasetInstance', 'entity_reference', 'field_dataset_instance_relations' );
         $this->getValueByEntityNode($registry, $builder, 'Dataset', 'title', 'property_path', 'title.value');
         $this->getValueByEntityNode($registry, $builder, 'Dataset', 'redmineId', 'property_path', 'field_redmineid.value');
         $this->getValueByEntityNode($registry, $builder, 'Dataset', 'projectId', 'property_path', 'field_projectid.value');
@@ -191,15 +195,6 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'harvestingStatus', 'property_path', 'field_harvesting_status.value');
         $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'license', 'property_path', 'field_license.value');
         $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'size', 'property_path', 'field_size.value');
-
-        /*
-        $registry->addFieldResolver('DatasetInstance', 'contributors',
-                $builder->produce('entity_reference')
-                        ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_contributors'))
-        );
-        */
-        //$this->createPersonTermFieldResolver($registry, $builder);
 
         $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'locationUri', 'property_path', 'field_location.value');
         $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'locationTitle', 'property_path', 'field_location.value');
@@ -293,14 +288,6 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->getValueByEntityNode($registry, $builder, 'Project', 'endDate', 'property_path', 'field_end.value');
         $this->getValueByEntityNode($registry, $builder, 'Project', 'redmineId', 'property_path', 'field_redmine_id.value');
       
-        /*
-        $registry->addFieldResolver('Project', 'datasets',
-                $builder->produce('entity_reference')
-                        ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_datasets'))
-        );
-        $this->createDatasetTermFieldResolver($registry, $builder);
-        */
         ///////////////// Relations //////////////////
         
         $registry->addFieldResolver('Project', 'personRelations',
@@ -320,13 +307,14 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('entity', $builder->fromParent())
                         ->map('field', $builder->fromValue('field_dataset_relations'))
         );
-
+     
         $registry->addTypeResolver('Paragraph', function ($value) {
             if ($value instanceof Paragraph) {
                 switch ($value->bundle()) {
                     case 'person_relations': return 'PersonRelation';
                     case 'dataset_relation': return 'DatasetRelation';
                     case 'institution_relations': return 'InstitutionRelation';
+                    case 'dataset_instance_relations': return 'DatasetInstanceRelation';
                 }
             }
             //https://github.com/drupal-graphql/graphql/pull/968
@@ -404,6 +392,8 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('entity', $builder->fromParent())
                         ->map('field', $builder->fromValue('field_dataset_relation'))
         );
+        
+     
         
     }
     
@@ -520,6 +510,47 @@ class ResCatSchema extends SdlSchemaPluginBase {
                     return $connection->items();
                 })
         );
+    }
+
+    /**
+     * Add the mutations
+     * @param ResolverRegistry $registry
+     * @param ResolverBuilder $builder
+     * @return void
+     */
+    private function addMutations(ResolverRegistry &$registry, ResolverBuilder &$builder): void {
+        $this->includeMutations($registry, $builder, 'createProject', 'create_project');
+        $this->includeMutations($registry, $builder, 'updateProject', 'update_project');
+        $this->includeMutations($registry, $builder, 'deleteProject', 'delete_project');
+        
+        $this->includeMutations($registry, $builder, 'createPerson', 'create_person');
+        $this->includeMutations($registry, $builder, 'deletePerson', 'delete_person');
+        $this->includeMutations($registry, $builder, 'updatePerson', 'update_person');
+        
+        $this->includeMutations($registry, $builder, 'createPersonRelation', 'create_person_relation');
+        $this->includeMutations($registry, $builder, 'updatePersonRelation', 'update_person_relation');
+        $this->includeMutations($registry, $builder, 'deletePersonRelation', 'delete_person_relation');
+        
+        $this->includeMutations($registry, $builder, 'createInstitution', 'create_institution');
+        $this->includeMutations($registry, $builder, 'updateInstitution', 'update_institution');
+        $this->includeMutations($registry, $builder, 'deleteInstitution', 'delete_institution');
+        
+        $this->includeMutations($registry, $builder, 'createInstitutionRelation', 'create_institution_relation');
+        
+        $this->includeMutations($registry, $builder, 'createDataset', 'create_dataset');
+        $this->includeMutations($registry, $builder, 'updateDataset', 'update_dataset');
+        $this->includeMutations($registry, $builder, 'deleteDataset', 'delete_dataset');
+        
+        $this->includeMutations($registry, $builder, 'createDatasetRelation', 'create_dataset_relation');
+        //$this->includeMutations($registry, $builder, 'updateDatasetRelation', 'update_dataset_relation');
+        //$this->includeMutations($registry, $builder, 'deleteDatasetRelation', 'delete_dataset_relation');
+        
+        $this->includeMutations($registry, $builder, 'createDatasetInstance', 'create_dataset_instance');
+        $this->includeMutations($registry, $builder, 'updateDatasetInstance', 'update_dataset_instance');
+        $this->includeMutations($registry, $builder, 'deleteDatasetInstance', 'delete_dataset_instance');
+        
+        $this->includeMutations($registry, $builder, 'createDatasetInstanceRelation', 'create_dataset_instance_relation');
+        
     }
 
 }

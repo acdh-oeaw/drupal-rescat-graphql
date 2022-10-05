@@ -139,7 +139,7 @@ type Dataset implements NodeInterface {
   description: String
   redmineId: Int
   projectId: Int
-  datasetInstance: [Paragraph]!
+  datasetInstanceRelations: [Paragraph]!
 }
 
 type DatasetConnection {
@@ -174,7 +174,7 @@ type DatasetInstanceConnection {
 type DatasetInstanceRelation implements Paragraph {
   id: Int!
   uuid: String
-  datasetInstance: [DatasetInstance]
+  datasetInstance: [DatasetInstance]!
 }
 
 

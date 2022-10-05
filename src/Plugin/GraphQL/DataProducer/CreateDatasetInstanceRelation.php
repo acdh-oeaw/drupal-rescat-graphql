@@ -76,7 +76,7 @@ class CreateDatasetInstanceRelation extends DataProducerPluginBase implements Co
      * @throws \Exception
      */
     public function resolve(array $data) {
-        if ($this->currentUser->hasPermission("create dataset instance relation")) {
+        //if ($this->currentUser->hasPermission("create dataset instance relation")) {
             
             $node = Node::load($data['parent_id']);
             //checking the submitted parent node type, because they are storing the
@@ -116,7 +116,6 @@ class CreateDatasetInstanceRelation extends DataProducerPluginBase implements Co
                 
             }
             return $paragraph;
-        }
-        return NULL;
+        //}
     }
 }
