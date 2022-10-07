@@ -76,7 +76,8 @@ class CreateDatasetInstanceRelation extends DataProducerPluginBase implements Co
      * @throws \Exception
      */
     public function resolve(array $data) {
-        //if ($this->currentUser->hasPermission("create dataset instance relation")) {
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
             
             $node = Node::load($data['parent_id']);
             //checking the submitted parent node type, because they are storing the
@@ -110,12 +111,8 @@ class CreateDatasetInstanceRelation extends DataProducerPluginBase implements Co
             }
            
             $node->save();
-            foreach($paragraph as $k => $v) {
-            error_log(print_r($k, true));
-            error_log(print_r($v->getValue(), true));
-                
-            }
             return $paragraph;
-        //}
+        }
+        throw new \Exception('You dont have enough permission to create a dataset instance relation.');
     }
 }

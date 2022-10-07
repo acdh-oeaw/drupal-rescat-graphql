@@ -81,8 +81,8 @@ class DeletePersonRelation extends DataProducerPluginBase implements ContainerFa
      * @throws \Exception
      */
     public function resolve(array $data) {
-        //if ($this->currentUser->hasPermission("delete person relation")) {
-
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
             $node = Node::load($data['id']);
             $paragraphId = $data['target_id'];
             //checking the submitted parent node type, because they are storing the
@@ -99,7 +99,8 @@ class DeletePersonRelation extends DataProducerPluginBase implements ContainerFa
             $node->{$field} = $values;
             $node->save();
             return $node;
-        //}
+        }
+        throw new \Exception('You dont have enough permission to Delete a Person Relation.'); 
     }
 
 }

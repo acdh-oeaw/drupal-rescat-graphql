@@ -75,7 +75,8 @@ class CreateDataset extends DataProducerPluginBase implements ContainerFactoryPl
      * @throws \Exception
      */
     public function resolve(array $data) {
-        //if ($this->currentUser->hasPermission("create Dataset content")) {
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
             $values = [
                 'type' => 'dataset',
                 'headline' => $data['headline'],
@@ -87,12 +88,8 @@ class CreateDataset extends DataProducerPluginBase implements ContainerFactoryPl
             $node = Node::create($values);
             $node->save();
             return $node;
-        /*} else {
-            $response->addViolation(
-                    $this->t('You do not have permissions to create dataset .')
-            );
         }
-        return $response;*/
+        throw new \Exception('You dont have enough permission to create a dataset.');
     }
 
 }

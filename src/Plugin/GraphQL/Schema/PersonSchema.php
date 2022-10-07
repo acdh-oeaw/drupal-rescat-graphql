@@ -31,6 +31,39 @@ trait PersonSchema {
                         ->map('field', $builder->fromValue('field_person'))
         );
 
+         $registry->addTypeResolver('Paragraph', function ($value) {
+            if ($value instanceof Paragraph) {
+                switch ($value->bundle()) {
+                    case 'identifier_relations': return 'IdentifierRelation';
+                }
+            }
+            //https://github.com/drupal-graphql/graphql/pull/968
+            throw new Error('Could not resolve Paragraph type. ' . $value->bundle());
+        });
+
+        $registry->addFieldResolver('IdentifierRelation', 'id',
+                $builder->produce('entity_id')
+                        ->map('entity', $builder->fromParent())
+        );
+
+        $registry->addFieldResolver('IdentifierRelation', 'uuid',
+                $builder->produce('entity_uuid')
+                        ->map('entity', $builder->fromParent())
+        );
+
+        $registry->addFieldResolver('IdentifierRelation', 'identifier_value',
+                $builder->produce('identifier_value')
+                        ->map('entity', $builder->fromParent())
+        );
+        
+        /*
+        $registry->addFieldResolver('IdentifierRelation', 'datasetInstance',
+                $builder->produce('entity_reference')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_dataset_instance_relation'))
+        );
+
+        */
         // Reading the relation of the person paragraph, pointing to a taxonomy
         $registry->addFieldResolver('PersonRelation', 'relation',
                 $builder->produce('entity_reference')

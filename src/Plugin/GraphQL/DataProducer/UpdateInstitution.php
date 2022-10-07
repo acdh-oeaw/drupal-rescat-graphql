@@ -78,7 +78,8 @@ class UpdateInstitution extends DataProducerPluginBase implements ContainerFacto
      * @throws \Exception
      */
     public function resolve(array $data) {
-       // if ($this->currentUser->hasPermission("Update Institution content")) {
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
             $nid = $data['id'];
             $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
@@ -88,7 +89,8 @@ class UpdateInstitution extends DataProducerPluginBase implements ContainerFacto
                 $node->save();
             }
             return $node;
-        //}
+        }
+        throw new \Exception('You dont have enough permission to Update Institution.'); 
     }
 
 }

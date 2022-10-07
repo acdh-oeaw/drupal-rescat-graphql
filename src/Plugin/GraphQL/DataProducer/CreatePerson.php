@@ -6,6 +6,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\graphql\Plugin\GraphQL\DataProducer\DataProducerPluginBase;
 use Drupal\node\Entity\Node;
+use Drupal\Core\Access\AccessResult;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -75,16 +76,19 @@ class CreatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
      * @throws \Exception
      */
     public function resolve(array $data) {
-        //if ($this->currentUser->hasPermission("execute graphql create requests on persons")) {
-        $values = [
-            'type' => 'person',
-            'title' => $data['title'],
-            'body' => $data['description'],
-        ];
-        $node = Node::create($values);
-        $node->save();
-        return $node;
-        //}
+        
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
+            $values = [
+                'type' => 'person',
+                'title' => $data['title'],
+                'body' => $data['description'],
+            ];
+            $node = Node::create($values);
+            $node->save();
+            return $node;
+        }
+        
         throw new \Exception('You dont have enough permission to create a person.');
     }
 

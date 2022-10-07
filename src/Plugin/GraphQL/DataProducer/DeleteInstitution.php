@@ -75,7 +75,8 @@ class DeleteInstitution extends DataProducerPluginBase implements ContainerFacto
      * @throws \Exception
      */
     public function resolve(array $data) {
-        //if ($this->currentUser->hasPermission("delete institution content")) {
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
             $nid = $data['id'];
             $node = Node::load($nid);
             // or
@@ -86,7 +87,8 @@ class DeleteInstitution extends DataProducerPluginBase implements ContainerFacto
                 $node->delete();
             }
             return $node;
-        //}
+        }
+        throw new \Exception('You dont have enough permission to Delete  a Institution.');    
     }
 
 }

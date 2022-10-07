@@ -75,7 +75,8 @@ class DeleteProject extends DataProducerPluginBase implements ContainerFactoryPl
      * @throws \Exception
      */
     public function resolve(array $data) {
-        //if ($this->currentUser->hasPermission("delete Project content")) {
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
             $nid = $data['id'];
             $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
@@ -84,7 +85,8 @@ class DeleteProject extends DataProducerPluginBase implements ContainerFactoryPl
                 $node->delete();
             }
             return $node;
-        //}
+        }
+        throw new \Exception('You dont have enough permission to Delete a Project.'); 
     }
 
 }

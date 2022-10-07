@@ -75,7 +75,8 @@ class CreateInstitution extends DataProducerPluginBase implements ContainerFacto
      * @throws \Exception
      */
     public function resolve(array $data) {
-        //if ($this->currentUser->hasPermission("create institution content")) {
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
             $values = [
                 'type' => 'institution',
                 'title' => $data['title'],
@@ -84,8 +85,8 @@ class CreateInstitution extends DataProducerPluginBase implements ContainerFacto
             $node = Node::create($values);
             $node->save();
             return $node;
-        //}
-        // throw new \Exception('You dont have enough permission to create an institution.');
+        }
+        throw new \Exception('You dont have enough permission to create an institution.');
     }
 
 }

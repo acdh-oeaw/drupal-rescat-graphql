@@ -75,8 +75,8 @@ class DeleteDatasetInstance extends DataProducerPluginBase implements ContainerF
      * @throws \Exception
      */
     public function resolve(array $data) {
-        //if ($this->currentUser->hasPermission("delete DatasetInstance content")) {
-
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
             $nid = $data['id'];
             $node = Node::load($nid);
             // or
@@ -87,7 +87,8 @@ class DeleteDatasetInstance extends DataProducerPluginBase implements ContainerF
                 $node->delete();
             }
             return $node;
-        //}
+        }
+        throw new \Exception('You dont have enough permission to Delete  a Dataset Instance.');    
     }
 
 }

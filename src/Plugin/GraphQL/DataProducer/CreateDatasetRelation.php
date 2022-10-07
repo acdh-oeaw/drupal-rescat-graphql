@@ -76,7 +76,8 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
      * @throws \Exception
      */
     public function resolve(array $data) {
-        //if ($this->currentUser->hasPermission("create Dataset relation content")) {
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
 
             $node = Node::load($data['parent_id']);
             
@@ -111,15 +112,10 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
             } else {
                 $node->field_dataset_relations = $newVal;
             }
-
-           
             $node->save();
-              
-                
             return $paragraph;
-            
-        //}
-        //throw new \Exception('Dataset Relation Node save error.');
+        }
+        throw new \Exception('You dont have enough permission to create a dataset relation.');
     }
 
 }

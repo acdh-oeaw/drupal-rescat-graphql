@@ -77,8 +77,8 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
      * @throws \Exception
      */
     public function resolve(array $data) {
-        //if ($this->currentUser->hasPermission("create person relation")) {
-
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
             $node = Node::load($data['parent_id']);
             //checking the submitted parent node type, because they are storing the
             //relation in a different field
@@ -117,9 +117,8 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
             $node->save();
          
             return $paragraph;
-        //}
-        
-        // throw new \Exception('You dont have enough permission to create a person relation.');    
+        }
+        throw new \Exception('You dont have enough permission to create a person relation.');    
     }
 
 }

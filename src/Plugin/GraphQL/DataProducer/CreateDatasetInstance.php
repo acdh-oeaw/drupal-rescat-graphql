@@ -75,7 +75,8 @@ class CreateDatasetInstance extends DataProducerPluginBase implements ContainerF
      * @throws \Exception
      */
     public function resolve(array $data) {
-        //if ($this->currentUser->hasPermission("create Dataset Instance content")) {
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
             $values = [
                 'type' => 'dataset_instance',
                 'headline' => $data['headline'],
@@ -91,12 +92,8 @@ class CreateDatasetInstance extends DataProducerPluginBase implements ContainerF
             $node = Node::create($values);
             $node->save();
             return $node;
-        /*} else {
-            $response->addViolation(
-                    $this->t('You do not have permissions to create dataset instance.')
-            );
         }
-        return $response;*/
+        throw new \Exception('You dont have enough permission to create a dataset instance.');
     }
 
 }

@@ -80,8 +80,8 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
      * @throws \Exception
      */
     public function resolve(array $data) {
-        //if ($this->currentUser->hasPermission("Update person relation content")) {
-
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
             $node = Node::load($data['parent_id']);
             $type = strtolower($node->getType());
 
@@ -105,8 +105,8 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
                 }
             }
             return $node;
-        //}
-        //throw new \Exception('You have no rights!');
+        }
+        throw new \Exception('You dont have enough permission to Update Person Relation.'); 
     }
 
     /**

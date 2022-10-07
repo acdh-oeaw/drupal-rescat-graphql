@@ -76,7 +76,8 @@ class CreateInstitutionRelation extends DataProducerPluginBase implements Contai
      * @throws \Exception
      */
     public function resolve(array $data) {
-        //if ($this->currentUser->hasPermission("create Institution relation content")) {
+        $userRoles = $this->currentUser->getRoles();
+        if (in_array('authenticated', $userRoles)) {
             $paragraph = Paragraph::create([
                         'type' => 'institution_relations',
                         'parent_id' => $data['parent_id'],
@@ -109,8 +110,8 @@ class CreateInstitutionRelation extends DataProducerPluginBase implements Contai
 
             $node->save();
             return $paragraph;
-        //}
-        // throw new \Exception('You dont have enough permission to create institution relation.');
+        }
+        throw new \Exception('You dont have enough permission to create institution relation.');
     }
 
 }
