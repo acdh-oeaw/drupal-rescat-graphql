@@ -95,5 +95,4 @@ class UpdateProject extends DataProducerPluginBase implements ContainerFactoryPl
         }
         throw new \Exception('You dont have enough permission to Update Project.'); 
     }
-
 }

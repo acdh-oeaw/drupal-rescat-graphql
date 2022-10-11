@@ -71,8 +71,9 @@ type TaxonomyConnection {
 type Person implements NodeInterface {
   id: Int!
   title: String 
-  identifiers: [Paragraph]!
+  identifierRelations: [Paragraph]!
 }
+
 
 type PersonConnection {
   total: Int!
@@ -91,6 +92,13 @@ type PersonRelationConnection {
   items: [PersonRelation!]
 }
 
+type IdentifierRelation implements Paragraph {
+  id: Int!
+  uuid: String
+  relation: [Relation]
+  value: String
+  label: String
+}
 
 ##### Project #####
 

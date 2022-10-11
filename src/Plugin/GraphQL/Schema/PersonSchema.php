@@ -89,7 +89,48 @@ trait PersonSchema {
     protected function addPersonFields(ResolverRegistry $registry, ResolverBuilder $builder) {
         $this->getValueFromParent($registry, $builder, 'Person', 'id', 'entity_id');
         $this->getValueByEntityNode($registry, $builder, 'Person', 'title', 'property_path', 'title.value');
-        $this->getValueByEntityNode($registry, $builder, 'Person', 'identifiers', 'property_path', 'field_identifiers.value');
+        //$this->getValueByEntityNode($registry, $builder, 'Person', 'identifiers', 'property_path', 'field_identifiers.value');
+        
+        ///////////////// Relations //////////////////
+        $registry->addFieldResolver('Person', 'identifierRelations',
+                $builder->produce('entity_reference_revisions')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_identifier_relations'))
+        );
+        
+    
+        $registry->addTypeResolver('Paragraph', function ($value) {
+            if ($value instanceof Paragraph) {
+                switch ($value->bundle()) {
+                    case 'identifier_relations': return 'IdentifierRelation';
+                }
+            }
+            //https://github.com/drupal-graphql/graphql/pull/968
+            throw new Error('Could not resolve Paragraph type. ' . $value->bundle());
+        });
+
+        // Person relation
+        $registry->addFieldResolver('IdentifierRelation', 'id',
+                $builder->produce('entity_id')
+                        ->map('entity', $builder->fromParent())
+        );
+
+        $registry->addFieldResolver('IdentifierRelation', 'uuid',
+                $builder->produce('entity_uuid')
+                        ->map('entity', $builder->fromParent())
+        );
+
+        // Reading the relation of the person paragraph, pointing to a taxonomy
+        $registry->addFieldResolver('IdentifierRelation', 'relation',
+                $builder->produce('entity_reference')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_relation'))
+        );
+        
+        $this->getValueByEntityNode($registry, $builder, 'IdentifierRelation', 'value', 'property_path', 'field_identifier_value.value');
+        $this->getValueByEntityNode($registry, $builder, 'IdentifierRelation', 'label', 'property_path', 'field_identifier_label.value');
+        
+       
     }
 
 }

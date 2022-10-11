@@ -26,8 +26,12 @@ trait ProjectSchema {
         $this->getValueByEntityNode($registry, $builder, 'Project', 'endDate', 'property_path', 'field_end.value');
         $this->getValueByEntityNode($registry, $builder, 'Project', 'redmineId', 'property_path', 'field_redmine_id.value');
 
+        
+        // we need to fetch all paragraphs with type  project_relation and check the  field_project with the target_id if equals with the actual project id
+        // if yes then build up the relation
+        
+        
         ///////////////// Relations //////////////////
-
         $registry->addFieldResolver('Project', 'personRelations',
                 $builder->produce('entity_reference_revisions')
                         ->map('entity', $builder->fromParent())
