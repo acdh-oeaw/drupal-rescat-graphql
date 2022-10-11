@@ -89,8 +89,8 @@ type PersonRelation implements Paragraph {
   id: Int!
   uuid: String
   relation: [Relation]
-  identifierService: [Relation]
   person: [Person]
+  institution: [Institution]
 }
 
 type PersonRelationConnection {
@@ -111,13 +111,13 @@ type IdentifierRelation implements Paragraph {
 
 type Project implements NodeInterface {
   id: Int!
+  title: String
+  description: String
+  redmineId: Int  
   personRelations: [Paragraph]!
   institutionRelations: [Paragraph]!
-  headline: String
-  description: String  
   startDate: String
   endDate: String
-  redmineId: Int
   datasetRelations: [Paragraph]!
 }
 

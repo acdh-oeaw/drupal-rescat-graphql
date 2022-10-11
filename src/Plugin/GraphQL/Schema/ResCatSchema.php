@@ -60,7 +60,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->addPersonFields($registry, $builder);
         $this->addTaxonomyFields($registry, $builder);
         $this->addProjectFields($registry, $builder);
-        $this->addPersonRelationsFields($registry, $builder);
+        //$this->addPersonRelationsFields($registry, $builder);
         
         // Re-usable connection type fields.
         $this->addConnectionFields('DatasetConnection', $registry, $builder);
@@ -69,7 +69,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
         $this->addConnectionFields('PersonConnection', $registry, $builder);
         $this->addConnectionFields('ProjectConnection', $registry, $builder);
         $this->addConnectionFields('TaxonomyConnection', $registry, $builder);
-        $this->addConnectionFields('PersonRelationsConnection', $registry, $builder);
+        //$this->addConnectionFields('PersonRelationsConnection', $registry, $builder);
 
         return $registry;
     }
