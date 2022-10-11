@@ -13,16 +13,28 @@ use GraphQL\Error\Error;
 
 trait InstitutionSchema {
     
-    
     protected function addInstitutionFields(ResolverRegistry $registry, ResolverBuilder $builder) {
-                
-                error_log('traitben');
+        
         $this->getValueFromParent($registry, $builder, 'Institution', 'id', 'entity_id');
         $this->getValueFromParent($registry, $builder, 'Institution', 'title', 'entity_label');
-        $this->getValueByEntityNode($registry, $builder, 'Institution', 'description', 'property_path', 'body.value');
-        $this->getValueByEntityNode($registry, $builder, 'Institution', 'identifiers', 'property_path', 'field_identifiers.value');
-   
+        
+        ///////////////// Relations //////////////////
+        $registry->addFieldResolver('Institution', 'identifierRelations',
+                $builder->produce('entity_reference_revisions')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_identifier_relations'))
+        );
+    
+        $registry->addTypeResolver('Paragraph', function ($value) {
+            if ($value instanceof Paragraph) {
+                switch ($value->bundle()) {
+                    case 'identifier_relations': return 'IdentifierRelation';
+                }
+            }
+            //https://github.com/drupal-graphql/graphql/pull/968
+            throw new Error('Could not resolve Paragraph type. ' . $value->bundle());
+        });
+
+        $this->addIdentifierRelationFields($registry, $builder);
     }
-    
-    
 }

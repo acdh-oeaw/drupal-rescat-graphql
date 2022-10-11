@@ -131,8 +131,7 @@ type ProjectConnection {
 type Institution implements NodeInterface {
   id: Int!
   title: String
-  identifiers: [Paragraph]!
-  description: String
+  identifierRelations: [Paragraph]!
 }
 
 type InstitutionConnection {
