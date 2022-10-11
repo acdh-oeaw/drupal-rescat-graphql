@@ -127,6 +127,13 @@ trait PersonSchema {
                         ->map('field', $builder->fromValue('field_relation'))
         );
         
+        // Reading the relation of the person paragraph, pointing to a taxonomy
+        $registry->addFieldResolver('IdentifierRelation', 'identifierService',
+                $builder->produce('entity_reference')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_identifier_service'))
+        );
+        
         $this->getValueByEntityNode($registry, $builder, 'IdentifierRelation', 'value', 'property_path', 'field_identifier_value.value');
         $this->getValueByEntityNode($registry, $builder, 'IdentifierRelation', 'label', 'property_path', 'field_identifier_label.value');
         

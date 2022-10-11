@@ -54,6 +54,11 @@ type Relation {
   name: String
 }
 
+type identifierService {
+  id: Int
+  name: String
+}
+
 ##### Taxonomy #####
 type Taxonomy  {
   id: Int!
@@ -84,6 +89,7 @@ type PersonRelation implements Paragraph {
   id: Int!
   uuid: String
   relation: [Relation]
+  identifierService: [Relation]
   person: [Person]
 }
 
@@ -96,6 +102,7 @@ type IdentifierRelation implements Paragraph {
   id: Int!
   uuid: String
   relation: [Relation]
+  identifierService: [Relation]
   value: String
   label: String
 }
