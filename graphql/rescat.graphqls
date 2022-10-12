@@ -172,19 +172,22 @@ type DatasetRelation implements Paragraph {
   id: Int!
   uuid: String
   dataset: [Dataset]!
+  relation: [Relation]!
 }
 
 ##### DatasetInstance #####
 
 type DatasetInstance implements NodeInterface {
   id: Int!
-  headline: String
-  harvestingStatus: String
-  lastHarvestDate: String
-  license: String  
-  locationUri: String
-  locationTitle: String
-  size: Int
+  locationPath: String
+  description: String
+  harvestStatus: String
+  harvestDate: String
+  harvestReport: String
+  size: Int  
+  filesCount: Int  
+  datasetRelations: [Paragraph]!
+  personRelations: [Paragraph]!
 }
 
 type DatasetInstanceConnection {

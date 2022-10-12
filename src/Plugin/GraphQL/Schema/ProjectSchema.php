@@ -7,6 +7,7 @@ use Drupal\graphql\GraphQL\ResolverRegistry;
 use Drupal\graphql\Plugin\GraphQL\Schema\SdlSchemaPluginBase;
 use Drupal\rescat_graphql\Wrappers\QueryConnection;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\paragraphs\Entity\ParagraphsType;
 use Drupal\taxonomy\Entity\Term;
 use GraphQL\Error\Error;
 
@@ -63,7 +64,7 @@ trait ProjectSchema {
                     case 'identifier_relations': return 'IdentifierRelation';
                     case 'project_relation': return 'ProjectRelation';    
                     case 'institution_relations': return 'InstitutionRelation';
-                    case 'dataset_relations': return 'DatasetRelation';
+                    case 'dataset_relation': return 'DatasetRelation';
                 }
             }
             //https://github.com/drupal-graphql/graphql/pull/968
@@ -104,6 +105,19 @@ trait ProjectSchema {
         );
          * 
          */
+        
+        
+        //$paragraph_items = ParagraphsType::loadMultiple();
+        
+       $entity_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+
+        $query = \Drupal::entityQuery('paragraph')
+        ->condition('type', "project_relation");
+        
+$results = $query->execute();
+
+error_log(print_r($results, true));
+        
     }
 
 }
