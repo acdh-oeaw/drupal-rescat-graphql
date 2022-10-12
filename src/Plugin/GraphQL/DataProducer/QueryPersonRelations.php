@@ -96,14 +96,11 @@ class QueryPersonRelations extends DataProducerPluginBase implements ContainerFa
             throw new UserError(sprintf('Exceeded maximum query limit: %s.', static::MAX_LIMIT));
         }
 
-        error_log('here');
         $pids = \Drupal::entityQuery('paragraph')
                 ->condition('type', 'person_relations')
                 ->execute();
 
-        error_log(print_r($pids, true));
-        
-         $storage = \Drupal::entityTypeManager()->getStorage('paragraphs');
+        $storage = \Drupal::entityTypeManager()->getStorage('paragraphs');
         $type = $storage->getEntityType();
         $query = $storage->getQuery()
                 ->currentRevision()

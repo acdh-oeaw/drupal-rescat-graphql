@@ -42,6 +42,7 @@ trait ProjectSchema {
                         ->map('field', $builder->fromValue('field_institution_relations'))
         );
 
+        
         $registry->addFieldResolver('Project', 'datasetRelations',
                 $builder->produce('entity_reference_revisions')
                         ->map('entity', $builder->fromParent())
@@ -60,11 +61,13 @@ trait ProjectSchema {
                 switch ($value->bundle()) {
                     case 'person_relations': return 'PersonRelation';
                     case 'identifier_relations': return 'IdentifierRelation';
+                    case 'project_relation': return 'ProjectRelation';    
                     case 'institution_relations': return 'InstitutionRelation';
+                    case 'dataset_relations': return 'DatasetRelation';
                 }
             }
             //https://github.com/drupal-graphql/graphql/pull/968
-            throw new Error('Could not resolve Paragraph type. ' . $value->bundle());
+            throw new Error('Could not resolve Paragraph type (in project) ' . $value->bundle());
         });
 
        
@@ -82,27 +85,8 @@ trait ProjectSchema {
         );
 
         ///////////////////////////////////////////////////////////////////////////////
-        
-                  
-        // Institution Relation
         /*
-        $registry->addFieldResolver('InstitutionRelation', 'id',
-                $builder->produce('entity_id')
-                        ->map('entity', $builder->fromParent())
-        );
 
-        $registry->addFieldResolver('InstitutionRelation', 'uuid',
-                $builder->produce('entity_uuid')
-                        ->map('entity', $builder->fromParent())
-        );
-
-        $registry->addFieldResolver('InstitutionRelation', 'institution',
-                $builder->produce('entity_reference')
-                        ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_institution'))
-        );
-
-        //$this->createInstitutionsTermFieldResolver($registry, $builder);
         $registry->addFieldResolver('DatasetRelation', 'id',
                 $builder->produce('entity_id')
                         ->map('entity', $builder->fromParent())

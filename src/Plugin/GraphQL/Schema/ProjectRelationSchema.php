@@ -11,38 +11,32 @@ use Drupal\taxonomy\Entity\Term;
 use GraphQL\Error\Error;
 
 
-trait PersonRelationSchema {
+trait ProjectRelationSchema {
     
-    protected function addPersonRelationFields(ResolverRegistry $registry, ResolverBuilder $builder) {
+    protected function addProjectRelationFields(ResolverRegistry $registry, ResolverBuilder $builder) {
                 
         // Person relation
-        $registry->addFieldResolver('PersonRelation', 'id',
+        $registry->addFieldResolver('ProjectRelation', 'id',
                 $builder->produce('entity_id')
                         ->map('entity', $builder->fromParent())
         );
 
-        $registry->addFieldResolver('PersonRelation', 'uuid',
+        $registry->addFieldResolver('ProjectRelation', 'uuid',
                 $builder->produce('entity_uuid')
                         ->map('entity', $builder->fromParent())
         );
         
-        $registry->addFieldResolver('PersonRelation', 'person',
+        $registry->addFieldResolver('ProjectRelation', 'project',
                 $builder->produce('entity_reference')
                         ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_person'))
+                        ->map('field', $builder->fromValue('field_project'))
         );
 
         // Reading the relation of the person paragraph, pointing to a taxonomy
-        $registry->addFieldResolver('PersonRelation', 'relation',
+        $registry->addFieldResolver('ProjectRelation', 'relation',
                 $builder->produce('entity_reference')
                         ->map('entity', $builder->fromParent())
                         ->map('field', $builder->fromValue('field_relation'))
-        );
-        
-         $registry->addFieldResolver('PersonRelation', 'institution',
-                $builder->produce('entity_reference')
-                        ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_institution'))
         );
    
     }

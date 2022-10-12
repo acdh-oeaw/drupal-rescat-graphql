@@ -149,7 +149,7 @@ class QueryTaxonomies extends DataProducerPluginBase implements ContainerFactory
 
           //solution 2
           $query = \Drupal::entityQuery('taxonomy_term');
-          error_log('eeee');
+
           $query->condition('vid', 'entity_relations');
           $query->sort('weight');
           //we can search by title also

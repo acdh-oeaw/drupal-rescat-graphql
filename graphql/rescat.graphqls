@@ -126,6 +126,13 @@ type ProjectConnection {
   items: [Project!]
 }
 
+type ProjectRelation implements Paragraph {
+  id: Int!
+  uuid: String
+  relation: [Relation]
+  project: [Project]
+}
+
 ##### Institution #####
 
 type Institution implements NodeInterface {
@@ -152,8 +159,8 @@ type Dataset implements NodeInterface {
   title: String
   description: String
   redmineId: Int
-  projectId: Int
-  datasetInstanceRelations: [Paragraph]!
+  personRelations: [Paragraph]!
+  projectRelations: [Paragraph]!
 }
 
 type DatasetConnection {
@@ -183,12 +190,6 @@ type DatasetInstance implements NodeInterface {
 type DatasetInstanceConnection {
   total: Int!
   items: [DatasetInstance!]
-}
-
-type DatasetInstanceRelation implements Paragraph {
-  id: Int!
-  uuid: String
-  datasetInstance: [DatasetInstance]!
 }
 
 
@@ -358,11 +359,6 @@ input DatasetRelationUpdateInput {
 input DatasetRelationDeleteInput {
   id: Int!  
   target_id: Int!  
-}
-
-input DatasetInstanceRelationInput {
-  target_id: Int!
-  parent_id: Int!  
 }
 
 

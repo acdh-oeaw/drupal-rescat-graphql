@@ -32,7 +32,7 @@ trait InstitutionSchema {
                 }
             }
             //https://github.com/drupal-graphql/graphql/pull/968
-            throw new Error('Could not resolve Paragraph type. ' . $value->bundle());
+            throw new Error('Could not resolve Paragraph type. (institution) ' . $value->bundle());
         });
 
         $this->addIdentifierRelationFields($registry, $builder);

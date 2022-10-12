@@ -23,8 +23,6 @@ extend type Mutation {
   updateDatasetInstance(data: DatasetInstanceUpdateInput): DatasetInstance
   deleteDatasetInstance(data: DatasetInstanceDeleteInput): DatasetInstance
 
-  createDatasetInstanceRelation(data: DatasetInstanceRelationInput): DatasetInstanceRelation
-
   createProject(data: ProjectInput): Project
   updateProject(data: ProjectUpdateInput): Project
   deleteProject(data: ProjectDeleteInput): Project
