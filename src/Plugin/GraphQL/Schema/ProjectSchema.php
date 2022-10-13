@@ -42,7 +42,7 @@ trait ProjectSchema {
                         ->map('field', $builder->fromValue('field_institution_relations'))
         );
 
-        $registry->addFieldResolver('Project', 'projectRelations',
+        $registry->addFieldResolver('ProjectRelation', 'projectRelations',
                 $builder->compose(
                         $builder->produce('entity_id')
                                 ->map('entity', $builder->fromParent()),
@@ -50,7 +50,11 @@ trait ProjectSchema {
                             error_log(print_r($parent, true));
 
                             
-                            return $paragraph = Paragraph::load(227);
+                            $paragraph = Paragraph::load(227);
+                            error_log(print_r($paragraph, true));
+                            return $paragraph;
+                            
+                            
                             
                             if (count($paragraph->get('field_person')->getValue()) > 0) {
                             if ($this->checkPerson($paragraph->get('field_person')->getValue(), $data['target_id'])) {
@@ -124,11 +128,41 @@ trait ProjectSchema {
             //https://github.com/drupal-graphql/graphql/pull/968
             throw new Error('Could not resolve Paragraph type (in project) ' . $value->bundle());
         });
+        
+        
+        
+        // Person relation
+        $registry->addFieldResolver('ProjectRelation', 'id',
+                $builder->produce('entity_id')
+                        ->map('entity', $builder->fromParent()),
+                 $builder->callback(function ($parent) {
+                     return 227;
+                 })
+        );
+
+        $registry->addFieldResolver('ProjectRelation', 'uuid',
+                $builder->produce('entity_uuid')
+                        ->map('entity', $builder->fromParent())
+        );
+        
+        $registry->addFieldResolver('ProjectRelation', 'project',
+                $builder->produce('entity_reference')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_project'))
+        );
+
+        // Reading the relation of the person paragraph, pointing to a taxonomy
+        $registry->addFieldResolver('ProjectRelation', 'relation',
+                $builder->produce('entity_reference')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_relation'))
+        );
+        
 
         $this->addPersonRelationFields($registry, $builder);
         $this->addIdentifierRelationFields($registry, $builder);
         $this->addInstitutionRelationFields($registry, $builder);
-        $this->addProjectRelationFields($registry, $builder);
+        //$this->addProjectRelationFields($registry, $builder);
 
         $registry->addFieldResolver('Relation', 'id',
                 $builder->produce('entity_id')
