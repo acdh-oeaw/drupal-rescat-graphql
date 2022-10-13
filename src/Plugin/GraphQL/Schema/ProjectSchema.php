@@ -22,8 +22,9 @@ trait ProjectSchema {
      * @param \Drupal\graphql\GraphQL\ResolverBuilder $builder
      */
     protected function addProjectFields(ResolverRegistry $registry, ResolverBuilder $builder) {
-
+        
         $this->getValueFromParent($registry, $builder, 'Project', 'id', 'entity_id');
+      
         $this->getValueFromParent($registry, $builder, 'Project', 'title', 'entity_label');
         $this->getValueByEntityNode($registry, $builder, 'Project', 'description', 'property_path', 'body.value');
 
@@ -109,15 +110,52 @@ trait ProjectSchema {
         
         //$paragraph_items = ParagraphsType::loadMultiple();
         
-       $entity_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+        //$this->getDatasets($projectId);
+       
+
+        
+    }
+    
+    private function fetchParagraphs(): array {
+        $entity_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
 
         $query = \Drupal::entityQuery('paragraph')
         ->condition('type', "project_relation");
-        
-$results = $query->execute();
+        try {
+            return $query->execute();
+        } catch (\Exception $ex) {
+            return [];
+        }
 
-error_log(print_r($results, true));
+    }
+    
+    private function getProjectIds($paragraph_entities, int $projectId): array {
+        $data = [];  
+        foreach($paragraph_entities as $k => $v) {
+                foreach($v->get('field_project')->getValue() as $p) {
+                    if(isset($p['target_id'])) {
+                        $data[] = $p['target_id'];
+                    }
+                }
+                //error_log(print_r($v->get('field_project')->getValue(), true));
+            
+        }
+    }
+    
+    private function getDatasets($projectId): array {
+        $entity_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+        $paragraphs = $this->fetchParagraphs();
         
+        if(count($paragraphs) === 0) {
+            return [];
+        }
+        
+        //load all the paragraphs by the ids
+        $paragraph_entities = $entity_storage->loadMultiple($paragraphs);
+        
+        $projectIds = $this->getProjectIds($paragraph_entities, $projectId);
+        
+        return [];
     }
 
 }

@@ -1,0 +1,3036 @@
+
+datasetInstances:
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 1
+  id: 1
+  locationPath: acdh_resources/container/R_amp_19479
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 2
+  id: 2
+  locationPath: https://github.com/acdh-oeaw/vocabs-acdh-dumps/tree/main/CulturalHistory/legalkraus
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 3
+  id: 3
+  locationPath: \\w07ds2.oeaw.ads\ACDH_Resources$\container\R_ABCD_19875
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 4
+  id: 4
+  locationPath: /home/jupyter/backup_rw/tool/
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 4
+  id: 5
+  locationPath: 'on'
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 4
+  id: 6
+  locationPath: ACDH-CH
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 4
+  id: 7
+  locationPath: JupyterHub
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 4
+  id: 8
+  locationPath: instance
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 5
+  id: 9
+  locationPath: https://gitlab.com/acdh-oeaw/pez-edition
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 6
+  id: 10
+  locationPath: C_tevo_korpora_19446/R_tevo_Zeitungskorpus_19444
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 7
+  id: 11
+  locationPath: C_tevo_korpora_19446/R_tevo_Erbauungsliteratur_19443
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 8
+  id: 12
+  locationPath: https://gitlab.com/acdh-oeaw/nestroy-language
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 9
+  id: 13
+  locationPath: https://gitlab.com/acdh-oeaw/ace/dritte-walpurgisnacht/Walpurgisnacht_Ende_2020
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 10
+  id: 14
+  locationPath: container:\C_imafo\R_gens_18413\gema_scire_2020-11-04.sql
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 11
+  id: 15
+  locationPath: \\w07ds2\ACDH_resources$\container\R_mythendb_17913
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 12
+  id: 16
+  locationPath: https://gitlab.com/acdh-oeaw/musik/brahms/brahms_presse_17882
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 13
+  id: 17
+  locationPath: ARCHE\staging\ThunauKamp_16335_17488\data
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 14
+  id: 18
+  locationPath: https://gitlab.com/acdh-oeaw/wboe/retro
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 15
+  id: 19
+  locationPath: \\w07ds2\IKAnt_ODEEG\Collections
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 16
+  id: 20
+  locationPath: ARCHE\staging\ThunauKamp_16335_17488\data
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 17
+  id: 21
+  locationPath: R_Bieber-Objects_15291
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 18
+  id: 22
+  locationPath: R_VOICE_15036
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 19
+  id: 23
+  locationPath: https://gitlab.com/acdh-oeaw/jwv/data
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 20
+  id: 24
+  locationPath: container\R_exeter_clipping_14460
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 21
+  id: 25
+  locationPath: \\w07ds2.oeaw.ads\OeAW_Projekte03$\OREA-EGYPT_Puzzle4D\ARCHE-preparation\original
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 21
+  id: 26
+  locationPath: available
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 21
+  id: 27
+  locationPath: 'on'
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 21
+  id: 28
+  locationPath: Herkules
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 21
+  id: 29
+  locationPath: from
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 21
+  id: 30
+  locationPath: /home/arche-ingestion/OREA-EGYPT_Puzzle4D
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 22
+  id: 31
+  locationPath: R:\ARCHE\staging\BieberPostcards_12331
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 23
+  id: 32
+  locationPath: R:\container\R_grundbuecher_12287
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 24
+  id: 33
+  locationPath: R_Kraus-Samek_11789
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 24
+  id: 34
+  locationPath: redmine.acdh.oeaw.ac.at/boehm_edition_11789.git
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 25
+  id: 35
+  locationPath: Z:\container\R_dfmroe_11787
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 26
+  id: 36
+  locationPath: R_KrausOnline_11764
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 27
+  id: 37
+  locationPath: R:\container\R_Thun_11600
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 28
+  id: 38
+  locationPath: /home/topothek/data
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 28
+  id: 39
+  locationPath: (on
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 28
+  id: 40
+  locationPath: hephaistos)
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 29
+  id: 41
+  locationPath: R:\container\R_histogis_7663\papers
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 30
+  id: 42
+  locationPath: R_DELT_10810
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 31
+  id: 43
+  locationPath: R_WrZeitung_10792
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 32
+  id: 44
+  locationPath: R_floodingtweets_10663
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 33
+  id: 45
+  locationPath: container\R_Rundbriefe_10434
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 34
+  id: 46
+  locationPath: https://github.com/KONDE-AT/grundbuecher-data
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 35
+  id: 47
+  locationPath: https://www.zotero.org/groups/2042149/mrp-bib
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 36
+  id: 48
+  locationPath: R_kreslehner_10062
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 37
+  id: 49
+  locationPath: R_parlAT_9928
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 38
+  id: 50
+  locationPath: \container\R_ministerratsprotokolle_9591
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 39
+  id: 51
+  locationPath: R_memoire_du_millischer_8839
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 40
+  id: 52
+  locationPath: deutschmaturatexte_data.git
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 40
+  id: 53
+  locationPath: acdhContainer://R_deutschmaturatexte_8630
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 41
+  id: 54
+  locationPath: R_brin_8410
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 42
+  id: 55
+  locationPath: R_depictions_8144
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 43
+  id: 56
+  locationPath: R_lbg_8006
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 44
+  id: 57
+  locationPath: R_warOfPictures_7265
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 45
+  id: 58
+  locationPath: C_russian_resources_6945\R_RML_6906
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 46
+  id: 59
+  locationPath: C_russian_resources_6945/R_DictRussianDialects_6902
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 47
+  id: 60
+  locationPath: R_troesmis_6787
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 48
+  id: 61
+  locationPath: https://gitlab.com/acdh-oeaw/ablo/ablo-data
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 49
+  id: 62
+  locationPath: R_oeml_6780
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 50
+  id: 63
+  locationPath: R_stb_6328
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 51
+  id: 64
+  locationPath: \\w07ds2\ACDH_Resources$\container\R_abklatsche_6267
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 52
+  id: 65
+  locationPath: R_flj_5698
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 53
+  id: 66
+  locationPath: R_IPI_5662
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 54
+  id: 67
+  locationPath: R_japbib_5638
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 55
+  id: 68
+  locationPath: R_latin_dedicatory_letters_5540
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 56
+  id: 69
+  locationPath: https://redmine.acdh.oeaw.ac.at/projects/ag-2/repository/textimager
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 57
+  id: 70
+  locationPath: C_scannerTests_5443/R_staribacher_5499
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 58
+  id: 71
+  locationPath: R_tunico_5488
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 59
+  id: 72
+  locationPath: diarium
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 60
+  id: 73
+  locationPath: R_cfdb_data_5234
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 61
+  id: 74
+  locationPath: C_vicav_5141
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 62
+  id: 75
+  locationPath: C_semac
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 63
+  id: 76
+  locationPath: https://gitlab.com/acdh-oeaw/traveldigital/traveldigital-data
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 64
+  id: 77
+  locationPath: _R_aac_names_4828
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 65
+  id: 78
+  locationPath: _R_oebl
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 66
+  id: 79
+  locationPath: R:\container\C_wrWb_4776\R_Hauenstein1974_4649
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 67
+  id: 80
+  locationPath: R:\container\C_wrWb_4776\R_Teuschl1990_4648
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 68
+  id: 81
+  locationPath: R:\container\C_wrWb_4776\R_Wehle1980_4647
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 69
+  id: 82
+  locationPath: R:\container\C_wrWb_4776\R_Mayr1929_4645
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 70
+  id: 83
+  locationPath: R:\container\C_wrWb_4776\R_Mayr1924_4644
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 71
+  id: 84
+  locationPath: https://gitlab.com/acdh-oeaw/vidi/-/blob/master/R_Schranka1905_4643/102_derived_tei/Schranka1905.xml
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 72
+  id: 85
+  locationPath: https://gitlab.com/acdh-oeaw/vidi/-/blob/master/R_H%C3%BCgel1873_4642/102_derived_tei/H%C3%BCgel1873.xml
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 73
+  id: 86
+  locationPath: R:\container\C_wrWb_4776\R_Sonnleithner1811_4641
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 74
+  id: 87
+  locationPath: /mnt/acdh_resources/container/R_abacus_138
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 75
+  id: 88
+  locationPath: https://gitlab.com/acdh-oeaw/vidi/-/blob/master/R_Loritza_1099/102_derived_tei/deu_loritza_2015_10_22_a-doc.xml
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 76
+  id: 89
+  locationPath: eckhel
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 77
+  id: 90
+  locationPath: R_ecce_1061
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 78
+  id: 91
+  locationPath: container_static/_ingest_pending/bruckner-online_995
+  state: To be filled in by a harvester
+- !!python/object:acdh.resourceCatalog.harvester.DatasetInstance.DatasetInstance
+  datasetId: 79
+  id: 92
+  locationPath: R_baffle_765
+  state: To be filled in by a harvester
+datasets:
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 1
+    role: ContactPerson
+  description: "XML/TEI Files and Images (TIFF/JPGS) from the AMP-Project\r\n\r\n\
+    XML/TEI (and ARCHE-MD for Images) are curated in \"GitHub\":https://github.com/Auden-Musulin-Papers/amp-data\r\
+    \nImage Data is located at acdh_resources/container/R_amp_19479 #19479\r\n\r\n\
+    PI is \"Sandra Mayer\":https://www.oeaw.ac.at/acdh/team/current-team/sandra-mayer\
+    \ \r\n\r\n\r\nh2. some links\r\n\r\n* Link/path to the ARCHE metadata delivered\
+    \ by the depositor.\r\n** MD is provided/curated by the depositors directly in\
+    \ \"arche_constants.md\":https://github.com/Auden-Musulin-Papers/amp-data/blob/main/data/meta/arche_constants.rdf\r\
+    \n** see this file's history for some kind of \"curation-log\":https://github.com/Auden-Musulin-Papers/amp-data/commits/main/data/meta/arche_constants.rdf\r\
+    \n\r\n* Link/path to the file-checker and other reports (PDF checks) \u2013 with\
+    \ a date to distinguish first and last check (I suppose in this case it is a part\
+    \ of the GitHub process)\r\n**  as of now the filechecker is part of the \"GitHub\
+    \ ingestion workflow\":https://github.com/Auden-Musulin-Papers/amp-data/actions/workflows/arche.yml\
+    \ see for example \"this run\":https://github.com/Auden-Musulin-Papers/amp-data/runs/6861112184?check_suite_focus=true\
+    \ if there were any issues found by the filechecker the ingestion workflow would\
+    \ have stopped\r\n** but I think it would be nice to persist the logs of the filechecker,\
+    \ I'll think about something\r\n\r\n* Link/path to feedback from the depositor\
+    \ (if possible with documented changes that were already done and which not)\r\
+    \n** same file/file-history as before\r\n\r\n* Link to the ingestion log.\r\n\
+    ** ingestions logs are saved in the github-action runs"
+  id: 1
+  name: AMP Auden-Musulin-Papers
+  projectId: 1
+  redmineIssueId: 20352
+  
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 15
+    role: ContactPerson
+  - personId: 32
+    role: Editor
+  description: "Taxonomy used in legalkraus project #6086,\r\n\r\nOriginal location:\
+    \ https://gitlab.com/acdh-oeaw/legalkraus/vocabs/-/tree/master\r\n\r\nContext:\
+    \ Applied to material on https://www.kraus.wienbibliothek.at/\r\n\r\nContact:\
+    \ internal, see Assignees\r\n\r\nUpdate workflow: Changes in vocabseditor, export\
+    \ the SKOS (ttl and rdf) from there, add the date to the filename and put it on\
+    \ `vocabs-acdh-dumps`-github - update Skosmos triplestore"
+  id: 2
+  name: legalkraus taxonomy
+  projectId: 2
+  redmineIssueId: 19895
+  
+  
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 15
+    role: ContactPerson
+  - personId: 17
+    role: Editor
+  description: "http://www.abil.at/Datenbank_Scheder/db_info.php\r\n\r\n> Die ABCD\
+    \ bietet Ihnen die M\xF6glichkeit, s\xE4mtliche biographisch erfassten Informationen\
+    \ zu Bruckners Leben und Werk in chronologischer \xDCbersicht abzurufen. \u2013\
+    \ Hinweise zur Ben\xFCtzung der Internet-Datenbank erhalten Sie unmittelbar bei\
+    \ der Datenbank-Suche; wenn Sie sich f\xFCr den Aufbau der ABCD, die zur Verf\xFC\
+    gung stehenden Informationsm\xF6glichkeiten und weitere Einzelheiten interessieren,\
+    \ lesen Sie bitte die Hinweise des Verfassers.\r\n\r\nKontakt: Klugseder, Robert\
+    \ <Robert.Klugseder@oeaw.ac.at>\r\n\r\n\xDCberlegungen zu Migration der Datenbank\
+    \ in ein neues System."
+  id: 3
+  name: Anton Bruckner Chronologie Datenbank (ABCD) des ABIL - Datenbank Scheder
+  projectId: 3
+  redmineIssueId: 19875
+  
+  
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 45
+    role: ContactPerson
+  - personId: 43
+    role: Editor
+  description: "h1. General Information\r\n\r\nDYLEN is a research project which aims\
+    \ to gain insights to the dynamics of the Austrian German lexicon in the last\
+    \ 20 years and to measure the influence of politicians on language change.\r\n\
+    https://dylen.acdh.oeaw.ac.at/\r\n\r\nIt was a joint effort of ACDH-CH, TU Wien\
+    \ and Uni Wien\r\n\r\nDepositor (and contact) information: \r\nName: Dr. Julia\
+    \ Neidhardt\r\nInstitution: TU Wien\r\nContact information: Dr. Julia Neidhardt\
+    \ - neidhardt@ec.tuwien.ac.at\r\n\r\n---\r\n\r\nh1. Guidance\r\n\r\nA full overview\
+    \ with more description is here: https://docs.google.com/document/d/1ibTvEZ5nW-rPml0dQFQ4K_u9HniU3n7iEjTt8RnBlp0\
+    \ (#9011)\r\n\r\n* Copy this template for each collection to be included in ARCHE\
+    \ (subtasks should be included automatically)\r\n* Status\r\n** New: for new collections\
+    \ that have not yet been curated\r\n** In Preparation: for collection thate are\
+    \ actively curated\r\n** Needs review: for collections that are ready, but await\
+    \ a final check from a second curator\r\n** Done: for collections that are ready\
+    \ and where the second curator found nothing to be corrected\r\n** Published:\
+    \ for collections that are published in ARCHE. Usually they should not be changed\
+    \ anymore. Also a pid should be atttached to it\r\n* Assignee: the curator responsible\
+    \ for this collection\r\n* pid: the Handle assigned to the collection; if no Handle\
+    \ is assigne use the ARCHE ID\r\n* location: select where data is located and\
+    \ specify with location_path\r\n* Start date = day the collection was submitted\r\
+    \n* Due date = day the collection was published (or should be published)\r\n*\
+    \ Done: leave it as it is. It will change according the percentage you set in\
+    \ the subtasks!\r\n* Assignees: select the second curator from the list, when\
+    \ collection is ready to be reviewed\r\n\r\n* Log time: it would be nice if you\
+    \ add the time you spent with the curation of the collection, to collect a rough\
+    \ estimate for future collections\r\n\r\n* All further steps are collected in\
+    \ the subtasks\r\n** The subtasks are grouped into phases, with phases being consecutive\r\
+    \n** Tasks in the same phase do not always follow a specific order\r\n** Usually\
+    \ only if all tasks from a phase have been completed the tasks from the next phase\
+    \ can be executed\r\n** This applies especially to the last steps in 'Transformation\
+    \ SIP to AIP' as well as 'AIP check', and 'Ingest to Production (Apollo)'\r\n\
+    * Curation tasks and actions go into the ticket notes and especially into the\
+    \ curation log\r\n* Any longer communication documentation can be attached to\
+    \ the resource via protocols"
+  id: 4
+  name: DYLEN - Diachronic Dynamics of Lexical Networks
+  projectId: 4
+  redmineIssueId: 19647
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "Digital version of the Pez letters edition:\r\n\r\nWallnig/Stockinger:\
+    \ Die gelehrte Korrespondenz der Br\xFCder Pez, Text, Regesten, Kommentare. Vols\
+    \ 1 & 2\r\n\r\nVol 1: https://e-book.fwf.ac.at/o:370\r\nVol 2, part 1: https://e-book.fwf.ac.at/o:824\
+    \ \r\nVol 2, part 2: https://e-book.fwf.ac.at/o:825  \r\n\r\nThe gitlab repo includes\
+    \ the following sub-resources:\r\n\r\n* letters\r\n* indexes\r\n* letter author\
+    \ biographies\r\n* bibliography (only sources, now curated in #18628)\r\n* metadata\
+    \ of the bequest / Nachlass (exported from UNIDAM #8768, being ingested into ARCHE\
+    \ as #12014)\r\n\r\n\r\nDerived from Word documents (i.e. sources from print-PDFs),\
+    \ converted to TEI and manually enriched with links to indexes and Zotero library.\r\
+    \n\r\n|_. Directory |_. Resource |_. Status |\r\n| 001_src | Source data, i.e.\
+    \ docx, unidam export xml | static, needed for re-running the conversion |\r\n\
+    | 101_derived | * persons and institutions mapped to reference resources \r\n\
+    * EAD version of Nachlass data (UNIDAM) \r\n* RDF export of Zotero bibliography\
+    \ | EAD in this dir is authoritative; other data is most probably only intermediate\
+    \ and/or temporary output which should be revised and removed |\r\n| 102_derived_tei\
+    \ | TEI data of various sub-resources | |\r\n| 102_derived_tei/102_01_derived_by_TEI_scripts\
+    \ | first transformation step by running TEI docx2tei Stylesheets on different\
+    \ sub-resources | intermediate output, can be removed |\r\n| 102_derived_tei/02_02_extracted_index_entries\
+    \ | data of several indices  | manually curated in https://pez-curation.acdh-dev.oeaw.ac.at/mergeIndexes.html\
+    \ \u2013 is the version in git up to date? |\r\n| 102_derived_tei/102_03_extracted_letters\
+    \ | letters | authoritative data, manually curated |\r\n| 102_derived_tei/102_04_auxiliary_files\
+    \ | TEI version of other resources, mostly generated automatically | authoritative\
+    \ versions |\r\n| 102_derived_tei/102_07_bequest | TEI data belonging to the bequest\
+    \ (persons, bibliography, msDesc) | authoritative data \u2013 check with EAD above\
+    \ |\r\n| 102_derived_tei/102_102_08_BandIIIff | letters of the vols 3ff | TEI\
+    \ created manually for each newly transcribed letter |\r\n| 800_definitions_generic\
+    \ | tokeneditor schema | |\r\n| 802_tei_odd | ODD + RNG schema |\r\n\r\nSee `_PROCESS.csv`\
+    \ for a description of the conversion process."
+  id: 5
+  name: Pez edition data
+  projectId: 5
+  redmineIssueId: 19514
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 11
+    role: ContactPerson
+  description: h1. t.evo Zeitungskorpus
+  id: 6
+  name: t.evo Zeitungskorpus
+  projectId: 6
+  redmineIssueId: 19444
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 11
+    role: ContactPerson
+  description: "h1. t.evo Erbauungsliteratur\r\n\r\n\r\nTEI converted to vert and\
+    \ imported into a NoSke\r\n\r\ncf. @/opt/utils/apa-utils/tevo_Makefile@"
+  id: 7
+  name: t.evo Erbauungsliteratur
+  projectId: 19445
+  redmineIssueId: 19443
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "h1. Nestroy Language Data\r\n\r\nThis is the data produced in the\
+    \ Project \u201ELanguage structure and use in J.N. Nestroy\u2019s plays\u201C\
+    \ (#17251 / #16213). \r\n\r\nThe data is versioned in git under https://gitlab.com/acdh-oeaw/nestroy-language\
+    \ and should follow the folder naming conventions under https://redmine.acdh.oeaw.ac.at/projects/dsie/wiki/ContainerFileStruktur."
+  id: 8
+  name: Nestroy Language Data
+  projectId: 7
+  redmineIssueId: 19073
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 46
+    role: ContactPerson
+  description: ''
+  id: 9
+  name: Dritte Walpurgisnacht
+  projectId: 8
+  redmineIssueId: 18469
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 15
+    role: ContactPerson
+  description: "\r\nsql-dump of the db for https://www.oeaw.ac.at/imafo/gens/\r\n"
+  id: 10
+  name: SQL-dump of  imafo/gens
+  projectId: 9
+  redmineIssueId: 18413
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 15
+    role: ContactPerson
+  description: "dump of the mysql DB @kal_mythdb from https://srvc1.oeaw.ac.at/ from\
+    \ 2020-09-04\r\n(Latest change in DB seems to be from 2019)\r\n\r\nstored into\
+    \ oeawcloud and in the container.\r\n\r\n*Note:* There is also a mythenDB on helios,\
+    \ however this seems to be obsolete instance from unfinished migration attempt\
+    \ in 2015. Latest changes are from 2015, however it has two additional tables:\
+    \ @login_attempt@ and @members@."
+  id: 11
+  name: mythenDB SQL dump
+  projectId: 10
+  redmineIssueId: 17913
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "h2. Brahms Rezeptionsdatenbank\r\n\r\nDaten der Projekte \u201EJohannes\
+    \ Brahms in der zeitgen\xF6ssischen Wiener Presse unter Ber\xFCcksichtigung politisch\
+    \ polarisierender Zeitungen\u201C (Stadt-Wien-F\xF6rderung 2019) sowie \u201E\
+    Die Wiener Brahms-Rezeption\u201C (Stadt-Wien-F\xF6rderung 2020) \u2013 PI bei\
+    \ beiden Vasiliki Papadopoulou.\r\n\r\nUrspr\xFCnglich lokal bearbeitet in einer\
+    \ Filemaker-Datenbank. Kopie und Exporte (Excel, CSV, XML) erhalten via TEAMS\
+    \ von Vasiliki Papadopoulou am 31.8.2020 und in neues git repository gespielt\
+    \ (s.u.)\r\n\r\nBeschreibung der Felder: https://oeawacat-my.sharepoint.com/:w:/r/personal/vasiliki_papadopoulou_oeaw_ac_at/_layouts/15/doc2.aspx?action=edit&sourcedoc=%7Bc6e882ba-ccc3-4133-a898-a043a87b3ce0%7D&cid=cc11d02e-b772-4f27-9b50-b4842c1cd604\r\
+    \n"
+  id: 12
+  name: Brahms Rezeptionsdatenbank
+  projectId: 11
+  redmineIssueId: 17882
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 47
+    role: ContactPerson
+  description: "h1. General Information\r\n\r\nDaten des Projektes \"Thunau am Kamp\
+    \ \u2013 Eine befestigte H\xF6hensiedlung der Urnenfelderkultur\". Es handelt\
+    \ sich um eine arch\xE4ologische Fundstelle auf dem sog. \u201ESchanzberg\u201C\
+    , einem H\xF6henr\xFCcken oberhalb von Thunau, Gemeindegebiet Gars am Kamp, welche\
+    \ im nordwestlichen Nieder\xF6sterreich am Ostrand des Waldviertels, ca. 80 km\
+    \ nordwestlich von Wien liegt. Die strategisch g\xFCnstige Lage an einer wichtigen\
+    \ Nord-S\xFCd Route durch das Kamptal wurde vor allem in der Urnenfelderzeit zwischen\
+    \ 1050\u2013800 v. Chr. und im Fr\xFChmittelalter (8.\u201311. Jh. n. Chr.) durch\
+    \ Errichtung gro\xDFer Siedlungen gen\xFCtzt.\r\n\r\nIn dem Projekt \"Dokuplattform\
+    \ Thunau am Kamp\" werden die Daten der verschiedenen Kampagnen zusammengetragen\
+    \ und auch digitalisiert und nach und nach auf ARCHE ver\xF6ffentlicht: https://www.orea.oeaw.ac.at/forschung/urnfield-culture-networks/thunau-am-kamp-eine-befestigte-hoehensiedlung-der-urnenfelderkultur/dokuplattform-thunau-am-kamp/\r\
+    \n\r\nThis redmine issue is for the campaigns 02-09. The first campaign was documented\
+    \ in #16335. The new campaigns are going to be a part of the same TopCollection\
+    \ as the campaign 01, therefore the location_path, pid/arche link stay the same\
+    \ as for the topcollection of campaign 01. \r\n\r\nDepositor (and contact) information:\r\
+    \nName: Mario Gavranovi\u0107 (and staff member Michael Konrad)\r\nInstitution:\
+    \ OREA\r\nContact information: Mario.Gavranovic@oeaw.ac.at and Michael.Konrad@oeaw.ac.at\r\
+    \n\r\n---\r\n\r\nh1. Guidance\r\n\r\nA full overview with more description is\
+    \ here: https://docs.google.com/document/d/1ibTvEZ5nW-rPml0dQFQ4K_u9HniU3n7iEjTt8RnBlp0\
+    \ (#9011)\r\n\r\n* Copy this template for each collection to be included in ARCHE\
+    \ (subtasks should be included automatically)\r\n* Status\r\n** New: for new collections\
+    \ that have not yet been curated\r\n** In Preparation: for collection that are\
+    \ actively curated\r\n** Needs review: for collections that are ready, but await\
+    \ a final check from a second curator\r\n** Done: for collections that are ready\
+    \ and where the second curator found nothing to be corrected\r\n** Published:\
+    \ for collections that are published in ARCHE. Usually they should not be changed\
+    \ anymore. Also a pid should be atttached to it\r\n* Assignee: the curator responsible\
+    \ for this collection\r\n* pid: the Handle assigned to the collection; if no Handle\
+    \ is assigne use the ARCHE ID\r\n* location: select where data is located and\
+    \ specify with location_path\r\n* Start date = day the collection was submitted\r\
+    \n* Due date = day the collection was published (or should be published)\r\n*\
+    \ Done: leave it as it is. It will change according the percentage you set in\
+    \ the subtasks!\r\n* Assignees: select the second curator from the list, when\
+    \ collection is ready to be reviewed\r\n\r\n* Log time: it would be nice if you\
+    \ add the time you spent with the curation of the collection, to collect a rough\
+    \ estimate for future collections\r\n\r\n* All further steps are collected in\
+    \ the subtasks\r\n** The subtasks are grouped into phases, with phases being consecutive\r\
+    \n** Tasks in the same phase do not always follow a specific order\r\n** Usually\
+    \ only if all tasks from a phase have been completed the tasks from the next phase\
+    \ can be executed\r\n** This applies especially to the last steps in 'Transformation\
+    \ SIP to AIP' as well as 'AIP check', and 'Ingest to Production (Apollo)'\r\n\
+    * Curation tasks and actions go into the ticket notes and especially into the\
+    \ curation log\r\n* Any longer communication documentation can be attached to\
+    \ the resource via protocols"
+  id: 13
+  name: Dokuplattform Thunau am Kamp - Kampagne 02-09
+  projectId: 12
+  redmineIssueId: 17488
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: TEI-XML erstellt von verlagsdienstleister
+  id: 14
+  name: "WB\xD6 retrodigitalisiert"
+  projectId: 13
+  redmineIssueId: 17137
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 48
+    role: ContactPerson
+  description: "h1. General Information\r\n\r\n*[Resource #13709 Added by Martina\
+    \ Trognitz 12 months ago. Updated 3 months ago. -> accidentally deleted by Ulrike\
+    \ Czeitschner on 08.04.2020, restored by Ulrike Czeitschner on 08.04.2020]*\r\n\
+    \r\nA collection of digitised vases from the KHM. Collection includes photographs,\
+    \ illustrations and 3d scans with final meshes in different resolutions. Some\
+    \ objects also contain x-ray data.\r\n\r\nDepositor (and contact) information:\r\
+    \nName: Vera Moithino da Almeida and Claudia Lang-Auinger\r\nInstitution: IKAnt\r\
+    \nContact information:\r\n\r\n---\r\n\r\nA short description of the collection\
+    \ and where it comes from.\r\n\r\n---\r\n\r\nh1. Guidance\r\n\r\nA full overview\
+    \ with more description is here: https://docs.google.com/document/d/1ibTvEZ5nW-rPml0dQFQ4K_u9HniU3n7iEjTt8RnBlp0\
+    \ (#9011)\r\n\r\n* Copy this template for each collection to be included in ARCHE\
+    \ (subtasks should be included automatically)\r\n* Status\r\n** New: for new collections\
+    \ that have not yet been curated\r\n** In Preparation: for collection thate are\
+    \ actively curated\r\n** Needs review: for collections that are ready, but await\
+    \ a final check from a second curator\r\n** Done: for collections that are ready\
+    \ and where the second curator found nothing to be corrected\r\n** Published:\
+    \ for collections that are published in ARCHE. Usually they should not be changed\
+    \ anymore. Also a pid should be atttached to it\r\n* Assignee: the curator responsible\
+    \ for this collection\r\n* pid: the Handle assigned to the collection; if no Handle\
+    \ is assigne use the ARCHE ID\r\n* location: select where data is located and\
+    \ specify with location_path\r\n* Start date = day the collection was submitted\r\
+    \n* Due date = day the collection was published (or should be published)\r\n*\
+    \ Done: leave it as it is. It will change according the percentage you set in\
+    \ the subtasks!\r\n* Assignees: select the second curator from the list, when\
+    \ collection is ready to be reviewed\r\n\r\n* Log time: it would be nice if you\
+    \ add the time you spent with the curation of the collection, to collect a rough\
+    \ estimate for future collections\r\n\r\n* All further steps are collected in\
+    \ the subtasks\r\n** The subtasks are grouped into phases, with phases being consecutive\r\
+    \n** Tasks in the same phase do not always follow a specific order\r\n** Usually\
+    \ only if all tasks from a phase have been completed the tasks from the next phase\
+    \ can be executed\r\n** This applies especially to the last steps in 'Transformation\
+    \ SIP to AIP' as well as 'AIP check', and 'Ingest to Production (Apollo)'\r\n\
+    * Curation tasks and actions go into the ticket notes and especially into the\
+    \ curation log\r\n* Any longer communication documentation can be attached to\
+    \ the resource via protocols"
+  id: 15
+  name: ODeeg data
+  projectId: 14
+  redmineIssueId: 17090
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 45
+    role: ContactPerson
+  description: "h1. General Information\r\n\r\nDaten des Projektes \"Thunau am Kamp\
+    \ \u2013 Eine befestigte H\xF6hensiedlung der Urnenfelderkultur\". Es handelt\
+    \ sich um eine arch\xE4ologische Fundstelle auf dem sog. \u201ESchanzberg\u201C\
+    , einem H\xF6henr\xFCcken oberhalb von Thunau, Gemeindegebiet Gars am Kamp, welche\
+    \ im nordwestlichen Nieder\xF6sterreich am Ostrand des Waldviertels, ca. 80 km\
+    \ nordwestlich von Wien liegt. Die strategisch g\xFCnstige Lage an einer wichtigen\
+    \ Nord-S\xFCd Route durch das Kamptal wurde vor allem in der Urnenfelderzeit zwischen\
+    \ 1050\u2013800 v. Chr. und im Fr\xFChmittelalter (8.\u201311. Jh. n. Chr.) durch\
+    \ Errichtung gro\xDFer Siedlungen gen\xFCtzt. \r\n\r\nIn dem Projekt \"Dokuplattform\
+    \ Thunau am Kamp\" werden die Daten der verschiedenen Kampagnen zusammengetragen\
+    \ und auch digitalisiert und nach und nach auf ARCHE ver\xF6ffentlicht: https://www.orea.oeaw.ac.at/forschung/urnfield-culture-networks/thunau-am-kamp-eine-befestigte-hoehensiedlung-der-urnenfelderkultur/dokuplattform-thunau-am-kamp/\r\
+    \n\r\nDepositor (and contact) information: \r\nName: Mario Gavranovi\u0107 (and\
+    \ staff member Michael Konrad)\r\nInstitution: OREA\r\nContact information: Mario.Gavranovic@oeaw.ac.at\
+    \ and Michael.Konrad@oeaw.ac.at\r\n\r\n---\r\n\r\nh1. Guidance\r\n\r\n* Copy this\
+    \ template for each collection to be included in ARCHE (subtasks should be included\
+    \ automatically)\r\n* Status\r\n** New: for new collections that have not yet\
+    \ been curated\r\n** In Preparation: for collection thate are actively curated\r\
+    \n** Needs review: for collections that are ready, but await a final check from\
+    \ a second curator\r\n** Done: for collections that are ready and where the second\
+    \ curator found nothing to be corrected\r\n** Published: for collections that\
+    \ are published in ARCHE. Usually they should not be changed anymore. Also a pid\
+    \ should be atttached to it\r\n* Assignee: the curator responsible for this collection\r\
+    \n* pid: the Handle assigned to the collection; if no Handle is assigne use the\
+    \ ARCHE ID\r\n* location: select where data is located and specify with location_path\r\
+    \n* Start date = day the collection was submitted\r\n* Due date = day the collection\
+    \ was published (or should be published)\r\n* Done: leave it as it is. It will\
+    \ change according the percentage you set in the subtasks!\r\n* Assignees: select\
+    \ the second curator from the list, when collection is ready to be reviewed\r\n\
+    \r\n* Log time: it would be nice if you add the time you spent with the curation\
+    \ of the collection, to collect a rough estimate for future collections\r\n\r\n\
+    * All further steps are collected in the subtasks\r\n* Curation tasks and actions\
+    \ go into the ticket notes and especially into the curation log\r\n* Any longer\
+    \ communication documentation can be attached to the resource via protocols"
+  id: 16
+  name: Dokuplattform Thunau am Kamp - Kampagne 1965-1984
+  projectId: &id002 !!python/object:acdh.resourceCatalog.harvester.Project.Project
+    actors:
+    - personId: 1
+      role: ProjectLeader
+    - personId: 17
+      role: Editor
+    drupalUser: user1
+    endDate: null
+    id: 12
+    name: Thunau-Project
+    redmineIssueId: 8249
+    startDate: '2017-04-03'
+  redmineIssueId: 16335
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 21
+    role: ContactPerson
+  - personId: 3
+    role: Editor
+  - personId: 49
+    role: Editor
+  description: "Digital archive projects on the Bieber objects in the Bezirksmuseum\
+    \ Hietzing. \r\n\r\nimages at //w07ds2.oeaw.ads/acdh_resources$/container/R_Bieber-Objects_15291/JPG "
+  id: 17
+  name: Objects of the FJ Bieber Nachlass (Bezirksmuseum and Bezirksamt Hietzing)
+  projectId: 15
+  redmineIssueId: 15291
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "A computer corpus of English as a lingua franca \u2013 https://www.univie.ac.at/voice\r\
+    \n\r\nIs a combination of three services\r\n* voice-online: exist-db 1.4\r\n*\
+    \ voice-pos: exist-db 2.1\r\n* Some static html and reverse proxy configuration"
+  id: 18
+  name: "VOICE \u2013 Vienna-Oxford International Corpus of English"
+  projectId: 16
+  redmineIssueId: 15036
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "Die Originaldaten und ihre TEI-Derivate der beiden B\xE4nde von \u201E\
+    Elfride Jelinek: Werk und Rezeption\u201C, inkl. Transformations-Scripts in XSLT.\r\
+    \n\r\nMehr informationen unter: https://gitlab.com/acdh-oeaw/jwv/data/blob/master/README.md"
+  id: 19
+  name: "Jelinek Werkverzeichnis \u2013 Initial Data"
+  projectId: 17
+  redmineIssueId: 14872
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 1
+    role: ContactPerson
+  description: da schreibt martin was hin
+  id: 20
+  name: Schnitzler Zeitungsausschnitte
+  projectId: 18
+  redmineIssueId: 14460
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 45
+    role: ContactPerson
+  description: "h1. General Information\r\n\r\nA short description of the collection\
+    \ and where it comes from.\r\n\r\nDepositor (and contact) information: \r\nName:\
+    \ Edeltraud Asp\xF6ck\r\nInstitution: OREA/ACDH\r\nContact information: edeltraud.aspoeck@oeaw.ac.at\r\
+    \n\r\n*The collection is rather large and stored on a separate share (see location\
+    \ path)*\r\n\r\n---\r\n\r\nh1. Guidance\r\n\r\n* Copy this template for each collection\
+    \ to be included in ARCHE (subtasks should be included automatically)\r\n* Status\r\
+    \n** New: for new collections that have not yet been curated\r\n** In Preparation:\
+    \ for collection thate are actively curated\r\n** Needs review: for collections\
+    \ that are ready, but await a final check from a second curator\r\n** Done: for\
+    \ collections that are ready and where the second curator found nothing to be\
+    \ corrected\r\n** Published: for collections that are published in ARCHE. Usually\
+    \ they should not be changed anymore. Also a pid should be atttached to it\r\n\
+    * Assignee: the curator responsible for this collection\r\n* pid: the Handle assigned\
+    \ to the collection; if no Handle is assigne use the ARCHE ID\r\n* location: select\
+    \ where data is located and specify with location_path\r\n* Start date = day the\
+    \ collection was submitted\r\n* Due date = day the collection was published (or\
+    \ should be published)\r\n* Done: leave it as it is. It will change according\
+    \ the percentage you set in the subtasks!\r\n* Assignees: select the second curator\
+    \ from the list, when collection is ready to be reviewed\r\n\r\n* Log time: it\
+    \ would be nice if you add the time you spent with the curation of the collection,\
+    \ to collect a rough estimate for future collections\r\n\r\n* All further steps\
+    \ are collected in the subtasks\r\n* curation -> notes\r\n* Communication -> protocols"
+  id: 21
+  name: A Puzzle in 4D
+  projectId: 19
+  redmineIssueId: 13895
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 45
+    role: ContactPerson
+  description: "h1. General Information\r\n\r\nA collection of 494 digitised postcards\
+    \ from the bequest of Friedrich Julius Bieber. \r\nIt is the first part of the\
+    \ much larger collection \"F.J.Bieber collection\".\r\n\r\nDepositor (and contact)\
+    \ information: \r\nName: Sayuri Yoshida\r\nInstitution: Nanzan University, Department\
+    \ of Global Liberal Studies (Nagoya, Japan)\r\nContact information: sayuristic@gmail.com;\r\
+    \n\r\nThe data consists of two parts: \r\n\r\n* Scans of the postcards \u2013\
+    \ taken by the depositor and provided as-is\r\n* transcriptions and other metadata\
+    \ \u2013 provided by the depositor as a docx file and planned to be converted\
+    \ to TEI-XML (see https://gitlab.com/acdh-oeaw/f-j-bieber-digitization/r_bieber-postcards_12331)\
+    \ \u2013 the depositor will further curate the resulting TEI files\r\n\r\nThe\
+    \ Deposition Agreement was signed on 2019-02-18 (first ever signed Deposition\
+    \ Agreement of ARCHE).\r\n\r\n\r\n---\r\n\r\nh1. Guidance\r\n\r\n* Copy this template\
+    \ for each collection to be included in ARCHE (subtasks should be included automatically)\r\
+    \n* Status\r\n** New: for new collections that have not yet been curated\r\n**\
+    \ In Preparation: for collection thate are actively curated\r\n** Needs review:\
+    \ for collections that are ready, but await a final check from a second curator\r\
+    \n** Done: for collections that are ready and where the second curator found nothing\
+    \ to be corrected\r\n** Published: for collections that are published in ARCHE.\
+    \ Usually they should not be changed anymore. Also a pid should be atttached to\
+    \ it\r\n* Assignee: the curator responsible for this collection\r\n* pid: the\
+    \ Handle assigned to the collection; if no Handle is assigne use the ARCHE ID\r\
+    \n* location: select where data is located and specify with location_path\r\n\
+    * Start date = day the collection was submitted\r\n* Due date = day the collection\
+    \ was published (or should be published)\r\n* Done: leave it as it is. It will\
+    \ change according the percentage you set in the subtasks!\r\n* Assignees: select\
+    \ the second curator from the list, when collection is ready to be reviewed\r\n\
+    \r\n* Log time: it would be nice if you add the time you spent with the curation\
+    \ of the collection, to collect a rough estimate for future collections\r\n\r\n\
+    * All further steps are collected in the subtasks\r\n* curation -> notes\r\n*\
+    \ Communication -> protocols"
+  id: 22
+  name: Bieber Postcards
+  projectId: &id003 !!python/object:acdh.resourceCatalog.harvester.Project.Project
+    actors:
+    - personId: 21
+      role: ProjectLeader
+    drupalUser: user21
+    endDate: null
+    id: 15
+    name: 'Bieber Project 2019: Objects in Museum Hietzing'
+    redmineIssueId: 15072
+    startDate: '2019-10-14'
+  redmineIssueId: 12331
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 1
+    role: ContactPerson
+  description: "Fotos taken of WSTLA_Grundbuch_Stadt_Wien_B1_34_SatzbuchCD\r\n\r\n\
+    not quite sure yet if those images can be published\r\n\r\nuploaded a few to iiifserver\
+    \ https://iiif.acdh.oeaw.ac.at/grundbuecher/WSTLA_Grundbuch_Stadt_Wien_B1_34_SatzbuchCD_0012/"
+  id: 23
+  name: Images Satzbuch, WSTLA
+  projectId: 20
+  redmineIssueId: 12287
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "h2. Description \r\n\r\nVolumes 1-4 of the B\xF6hm print edition,\
+    \ both as scans and full text.\r\n\r\nh2. Data Types & Formats\r\n\r\n|_.  Data\
+    \ type |_. location |_. formats / description |\r\n| Original images  |  @ACDH_resources/container/R_Kraus-Samek_11789@\
+    \ | TIFF, JPG | \r\n| Derivates (usable from outside \xD6AW, password protected:\
+    \ @pr\xE4zedenzfall_1874@) | https://oeawcloud.oeaw.ac.at/index.php/s/k7arBsQaiJSPzhH\
+    \ | JPG |\r\n| Raw OCR output | \"@redmine.acdh.oeaw.ac.at/boehm_edition_11789.git/101_derived@\"\
+    :https://redmine.acdh.oeaw.ac.at/projects/kraus-akten/repository/boehm_edition_11789/revisions/master/show/101_derived\
+    \ | hOCR (i.e. extended HTML) |\r\n| intermediate TEI | \"@redmine.acdh.oeaw.ac.at/boehm_edition_11789.git/102_derived_tei/102_01_single-pages@\"\
+    :https://redmine.acdh.oeaw.ac.at/projects/kraus-akten/repository/boehm_edition_11789/revisions/master/show/102_derived_tei/102_01_single-pages\
+    \ | 1:1 conversion of hOCR to TEI `<div>` elements |\r\n| final TEI | \"@redmine.acdh.oeaw.ac.at/boehm_edition_11789.git/102_derived_tei/102_02_items@\"\
+    :https://redmine.acdh.oeaw.ac.at/projects/kraus-akten/repository/boehm_edition_11789/revisions/master/show/102_derived_tei/102_02_items\
+    \ | merged single pages into one Volume document (`_VolX.xml`) including xpointers\
+    \ to the single items which are documents on their own |\r\n\r\nh2. Image Aquisition\
+    \ \r\n\r\nPanasonic KV-52087 > TIFF b/w 8bit uncompressed\r\n\r\nh2. Processing\r\
+    \n\r\nh3. Image conversion \r\n\r\nTIFF > JPG (via Irfanview?)\r\n\r\nh3. OCR\
+    \ \r\n\r\nOCR was produced using tesseract \r\n\r\n<pre>\r\ntesseract 3.04.00\r\
+    \n leptonica-1.72\r\n  libgif 4.1.6(?) : libjpeg 6b (libjpeg-turbo 1.2.90) : libpng\
+    \ 1.5.13 : libtiff 4.0.3 : zlib 1.2.7 : libwebp 0.3.0\r\n</pre>\r\n\r\nh3. hOCR\
+    \ > TEI \r\n\r\n@${pdu}/082_scripts_xsl/hocr2tei.xsl@ > @${pdu}/082_scripts_xsl/tei-upconvert.xsl@\
+    \ > @${pdu}/082_scripts_xsl/join-teis.xsl@\r\n\r\n* First step creates a very\
+    \ simple TEI-representation of the page (throwing away tokens, coordinates and\
+    \ \"interpreting\" the word confidence numbers)\r\n* Second step upconverts the\
+    \ TEI, adding some project-specific logic (adding TEI tags for e.g. heads, page\
+    \ numbers etc)\r\n* Third step merges the single-page TEI documents into a) one\
+    \ \"skeleton\" document with top-level @<div>@ elements for the first heading\
+    \ level, and b) epxorts the single items (second level headings) into dedicated\
+    \ TEI documents.\r\n\r\n"
+  id: 24
+  name: "Karl Kraus  contra ... (images and full text of B\xF6hm Edition)"
+  projectId: 6086
+  redmineIssueId: 11789
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 1
+    role: ContactPerson
+  description: "MS-Access database, provided via own-cload by Balluch, Christian (2018-08-27)\r\
+    \ntransform to sirad \r\n\r\n> java -jar \"-Dfile.encoding=UTF-8\" dbptk-app-2.0.0.jar\
+    \ --import microsoft-access --import-file=\"C:\\Users\\pandorfer\\Documents\\\
+    Redmine\\dfmroe\\legacy_data\\dFMROe_Datenmodell_2018.mdb\" --export siard-2 --export-file=example.siard"
+  id: 25
+  name: "dFMR\xD6 data"
+  projectId: 21
+  redmineIssueId: 11787
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: A dump of the data of Kraus Online https://www.kraus.wienbibliothek.at/
+    from Georg Blixa (22.8.2018)
+  id: 26
+  name: Kraus Online Dump
+  projectId: 6086
+  redmineIssueId: 11764
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 1
+    role: ContactPerson
+  description: "sent by Christopf Aichner by mail 2018-07-09\r\nand thun-files from\
+    \ db-backup http://thun-korrespondenz.uibk.ac.at:8080/exist/apps/dashboard/index.html"
+  id: 27
+  name: orig tei files of thun correspondence
+  projectId: 22
+  redmineIssueId: 11600
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 26
+    role: ContactPerson
+  - personId: 50
+    role: Editor
+  description: "\r\nneeded: HDFS system mit 2TB storage\r\nfor CV experiments"
+  id: 28
+  name: "topothek.at - storage f\xFCr CV"
+  projectId: 23
+  redmineIssueId: 11321
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 1
+    role: ContactPerson
+  description: "Bibsonomy group library requested to collect quotations of resources\r\
+    \nacutal papers (pdfs) should be copied to R:\\container\\R_histogis_7663\\papers\
+    \ and not uploaded to Bibsonomy due to potential copyright issues"
+  id: 29
+  name: HistoGIS Bibliography
+  projectId: 24
+  redmineIssueId: 11192
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "Microsoft Access Data (including transcribed texts in xml markup,\
+    \ cf. https://celt.univie.ac.at/home/delt/delt-markup/)\r\n\r\nPotentially to\
+    \ be published with a web-interface."
+  id: 30
+  name: DELT Access Data
+  projectId: 25
+  redmineIssueId: 10810
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: 'ALTO-Daten der Wiener Tageszeitung bis 1876 '
+  id: 31
+  name: Wr. Diarium / Wiener Zeitung bis 1876
+  projectId: 26
+  redmineIssueId: 10792
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 11
+    role: ContactPerson
+  description: "h1. Georgieva: Flooding Tweets\r\n\r\nSupport Ivelina Georgieva  (\
+    \ lina.georg@gmx.at )  in her thesis work. \r\n\r\nData from Tweets about a flooding\
+    \ event in Austin / Texas in 2015. \r\n\r\n-Brought to NoSke: https://noske-floodings.minerva.arz.oeaw.ac.at-\
+    \ ->  NoSke not required anymore -> deprecated\r\n\r\n"
+  id: 32
+  name: 'Georgieva: Flooding Tweets'
+  projectId: 27
+  redmineIssueId: 10663
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 1
+    role: ContactPerson
+  description: ''
+  id: 33
+  name: Rundbriefe_Scans
+  projectId: 28
+  redmineIssueId: 10434
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 1
+    role: ContactPerson
+  description: "Dropbox ordner f\xFCr docx-dateien sowie ein Unterverzeichnis f\xFC\
+    r XML-Daten (letzeres auch als Git-Repo)"
+  id: 34
+  name: Working Data
+  projectId: 10219
+  redmineIssueId: 10221
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 1
+    role: ContactPerson
+  description: "Set up by Wladimir Fischer [wladimir.fischer@univie.ac.at]\r\n\r\n\
+    Der Username ist mrp@oeaw.ac.at\r\nDas Passwort ist mrp+zot\r\n\r\nadded group\
+    \ library: https://www.zotero.org/groups/2042149/mrp-bib"
+  id: 35
+  name: MRP Zotero-Library
+  projectId: 29
+  redmineIssueId: 10115
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 11
+    role: ContactPerson
+  description: "h1. Austriazisms and Teutonisms in Austrian novels\r\n\r\nThesis (Diplomarbeit)\
+    \ by Claudia Niederl-Garber (CND) [a9610554@unet.univie.ac.at] \r\n\r\nSupervisor:\
+    \ Manfred Glauninger \r\n\r\nAbstract:\r\n\r\n> Der Einsatz von regional bedingten\
+    \ Variet\xE4ten in der Literatursprache \r\n>ist bislang wenig erforscht,\r\n\
+    >meine Arbeit besch\xE4ftigt sich daher exemplarisch mit drei ausgew\xE4hlten\
+    \ \r\n>Jugendb\xFCchern der mehrfach ausgezeichneten\r\n>ober\xF6sterreichischen\
+    \ Schriftstellerin Gabi Kreslehner.\r\n>Meine Vorarbeiten zu dieser Thematik haben\
+    \ gezeigt, dass in der \r\n>\xF6sterreichischen Kinder- und Jugendliteratur\r\n\
+    >genuin \xF6sterreichische und bundesdeutsche Ausdr\xFCcke in ein- und \r\n>demselben\
+    \ Werk sehr oft nebeneinander existieren,\r\n>auch wenn sie einem einheitlichen\
+    \ Lektorat unterlaufen sind.\r\n\r\nData: 3 novels in EPUB format. \r\n\r\nGoal:\
+    \ identify \"Austriazismen\" and \"Teutonismen\" in the texts. \r\n\r\nAs a support,\
+    \ we will import the texts into NOSKE.\r\nCND needs to come up with a list of\
+    \ phenomena to search for, and can explore/search for these in the NOSKE. \r\n\
+    \ \r\n\r\nnecessary steps: \r\n\r\n* -convert EPUB to text-\r\n* -prepare text\
+    \ for NOSKE-\r\n* -set up individual NOSKE instance & import texts-\r\n\r\n  "
+  id: 36
+  name: 'Kreslehner Novels: explore Austriazisms and Teutonisms in Austrian novels'
+  projectId: &id004 !!python/object:acdh.resourceCatalog.harvester.Project.Project
+    actors:
+    - personId: 11
+      role: ProjectLeader
+    drupalUser: user11
+    endDate: null
+    id: 27
+    name: Ske/NoSke "Customer Service"
+    redmineIssueId: 10676
+    startDate: '2018-02-26'
+  redmineIssueId: 10062
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 11
+    role: ContactPerson
+  description: "h1. parlAT - Resources \r\n\r\nProtocols from sessions of the Austrian\
+    \ Parlament are available as \r\nPDF (and also partly as HTML) from\r\n\r\nhttps://www.parlament.gv.at/PAKT/STPROT/\r\
+    \n\r\nIn a first run we want to download these texts, tag them with PoS and make\
+    \ them available in a NoSKE instance.\r\n\r\n\r\n\r\n*Available Data*  \r\n\r\n\
+    pdf   for periods V to XXVI (1945 ff). \r\nhtml  for periods XX to XXV (1996 ff)\
+    \         \r\n\r\nperiods I-IV (1920-1934) are available at the ONB only:  http://alex.onb.ac.at/spe.htm#SVI\r\
+    \n\r\n\r\nTexts (pdf and html) have been downloaded to @R_parlAT_9928/001_src@\r\
+    \n\r\npdfs where transformed to texts using pdftotext and can be inspected  \r\
+    \nin @101_derived/pdftotext@ \r\n\r\nh2. First steps\r\n\r\n* focus on data which\
+    \ is available in html (i.e. 2006ff, 948 files)\r\n* identify _at least_ speaker\
+    \ turns \r\n* model in TEI (\"drama\" ?)\r\n* PoS, lemmatize\r\n\r\nDistinguish\
+    \ between a) \"text-corpus view\" and  b) \"network view\". For Tanja's primary\
+    \ use case \"diachronic lexicography of parlamentary formalia\" mainly the former\
+    \ is of interest. For many forseeable applications which go beyond the \"counting\
+    \ of terms\"-paradigm b) would be attactive: i.e. interlinking of persons, exact\
+    \ time stamps, external documents (\"schriftliche Antr\xE4ge\").\r\n\r\nh2. Code\
+    \ Git.\r\n\r\nCode can be found in this Git: \r\n\r\nhttps://redmine.acdh.oeaw.ac.at/projects/ag-2/repository/parlat_utils\r\
+    \n\r\nFor overall processing from downloaded HTML to verticals:\r\n \r\n<pre>\r\
+    \nrun_parlatHTML2vert.sh\r\n</pre>\r\n\r\n\r\nThe core-script is: \r\n \r\n<pre>\r\
+    \nparlat2vert.pl  \r\n</pre>\r\n\r\n\r\nh2. First version in SKE\r\n\r\n\r\nStenogramme\
+    \ available in html (i.e. from 1996 or gp XX on) are now available in the SKE.\r\
+    \n\r\n*Note:* currently there are 2 copora in the SKE:\r\n\r\n* @parlat@ : version\
+    \ _with_ PoS-tags. But when inserting  @<s>@entence tags, the Tagger interferes\
+    \ with the @<structures>@ supplied by our preprocessing. Use THIS version if you\
+    \ are interested in PoS\r\n* @parlat_tokonly@ : version _without_ PoS-tags: Use\
+    \ THIS version if you are interested in text-structures (speakers, turns, comments)\r\
+    \n\r\n\r\nThe following structures + attributes  are available\r\n\r\n<pre>\r\n\
+    section   typ=(preambel|sitzung|postfix) \r\nrb        \"Redebeitrag\", i.e. a\
+    \ speaker-turn\r\n(p         page=page-number)\r\nperson    id=person_id\r\ncomment\
+    \   in the original this was italic text brackets -> \"Zwischenrufe\" \r\npersonInComment\
+    \  when a person was identified in a comment\r\n</pre>\r\n\r\nh2. Tests with Spacy\
+    \ \r\n\r\n*Questeion:* whether it is possible to run current parlat-data through\
+    \ G. Grill's Spacy-pipeline that was used for amc_3.1. ?\r\n*Answer:* G. Grill's\
+    \ code works for tokenized text (131_vert_xml). \r\nOnly necessary change in code:\
+    \ all existing XML-element-names found in the input-files (i.e. @rb, person, comment,\
+    \ ...@) must be explicitely mentioned in the function @spacify_token_soup@ in\
+    \ @article_parser/text_filter.py@ \r\n\r\n*Nice to have in the future?:* add possibility\
+    \ to specify the list of XML-elements on the command line, so changing XML-formats\
+    \ do not require changes in the code.   \r\n"
+  id: 37
+  name: parlAT resource
+  projectId: 30
+  redmineIssueId: 9928
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 1
+    role: ContactPerson
+  description: Word Dokumente von INZ erhalten
+  id: 38
+  name: Ministerratsprotokolle - Materialien
+  projectId: 9601
+  redmineIssueId: 9591
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 11
+    role: ContactPerson
+  description: "h1. Memoire du Millischer Resources\r\n\r\n\r\nTexts collected from\
+    \ Christophe Millischer -  made available in SKE.\r\n\r\nTexts come as \r\n* \"\
+    Quellen\":  pdf files (OCRed book scans, word2pdf, etc.)\r\n* \"Datens\xE4tze\"\
+    : excerpts (typically paragraph-sized) in plain text plus metadata (e.g. key words)\
+    \ - provided as @.xlsx@ export from the memoire - MS-Access database.\r\n\r\n"
+  id: 39
+  name: Memoire du Millischer Resources
+  projectId: 31
+  redmineIssueId: 8839
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "See https://redmine.acdh.oeaw.ac.at/projects/deutschmaturatexte/wiki/Dateiablage\r\
+    \n\r\nThe files in oeawcloud:\r\n\r\nhttps://oeawcloud.oeaw.ac.at/index.php/apps/files/?dir=/Deutschmaturatexte_8630&fileid=3220543\r\
+    \n\r\n(link-shared direkt von Daniel\u2019s owncloud-Account)\r\n\r\nDie Scans\
+    \ sind jetzt auch kopiert im container unter\r\n@acdhContainer://R_deutschmaturatexte_8630/_VERSIONS_PRIOR_TO_2018-06-06/601_imgs_raster@\r\
+    \n\r\n\r\nF\xFCr die Annotation von Grammatik-Fehlern via owncloud geteilt mit "
+  id: 40
+  name: Deutschmaturatexte - Daten
+  projectId: 32
+  redmineIssueId: 8630
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 1
+    role: ContactPerson
+  description: JPGS, ordered by creation date
+  id: 41
+  name: images taken in the BRIN-Project
+  projectId: 33
+  redmineIssueId: 8410
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 1
+    role: ContactPerson
+  description: "Scans (tif) were made by B\xFCrgschwentner, Joachim [Joachim.Buergschwentner@uibk.ac.at],\
+    \ processed with @split_scans.py@ to .pngs"
+  id: 42
+  name: scans, derived pngs and docu
+  projectId: 34
+  redmineIssueId: 8144
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "A sample of LBG addenda (yet to be published)\r\n\r\ntest case for\
+    \ conversion to TEI and manual editing in VLE\r\n\r\nSee also https://redmine.acdh.oeaw.ac.at/projects/lbg-tei/wiki#Data-Management\r\
+    \n\r\nConversion scripts at @acdh_resources/container/R_lbg_8006@\r\n\r\nh3. Sources\r\
+    \n\r\n| File | Description | \r\n| LBG 7.pdf | LBG Bd. 6, Faszikel 7 |\r\n| Rho\
+    \ Addenda strukturiert.docx | Addenda zu Rho (Tabellarisch) |\r\n| LBG_Gesamtabkverz_inkl\
+    \ Fahnenkorrekturen.docx | Siglenliste Literatur |\r\n\r\nh3. TEI Files\r\n\r\n\
+    | lbgBibl.xml | Literaturliste (aus LBG_Gesamtabkverz_inkl Fahnenkorrekturen.docx)\
+    \ |\r\n| Rho Addenda strukturiert-TEI-P5.xml | TEI entries (aus Rho Addenda strukturiert.docx)\
+    \ |"
+  id: 43
+  name: LBG addenda samples
+  projectId: 35
+  redmineIssueId: 8006
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "* Sample data: @\\\\w07ds2.oeaw.ads\\ACDH_resources$\\container\\\
+    R_warOfPictures_7265@\r\n* Actual data is exchanged via a link-password-shared\
+    \ ownCloud directory @https://oeawcloud.oeaw.ac.at/index.php/s/QQFwJ8yqhRDqFzF@"
+  id: 44
+  name: '"War of Pictures" data'
+  projectId: 36
+  redmineIssueId: 7265
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 15
+    role: ContactPerson
+  description: "Russian manuscript lexicons\r\n* 4 lexicons (about 6000 entries each)\r\
+    \n* 1 lexicon (2500 entries)\r\n* 5 lexicons (700 entries each)\r\n\r\nmanually\
+    \ transcribed by Kira (in RTF)\r\n\r\n* facsimile for some manuscripts (?)\r\n"
+  id: 45
+  name: RML - Transcripts of the Russian manuscript lexicons
+  projectId: 37
+  redmineIssueId: 6906
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 15
+    role: ContactPerson
+  description: "Ongoing lexicographic project: 1965 - ~ 2026?\r\n300.000 entries\r\
+    \nuntil now 49 volumes\r\nonline as PDF: https://iling.spb.ru/vocabula/srng/srng.html\r\
+    \n\r\n"
+  id: 46
+  name: Dictionary of Russian Dialect (PDFs)
+  projectId: 38
+  redmineIssueId: 6902
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 15
+    role: ContactPerson
+  description: 'see description in parent issue #6665'
+  id: 47
+  name: troesmis - Excavation documentation for project Troesmis
+  projectId: 39
+  redmineIssueId: 6787
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "The ABLO \u201EAntron Bruckner Lexikon Online\u201C data as available\
+    \ from http://www.bruckner-online.at/?page_id=1259 via #7540\r\n\r\nData is curated\
+    \ by Andrea Singer (IKM) \u2013 see https://redmine.acdh.oeaw.ac.at/projects/brucknerlexicon/wiki/Workflow"
+  id: 48
+  name: Bruckner-Dictionary Data
+  projectId: 40
+  redmineIssueId: 6783
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "A full copy of the current OeML data containing articles (XML, following\
+    \ a project-specific DTD), literature list (HTML), audio (MP3) and images (JPEG).\r\
+    \n\r\nUsed for thesting the migration process to TEI.\r\n\r\nProvided by Monika\
+    \ Kornberger 13.09.2016."
+  id: 49
+  name: OeML dump
+  projectId: 41
+  redmineIssueId: 6780
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 15
+    role: ContactPerson
+  description: "One of the predecessor institutions of ACDH published the whole of\
+    \ the \"Diaries of Arthur Schnitzler\":http://verlag.oeaw.ac.at/Reihen/Schnitzler-Tagebuch\
+    \ (1871 -1931)\r\nThis is a unique material wrt history, literature studies, etc.\r\
+    \n\r\nLater on, these were processed (by Peter Michael Braunwarth, the main editor)\
+    \ also digitally and were planned to be published online. This unfortunately never\
+    \ happened (due to technical and mainly organisational issues), but at some point\
+    \ there was a fully functional cr-xq-mets based application alowing to search\
+    \ and browse the data (#38)\r\nthat was used at least by Braunwarth in a shared\
+    \ (unpublished) mode.\r\n\r\nAlso goes with the aac_names #4828 a database of\
+    \ person and works mentioned in different historic texts, especially in STB. (so\
+    \ there is a full disambiguated - manually checked! - list of persons and places\
+    \ mentioned in STB, including the full list of occurrences!!)\r\n\r\nInformation\
+    \ on STB also under: [[trac:DataSTB]]\r\n\r\n\r\n\"Final\" XML-TEI is available\
+    \ at R_stb_6328/010_manannot/Schnitzler_merged.xml\r\n\r\nPDFs of STB-print under:\r\
+    \nhttps://www.austriaca.at/arthur_schnitzler_tagebuch?frames=yes\r\nexample:\r\
+    \nhttps://www.austriaca.at/0xc1aa5576%200x0037717c.pdf\r\n(whole Volume in one\
+    \ PDF - make available/referencable per page is planned.)"
+  id: 50
+  name: STB - Schnitzler Tagebuch
+  projectId: 42
+  redmineIssueId: 6328
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 51
+    role: ContactPerson
+  description: "3D Scans of 123 Squeezes from the Glaser Estate @ OEAW-BASIS\r\n<pre>\r\
+    \nFormat: Wavefront OBJ\r\nTextures as PNG mapped with MTL\r\n</pre>"
+  id: 51
+  name: Original 3D Scan - Data - Batch 26 June 2015
+  projectId: 43
+  redmineIssueId: 6267
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 1
+    role: ContactPerson
+  description: "Contains all the data received from Georg Hoffmann - usually xlsx\
+    \ dumps of his MS-Access database\r\n2017-12-12 - added jpgs of MARC-Records,\
+    \ access-db and some other stuff"
+  id: 52
+  name: FLJ Data
+  projectId: 44
+  redmineIssueId: 5698
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 36
+    role: ContactPerson
+  description: "IPI is the International Press Institute\r\nwebsite new: http://www.freemedia.at/\r\
+    \nwebsite old: http://ipi.freemedia.at/\r\n\r\nTogether we digitize and process\
+    \ the archive that mainly contains issues of the IPI journal.\r\n\r\nFor now we\
+    \ are trying out to scan some issues, to generate an encoding schema and to establish\
+    \ a workflow."
+  id: 53
+  name: IPI archive sample data
+  projectId: 45
+  redmineIssueId: 5662
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "So far (2016-09-13) the following steps have been conducted: \r\n\r\
+    \n* full XML Export from LIDOS \r\n* XSL transformation from the export to MODS\
+    \ with data optimization\r\n* documentation of the conversion process and the\
+    \ data mapping (850_docs\\conversion_docu_v1.docx)\r\n* LIDOS-Export has been\
+    \ imported into basex-dev to facilitate work with the raw material\r\n* -Import\
+    \ of a MODS samples to Zotero- (dismissed - Zotero bibliographic model too simple)\r\
+    \n* Import of full MODS data to basex\r\n* Adaption of WDE to be used with MODS\
+    \ inside of basex (\\\\w07ds2.oeaw.ads\\ACDH_Share$\\ACDH-AG 2\\software\\VLE\\\
+    VLE_2_1__2016_09_13\\wde_stp_2_1.exe)\r\n* Taxonomy is being transformed to SKOS\
+    \ by Ksenia (\"\\\\w07ds2.oeaw.ads\\acdh_resources$\\container\\R_japbib_5638\\\
+    001_src\\001_02_Thesaurus\\Thesaurus.rtf\")\r\n\r\nNext steps: \r\n\r\n* Curate\
+    \ raw MODS export in VLE \r\n* publish in simple web app.\r\n* map Taxonomy to\
+    \ LoC subject headings and/or GND\r\n\r\nData will be made available open access\
+    \ and archived in the *DH Resources Portal*.\r\n\r\n2016-05-04: XML has been imported\
+    \ into basex on eos and a simple HTML-form has been created to query the contents\
+    \ via XQuery. Code under https://redmine.acdh.oeaw.ac.at/projects/ag-2/repository/basex-xquery-web-gui\r\
+    \n\r\n2016-07-11: MODS has been imported into a BaseX-based VLE variant.\r\n\r\
+    \n2016-09-13: MODS has been updated with new version.\r\n\r\n2016-09-13: Sample\
+    \ webapp has been adapted to make also MODS data searchable."
+  id: 54
+  name: JapBib
+  projectId: 46
+  redmineIssueId: 5638
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 11
+    role: ContactPerson
+  - personId: 31
+    role: Editor
+  description: "h1. Latin Dedicatory Letters\r\n\r\nDigital resources for the Latin\
+    \ Dedicatory Letters project.\r\n\r\n\r\nh2. PoS-Tagging\r\n\r\nThe full pipeline\
+    \ for PoS-Tagging with textimager-webservice (MarMot)and XSLT-postprocessing is\
+    \ available here:\r\n\r\n<pre>\r\nR_latin_dedicatory_letters_5540/081_scripts_shell/README_tag_with_MarMot.sh\r\
+    \n</pre>\r\n\r\n\r\nh3. PoS-tagging with textimager-webservice (MarMot)\r\n\r\n\
+    use : @run_MyCallOnHuCompute.sh@\r\n\r\nThis script can be found in the @textimager@\
+    \ git-repo  ( #5536 )\r\n\r\nMore details with: \r\n\r\n<pre>\r\nrun_MyCallOnHuCompute.sh\
+    \ -h\r\n</pre>\r\n\r\n\r\nh3. Postprocess MarMoT output prior to tokeneditor-import\r\
+    \n\r\nThe @tokenEditor@ requires that *ALL* attributes which are mentioned in\
+    \ a schema have to be present in *ALL* input-tokens. \r\nTherefore: for each attribute\
+    \ not yet present in a token: add it with an empty value. \r\n\r\nXSLT-script\
+    \ for adding missing attributes:\r\n<pre>\r\nR_latin_dedicatory_letters_5540/082_scripts_xsl/add_empty_attributes.xsl\r\
+    \n</pre>"
+  id: 55
+  name: Latin Dedicatory Letters
+  projectId: 47
+  redmineIssueId: 5540
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 11
+    role: ContactPerson
+  description: "h1. textimager client\r\n\r\n*TextImager* is a web service for NLP\
+    \ processing run by TTLab Frankfurt: \r\n\r\n   http://service.hucompute.org/services-webservices/TextImager.wsdl\r\
+    \n\r\nThe @textimager@ repository offers a simple java-client and a shell-script\
+    \ \r\nfor accessing this remote Web-service. Cf.\r\n\r\n  https://redmine.acdh.oeaw.ac.at/projects/ag-2/repository/textimager\r\
+    \n\r\nThe textimager service is currently (2016-03) used in the Latin Dedicatory\
+    \ Letters-Project #5355 to provide PoS-speech tags for Latin text, using MarMoT\
+    \ as a tagger, where it is run with plain-text as input, and TEI as output. \r\
+    \n\r\nFor easy access use the shell-wrapper: \r\n\r\n<pre>\r\n   run_MyCallOnHuCompute.sh\
+    \ (-h) (-v) (-i <INPUT_FORMAT>) (-o <OUTPUT_FORMAT>) <INPUT_FILE>\r\n</pre>\r\n\
+    \r\nfor more detailed usage-information just call:\r\n<pre>\r\n  run_MyCallOnHuCompute.sh\
+    \  -h\r\n</pre>\r\n\r\nThe webservice itself still lacks a proper documentation\
+    \ - the java client was written following  \r\ninstructions provided by R\xFC\
+    diger Gleim [gleim@em.uni-frankfurt.de]\r\n\r\nThe following page list services\
+    \ currently available. It is the only \"documentation\" provided by TTLab so far,\
+    \ but is intended to be enriched in the future: \r\n\r\n   http://service.hucompute.org/\r\
+    \n\r\n\r\nh2. Do Cite!\r\n\r\nWhen you are using the service you are asked to\
+    \ cite:\r\n\r\n<pre>\r\n@InProceedings{Eger:Mehler:Gleim:2016,\r\n  Title =  \
+    \   {Lemmatization and Morphological Tagging in {German}\r\n                 \
+    \ and {Latin}: A comparison and a survey of the\r\n                  state-of-the-art},\r\
+    \n  Author =     {Eger, Steffen and Mehler, Alexander and Gleim,\r\n         \
+    \         R\\\"{u}diger},\r\n  Booktitle =     {Proceedings of the 10th International\
+    \ Conference on\r\n                  Language Resources and Evaluation},\r\n \
+    \ Year =     2016,\r\n  location =     {Portoro\\v{z} (Slovenia)},\r\n  Note =\
+    \     {Accepted},\r\n  series =     {LREC 2016}\r\n}\r\n</pre>\r\n"
+  id: 56
+  name: textimager client
+  projectId: &id006 !!python/object:acdh.resourceCatalog.harvester.Project.Project
+    actors:
+    - personId: 11
+      role: ProjectLeader
+    drupalUser: user11
+    endDate: null
+    id: 47
+    name: 'Latin Dedicatory Letters Project '
+    redmineIssueId: 5355
+    startDate: '2016-02-01'
+  redmineIssueId: 5536
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "Date: 01/03/2016 (ImageWare Austria)\r\n\r\nResponsible: Matthias\
+    \ Trinkaus (trinkaus@kreisky.org)\r\n\r\nTested Models: Avision 320, Panasonic\
+    \ KV-S2087, Image Access WideTEK 25\r\n\r\nReport:\r\n\r\nDie blo\xDFe Scandauer\
+    \ des erw\xE4hnten Flachbettscanners (WideTEK 25) l\xE4sst sich grunds\xE4tzlich,\
+    \ d.h. nach einer wie auch immer gearteten Anpassung des Ger\xE4ts bzw. der Scanner-Software,\
+    \ auf zwei bis drei Sekunden hinunterschrauben. Dies entspricht im Wesentlichen\
+    \ unserem Scanner im Archiv, wobei es dank des technischen Fortschritts inzwischen\
+    \ nicht mehr notwendig ist, die Dokumente m\xF6glichst gerade auf die Auflagefl\xE4\
+    che zu legen (oder den Scan alternativ im Nachhinein in einem Grafikprogramm zu\
+    \ rotieren), da das Geraderichten nunmehr automatisch geschieht. Bei der Pr\xE4\
+    sentation am Donnerstag war das Ger\xE4t offenbar f\xFCr Dia-Scans optimiert,\
+    \ so dass f\xFCr das Scannen von Dokumenten aus Papier ein Bogen aus schwarzem\
+    \ Naturpapier behelfsm\xE4\xDFig an der Unterseite des Scannerdeckels befestigt\
+    \ werden musste. Ich nehme an, dass das Ger\xE4t rein aufgrund seiner Gr\xF6\xDF\
+    e von der \xD6AW wohl nicht verliehen werden wird.\r\n\r\nWeiters wurden zwei\
+    \ Einzugsscanner getestet: Panasonic KV-S2087 (A4) sowie Avision 320 (A3). Nachher\
+    \ wurde noch f\xFCr ein anderes Projekt ein g\xFCnstigerer A4-Panasonic-Einzugs-/Durchlaufscanner\
+    \ pr\xE4sentiert, der meine Skepsis bzgl. Dokumenteneinzug dann doch insoweit\
+    \ best\xE4tigt hat, als dass eine der probeweise zu scannenden Karteikarten prompt\
+    \ im Ger\xE4t steckengeblieben ist. Beim Test machte der (teurere) A4-Scanner\
+    \ einen besseren Eindruck als der A3-Scanner, der allerdings f\xFCr das Staribacher-Projekt\
+    \ insgesamt praktischer w\xE4re, da f\xFCr die w\xF6chentlich vorkommenden Ministerratstagesordnungen\
+    \ h\xE4ufig gefaltete A3-B\xF6gen verwendet wurden. Insbesondere hat das Teilen\
+    \ der Scans, die \xFCberdies im Bildbetrachter der Scanner-Software nicht originalgetreu\
+    \ dargestellt werden k\xF6nnen, erst nach mehreren Anl\xE4ufen geklappt. Die Firma\
+    \ ImageWare bietet noch einen anderen A3-Durchlaufscanner an, der aber leider\
+    \ am Donnerstag nicht verf\xFCgbar war. Die von Gustav Graf ins Spiel gebrachten\
+    \ R\xE4nder kann jedes der getesteten Ger\xE4te hinzuf\xFCgen, dies allerdings\
+    \ bei den Tests nur in wei\xDFer Farbe (schwarz wird wohl grunds\xE4tzlich auch\
+    \ gehen). Eine Farbskala ist hingegen, so zumindest die Auskunft von Herrn Illmayer,\
+    \ nicht notwendig und w\xFCrde auch das Scannen per Einzug verunm\xF6glichen oder\
+    \ wenigstens erschweren.\r\n\r\nZum Thema Einzug: Der Test hat meine diesbez\xFC\
+    glichen Bedenken, die noch von negativen Erfahrungen mit unserem Scanner herr\xFC\
+    hren, weitestgehend zerstreuen k\xF6nnen, so dass der weit geringere Zeit- und\
+    \ Arbeitsaufwand die Verwendung eines entsprechenden Ger\xE4ts nahelegt. Bei stark\
+    \ zerschlissenem Papier, Durchschlagpapier oder zusammengehefteten Seiten wird\
+    \ jedoch ein Flachbettscanner u.U. unabdingbar sein. Wenn ich Herrn Hicker richtig\
+    \ verstanden habe, m\xFCssten letztere, wenn man sie per Einzug scannen will,\
+    \ in eine Art H\xFClle gegeben werden, was zwangsl\xE4ufig zu einem Qualit\xE4\
+    tsverlust f\xFChren w\xFCrde und daher nicht zielf\xFChrend ist. Das Entfernen\
+    \ der Klammer mittels \"Schwiegermutter\" ist wiederum alles andere als dokumentenschonend.\
+    \ Die Kombination Durchlaufscanner - Flachbettscanner w\xE4re also f\xFCr unsere\
+    \ Zwecke hilfreich.\r\n\r\nGescannt wurde bei den Tests zumeist mit 400 dpi, beim\
+    \ Ausgabeformat handelt es sich Einfach-Farb-TIFFs. Eine gleichzeitige Ausgabe\
+    \ auch als JPG ist nicht bzw. nur als konstenpflichtiges Extra m\xF6glich. "
+  id: 57
+  name: Staribacher scanner test results
+  projectId: 48
+  redmineIssueId: 5499
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 52
+    role: ContactPerson
+  - personId: 3
+    role: Editor
+  description: "h1. Data created in the TUNICO project\r\n\r\n| *Format* | *Description*\
+    \ | *location* | \r\n| WAV | files audio recording of conversations | ACDH_resources\
+    \ |\r\n| MP4 | segments created from WAV files, one file per utterance (NB: Not\
+    \ all recordings have been segmented!) | ACDH_resources |\r\n| AUP | audacity\
+    \ files that contain the cut points where one utterance starts and ends (NB: Not\
+    \ all recordings have been segmented!) | ACDH_resources |\r\n| TEI | a dictionary\
+    \ of the language used in the corpus | corpus_shell / WDE |\r\n| TEI | the annotated\
+    \ transcription of the recordings (containing links to the MP4 files and links\
+    \ to the dictionary) | git |\r\n| CMDI | metadata files: one for each recording\
+    \ session + one for the corpus as a whole | git TEI-annotated\\metadata\\CMDI\
+    \ (to be moved to the metadata git repo) |\r\n\r\n"
+  id: 58
+  name: TUNICO data
+  projectId: 49
+  redmineIssueId: 5488
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  - personId: 42
+    role: Editor
+  - personId: 6
+    role: Editor
+  description: "TEI versions of 15 sample numbers of the _Wiennerisches Diarium_,\
+    \ exported from Transkribus.\r\n\r\n7 first numbers manually corrected by Nora\
+    \ Fischer."
+  id: 59
+  name: Wiennerisches Diarium Sample-Daten
+  projectId: 50
+  redmineIssueId: 5407
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  - personId: 17
+    role: Editor
+  description: "Raw data of the cfdb database (full images, cropped images, TEI files,\
+    \ and additional data like sign list, persons, places etc.)\r\n\r\nEssentially\
+    \ this is the relevant part of an unzipped existdb-backup that as been put into\
+    \ a git repository. As such, it follows the collection structure of the cfdb database\
+    \ and includes collection metadata (__contents__.xml). For our data storage needs\
+    \ it would make sense to split it by file types like TEI or images (which would\
+    \ break the direct links between TEI and images), but for the time being everything\
+    \ is put into 001_src to main the internal structure.\r\n\r\nData is actively\
+    \ maintained and curated in the cfdb-app (#5425, #5426)"
+  id: 60
+  name: cfdb data
+  projectId: 51
+  redmineIssueId: 5234
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 15
+    role: ContactPerson
+  description: "collection of dictionaries of (arabic varieties)\r\n\r\nmaintained\
+    \ via VLE/wde\r\n\r\nonline via application: #4676 #9940\r\n\r\nThe following\
+    \ basex-collections on basex-dev@eos are needed:\r\n\r\n* dc_ar_en.* (MSA dict)\r\
+    \n* dc_ary_eng_06.* (Rabat dict)\r\n* dc_apc_eng_03.* (Damascus dict)\r\n* dc_arz_eng_007.*\
+    \ (Cairo dict)\r\n* dc_tunico.* (Tunico dict)\r\n\r\nOther VICAV resources (next\
+    \ to the dictionaries proper mentioned above) include: \r\n\r\n* vicav_biblio\r\
+    \n* vicav_corpus\r\n* vicav_lingfeatures\r\n* vicav_profiles\r\n* vicav_samples\r\
+    \n* vicav_texts\r\n\r\n"
+  id: 61
+  name: VICAV dictionaries
+  projectId: 52
+  redmineIssueId: 5141
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 15
+    role: ContactPerson
+  description: "The project \"Geschichte der Akademie\" (#4548) aims to collect and\
+    \ extract information about the members of the academy from different sources.\
+    \ This collection serves to pull them together.\r\n\r\nCurrently it is:\r\n- List\
+    \ of Members #5014\r\n- Almanache #4549\r\n- various printed books documenting\
+    \ the academy (foremost: Krestan 1972)\r\n- structured and curated list of the\
+    \ academies\xB4 classes and commissions (see attached file)(derived form apis-restAPI)"
+  id: 62
+  name: '"semac" - collection of resources for "Geschichte der Akademie"'
+  projectId: 53
+  redmineIssueId: 5015
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  - personId: 14
+    role: Editor
+  - personId: 53
+    role: Editor
+  description: "Corpus of _Baedker_ travel guides encoded in the *travel!digital*\
+    \ project\r\n\r\nImages R:\\container\\R_baedeker_4899"
+  id: 63
+  name: Baedeker Corpus
+  projectId: 54
+  redmineIssueId: 4899
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 15
+    role: ContactPerson
+  description: "the database of names (persons  and works) created in the context\
+    \ of aac.\r\n\r\nMentions of entities in selected resources were collected, disambiguated\
+    \ and enriched.\r\n\r\nThe database was on MSSQL-Server and accessed via a specialized\
+    \ application aac_names,  implemented in Delphi.\r\n\r\nBut the data was also\
+    \ exported to XML and there is a conversion to TEI.\r\n\r\nPartly the TEI version\
+    \ was made available via exisTDB/cr-xq-mets as simple web-app/service.\r\n\r\n\
+    There are 4 separate datasets (coming from different sources):\r\n- Oegg\r\n-\
+    \ Fackel\r\n- Schnitzler\r\n- Brenner\r\n\r\nOverview of types per datasets (as\
+    \ delivered by the view @[rep_Datasets]@ inside the DB):\r\n| prop_value | cnt_items\
+    \ | cnt_persons | cnt_works | cnt_all_occ | cnt_p_occ | cnt_w_occ |\r\n| in Graz\
+    \ | 1 | 1 | 0 | 1 | 1 | 0 |\r\n| Brenner | 3254 | 3253 | 1 | 31355 | 31354 | 1\
+    \ |\r\n| Fackel | 16281 | 15156 | 1125 | 156824 | 123556 | 33268  |\r\n| Oegg\
+    \ | 10834 | 10834 | 0 | 57038 | 57038 | 0  |\r\n| Schnitzler | 12821 | 8506 |\
+    \ 4315 | 84863 | 77038 | 7825  |"
+  id: 64
+  name: aac_names data
+  projectId: &id005 !!python/object:acdh.resourceCatalog.harvester.Project.Project
+    actors:
+    - personId: 1
+      role: ProjectLeader
+    drupalUser: user1
+    endDate: null
+    id: 42
+    name: schnitzler-generic-de-web-app
+    redmineIssueId: 8021
+    startDate: '2017-02-23'
+  redmineIssueId: 4828
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 15
+    role: ContactPerson
+  description: "XML files exported from old \xD6BL-Database\r\n\r\nunder \r\n@\\\\\
+    w07ds2.oeaw.ads\\ACDH_APIS$\\OEBL_XML-Daten@\r\nand/or under\r\n@\\\\w07ds2.oeaw.ads\\\
+    ACDH_resources$\\container\\_R_oebl@\r\n\r\navailable \r\n* originally via epub.oeaw:\
+    \ http://www.biographien.ac.at/oebl?frames=yes\r\n* in the \"APIS-webapp\":http://apis.hephaistos.digital-humanities.at/\r\
+    \n* and via \"Sketch Engine\":http://193.170.85.84/bonito/run.cgi/first_form?corpname=apisTest\r\
+    \n"
+  id: 65
+  name: "\xD6BL data"
+  projectId: 55
+  redmineIssueId: 4767
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 54
+    role: ContactPerson
+  description: 'Hans Hauenstein: Wiener Dialekt. Weanerische Drahdiwaberln von A-Z.
+    Wien 1974.'
+  id: 66
+  name: Hauenstein_1974
+  projectId: 56
+  redmineIssueId: 4649
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 54
+    role: ContactPerson
+  description: 'Wolfgang Teuschl: Wiener Dialektlexikon. Wien 1990.'
+  id: 67
+  name: Teuschl_1990
+  projectId: &id001 !!python/object:acdh.resourceCatalog.harvester.Project.Project
+    actors:
+    - personId: 15
+      role: ProjectLeader
+    drupalUser: user15
+    endDate: null
+    id: 56
+    name: ViDi - Viennese Historical Dictionaries
+    redmineIssueId: 6138
+    startDate: '2016-05-31'
+  redmineIssueId: 4648
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 54
+    role: ContactPerson
+  description: 'Peter Wehle: Sprechen Sie Wienerisch? von Adaxl bis Zwutschkerl. Erweiterte
+    und bearbeitete Neuausgabe. Wien - Heidelberg 1980.'
+  id: 68
+  name: Wehle_1980
+  projectId: *id001
+  redmineIssueId: 4647
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 54
+    role: ContactPerson
+  description: "Max Mayr: Wiener Redensarten. Z\xFCrich - Leipzig - Wien 1929."
+  id: 69
+  name: Mayr_1929
+  projectId: *id001
+  redmineIssueId: 4645
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 54
+    role: ContactPerson
+  description: 'Max Mayr: Das Wienerische. Wien 1924.'
+  id: 70
+  name: Mayr_1924
+  projectId: *id001
+  redmineIssueId: 4644
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 54
+    role: ContactPerson
+  description: 'Eduard Maria Schranka: Wiener Dialekt-Lexion. Wien 1905.'
+  id: 71
+  name: Schranka_1905
+  projectId: *id001
+  redmineIssueId: 4643
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 54
+    role: ContactPerson
+  description: "Franz Seraphim H\xFCgel: Der Wiener Dialekt. Lexikon der Wiener Volkssprache\
+    \ (Idioticon Viennense). Wien - Pest - Leipzig 1873."
+  id: 72
+  name: "H\xFCgel_1873"
+  projectId: *id001
+  redmineIssueId: 4642
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 54
+    role: ContactPerson
+  description: "[Joseph Sonnleithner:] Mundart der Oesterreicher oder Kern \xE4cht\
+    \ \xF6sterreichischer Phrasen und Redensarten. Von A bis Z. Wien 1811. [= 1. Auflage;\
+    \ 2., vermehrte Auflage ebd. 1824]\r\n\r\nFaksimile: https://reader.digitale-sammlungen.de/de/fs1/object/display/bsb10584710_00007.html "
+  id: 73
+  name: Sonnleithner_1811
+  projectId: *id001
+  redmineIssueId: 4641
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 11
+    role: ContactPerson
+  description: "Resources for abacus, i.e. raw and processed texts. \r\n"
+  id: 74
+  name: abacus resources
+  projectId: 57
+  redmineIssueId: 4522
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "Carl Loritza: Neues Idioticon Viennense, das ist: Die Volkssprache\
+    \ der Wiener mit Ber\xFCcksichtigung der \xFCbrigen Landesdialekte. Wien - Leipzig\
+    \ 1847.\r\n\r\nautomatically converted from WB\xD6-Corpus, some manual structuring\r\
+    \n\r\nTODO:\r\n\r\n* insert page breaks\r\n* check conversion\r\n* add some basic\
+    \ information (gender, senses,...)\r\n* think about how to restructure into cannonical\
+    \ @<entry>@ elements\r\n\r\nImages from the Internet Archive."
+  id: 75
+  name: Loritza_1847
+  projectId: *id001
+  redmineIssueId: 1099
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 9
+    role: ContactPerson
+  description: "Daten des Eckhel-Projekts\r\n\r\nIm git-repo liegen die f\xFCr die\
+    \ digitale Edition relevanten Daten; die Word-Dateien f\xFCr die Druckversion\
+    \ pflegt Daniela Williams parallel dazu lokal."
+  id: 76
+  name: Eckhel Briefwechsel digital
+  projectId: 58
+  redmineIssueId: 1089
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 7
+    role: ContactPerson
+  - personId: 3
+    role: Editor
+  description: "* mittelenglische und fr\xFChneuenglische W\xF6rter mit wortfinalen\
+    \ Konsonantenclustern und zugeh\xF6rigen morphologischen/phonologischen/kontextuellen\
+    \ Infos\r\n* die Ursprungsdaten kommen aus historischen Corpora (hier ist auch\
+    \ die Frage, ob es da Lizenzprobleme gibt...?)\r\n* au\xDFerdem beinhaltet die\
+    \ Datenbank Informationen \xFCber die jeweiligen historischen Quelltexte, Berechnungen\
+    \ zur Absch\xE4tzung bestimmter phonologischer Prozesse und phonologische Infos\
+    \ zu Konsonantenclustertypes\r\n* Daten im Moment in excel sollen vielleicht in\
+    \ eine SQL Datenbank \xFCberf\xFChrt werden\r\n\r\n- Ver\xF6ffentlichung und langzeit\
+    \ Pr\xE4servierung\r\n\r\nKontakt: Andreas Baumann andreas.baumann@univie.ac.at\r\
+    \nProjektleiter: Prof. Nikolaus Ritt\r\n\r\nProjektwebsite\r\nhttp://ecce.univie.ac.at/project/\r\
+    \n\r\nFrage zu den Datenkategorien in der zuk\xFCnftigen Datenbank:\r\nGibt es\
+    \ au\xDFer der Datenkategorie \"Phonology\" http://www.isocat.org/rest/dc/2642\
+    \ noch Datenkategorien zu Phonology die noch weiter ins Detail gehen?\r\n\r\n\r\
+    \n\r\nSome preliminary data the ECCE-Team has provided us with.\r\n\r\n- POS-tagged\
+    \ Corpora of historical English (212 texts as text files) \r\n- Access-database\
+    \ as a test version of the final data model"
+  id: 77
+  name: ECCE database
+  projectId: 59
+  redmineIssueId: 1061
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 38
+    role: ContactPerson
+  description: "Data from the FWF-funded publication \"www.bruckner-online.at - Webarchiv\
+    \ f\xFCr die Brucknerforschung\" (\"PUB 240\":http://pf.fwf.ac.at/project_pdfs/pdf_abstracts/pub240d.pdf),\
+    \ published at http://bruckner-online.at/ (hosted by \xD6AW-ARZ)\r\n\r\n| Description\
+    \ | Format | Location |\r\n| Wordpress installation (outdated) | installer.php,\
+    \ zip archive | @\\\\w07ds2.oeaw.ads\\acdh_resources$\\container\\R_brucknerOnline_995\\\
+    001_src\\001_01_wp@ |\r\n| Wordpress installation | installer.php, zip archive\
+    \ | @\\\\w07ds2.oeaw.ads\\acdh_resources$\\container\\R_brucknerOnline_995\\001_src\\\
+    001_01_wp_20170724@ |\r\n| Work Catalogue data | SQL, phpmyadmin-XML | @\\\\w07ds2.oeaw.ads\\\
+    acdh_resources$\\container\\R_brucknerOnline_995\\001_src\\001_02_db@ |\r\n| Wordpress\
+    \ installation (update) | zip archive | @\\\\w07ds2.oeaw.ads\\acdh_resources$\\\
+    container\\R_brucknerOnline_995\\001_src\\001_03_wp@ |\r\n| Images | TIFF, jpg\
+    \ | @\\\\w07ds2.oeaw.ads\\acdh_resources$\\container\\R_brucknerOnline_995\\_ingest_pending\\\
+    bruckner-online_995@ |\r\n\r\nEventually, we need to ingest the data in our repository."
+  id: 78
+  name: bruckner-online
+  projectId: 60
+  redmineIssueId: 995
+- !!python/object:acdh.resourceCatalog.harvester.Dataset.Dataset
+  actors:
+  - personId: 38
+    role: ContactPerson
+  description: "Baffle stands for \"Basic Austrian FullForm LExicon\r\n\r\ngenerate\
+    \ a lexicon with full paradigms for the lemmas (word forms + morpho-syntactic\
+    \ information) \r\nbased on data from Wiktionary, combined with information from\
+    \ various lexica (RF lexicon), \r\nand word lists from corpora (amc #527).\r\n"
+  id: 79
+  name: Baffle - Vollformenlexikon DE
+  projectId: 61
+  redmineIssueId: 765
+  
+persons:
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 1
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/92
+    label: Peter Andorfer
+    type: redmine
+  - id: peter.andorfer@oeaw.ac.at
+    label: Peter Andorfer
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 2
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/122
+    label: "Vanessa Hannesschl\xE4ger"
+    type: redmine
+  - id: vanessa.hannesschlaeger@oeaw.ac.at
+    label: "Vanessa Hannesschl\xE4ger"
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 3
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/19
+    label: Daniel Schopper
+    type: redmine
+  - id: daniel.schopper@oeaw.ac.at
+    label: Daniel Schopper
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 4
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/554
+    label: Andrea Ortner
+    type: redmine
+  - id: andrea.ortner@oeaw.ac.at
+    label: Andrea Ortner
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 5
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/540
+    label: Laura Untner
+    type: redmine
+  - id: laura.untner@oeaw.ac.at
+    label: Laura Untner
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 6
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/122
+    label: "Vanessa Hannesschl\xE4ger"
+    type: redmine
+  - id: vanessa.hannesschlaeger@oeaw.ac.at
+    label: "Vanessa Hannesschl\xE4ger"
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 7
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/70
+    label: Tanja Wissik
+    type: redmine
+  - id: tanja.wissik@oeaw.ac.at
+    label: Tanja Wissik
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 8
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/258
+    label: "Asil \xC7etin"
+    type: redmine
+  - id: asil.cetin@oeaw.ac.at
+    label: "Asil \xC7etin"
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 9
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/19
+    label: Daniel Schopper
+    type: redmine
+  - id: daniel.schopper@oeaw.ac.at
+    label: Daniel Schopper
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 10
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/18
+    label: Matej Durco
+    type: redmine
+  - id: matej.durco@oeaw.ac.at
+    label: Matej Durco
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 11
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/43
+    label: Hannes Pirker
+    type: redmine
+  - id: hannes.pirker@oeaw.ac.at
+    label: Hannes Pirker
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 12
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/299
+    label: "Veronika Gr\xFCndhammer"
+    type: redmine
+  - id: veronika.gruendhammer@oeaw.ac.at
+    label: "Veronika Gr\xFCndhammer"
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 13
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/394
+    label: Andreas Basch
+    type: redmine
+  - id: andreas.basch@oeaw.ac.at
+    label: Andreas Basch
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 14
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/56
+    label: Barbara Krautgartner
+    type: redmine
+  - id: barbara.krautgartner@oeaw.ac.at
+    label: Barbara Krautgartner
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 15
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/18
+    label: Matej Durco
+    type: redmine
+  - id: matej.durco@oeaw.ac.at
+    label: Matej Durco
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 16
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/182
+    label: Alexandra Lenz
+    type: redmine
+  - id: alexandra.lenz@oeaw.ac.at
+    label: Alexandra Lenz
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 17
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/92
+    label: Peter Andorfer
+    type: redmine
+  - id: peter.andorfer@oeaw.ac.at
+    label: Peter Andorfer
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 18
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/146
+    label: Jack Bowers
+    type: redmine
+  - id: jack.bowers@oeaw.ac.at
+    label: Jack Bowers
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 19
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/26
+    label: "Karlheinz M\xF6rth"
+    type: redmine
+  - id: karlheinz.moerth@oeaw.ac.at
+    label: "Karlheinz M\xF6rth"
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 20
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/350
+    label: Ludwig Maximilian Breuer
+    type: redmine
+  - id: ludwig.maximilian.breuer@univie.ac.at
+    label: Ludwig Maximilian Breuer
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 21
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/449
+    label: Sayuri Yoshida
+    type: redmine
+  - id: sayuri.yoshida@oeaw.ac.at
+    label: Sayuri Yoshida
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 22
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/456
+    label: Carl Friedrich Haak
+    type: redmine
+  - id: carlfriedrich.haak@oeaw.ac.at
+    label: Carl Friedrich Haak
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 23
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/553
+    label: "Katharina Ruth W\xFCnsche"
+    type: redmine
+  - id: katharinaruth.wuensche@oeaw.ac.at
+    label: "Katharina Ruth W\xFCnsche"
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 24
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/315
+    label: Stefan Resch
+    type: redmine
+  - id: stefan.resch@oeaw.ac.at
+    label: Stefan Resch
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 25
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/257
+    label: Martina Trognitz
+    type: redmine
+  - id: martina.trognitz@oeaw.ac.at
+    label: Martina Trognitz
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 26
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/23
+    label: eveline wandl-vogt
+    type: redmine
+  - id: eveline.wandl-vogt@oeaw.ac.at
+    label: eveline wandl-vogt
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 27
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/90
+    label: Amelie Dorn
+    type: redmine
+  - id: amelie.dorn@oeaw.ac.at
+    label: Amelie Dorn
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 28
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/23
+    label: eveline wandl-vogt
+    type: redmine
+  - id: eveline.wandl-vogt@oeaw.ac.at
+    label: eveline wandl-vogt
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 29
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/84
+    label: "Matthias Schl\xF6gl"
+    type: redmine
+  - id: matthias.schloegl@oeaw.ac.at
+    label: "Matthias Schl\xF6gl"
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 30
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/256
+    label: Dario Kampkaspar
+    type: redmine
+  - id: dario.kampkaspar@oeaw.ac.at
+    label: Dario Kampkaspar
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 31
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/43
+    label: Hannes Pirker
+    type: redmine
+  - id: hannes.pirker@oeaw.ac.at
+    label: Hannes Pirker
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 32
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/134
+    label: Klaus Illmayer
+    type: redmine
+  - id: klaus.illmayer@oeaw.ac.at
+    label: Klaus Illmayer
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 33
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/324
+    label: Stephan Kurz
+    type: redmine
+  - id: stephan.kurz@oeaw.ac.at
+    label: Stephan Kurz
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 34
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/194
+    label: Georg Vogeler
+    type: redmine
+  - id: georg.vogeler@oeaw.ac.at
+    label: Georg Vogeler
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 35
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/86
+    label: Ksenia Zaytseva
+    type: redmine
+  - id: ksenia.zaytseva@oeaw.ac.at
+    label: Ksenia Zaytseva
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 36
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/134
+    label: Klaus Illmayer
+    type: redmine
+  - id: klaus.illmayer@oeaw.ac.at
+    label: Klaus Illmayer
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 37
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/29
+    label: Omar Siam
+    type: redmine
+  - id: omar.siam@oeaw.ac.at
+    label: Omar Siam
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 38
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/1
+    label: Redmine Admin
+    type: redmine
+  - id: acdh-tech@oeaw.ac.at
+    label: Redmine Admin
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 39
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/32
+    label: Ines Gabsi
+    type: redmine
+  - id: ines.gabsi@oeaw.ac.at
+    label: Ines Gabsi
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 40
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/21
+    label: Claudia Resch
+    type: redmine
+  - id: claudia.resch@oeaw.ac.at
+    label: Claudia Resch
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 41
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/83
+    label: Katalin Lejtovicz
+    type: redmine
+  - id: katalin.lejtovicz@oeaw.ac.at
+    label: Katalin Lejtovicz
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 42
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/123
+    label: Eva Wohlfarter
+    type: redmine
+  - id: eva.wohlfarter@oeaw.ac.at
+    label: Eva Wohlfarter
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 43
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/31
+    label: Ulrike Czeitschner
+    type: redmine
+  - id: ulrike.czeitschner@oeaw.ac.at
+    label: Ulrike Czeitschner
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 44
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/275
+    label: Marek Cupak
+    type: redmine
+  - id: marek.cupak@oeaw.ac.at
+    label: Marek Cupak
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 45
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/257
+    label: Martina Trognitz
+    type: redmine
+  - id: martina.trognitz@oeaw.ac.at
+    label: Martina Trognitz
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 46
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/56
+    label: Barbara Krautgartner
+    type: redmine
+  - id: barbara.krautgartner@oeaw.ac.at
+    label: Barbara Krautgartner
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 47
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/75
+    label: Seta Stuhec
+    type: redmine
+  - id: seta.stuhec@oeaw.ac.at
+    label: Seta Stuhec
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 48
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/31
+    label: Ulrike Czeitschner
+    type: redmine
+  - id: ulrike.czeitschner@oeaw.ac.at
+    label: Ulrike Czeitschner
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 49
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/190
+    label: Mehmet Emir
+    type: redmine
+  - id: mehmet.emir@oeaw.ac.at
+    label: Mehmet Emir
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 50
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/316
+    label: Jose Preza Diaz
+    type: redmine
+  - id: jose.prezadiaz@oeaw.ac.at
+    label: Jose Preza Diaz
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 51
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/87
+    label: Christoph Hoffmann
+    type: redmine
+  - id: christoph.hoffmann@oeaw.ac.at
+    label: Christoph Hoffmann
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 52
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/29
+    label: Omar Siam
+    type: redmine
+  - id: omar.siam@oeaw.ac.at
+    label: Omar Siam
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 53
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/55
+    label: Victoria Eisenheld
+    type: redmine
+  - id: victoria.eisenheld@oeaw.ac.at
+    label: Victoria Eisenheld
+    type: email
+- !!python/object:acdh.resourceCatalog.harvester.Person.Person
+  id: 54
+  identifiers:
+  - id: https://redmine.acdh.oeaw.ac.at/users/28
+    label: Barbara Piringer
+    type: redmine
+  - id: barbara.piringer@oeaw.ac.at
+    label: Barbara Piringer
+    type: email
+    
+projects:
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  drupalUser: user1
+  endDate: null
+  id: 1
+  name: Auden-Musulin-Papers
+  redmineIssueId: 18626
+  startDate: '2021-01-08'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 2
+    role: ProjectLeader
+  - personId: 3
+    role: Editor
+  - personId: 4
+    role: Editor
+  - personId: 5
+    role: Editor
+  - personId: 6
+    role: Editor
+  drupalUser: user2
+  endDate: '2022-02-28'
+  id: 2
+  name: 'Digital edition of the Karl Kraus Legal Papers (OFWF31138) '
+  redmineIssueId: 6086
+  startDate: '2018-09-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  drupalUser: user1
+  endDate: null
+  id: 3
+  name: ABCD - Anton Bruckner Chronologie Datenbank Projekt-Issue
+  redmineIssueId: 19920
+  startDate: '2022-01-31'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 7
+    role: ProjectLeader
+  - personId: 8
+    role: Editor
+  drupalUser: user7
+  endDate: '2021-04-30'
+  id: 4
+  name: 'Go Digital Next Generation: Diachronic Dynamics of Lexical Networks (DYLEN)'
+  redmineIssueId: 11159
+  startDate: '2019-05-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  - personId: 10
+    role: Editor
+  drupalUser: user9
+  endDate: '2022-08-31'
+  id: 5
+  name: "dQI\xD6G. A workflow for the Pez edition in a hybrid series "
+  redmineIssueId: 18154
+  startDate: '2021-09-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 11
+    role: ProjectLeader
+  drupalUser: user11
+  endDate: null
+  id: 6
+  name: 't.evo : Evolution von komplexen Textmustern'
+  redmineIssueId: 19445
+  startDate: '2021-08-05'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 12
+    role: ProjectLeader
+  drupalUser: user12
+  endDate: '2022-12-31'
+  id: 7
+  name: "Language structure and use in J.N. Nestroy\u2019s plays (\xD6sterreichische\
+    \ Nationalbank - Jubil\xE4umsfonds)"
+  redmineIssueId: 17251
+  startDate: '2020-08-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  - personId: 13
+    role: Editor
+  - personId: 14
+    role: Editor
+  drupalUser: user9
+  endDate: null
+  id: 8
+  name: "Dritte Walpurgisnacht \u2013 Digitale Edition"
+  redmineIssueId: 17441
+  startDate: '2020-06-15'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 15
+    role: ProjectLeader
+  drupalUser: user15
+  endDate: '2022-10-31'
+  id: 9
+  name: MMP - Mapping Medieval Peoples - Wieser@IMAFO /GENS - Innovationsfond
+  redmineIssueId: 13891
+  startDate: '2020-11-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 15
+    role: ProjectLeader
+  drupalUser: user15
+  endDate: '2015-12-11'
+  id: 10
+  name: MythenDB - hosting
+  redmineIssueId: 4997
+  startDate: '2015-11-19'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  - personId: 16
+    role: Editor
+  drupalUser: user9
+  endDate: null
+  id: 11
+  name: Brahms Rezeptionsdatenbank
+  redmineIssueId: 16997
+  startDate: '2020-03-26'
+- *id002
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  - personId: 3
+    role: Editor
+  - personId: 18
+    role: Editor
+  - personId: 19
+    role: Editor
+  - personId: 20
+    role: Editor
+  drupalUser: user9
+  endDate: null
+  id: 13
+  name: "WB\xD6 Retrodigitalisierung"
+  redmineIssueId: 17138
+  startDate: '2020-04-09'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 15
+    role: ProjectLeader
+  - personId: 17
+    role: Editor
+  drupalUser: user15
+  endDate: null
+  id: 14
+  name: Corpus Vasorum Antiquorum
+  redmineIssueId: 9933
+  startDate: '2017-11-16'
+- *id003
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  drupalUser: user9
+  endDate: '2020-12-31'
+  id: 16
+  name: VOICE @ CLARIAH-AT
+  redmineIssueId: 15889
+  startDate: '2020-05-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  - personId: 14
+    role: Editor
+  - personId: 22
+    role: Editor
+  - personId: 23
+    role: Editor
+  - personId: 24
+    role: Editor
+  drupalUser: user9
+  endDate: '2023-12-31'
+  id: 17
+  name: "\u201EJelinek online. Elfriede Jelinek: Werk und Rezeption\u201C (FWF P 32097/OFWF032097)"
+  redmineIssueId: 5085
+  startDate: '2020-01-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  drupalUser: user1
+  endDate: null
+  id: 18
+  name: Personen der Moderne Basis (PMB)
+  redmineIssueId: 10840
+  startDate: '2018-03-23'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 15
+    role: ProjectLeader
+  - personId: 25
+    role: Editor
+  - personId: 10
+    role: Editor
+  - personId: 17
+    role: Editor
+  drupalUser: user15
+  endDate: '2020-01-31'
+  id: 19
+  name: 4dpuzzle - Preservation for Excavation data from Tell el-Dab'a
+  redmineIssueId: 6390
+  startDate: '2015-02-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  - personId: 17
+    role: Editor
+  drupalUser: user1
+  endDate: null
+  id: 20
+  name: "Digital Edition Wiener Grundb\xFCcher"
+  redmineIssueId: 10219
+  startDate: '2018-01-12'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  drupalUser: user1
+  endDate: null
+  id: 21
+  name: "dFMR\xD6 Projekt Issue"
+  redmineIssueId: 11786
+  startDate: '2018-08-28'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  drupalUser: user1
+  endDate: '2017-11-01'
+  id: 22
+  name: Thun Korrespondenz
+  redmineIssueId: 5208
+  startDate: '2016-10-11'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 26
+    role: ProjectLeader
+  - personId: 27
+    role: Editor
+  - personId: 28
+    role: Editor
+  drupalUser: user26
+  endDate: null
+  id: 23
+  name: topothek.at
+  redmineIssueId: 11319
+  startDate: '2018-06-13'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  - personId: 29
+    role: Editor
+  drupalUser: user1
+  endDate: null
+  id: 24
+  name: "HistoGis (\xD6AW4019)"
+  redmineIssueId: 7616
+  startDate: '2016-01-25'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  drupalUser: user1
+  endDate: null
+  id: 25
+  name: DELT Database
+  redmineIssueId: 10959
+  startDate: '2018-04-20'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  - personId: 3
+    role: Editor
+  - personId: 30
+    role: Editor
+  - personId: 31
+    role: Editor
+  - personId: 10
+    role: Editor
+  - personId: 17
+    role: Editor
+  drupalUser: user1
+  endDate: null
+  id: 26
+  name: Explore the Wiener Zeitung OCR-dump
+  redmineIssueId: 10850
+  startDate: '2018-03-26'
+- *id004
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  - personId: 32
+    role: Editor
+  drupalUser: user1
+  endDate: null
+  id: 28
+  name: Digitale Edition Rundbriefe
+  redmineIssueId: 10433
+  startDate: '2018-01-31'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  - personId: 33
+    role: Editor
+  - personId: 34
+    role: Editor
+  drupalUser: user1
+  endDate: null
+  id: 29
+  name: Ministerratsprotokolle Project-Issue
+  redmineIssueId: 9601
+  startDate: '2017-10-05'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 11
+    role: ProjectLeader
+  - personId: 31
+    role: Editor
+  drupalUser: user11
+  endDate: null
+  id: 30
+  name: parlAT
+  redmineIssueId: 9927
+  startDate: '2017-11-15'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 11
+    role: ProjectLeader
+  - personId: 31
+    role: Editor
+  drupalUser: user11
+  endDate: null
+  id: 31
+  name: Memoire du Millischer
+  redmineIssueId: 8837
+  startDate: '2017-06-08'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  - personId: 3
+    role: Editor
+  drupalUser: user9
+  endDate: '2017-12-31'
+  id: 32
+  name: Corpuslinguistische Untersuchung von Deutschmaturatexten
+  redmineIssueId: 7324
+  startDate: '2017-05-12'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  drupalUser: user1
+  endDate: null
+  id: 33
+  name: Brixner Inschriften - BRIN
+  redmineIssueId: 8205
+  startDate: '2017-03-27'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  drupalUser: user1
+  endDate: null
+  id: 34
+  name: official-depictions
+  redmineIssueId: 8111
+  startDate: '2017-03-14'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  drupalUser: user9
+  endDate: '2017-12-30'
+  id: 35
+  name: LBG on TEI
+  redmineIssueId: 8005
+  startDate: '2017-01-12'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  - personId: 3
+    role: Editor
+  drupalUser: user9
+  endDate: '2017-09-30'
+  id: 36
+  name: 'WISSKOMM: War of Pictures'
+  redmineIssueId: 6928
+  startDate: '2016-10-05'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 15
+    role: ProjectLeader
+  - personId: 28
+    role: Editor
+  - personId: 35
+    role: Editor
+  drupalUser: user15
+  endDate: '2016-10-31'
+  id: 37
+  name: (Infrastructure for) Russian manuscript lexicons - Kovalenko
+  redmineIssueId: 6903
+  startDate: '2016-09-30'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 15
+    role: ProjectLeader
+  - personId: 35
+    role: Editor
+  drupalUser: user15
+  endDate: '2016-10-31'
+  id: 38
+  name: Dictionary of Russian Dialects into TEI - Kovalenko
+  redmineIssueId: 6900
+  startDate: '2016-09-30'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 15
+    role: ProjectLeader
+  drupalUser: user15
+  endDate: '2017-09-30'
+  id: 39
+  name: "Projekt Troesmis @IKANT \u2013 Langzeitarchivierung"
+  redmineIssueId: 6665
+  startDate: '2016-09-13'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  drupalUser: user9
+  endDate: '2017-04-04'
+  id: 40
+  name: "ABLO \u2013 Bruckner-Dictionary"
+  redmineIssueId: 6782
+  startDate: '2016-09-13'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  drupalUser: user9
+  endDate: '2017-12-31'
+  id: 41
+  name: OeML @ TEI
+  redmineIssueId: 6778
+  startDate: '2016-04-26'
+- *id005
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 15
+    role: ProjectLeader
+  drupalUser: user15
+  endDate: '2016-12-31'
+  id: 43
+  name: Glaser - Abklatsche (BAS:IS)
+  redmineIssueId: 6089
+  startDate: '2015-01-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 1
+    role: ProjectLeader
+  drupalUser: user1
+  endDate: null
+  id: 44
+  name: DAACDA Preparation
+  redmineIssueId: 5695
+  startDate: '2016-05-25'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 36
+    role: ProjectLeader
+  - personId: 3
+    role: Editor
+  drupalUser: user36
+  endDate: null
+  id: 45
+  name: IPI Archive
+  redmineIssueId: 5668
+  startDate: '2016-01-21'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  - personId: 37
+    role: Editor
+  drupalUser: user9
+  endDate: '2017-10-31'
+  id: 46
+  name: JB80
+  redmineIssueId: 6400
+  startDate: '2016-03-31'
+- *id006
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  - personId: 14
+    role: Editor
+  - personId: 37
+    role: Editor
+  drupalUser: user9
+  endDate: '2019-10-31'
+  id: 48
+  name: Staribacher Diaries
+  redmineIssueId: 5238
+  startDate: '2015-11-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 38
+    role: ProjectLeader
+  - personId: 39
+    role: Editor
+  - personId: 37
+    role: Editor
+  drupalUser: user38
+  endDate: '2016-12-01'
+  id: 49
+  name: TuniCo
+  redmineIssueId: 1011
+  startDate: '2014-06-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  - personId: 40
+    role: Editor
+  - personId: 3
+    role: Editor
+  drupalUser: user9
+  endDate: '2015-12-09'
+  id: 50
+  name: Wiennerisches Diarium Pilotprojekt
+  redmineIssueId: 1167
+  startDate: '2014-09-23'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 38
+    role: ProjectLeader
+  - personId: 3
+    role: Editor
+  drupalUser: user38
+  endDate: null
+  id: 51
+  name: "cuneiformdb - Keilschrift Pal\xE4ographie"
+  redmineIssueId: 467
+  startDate: '2016-01-19'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 15
+    role: ProjectLeader
+  drupalUser: user15
+  endDate: '2014-04-07'
+  id: 52
+  name: VICAV on xquery
+  redmineIssueId: 9940
+  startDate: '2014-04-07'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 15
+    role: ProjectLeader
+  - personId: 29
+    role: Editor
+  drupalUser: user15
+  endDate: '2021-11-30'
+  id: 53
+  name: PAAS - Geschichte der Akademie 1847 - 2022
+  redmineIssueId: 4548
+  startDate: '2014-12-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 38
+    role: ProjectLeader
+  drupalUser: user38
+  endDate: '2016-11-30'
+  id: 54
+  name: travel!digital
+  redmineIssueId: 844
+  startDate: '2014-12-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 26
+    role: ProjectLeader
+  - personId: 41
+    role: Editor
+  - personId: 29
+    role: Editor
+  drupalUser: user26
+  endDate: '2019-06-30'
+  id: 55
+  name: "APIS (\xD6AW0405)"
+  redmineIssueId: 837
+  startDate: '2015-04-15'
+- *id001
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 15
+    role: ProjectLeader
+  - personId: 14
+    role: Editor
+  - personId: 3
+    role: Editor
+  - personId: 42
+    role: Editor
+  - personId: 10
+    role: Editor
+  - personId: 43
+    role: Editor
+  drupalUser: user15
+  endDate: null
+  id: 57
+  name: ABaC:us
+  redmineIssueId: 4839
+  startDate: '2012-01-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  drupalUser: user9
+  endDate: '2015-12-31'
+  id: 58
+  name: Briefedition Eckhel
+  redmineIssueId: 709
+  startDate: '2015-06-05'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 9
+    role: ProjectLeader
+  - personId: 3
+    role: Editor
+  drupalUser: user9
+  endDate: '2017-01-19'
+  id: 59
+  name: ECCE
+  redmineIssueId: 6969
+  startDate: '2015-05-22'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 15
+    role: ProjectLeader
+  - personId: 44
+    role: Editor
+  drupalUser: user15
+  endDate: '2019-04-30'
+  id: 60
+  name: Digitales Werkverzeichnis Anton Bruckner (FWFORD77)
+  redmineIssueId: 6262
+  startDate: '2017-05-01'
+- !!python/object:acdh.resourceCatalog.harvester.Project.Project
+  actors:
+  - personId: 38
+    role: ProjectLeader
+  drupalUser: user38
+  endDate: null
+  id: 61
+  name: PWL - Processing word lists
+  redmineIssueId: 7
+  startDate: '2016-02-23'

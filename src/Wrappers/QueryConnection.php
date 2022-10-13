@@ -41,6 +41,7 @@ class QueryConnection {
     }
 
     $buffer = \Drupal::service('graphql.buffer.entity');
+
     $callback = $buffer->add($this->query->getEntityTypeId(), array_values($result));
     return new Deferred(function () use ($callback) {
       return $callback();

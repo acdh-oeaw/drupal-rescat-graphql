@@ -6,6 +6,10 @@ schema {
 ########## QUERY ##########
 type Query {
   project(id: Int!): Project
+  projects_with_relation(
+    offset: Int = 0
+    limit: Int = 10
+    id: Int): ProjectConnection!
   projects(
     offset: Int = 0
     limit: Int = 10
@@ -122,6 +126,11 @@ type Project implements NodeInterface {
 }
 
 type ProjectConnection {
+  total: Int!
+  items: [Project!]
+}
+
+type ProjectsWithRelationConnection {
   total: Int!
   items: [Project!]
 }

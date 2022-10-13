@@ -31,6 +31,8 @@ class ResCatSchema extends SdlSchemaPluginBase {
      * {@inheritdoc}
      */
     public function getResolverRegistry() {
+        
+        
         $builder = new ResolverBuilder();
         $registry = new ResolverRegistry();
 
@@ -38,7 +40,7 @@ class ResCatSchema extends SdlSchemaPluginBase {
          * Mutations
          */
         $this->addMutations($registry, $builder);
-       
+        
         $registry->addTypeResolver('NodeInterface', function ($value) {
             if ($value instanceof NodeInterface) {
                 switch ($value->bundle()) {
@@ -104,6 +106,11 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('offset', $builder->fromArgument('offset'))
                         ->map('limit', $builder->fromArgument('limit'))
                         ->map('title', $builder->fromArgument('title'))
+        );
+        
+        $registry->addFieldResolver('Query', 'projects_with_relation',
+                $builder->produce('query_projects_with_relation')
+                        ->map('id', $builder->fromArgument('id'))
         );
 
         /*         * * PERSON** */
