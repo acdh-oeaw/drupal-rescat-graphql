@@ -44,12 +44,24 @@ trait ProjectSchema {
                         ->map('field', $builder->fromValue('field_institution_relations'))
         );
 
-        
+        $registry->addFieldResolver('Project', 'datasetRelations',
+        $builder->compose(
+                        $builder->produce('entity_id')
+                                ->map('entity', $builder->fromParent()),
+                        $builder->callback(function ($parent) {
+                            error_log(print_r($parent, true));
+                            return 115;
+                        })
+                )
+        );
+                        
+        /*
         $registry->addFieldResolver('Project', 'datasetRelations',
                 $builder->produce('entity_reference_revisions')
                         ->map('entity', $builder->fromParent())
                         ->map('field', $builder->fromValue('field_dataset_relations'))
         );
+         */
 
         $registry->addFieldResolver('Project', 'personRelations',
                 $builder->produce('entity_reference_revisions')
