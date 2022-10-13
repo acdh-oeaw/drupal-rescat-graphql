@@ -41,7 +41,29 @@ trait ProjectSchema {
                         ->map('entity', $builder->fromParent())
                         ->map('field', $builder->fromValue('field_institution_relations'))
         );
-
+        
+        $registry->addFieldResolver('Project', 'dataset',
+                $builder->compose(
+                        $builder->produce('entity_id')
+                                ->map('entity', $builder->fromParent()),
+                        $builder->callback(function ($parent) {
+                            return $node = \Drupal::entityTypeManager()->getStorage('node')->load(116);
+                        })
+                )
+        );
+                        
+           
+        $registry->addFieldResolver('Dataset', 'id',
+                $builder->produce('entity_id')
+                        ->map('entity', $builder->fromParent())
+        );
+        
+         $registry->addFieldResolver('Dataset', 'title',
+                $builder->produce('entity_label')
+                        ->map('entity', $builder->fromParent())
+        );
+        
+        /*
         $registry->addFieldResolver('ProjectRelation', 'projectRelations',
                 $builder->compose(
                         $builder->produce('entity_id')
@@ -98,7 +120,8 @@ trait ProjectSchema {
                         })
                 )
         );
-
+        */
+        
         $registry->addFieldResolver('Project', 'datasetRelations',
                 $builder->produce('entity_reference_revisions')
                         ->map('entity', $builder->fromParent())
