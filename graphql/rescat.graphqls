@@ -122,7 +122,7 @@ type Project implements NodeInterface {
   institutionRelations: [Paragraph]!
   startDate: String
   endDate: String
-  datasetRelations: [Paragraph]!
+  projectRelations: [Paragraph]!
 }
 
 type ProjectConnection {
