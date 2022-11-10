@@ -41,92 +41,197 @@ trait ProjectSchema {
                         ->map('entity', $builder->fromParent())
                         ->map('field', $builder->fromValue('field_institution_relations'))
         );
-        
-        $registry->addFieldResolver('Project', 'dataset',
-                $builder->compose(
-                        $builder->produce('entity_id')
-                                ->map('entity', $builder->fromParent()),
-                        $builder->callback(function ($parent) {
-                            return $node = \Drupal::entityTypeManager()->getStorage('node')->load(116);
-                        })
-                )
-        );
-                        
-           
-        $registry->addFieldResolver('Dataset', 'id',
-                $builder->produce('entity_id')
-                        ->map('entity', $builder->fromParent())
-        );
-        
-         $registry->addFieldResolver('Dataset', 'title',
-                $builder->produce('entity_label')
-                        ->map('entity', $builder->fromParent())
-        );
-        
-        /*
-        $registry->addFieldResolver('ProjectRelation', 'projectRelations',
-                $builder->compose(
-                        $builder->produce('entity_id')
-                                ->map('entity', $builder->fromParent()),
-                        $builder->callback(function ($parent) {
-                            error_log(print_r($parent, true));
 
+        $registry->addFieldResolver('Project', 'dataSet',
+                $builder->compose(
+                        $builder->produce('entity_id')
+                                ->map('entity', $builder->fromParent()),
+                        $builder->callback(function ($parent) {
+                            //the parent is the project id
+                            //we need to check the project_relation fields in the paragraphs 
+                            //get all paragraphs by type projct_relation - iterate them and check where is the parent
                             
-                            $paragraph = Paragraph::load(227);
-                            error_log(print_r($paragraph, true));
-                            return $paragraph;
-                            
-                            
-                            
-                            if (count($paragraph->get('field_person')->getValue()) > 0) {
-                            if ($this->checkPerson($paragraph->get('field_person')->getValue(), $data['target_id'])) {
-                                if (!$this->changeRelation($paragraph, $k, $data['relation_id'])) {
-                                    throw new \Exception('Dataset relation field saving error.');
-                                    }
+                            //get all project_relation paragraphs
+                            $entity_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+                            $query = \Drupal::entityQuery('paragraph')
+                                ->condition('type', "project_relation");
+
+                            $project_relations = $query->execute();
+                            //ide kell egy foreach
+                            foreach($project_relations as $pk => $pv) {
+                                $paragraph = Paragraph::load($pv);
+                                $pField = $field = $paragraph->get('field_project')->getValue();
+                                foreach($pField as $fv) {
+                                    if($fv['target_id'] === $parent) {
+                                        return $pv;
+                                    }    
                                 }
                             }
-                            
-                           
-                            //create new pararaph
-                            $paragraph = Paragraph::create([
-                            'type' => 'project_relation',
-                            'parent_id' => 115,
-                            'parent_type' => 'node',
-                            'parent_field_name' => 'field_project_relation',
-                            'field_dataset_relation' => array(
-                                'target_id' => $data['target_id']
-                            )
-                        ]);
-
-           
-                $paragraph->isNew();
-                $paragraph->save();
-                            
-                            $arr = array(
-                                "data" => array(
-                                    array(
-                                        "type" => "project_relation",
-                                        "id" => "51dd4d10-e720-46bb-b369-809c94a23d3b",
-                                        "meta" => array(
-                                            "target_revision_id" => 275,
-                                            "drupal_internal__target_id" => 227
-                                        )
-                                    )
-                                )
-                            );
-                            return $arr;
-                            //return 227;
-                            return 115;
+                         
+                            return 0;
                         })
                 )
         );
-        */
-        
+          
         $registry->addFieldResolver('Project', 'datasetRelations',
-                $builder->produce('entity_reference_revisions')
-                        ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_dataset_relations'))
-        );
+                $builder->compose(
+                        $builder->produce('entity_id')
+                                ->map('entity', $builder->fromParent()),
+                        $builder->callback(function ($parent) {
+                            //the parent is the project id
+                            //we need to check the project_relation fields in the paragraphs 
+                            //get all paragraphs by type projct_relation - iterate them and check where is the parent
+                            
+                            //get all project_relation paragraphs
+                            $entity_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+                            $query = \Drupal::entityQuery('paragraph')
+                                ->condition('type', "project_relation");
+
+                            $project_relations = $query->execute();
+                            //ide kell egy foreach
+                            foreach($project_relations as $pk => $pv) {
+                                $paragraph = Paragraph::load($pv);
+                                $pField = $field = $paragraph->get('field_project')->getValue();
+                                foreach($pField as $fv) {
+                                    if($fv['target_id'] === $parent) {
+                                        return $paragraph;
+                                    }    
+                                }
+                            }
+                         
+                            return null;
+                        })
+                )
+        );                
+                        
+                        
+
+        /*
+          $registry->addFieldResolver('Project', 'dataset',
+          $builder->compose(
+          $builder->produce('entity_id')
+          ->map('entity', $builder->fromParent()),
+          $builder->callback(function ($parent) {
+
+          return 116;
+          error_log(print_r($parent, true));
+
+          $paragraph = Paragraph::load(227);
+          error_log(print_r($paragraph, true));
+          return $paragraph;
+
+
+          if (count($paragraph->get('field_person')->getValue()) > 0) {
+          if ($this->checkPerson($paragraph->get('field_person')->getValue(), $data['target_id'])) {
+          if (!$this->changeRelation($paragraph, $k, $data['relation_id'])) {
+          throw new \Exception('Dataset relation field saving error.');
+          }
+          }
+          }
+
+
+          //create new pararaph
+          $paragraph = Paragraph::create([
+          'type' => 'project_relation',
+          'parent_id' => 115,
+          'parent_type' => 'node',
+          'parent_field_name' => 'field_project_relation',
+          'field_dataset_relation' => array(
+          'target_id' => $data['target_id']
+          )
+          ]);
+
+          $paragraph->isNew();
+          $paragraph->save();
+
+          $arr = array(
+          "data" => array(
+          array(
+          "type" => "project_relation",
+          "id" => "51dd4d10-e720-46bb-b369-809c94a23d3b",
+          "meta" => array(
+          "target_revision_id" => 275,
+          "drupal_internal__target_id" => 227
+          )
+          )
+          )
+          );
+          return $arr;
+          //return 227;
+          return 115;
+          })
+          )
+          );
+         */
+        /*
+          $registry->addFieldResolver('Dataset', 'id',
+          $builder->produce('entity_id')
+          ->map('entity', $builder->fromParent())
+          );
+
+          $registry->addFieldResolver('Dataset', 'title',
+          $builder->produce('entity_label')
+          ->map('entity', $builder->fromParent())
+          );
+         */
+        /*
+          $registry->addFieldResolver('ProjectRelation', 'projectRelations',
+          $builder->compose(
+          $builder->produce('entity_id')
+          ->map('entity', $builder->fromParent()),
+          $builder->callback(function ($parent) {
+          error_log(print_r($parent, true));
+
+
+          $paragraph = Paragraph::load(227);
+          error_log(print_r($paragraph, true));
+          return $paragraph;
+
+
+
+          if (count($paragraph->get('field_person')->getValue()) > 0) {
+          if ($this->checkPerson($paragraph->get('field_person')->getValue(), $data['target_id'])) {
+          if (!$this->changeRelation($paragraph, $k, $data['relation_id'])) {
+          throw new \Exception('Dataset relation field saving error.');
+          }
+          }
+          }
+
+
+          //create new pararaph
+          $paragraph = Paragraph::create([
+          'type' => 'project_relation',
+          'parent_id' => 115,
+          'parent_type' => 'node',
+          'parent_field_name' => 'field_project_relation',
+          'field_dataset_relation' => array(
+          'target_id' => $data['target_id']
+          )
+          ]);
+
+
+          $paragraph->isNew();
+          $paragraph->save();
+
+          $arr = array(
+          "data" => array(
+          array(
+          "type" => "project_relation",
+          "id" => "51dd4d10-e720-46bb-b369-809c94a23d3b",
+          "meta" => array(
+          "target_revision_id" => 275,
+          "drupal_internal__target_id" => 227
+          )
+          )
+          )
+          );
+          return $arr;
+          //return 227;
+          return 115;
+          })
+          )
+          );
+         */
 
         $registry->addFieldResolver('Project', 'personRelations',
                 $builder->produce('entity_reference_revisions')
@@ -151,23 +256,21 @@ trait ProjectSchema {
             //https://github.com/drupal-graphql/graphql/pull/968
             throw new Error('Could not resolve Paragraph type (in project) ' . $value->bundle());
         });
-        
-        
-        
+
         // Person relation
         $registry->addFieldResolver('ProjectRelation', 'id',
                 $builder->produce('entity_id')
                         ->map('entity', $builder->fromParent()),
-                 $builder->callback(function ($parent) {
-                     return 227;
-                 })
+                $builder->callback(function ($parent) {
+                    return 227;
+                })
         );
 
         $registry->addFieldResolver('ProjectRelation', 'uuid',
                 $builder->produce('entity_uuid')
                         ->map('entity', $builder->fromParent())
         );
-        
+
         $registry->addFieldResolver('ProjectRelation', 'project',
                 $builder->produce('entity_reference')
                         ->map('entity', $builder->fromParent())
@@ -180,7 +283,6 @@ trait ProjectSchema {
                         ->map('entity', $builder->fromParent())
                         ->map('field', $builder->fromValue('field_relation'))
         );
-        
 
         $this->addPersonRelationFields($registry, $builder);
         $this->addIdentifierRelationFields($registry, $builder);

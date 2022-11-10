@@ -122,15 +122,11 @@ type Project implements NodeInterface {
   institutionRelations: [Paragraph]!
   startDate: String
   endDate: String
-  dataSet: [Dataset]!
+  dataSet: Int
+  datasetRelations: [Paragraph]
 }
 
 type ProjectConnection {
-  total: Int!
-  items: [Project!]
-}
-
-type ProjectsWithRelationConnection {
   total: Int!
   items: [Project!]
 }
@@ -253,26 +249,24 @@ input InstitutionUpdateInput {
 ##### DatasetInstance #####
 
 input DatasetInstanceInput {
-  headline: String!
-  harvestingStatus: String
+  locationPath: String
   description: String
-  lastHarvestDate: String
-  license: String
-  locationTitle: String
-  locationUri: String
-  size: Int
+  harvestStatus: String
+  harvestDate: String
+  harvestReport: String
+  size: Int  
+  filesCount: Int  
 }
 
 input DatasetInstanceUpdateInput {
   id: Int!
-  headline: String
-  harvestingStatus: String
+  locationPath: String
   description: String
-  lastHarvestDate: String
-  license: String
-  locationTitle: String
-  locationUri: String
-  size: Int
+  harvestStatus: String
+  harvestDate: String
+  harvestReport: String
+  size: Int  
+  filesCount: Int 
 }
 
 input DatasetInstanceDeleteInput {
@@ -282,9 +276,8 @@ input DatasetInstanceDeleteInput {
 ##### Dataset  #####
 
 input DatasetInput {
-  headline: String!
+  title: String!
   description: String
-  projectId: Int
   redmineId: Int
 }
 
@@ -294,16 +287,15 @@ input DatasetDeleteInput {
 
 input DatasetUpdateInput {
   id: Int!  
-  headline: String
+  title: String
   description: String
-  projectId: Int
   redmineId: Int
 }
  
 ##### Project #####
 
 input ProjectInput {
-  headline: String!
+  title: String!
   description: String
   endDate: String
   startDate: String
@@ -312,7 +304,7 @@ input ProjectInput {
 
 input ProjectUpdateInput {
   id: Int!
-  headline: String
+  title: String
   description: String
   endDate: String
   startDate: String
