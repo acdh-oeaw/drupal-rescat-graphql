@@ -13,10 +13,7 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *   name = "InstitutionInput",
  *   fields = {
  *     "title" = "String",
- *     "identifiers" = {
- *        "type" = "String",
- *        "nullable" = "TRUE"
- *     }
+ *     "acronyms" = "String"
  *   }
  * )
  */

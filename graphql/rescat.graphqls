@@ -117,13 +117,14 @@ type Project implements NodeInterface {
   id: Int!
   title: String
   description: String
-  redmineId: Int  
+  shortName: String
+  status: String
+  startDate: String
+  endDate: String  
   personRelations: [Paragraph]!
   institutionRelations: [Paragraph]!
-  startDate: String
-  endDate: String
-  dataSet: Int
-  datasetRelations: [Paragraph]
+  identifierRelations: [Paragraph]!
+  datasets: [Dataset]
 }
 
 type ProjectConnection {
@@ -143,6 +144,7 @@ type ProjectRelation implements Paragraph {
 type Institution implements NodeInterface {
   id: Int!
   title: String
+  acronyms: String
   identifierRelations: [Paragraph]!
 }
 

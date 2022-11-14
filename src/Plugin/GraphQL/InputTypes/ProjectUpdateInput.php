@@ -4,15 +4,25 @@ namespace Drupal\rescat_graphql\Plugin\GraphQL\InputTypes;
 
 use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
 
+
 /**
- * The input type for dataset mutations.
+ * The input type for person mutations.
  *
  * @GraphQLInputType(
- *   id = "dataset_input",
- *   name = "DatasetInput",
+ *   id = "project_update_input",
+ *   name = "ProjectUpdateInput",
  *   fields = {
+ *     "id" = "Int",
  *     "title" = "String",
  *     "description" = {
+ *        "type" = "String",
+ *        "nullable" = "TRUE"
+ *     },
+ *     "endDate" = {
+ *        "type" = "String",
+ *        "nullable" = "TRUE"
+ *     },
+ *     "startDate" = {
  *        "type" = "String",
  *        "nullable" = "TRUE"
  *     },
@@ -23,6 +33,6 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *   }
  * )
  */
-class DatasetInput extends InputTypePluginBase {
-    
+class ProjectUpdateInput extends InputTypePluginBase {
+
 }

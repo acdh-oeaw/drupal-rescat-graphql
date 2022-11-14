@@ -79,15 +79,13 @@ class CreateDatasetInstance extends DataProducerPluginBase implements ContainerF
         if (in_array('authenticated', $userRoles)) {
             $values = [
                 'type' => 'dataset_instance',
-                'headline' => $data['headline'],
-                'title' => $data['headline'],
+                'title' => $data['locationPath'],
                 'body' => $data['description'],
-                'field_harvesting_status' => $data['harvestingStatus'],
-                'field_last_harvest_date' => $data['lastHarvestDate'],
-                'field_license' => $data['license'],
-                'field_location' => array('title' => $data['locationTitle'], 'uri' => $data['locationUri']),
+                'field_harvest_status' => $data['harvestStatus'],
+                'field_harvest_date' => $data['harvestDate'],
+                'field_harvest_report' => $data['harvestReport'],
                 'field_size' => $data['size'],
-                'relationships.field_contributors' => array('title' => $data['contributors']['title'], 'id' => $data['contributors']['id'])
+                'field_files_count' => $data['filesCount']
             ];
             $node = Node::create($values);
             $node->save();

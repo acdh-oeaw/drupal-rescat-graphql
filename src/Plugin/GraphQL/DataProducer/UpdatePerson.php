@@ -85,7 +85,6 @@ class UpdatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
 
             if ($node && strtolower($node->bundle()) == "person") {
                 $this->helper->updateProperty($node, $data, "title", "title");
-                $this->helper->updateBody($node, $data, "description");
                 $node->save();
             }
             return $node;

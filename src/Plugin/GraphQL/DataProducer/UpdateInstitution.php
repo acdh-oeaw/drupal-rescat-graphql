@@ -85,7 +85,7 @@ class UpdateInstitution extends DataProducerPluginBase implements ContainerFacto
 
             if ($node && strtolower($node->bundle()) == "institution") {
                 $this->helper->updateProperty($node, $data, "title", "title");
-                $this->helper->updateBody($node, $data, "description");
+                $this->helper->updateProperty($node, $data, "acronyms", "acronyms");
                 $node->save();
             }
             return $node;

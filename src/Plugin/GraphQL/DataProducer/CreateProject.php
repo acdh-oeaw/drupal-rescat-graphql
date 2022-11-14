@@ -79,8 +79,7 @@ class CreateProject extends DataProducerPluginBase implements ContainerFactoryPl
         if (in_array('authenticated', $userRoles)) {
             $values = [
                 'type' => 'project',
-                'headline' => $data['headline'],
-                'title' => $data['headline'],
+                'title' => $data['title'],
                 'body' => $data['description'],
                 'field_start' => $data['startDate'],
                 'field_end' => $data['endDate'],

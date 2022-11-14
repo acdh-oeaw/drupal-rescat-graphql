@@ -13,13 +13,9 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *   name = "DatasetUpdateInput",
  *   fields = {
  *     "id" = "Int",
- *     "headline" = "String",
+ *     "title" = "String",
  *     "description" = {
  *        "type" = "String",
- *        "nullable" = "TRUE"
- *     },
- *     "projectId" = {
- *        "type" = "Int",
  *        "nullable" = "TRUE"
  *     },
  *     "redmineId" = {

@@ -18,7 +18,7 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *        "type" = "String",
  *        "nullable" = "TRUE"
  *     },
- *     "body" = {
+ *     "acronyms" = {
  *        "type" = "String",
  *        "nullable" = "TRUE"
  *     }

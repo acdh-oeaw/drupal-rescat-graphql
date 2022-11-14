@@ -84,7 +84,7 @@ class UpdateProject extends DataProducerPluginBase implements ContainerFactoryPl
             $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
             if ($node && strtolower($node->bundle()) == "project") {
-                $this->helper->updateProperty($node, $data, "title", "headline");
+                $this->helper->updateProperty($node, $data, "title", "title");
                 $this->helper->updateBody($node, $data, "description");
                 $this->helper->updateProperty($node, $data, "field_start", "startDate");
                 $this->helper->updateProperty($node, $data, "field_end", "endDate");

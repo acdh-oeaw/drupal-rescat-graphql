@@ -17,6 +17,7 @@ trait InstitutionSchema {
         
         $this->getValueFromParent($registry, $builder, 'Institution', 'id', 'entity_id');
         $this->getValueFromParent($registry, $builder, 'Institution', 'title', 'entity_label');
+        $this->getValueByEntityNode($registry, $builder, 'Institution', 'acronyms', 'property_path', 'field_acronyms.value');
         
         ///////////////// Relations //////////////////
         $registry->addFieldResolver('Institution', 'identifierRelations',

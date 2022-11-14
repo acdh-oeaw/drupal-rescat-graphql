@@ -81,8 +81,7 @@ class CreatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
         if (in_array('authenticated', $userRoles)) {
             $values = [
                 'type' => 'person',
-                'title' => $data['title'],
-                'body' => $data['description'],
+                'title' => $data['title']
             ];
             $node = Node::create($values);
             $node->save();

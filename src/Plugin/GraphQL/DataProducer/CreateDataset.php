@@ -79,11 +79,9 @@ class CreateDataset extends DataProducerPluginBase implements ContainerFactoryPl
         if (in_array('authenticated', $userRoles)) {
             $values = [
                 'type' => 'dataset',
-                'headline' => $data['headline'],
-                'title' => $data['headline'],
+                'title' => $data['title'],
                 'field_description' => $data['description'],
-                'field_redmineid' => $data['redmineId'],
-                'field_projectid' => $data['projectId']
+                'field_redmine_id' => $data['redmineId']
             ];
             $node = Node::create($values);
             $node->save();

@@ -13,7 +13,7 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *   name = "ProjectInput",
  *   fields = {
  *     "title" = "String",
- *     "body" = {
+ *     "description" = {
  *        "type" = "String",
  *        "nullable" = "TRUE"
  *     },

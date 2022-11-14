@@ -84,15 +84,14 @@ class UpdateDatasetInstance extends DataProducerPluginBase implements ContainerF
             $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
             if ($node && strtolower($node->bundle()) == "dataset_instance") {
-                $this->helper->updateProperty($node, $data, "title", "headline");
+                $this->helper->updateProperty($node, $data, "title", "locationPath");
                 $this->helper->updateBody($node, $data, "description");
-                //harvestingStatus
-                //lastHarvestDate
-                //license
-                //locationTitle
-                //locationUrl
-                //size
-
+                $this->helper->updateProperty($node, $data, "field_harvest_status", "harvestStatus");
+                $this->helper->updateProperty($node, $data, "field_harvest_date", "harvestDate");
+                $this->helper->updateProperty($node, $data, "field_harvest_report", "harvestReport");
+                $this->helper->updateProperty($node, $data, "field_size", "size");
+                $this->helper->updateProperty($node, $data, "field_files_count", "filesCount");
+                
                 $node->save();
             }
             return $node;

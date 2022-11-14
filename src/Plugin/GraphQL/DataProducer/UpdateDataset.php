@@ -84,10 +84,10 @@ class UpdateDataset extends DataProducerPluginBase implements ContainerFactoryPl
             $node = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
 
             if ($node && strtolower($node->bundle()) == "dataset") {
-                $this->helper->updateProperty($node, $data, "title", "headline");
+                $this->helper->updateProperty($node, $data, "title", "title");
                 $this->helper->updateProperty($node, $data, "field_description", "description");
-                $this->helper->updateProperty($node, $data, "field_redmineid", "redmineId");
-                $this->helper->updateProperty($node, $data, "field_projectid", "projectId");
+                $this->helper->updateProperty($node, $data, "field_redmine_id", "redmineId");
+                
                 $node->save();
             } else {
                 return null;
