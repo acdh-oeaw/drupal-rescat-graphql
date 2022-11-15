@@ -83,7 +83,8 @@ class CreateProject extends DataProducerPluginBase implements ContainerFactoryPl
                 'body' => $data['description'],
                 'field_start' => $data['startDate'],
                 'field_end' => $data['endDate'],
-                'field_redmine_id' => $data['redmineId']
+                'field_redmine_id' => $data['redmineId'],
+                'field_short_title' => $data['shortName']
             ];
             $node = Node::create($values);
             $node->save();
