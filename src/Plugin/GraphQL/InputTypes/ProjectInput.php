@@ -17,6 +17,10 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *        "type" = "String",
  *        "nullable" = "TRUE"
  *     },
+ *     "shortName" = {
+ *        "type" = "String",
+ *        "nullable" = "TRUE"
+ *     },
  *     "endDate" = {
  *        "type" = "String",
  *        "nullable" = "TRUE"

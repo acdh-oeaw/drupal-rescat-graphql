@@ -80,8 +80,7 @@ class CreateInstitution extends DataProducerPluginBase implements ContainerFacto
             $values = [
                 'type' => 'institution',
                 'title' => $data['title'],
-                'acronyms' => $data['acronyms'],
-                'identifiers' => $data['identifiers'],
+                'field_acronyms' => $data['acronyms']
             ];
             $node = Node::create($values);
             $node->save();

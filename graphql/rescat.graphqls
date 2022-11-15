@@ -118,9 +118,9 @@ type Project implements NodeInterface {
   title: String
   description: String
   shortName: String
-  status: String
   startDate: String
   endDate: String  
+  status: [Taxonomy]!
   personRelations: [Paragraph]!
   institutionRelations: [Paragraph]!
   identifierRelations: [Paragraph]!
@@ -168,6 +168,7 @@ type Dataset implements NodeInterface {
   redmineId: Int
   personRelations: [Paragraph]!
   projectRelations: [Paragraph]!
+  identifierRelations: [Paragraph]!
 }
 
 type DatasetConnection {
@@ -187,7 +188,7 @@ type DatasetRelation implements Paragraph {
 type DatasetInstance implements NodeInterface {
   id: Int!
   locationPath: String
-  description: String
+  notes: String
   harvestStatus: String
   harvestDate: String
   harvestReport: String
@@ -214,7 +215,6 @@ scalar Violation
 
 input PersonInput {
   title: String!
-  description: String
   identifiers: String
 }
 
@@ -233,7 +233,7 @@ input PersonUpdateInput {
 
 input InstitutionInput {
   title: String!
-  identifiers: String
+  acronyms: String
 }
 
 input InstitutionDeleteInput {
@@ -243,8 +243,7 @@ input InstitutionDeleteInput {
 input InstitutionUpdateInput {
   id: Int!
   title: String!
-  description: String
-  identifiers: String
+  acronyms: String
 }
 
 
@@ -299,6 +298,7 @@ input DatasetUpdateInput {
 input ProjectInput {
   title: String!
   description: String
+  shortName: String
   endDate: String
   startDate: String
   redmineId: Int
@@ -308,6 +308,7 @@ input ProjectUpdateInput {
   id: Int!
   title: String
   description: String
+  shortName: String
   endDate: String
   startDate: String
   redmineId: Int

@@ -91,6 +91,7 @@ class UpdateDatasetInstance extends DataProducerPluginBase implements ContainerF
                 $this->helper->updateProperty($node, $data, "field_harvest_report", "harvestReport");
                 $this->helper->updateProperty($node, $data, "field_size", "size");
                 $this->helper->updateProperty($node, $data, "field_files_count", "filesCount");
+                $this->helper->updateProperty($node, $data, "field_notes", "notes");
                 
                 $node->save();
             }

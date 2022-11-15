@@ -36,11 +36,18 @@ trait DatasetSchema {
                         ->map('field', $builder->fromValue('field_project_relation'))
         );
 
+         $registry->addFieldResolver('Dataset', 'identifierRelations',
+                $builder->produce('entity_reference_revisions')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_identifier_relations'))
+        );
+        
         $registry->addTypeResolver('Paragraph', function ($value) {
             if ($value instanceof Paragraph) {
                 switch ($value->bundle()) {
                     case 'person_relations': return 'PersonRelation';
                     case 'project_relation': return 'ProjectRelation';
+                    case 'identifier_relations': return 'IdentifierRelation';
                 }
             }
             //https://github.com/drupal-graphql/graphql/pull/968

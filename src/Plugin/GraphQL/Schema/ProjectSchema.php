@@ -32,32 +32,26 @@ trait ProjectSchema {
         $this->getValueByEntityNode($registry, $builder, 'Project', 'shortName', 'property_path', 'field_short_title.value');
         $this->getValueByEntityNode($registry, $builder, 'Project', 'startDate', 'property_path', 'field_start.value');
         $this->getValueByEntityNode($registry, $builder, 'Project', 'endDate', 'property_path', 'field_end.value');
-        $this->getValueByEntityNode($registry, $builder, 'Project', 'status', 'property_path', 'field_project_status.value');
+        
+        //taxonomy
+          $registry->addFieldResolver('Project', 'status',
+                $builder->produce('entity_reference')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_project_status'))
+        );
+        //$this->getValueByEntityNode($registry, $builder, 'Project', 'status', 'property_path', 'field_project_status.value');
 
         // we need to fetch all paragraphs with type  project_relation and check the  field_project with the target_id if equals with the actual project id
         // if yes then build up the relation
         ///////////////// Relations //////////////////
-        $registry->addFieldResolver('Project', 'institutionRelations',
-                $builder->compose(
-                        $builder->produce('entity_reference_revisions')
-                                ->map('entity', $builder->fromParent())
-                                ->map('field', $builder->fromValue('field_institution_relations')),
-                        $builder->callback(function ($parent) {
-                            error_log('INSTITUTION CALLBACK');
-
-                            $keys = ['id', 'uuid', 'revision_id', 'langcode', 'type',
-                                'status', 'created', 'parent_id', 'parent_type',
-                                'parent_field_name', 'behavior_settings', 'default_langcode',
-                                'revision_default', 'revision_translation_affected',
-                                'field_institution', 'field_relation'];
-                            $data[348] = array();
-                            foreach ($keys as $k) {
-                                error_log($k . ': ');
-                                error_log(print_r(($parent[348]->$k), true));
-                            }
-                        })
-                )
+        
+              $registry->addFieldResolver('Project', 'institutionRelations',
+                $builder->produce('entity_reference_revisions')
+                        ->map('entity', $builder->fromParent())
+                        ->map('field', $builder->fromValue('field_institution_relations'))
         );
+        
+     
 
         $registry->addFieldResolver('Project', 'datasets',
                 $builder->compose(

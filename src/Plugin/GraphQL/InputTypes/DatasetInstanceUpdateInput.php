@@ -18,6 +18,10 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *        "type" = "String",
  *        "nullable" = "TRUE"
  *     },
+ *     "notes" = {
+ *        "type" = "String",
+ *        "nullable" = "TRUE"
+ *     },
  *     "harvestingStatus" = {
  *        "type" = "String",
  *        "nullable" = "TRUE"

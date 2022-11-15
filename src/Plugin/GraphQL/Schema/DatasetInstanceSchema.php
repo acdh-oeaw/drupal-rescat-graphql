@@ -29,6 +29,7 @@ trait DatasetInstanceSchema {
         $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'harvestReport', 'property_path', 'field_harvest_report.value');
         $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'size', 'property_path', 'field_size.value');
         $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'filesCount', 'property_path', 'field_files_count.value');
+        $this->getValueByEntityNode($registry, $builder, 'DatasetInstance', 'notes', 'property_path', 'field_notes.value');
         
         //person relations
         
