@@ -3,24 +3,9 @@ The GraphQL Query plugin for the Resource Catalog.
 
 ## API Documentation:
 
-###### Authentication:
+https://www.postman.com/nczirjak-acdh/workspace/rescat/overview
 
-###### Person: 
-https://documenter.getpostman.com/view/13166144/2s8YmKSQ1u
-
-###### Institution:
-
-
-###### Project:
-
-
-###### Dataset:
-
-
-###### DatasetInstance:
-
-###### Relations:
-
+Click on the three dots next to the Collections and Select the "View Documentation" option to see the Documentation.
 
 
 ## Permissions:
