@@ -85,7 +85,8 @@ class CreateDatasetInstance extends DataProducerPluginBase implements ContainerF
                 'field_harvest_date' => $data['harvestDate'],
                 'field_harvest_report' => $data['harvestReport'],
                 'field_size' => $data['size'],
-                'field_files_count' => $data['filesCount']
+                'field_files_count' => $data['filesCount'],
+                'field_notes' => $data['notes']
             ];
             $node = Node::create($values);
             $node->save();

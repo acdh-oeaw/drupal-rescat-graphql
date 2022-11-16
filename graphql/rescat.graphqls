@@ -251,7 +251,7 @@ input InstitutionUpdateInput {
 
 input DatasetInstanceInput {
   locationPath: String
-  description: String
+  notes: String
   harvestStatus: String
   harvestDate: String
   harvestReport: String
@@ -262,7 +262,7 @@ input DatasetInstanceInput {
 input DatasetInstanceUpdateInput {
   id: Int!
   locationPath: String
-  description: String
+  notes: String
   harvestStatus: String
   harvestDate: String
   harvestReport: String

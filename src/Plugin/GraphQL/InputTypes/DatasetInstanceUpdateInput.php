@@ -13,40 +13,31 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *   name = "DatasetInstanceUpdateInput",
  *   fields = {
  *     "id" = "Int",
- *     "headline" = "String",
- *     "description" = {
- *        "type" = "String",
- *        "nullable" = "TRUE"
- *     },
+ *     "locationPath" = "String",
  *     "notes" = {
  *        "type" = "String",
  *        "nullable" = "TRUE"
- *     },
+ *     }, 
  *     "harvestingStatus" = {
  *        "type" = "String",
  *        "nullable" = "TRUE"
  *     },
- *     "lastHarvestDate" = {
+ *     "harvestDate" = {
  *        "type" = "String",
  *        "nullable" = "TRUE"
  *     },
- *     "license" = {
- *        "type" = "String",
- *        "nullable" = "TRUE"
- *     },
- *     "locationTitle" = {
- *        "type" = "String",
- *        "nullable" = "TRUE"
- *     },
- *     "locationUri" = {
+ *     "harvestReport" = {
  *        "type" = "String",
  *        "nullable" = "TRUE"
  *     },
  *     "size" = {
- *        "type" = "String",
+ *        "type" = "Int",
  *        "nullable" = "TRUE"
- *     } 
- *      
+ *     },
+ *     "filesCount" = {
+ *        "type" = "Int",
+ *        "nullable" = "TRUE"
+ *     }
  *   }
  * )
  */
