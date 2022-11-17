@@ -6,6 +6,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\graphql\Plugin\GraphQL\DataProducer\DataProducerPluginBase;
 use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraph;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -38,7 +39,6 @@ class DeleteProjectRelation extends DataProducerPluginBase implements ContainerF
      * The Project node type relation fields
      * @var type
      */
-    private $fields = ["project" => "field_project_relation", "dataset" => "field_project_relation"];
 
     /**
      * {@inheritdoc}
@@ -83,13 +83,11 @@ class DeleteProjectRelation extends DataProducerPluginBase implements ContainerF
     public function resolve(array $data) {
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
-            $node = Node::load($data['id']);
-            $paragraphId = $data['target_id'];
-            //checking the submitted parent node type, because they are storing the
-            //relation in a different field
-            $type = strtolower($node->getType());
-            $field = (isset($this->fields[$type])) ? $this->fields[$type] : $this->fields['project'];
-            $values = ($node->get($field)->getValue()) ? $node->get($field)->getValue() : [];
+            $node = Node::load($data['dataset_id']);
+            $paragraphId = $data['relation_target_id'];
+
+            //delete the relation in node
+            $values = ($node->get('field_project_relation')->getValue()) ? $node->get('field_project_relation')->getValue() : [];
 
             foreach ($values as $k => $v) {
                 if (isset($v['target_id']) && $v['target_id'] == $paragraphId) {
@@ -97,10 +95,27 @@ class DeleteProjectRelation extends DataProducerPluginBase implements ContainerF
                 }
             }
             $node->{$field} = $values;
-            $node->save();
+            try {
+                $node->save();
+            } catch (\Exception $ex) {
+                throw new \Exception('Problem during the dataset node update');
+            }
+
+            // delete the paragraph 
+            $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+            $entity = $storage->load($paragraphId);
+               
+            error_log($paragraphId);
+       
+            try {
+                 $entity->delete();
+            } catch (\Exception $ex) {
+                throw new \Exception('Problem during the relation paragraph delete');
+            }
+
             return $node;
         }
-        throw new \Exception('You dont have enough permission to Delete a Project Relation.'); 
+        throw new \Exception('You dont have enough permission to Delete a Project Relation.');
     }
 
 }

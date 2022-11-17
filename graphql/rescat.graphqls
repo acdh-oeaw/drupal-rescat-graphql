@@ -371,19 +371,19 @@ input DatasetRelationDeleteInput {
 
 input ProjectRelationInput {
   target_id: Int!
-  parent_id: Int!
+  dataset_id: Int!
   relation_target_id: Int!  
 }
 
 input ProjectRelationUpdateInput {
   target_id: Int!
-  parent_id: Int!
+  dataset_id: Int!
   relation_target_id: Int!    
 }
 
 input ProjectRelationDeleteInput {
-  id: Int!  
-  target_id: Int!  
+  dataset_id: Int!  
+  relation_target_id: Int!  
 }
 
 

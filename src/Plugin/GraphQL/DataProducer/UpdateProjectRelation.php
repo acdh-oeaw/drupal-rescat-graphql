@@ -36,8 +36,7 @@ class UpdateProjectRelation extends DataProducerPluginBase implements ContainerF
      */
     protected $currentUser;
     private $helper;
-    private $fields = ["project" => "field_project_relations", "dataset" => "field_project_dataset_relations"];
-
+   
     /**
      * {@inheritdoc}
      */
@@ -82,21 +81,24 @@ class UpdateProjectRelation extends DataProducerPluginBase implements ContainerF
     public function resolve(array $data) {
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
-            $node = Node::load($data['parent_id']);
-            $type = strtolower($node->getType());
-
-            //set the field by the node type (Project/dataset)
-            $field = (isset($this->fields[$type])) ? $this->fields[$type] : $this->fields['project'];
-            //fetch the values
-            $nodeValues = ($node->get($field)->getValue()) ? $node->get($field)->getValue() : [];
-
+            
+            $node = Node::load($data['dataset_id']);
+            
+            //the new target paragraph relation id
+            $paragraphId = $data['target_id'];
+           
+            $nodeValues = ($node->get('field_project_relation')->getValue()) ? $node->get('field_project_relation')->getValue() : [];
+            //check the dataset node values
             if (count($nodeValues) > 0) {
                 foreach ($nodeValues as $k => $v) {
-                    if (isset($v['target_id'])) {
+                    //if the field target id is the same like our posted paragaphid then load the paragraph relation
+                    if (isset($v['target_id']) && $v['target_id'] === $paragraphId) {
                         $paragraph = Paragraph::load($v['target_id']);
+                        //if the paragraph project field has a value
                         if (count($paragraph->get('field_project')->getValue()) > 0) {
+                            //then we check if it is the right datasetid
                             if ($this->checkProject($paragraph->get('field_project')->getValue(), $data['target_id'])) {
-                                if (!$this->changeRelation($paragraph, $k, $data['relation_id'])) {
+                                if (!$this->changeRelation($paragraph, $k, $data['relation_target_id'])) {
                                     throw new \Exception('Dataset relation field saving error.');
                                 }
                             }

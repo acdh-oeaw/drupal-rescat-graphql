@@ -79,14 +79,11 @@ class CreateProjectRelation extends DataProducerPluginBase implements ContainerF
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
 
-            error_log("parentid: ");
-            error_log(print_r($data['parent_id'], true));
-            
-            $node = Node::load($data['parent_id']);
+            $node = Node::load($data['dataset_id']);
             //create the relation paragraph
             $paragraph = Paragraph::create([
                 'type' => 'project_relation',
-                'parent_id' => $data['parent_id'],
+                'parent_id' => $data['dataset_id'],
                 'parent_type' => 'node',
                 'parent_field_name' => 'field_project_relation',
                 'field_project' => array(
@@ -104,23 +101,31 @@ class CreateProjectRelation extends DataProducerPluginBase implements ContainerF
                 throw new \Exception('Project Relation Paragraph save error.');
             }
 
+            $val = $node->get('field_project_relation')->getValue();
             
-            $pVal = $node->get('field_project_relation')->getValue();
-          
             $newVal = array(
                 'target_id' => $paragraph->id(),
                 'target_revision_id' => $paragraph->getRevisionId(),
             );
-
-            if (count($pVal) > 0) {
-                $pVal[] = $newVal;
-                $node->field_project_relation = $pVal;
+            
+            /*
+             * !!!! ONLY ONE PROJECT RELATION IS AVAILABLE???
+             * 
+             */
+            
+            if (count($val) > 0) {
+                $val[] = $newVal;
+                $node->field_project_relation = $val;
             } else {
                 $node->field_project_relation = $newVal;
             }
             
+            try {
+                $node->save();
+            } catch (\Exception $ex) {
+                throw new \Exception('Node SAVE ERROR.'.$ex->getMessage());
+            }
             
-            $node->save();
             return $paragraph;
         }
         throw new \Exception('You dont have enough permission to create a Project relation.');
