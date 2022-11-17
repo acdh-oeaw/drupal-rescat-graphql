@@ -62,6 +62,11 @@ trait MutationsSchema {
         $this->includeMutations($registry, $builder, 'createDatasetInstance', 'create_dataset_instance');
         $this->includeMutations($registry, $builder, 'updateDatasetInstance', 'update_dataset_instance');
         $this->includeMutations($registry, $builder, 'deleteDatasetInstance', 'delete_dataset_instance');
+        
+        $this->includeMutations($registry, $builder, 'createProjectRelation', 'create_project_relation');
+        $this->includeMutations($registry, $builder, 'updateProjectRelation', 'update_project_relation');
+        $this->includeMutations($registry, $builder, 'deleteProjectRelation', 'delete_project_relation');
+        
 
        
     }

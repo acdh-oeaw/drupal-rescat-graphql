@@ -9,23 +9,23 @@ use Drupal\node\Entity\Node;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Creates a new project entity.
+ * Delete a Project relation entity.
  *
  * @DataProducer(
- *   id = "create_project",
- *   name = @Translation("Create project"),
- *   description = @Translation("Creates a new project."),
+ *   id = "delete_project_relation",
+ *   name = @Translation("Delete Project Relation"),
+ *   description = @Translation("Delete a Project Relation."),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("Project")
+ *     label = @Translation("Project Relation")
  *   ),
  *   consumes = {
  *     "data" = @ContextDefinition("any",
- *       label = @Translation("Project data")
+ *       label = @Translation("Project Relation data")
  *     )
  *   }
  * )
  */
-class CreateProject extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class DeleteProjectRelation extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
     /**
      * The current user.
@@ -33,6 +33,12 @@ class CreateProject extends DataProducerPluginBase implements ContainerFactoryPl
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
+
+    /**
+     * The Project node type relation fields
+     * @var type
+     */
+    private $fields = ["project" => "field_project_relation", "dataset" => "field_project_relation"];
 
     /**
      * {@inheritdoc}
@@ -47,7 +53,7 @@ class CreateProject extends DataProducerPluginBase implements ContainerFactoryPl
     }
 
     /**
-     * CreateProject constructor.
+     * Delete Project Relation constructor.
      *
      * @param array $configuration
      *   A configuration array containing information about the plugin instance.
@@ -64,32 +70,37 @@ class CreateProject extends DataProducerPluginBase implements ContainerFactoryPl
     }
 
     /**
-     * Creates an Project.
+     * Delete an Project Relation.
      *
      * @param array $data
      *   The title of the job.
      *
      * @return \Drupal\Core\Entity\EntityBase|\Drupal\Core\Entity\EntityInterface
-     *   The newly created project.
+     *   The deleted Project.
      *
      * @throws \Exception
      */
     public function resolve(array $data) {
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
-            $values = [
-                'type' => 'project',
-                'title' => $data['title'],
-                'body' => $data['description'],
-                'field_start' => $data['startDate'],
-                'field_end' => $data['endDate'],
-                'field_short_title' => $data['shortName']
-            ];
-            $node = Node::create($values);
+            $node = Node::load($data['id']);
+            $paragraphId = $data['target_id'];
+            //checking the submitted parent node type, because they are storing the
+            //relation in a different field
+            $type = strtolower($node->getType());
+            $field = (isset($this->fields[$type])) ? $this->fields[$type] : $this->fields['project'];
+            $values = ($node->get($field)->getValue()) ? $node->get($field)->getValue() : [];
+
+            foreach ($values as $k => $v) {
+                if (isset($v['target_id']) && $v['target_id'] == $paragraphId) {
+                    unset($values[$k]);
+                }
+            }
+            $node->{$field} = $values;
             $node->save();
             return $node;
         }
-        throw new \Exception('You dont have enough permission to create a project.');    
+        throw new \Exception('You dont have enough permission to Delete a Project Relation.'); 
     }
 
 }

@@ -26,4 +26,8 @@ extend type Mutation {
   createProject(data: ProjectInput): Project
   updateProject(data: ProjectUpdateInput): Project
   deleteProject(data: ProjectDeleteInput): Project
+
+  createProjectRelation(data: ProjectRelationInput): ProjectRelation
+  updateProjectRelation(data: ProjectRelationUpdateInput): ProjectRelation
+  deleteProjectRelation(data: ProjectRelationDeleteInput): ProjectRelation
 }

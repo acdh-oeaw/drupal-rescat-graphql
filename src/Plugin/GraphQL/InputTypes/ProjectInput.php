@@ -28,10 +28,6 @@ use Drupal\graphql\Plugin\GraphQL\InputTypes\InputTypePluginBase;
  *     "startDate" = {
  *        "type" = "String",
  *        "nullable" = "TRUE"
- *     },
- *     "redmineId" = {
- *        "type" = "Int",
- *        "nullable" = "TRUE"
  *     }
  *   }
  * )

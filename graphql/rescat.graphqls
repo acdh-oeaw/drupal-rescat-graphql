@@ -135,9 +135,10 @@ type ProjectConnection {
 type ProjectRelation implements Paragraph {
   id: Int!
   uuid: String
-  relation: [Relation]
-  project: [Project]
+  project: [Project]!
+  relation: [Relation]!
 }
+
 
 ##### Institution #####
 
@@ -364,6 +365,23 @@ input DatasetRelationUpdateInput {
 }
 
 input DatasetRelationDeleteInput {
+  id: Int!  
+  target_id: Int!  
+}
+
+input ProjectRelationInput {
+  target_id: Int!
+  parent_id: Int!
+  relation_target_id: Int!  
+}
+
+input ProjectRelationUpdateInput {
+  target_id: Int!
+  parent_id: Int!
+  relation_target_id: Int!    
+}
+
+input ProjectRelationDeleteInput {
   id: Int!  
   target_id: Int!  
 }
