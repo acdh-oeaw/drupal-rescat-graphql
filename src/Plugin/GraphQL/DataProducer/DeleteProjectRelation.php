@@ -92,9 +92,11 @@ class DeleteProjectRelation extends DataProducerPluginBase implements ContainerF
             foreach ($values as $k => $v) {
                 if (isset($v['target_id']) && $v['target_id'] == $paragraphId) {
                     unset($values[$k]);
+                    $node->get('field_project_relation')->removeItem($k);
                 }
             }
-            $node->{$field} = $values;
+            
+            //$node->{$field} = $values;
             try {
                 $node->save();
             } catch (\Exception $ex) {
@@ -105,14 +107,13 @@ class DeleteProjectRelation extends DataProducerPluginBase implements ContainerF
             $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
             $entity = $storage->load($paragraphId);
                
-            error_log($paragraphId);
-       
-            try {
-                 $entity->delete();
-            } catch (\Exception $ex) {
-                throw new \Exception('Problem during the relation paragraph delete');
+            if($entity) {
+                try {
+                     $entity->delete();
+                } catch (\Exception $ex) {
+                    throw new \Exception('Problem during the relation paragraph delete');
+                }
             }
-
             return $node;
         }
         throw new \Exception('You dont have enough permission to Delete a Project Relation.');

@@ -10,23 +10,23 @@ use Drupal\paragraphs\Entity\Paragraph;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Creates a new Dataset relation.
+ * Delete a Dataset relation entity.
  *
  * @DataProducer(
- *   id = "create_dataset_relation",
- *   name = @Translation("Create Dataset Relation"),
- *   description = @Translation("Creates a new Dataset relation."),
+ *   id = "delete_dataset_relation",
+ *   name = @Translation("Delete Dataset Relation"),
+ *   description = @Translation("Delete a Dataset Relation."),
  *   produces = @ContextDefinition("any",
  *     label = @Translation("Dataset Relation")
  *   ),
  *   consumes = {
  *     "data" = @ContextDefinition("any",
- *       label = @Translation("Dataset relation data")
+ *       label = @Translation("Dataset Relation data")
  *     )
  *   }
  * )
  */
-class CreateDatasetRelation extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class DeleteDatasetRelation extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
     /**
      * The current user.
@@ -34,6 +34,11 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
+
+    /**
+     * The dataset node type relation fields
+     * @var type
+     */
 
     /**
      * {@inheritdoc}
@@ -48,7 +53,7 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
     }
 
     /**
-     * CreateArticle constructor.
+     * Delete dataset Relation constructor.
      *
      * @param array $configuration
      *   A configuration array containing information about the plugin instance.
@@ -65,70 +70,55 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
     }
 
     /**
-     * Creates a Dataset.
+     * Delete an dataset Relation.
      *
      * @param array $data
      *   The title of the job.
      *
      * @return \Drupal\Core\Entity\EntityBase|\Drupal\Core\Entity\EntityInterface
-     *   The newly created Dataset.
+     *   The deleted Project.
      *
      * @throws \Exception
      */
     public function resolve(array $data) {
+        error_log("ittt");
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
-
+            
             $node = Node::load($data['dataset_instance_id']);
-            //create the relation paragraph
-            $paragraph = Paragraph::create([
-                        'type' => 'dataset_relation',
-                        'parent_id' => $data['dataset_instance_id'],
-                        'parent_type' => 'node',
-                        'parent_field_name' => 'field_dataset_relation',
-                        'field_dataset' => array(
-                            'target_id' => $data['dataset_id']
-                        ),
-                        'field_relation' => array(
-                            'target_id' => $data['relation_target_id']
-                        )
-            ]);
+            $paragraphId = $data['relation_target_id'];
 
-            try {
-                $paragraph->isNew();
-                $paragraph->save();
-            } catch (\Exception $ex) {
-                throw new \Exception('Dataset Relation Paragraph save error.');
+            //delete the relation in node
+            $values = ($node->get('field_dataset_relation')->getValue()) ? $node->get('field_dataset_relation')->getValue() : [];
+
+            foreach ($values as $k => $v) {
+                if (isset($v['target_id']) && $v['target_id'] == $paragraphId) {
+                    unset($values[$k]);
+                    $node->get('field_dataset_relation')->removeItem($k);
+                }
             }
-
-            $val = $node->get('field_dataset_relation')->getValue();
-
-            $newVal = array(
-                'target_id' => $paragraph->id(),
-                'target_revision_id' => $paragraph->getRevisionId(),
-            );
-
-            /*
-             * !!!! ONLY ONE PROJECT RELATION IS AVAILABLE???
-             * 
-             */
-
-            if (count($val) > 0) {
-                $val[] = $newVal;
-                $node->field_dataset_relation = $val;
-            } else {
-                $node->field_dataset_relation = $newVal;
-            }
-
+            //$node->{$field} = $values;
             try {
                 $node->save();
             } catch (\Exception $ex) {
-                throw new \Exception('Node SAVE ERROR.' . $ex->getMessage());
+                throw new \Exception('Problem during the dataset instance node update');
             }
 
-            return $paragraph;
+            // delete the paragraph 
+            $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+            $entity = $storage->load($paragraphId);
+            
+            if($entity) {
+                try {
+                     $entity->delete();
+                } catch (\Exception $ex) {
+                    throw new \Exception('Problem during the relation paragraph delete');
+                }
+            }
+
+            return $node;
         }
-        throw new \Exception('You dont have enough permission to create a Dataset relation.');
+        throw new \Exception('You dont have enough permission to Delete a Project Relation.');
     }
 
 }

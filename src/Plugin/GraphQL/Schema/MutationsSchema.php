@@ -41,33 +41,37 @@ trait MutationsSchema {
         $this->includeMutations($registry, $builder, 'deletePerson', 'delete_person');
         $this->includeMutations($registry, $builder, 'updatePerson', 'update_person');
 
-        $this->includeMutations($registry, $builder, 'createPersonRelation', 'create_person_relation');
-        $this->includeMutations($registry, $builder, 'updatePersonRelation', 'update_person_relation');
-        $this->includeMutations($registry, $builder, 'deletePersonRelation', 'delete_person_relation');
-
         $this->includeMutations($registry, $builder, 'createInstitution', 'create_institution');
         $this->includeMutations($registry, $builder, 'updateInstitution', 'update_institution');
         $this->includeMutations($registry, $builder, 'deleteInstitution', 'delete_institution');
-
-        $this->includeMutations($registry, $builder, 'createInstitutionRelation', 'create_institution_relation');
-
+  
         $this->includeMutations($registry, $builder, 'createDataset', 'create_dataset');
         $this->includeMutations($registry, $builder, 'updateDataset', 'update_dataset');
         $this->includeMutations($registry, $builder, 'deleteDataset', 'delete_dataset');
-
-        $this->includeMutations($registry, $builder, 'createDatasetRelation', 'create_dataset_relation');
-        //$this->includeMutations($registry, $builder, 'updateDatasetRelation', 'update_dataset_relation');
-        //$this->includeMutations($registry, $builder, 'deleteDatasetRelation', 'delete_dataset_relation');
-
+        
         $this->includeMutations($registry, $builder, 'createDatasetInstance', 'create_dataset_instance');
         $this->includeMutations($registry, $builder, 'updateDatasetInstance', 'update_dataset_instance');
         $this->includeMutations($registry, $builder, 'deleteDatasetInstance', 'delete_dataset_instance');
+
+        /////////////// RELATIONS ////////////////////////////////////
+        $this->includeMutations($registry, $builder, 'createPersonRelation', 'create_person_relation');
+        $this->includeMutations($registry, $builder, 'updatePersonRelation', 'update_person_relation');
+        $this->includeMutations($registry, $builder, 'deletePersonRelation', 'delete_person_relation');
+        
+        $this->includeMutations($registry, $builder, 'createIdentifierRelation', 'create_identifier_relation');
+        $this->includeMutations($registry, $builder, 'updateIdentifierRelation', 'update_identifier_relation');
+        $this->includeMutations($registry, $builder, 'deleteIdentifierRelation', 'delete_identifier_relation');
+        
+        $this->includeMutations($registry, $builder, 'createInstitutionRelation', 'create_institution_relation');
+        $this->includeMutations($registry, $builder, 'updateInstitutionRelation', 'update_institution_relation');
+        $this->includeMutations($registry, $builder, 'deleteInstitutionRelation', 'delete_institution_relation');
+        
+        $this->includeMutations($registry, $builder, 'createDatasetRelation', 'create_dataset_relation');
+        $this->includeMutations($registry, $builder, 'updateDatasetRelation', 'update_dataset_relation');
+        $this->includeMutations($registry, $builder, 'deleteDatasetRelation', 'delete_dataset_relation');
         
         $this->includeMutations($registry, $builder, 'createProjectRelation', 'create_project_relation');
         $this->includeMutations($registry, $builder, 'updateProjectRelation', 'update_project_relation');
-        $this->includeMutations($registry, $builder, 'deleteProjectRelation', 'delete_project_relation');
-        
-
-       
+        $this->includeMutations($registry, $builder, 'deleteProjectRelation', 'delete_project_relation');       
     }
 }

@@ -355,18 +355,20 @@ input InstitutionRelationDeleteInput {
 }
 
 input DatasetRelationInput {
-  target_id: Int!
-  parent_id: Int!  
+  dataset_id: Int!
+  dataset_instance_id: Int!
+  relation_target_id: Int!    
 }
 
 input DatasetRelationUpdateInput {
-  target_id: Int!
-  parent_id: Int!  
+  paragraph_id: Int!
+  dataset_instance_id: Int!
+  relation_target_id: Int!  
 }
 
 input DatasetRelationDeleteInput {
-  id: Int!  
-  target_id: Int!  
+  dataset_instance_id: Int!
+  relation_target_id: Int!   
 }
 
 input ProjectRelationInput {

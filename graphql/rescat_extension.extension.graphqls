@@ -18,6 +18,8 @@ extend type Mutation {
   deleteDataset(data: DatasetDeleteInput): Dataset
 
   createDatasetRelation(data: DatasetRelationInput): DatasetRelation
+  updateDatasetRelation(data: DatasetRelationUpdateInput): DatasetRelation
+  deleteDatasetRelation(data: DatasetRelationDeleteInput): DatasetRelation
 
   createDatasetInstance(data: DatasetInstanceInput): DatasetInstance
   updateDatasetInstance(data: DatasetInstanceUpdateInput): DatasetInstance
