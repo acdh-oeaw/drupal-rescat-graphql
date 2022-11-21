@@ -35,12 +35,6 @@ class DeletePersonRelation extends DataProducerPluginBase implements ContainerFa
     protected $currentUser;
 
     /**
-     * The person node type relation fields
-     * @var type
-     */
-    private $fields = ["person" => "field_person_relations", "dataset" => "field_person_dataset_relations"];
-
-    /**
      * {@inheritdoc}
      */
     public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -83,24 +77,39 @@ class DeletePersonRelation extends DataProducerPluginBase implements ContainerFa
     public function resolve(array $data) {
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
-            $node = Node::load($data['id']);
-            $paragraphId = $data['target_id'];
-            //checking the submitted parent node type, because they are storing the
-            //relation in a different field
-            $type = strtolower($node->getType());
-            $field = (isset($this->fields[$type])) ? $this->fields[$type] : $this->fields['person'];
-            $values = ($node->get($field)->getValue()) ? $node->get($field)->getValue() : [];
+            $node = Node::load($data['node_id']);
+            $paragraphId = $data['relation_target_id'];
+
+            //delete the relation in node
+            $values = ($node->get('field_person_relations')->getValue()) ? $node->get('field_person_relations')->getValue() : [];
 
             foreach ($values as $k => $v) {
                 if (isset($v['target_id']) && $v['target_id'] == $paragraphId) {
                     unset($values[$k]);
+                    $node->get('field_person_relations')->removeItem($k);
                 }
             }
-            $node->{$field} = $values;
-            $node->save();
+
+            try {
+                $node->save();
+            } catch (\Exception $ex) {
+                throw new \Exception('Problem during the node update');
+            }
+
+            // delete the paragraph 
+            $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+            $entity = $storage->load($paragraphId);
+
+            if ($entity) {
+                try {
+                    $entity->delete();
+                } catch (\Exception $ex) {
+                    throw new \Exception('Problem during the relation paragraph delete');
+                }
+            }
             return $node;
         }
-        throw new \Exception('You dont have enough permission to Delete a Person Relation.'); 
+        throw new \Exception('You dont have enough permission to Delete a Person Relation.');
     }
 
 }

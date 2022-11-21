@@ -329,15 +329,15 @@ input PersonRelationInput {
 }
 
 input PersonRelationDeleteInput {
-  relation_id: Int!  
-  target_id: Int!
+  node_id: Int!  
+  relation_target_id: Int!  
 }
 
 input PersonRelationUpdateInput {
-  person_id: Int!
   institution_id: Int!
   parent_id: Int! 
   relation_id: Int!  
+  paragraph_id: Int!
 }
 
 input InstitutionRelationInput {
