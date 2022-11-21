@@ -36,8 +36,7 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
      */
     protected $currentUser;
     private $helper;
-    private $fields = ["person" => "field_person_relations", "dataset" => "field_person_dataset_relations"];
-
+    
     /**
      * {@inheritdoc}
      */
@@ -83,19 +82,15 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
             $node = Node::load($data['parent_id']);
-            $type = strtolower($node->getType());
-
-            //set the field by the node type (person/dataset)
-            $field = (isset($this->fields[$type])) ? $this->fields[$type] : $this->fields['person'];
-            //fetch the values
-            $nodeValues = ($node->get($field)->getValue()) ? $node->get($field)->getValue() : [];
+           
+            $nodeValues = ($node->get('field_person_relations')->getValue()) ? $node->get('field_person_relations')->getValue() : [];
 
             if (count($nodeValues) > 0) {
                 foreach ($nodeValues as $k => $v) {
-                    if (isset($v['target_id'])) {
-                        $paragraph = Paragraph::load($v['target_id']);
+                    if (isset($v['person_id'])) {
+                        $paragraph = Paragraph::load($v['person_id']);
                         if (count($paragraph->get('field_person')->getValue()) > 0) {
-                            if ($this->checkPerson($paragraph->get('field_person')->getValue(), $data['target_id'])) {
+                            if ($this->checkPerson($paragraph->get('field_person')->getValue(), $data['person_id'])) {
                                 if (!$this->changeRelation($paragraph, $k, $data['relation_id'])) {
                                     throw new \Exception('Dataset relation field saving error.');
                                 }
@@ -117,7 +112,7 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
      */
     private function checkPerson(array $data, int $personId): bool {
         foreach ($data as $k => $v) {
-            if ($v['target_id'] == $personId) {
+            if ($v['person_id'] == $personId) {
                 return true;
             }
         }

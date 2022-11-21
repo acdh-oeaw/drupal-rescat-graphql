@@ -322,18 +322,20 @@ input ProjectDeleteInput {
 ##### Relations #####
 
 input PersonRelationInput {
-  target_id: Int!
+  person_id: Int!
+  institution_id: Int!
   parent_id: Int!  
   relation_id: Int!  
 }
 
 input PersonRelationDeleteInput {
-  id: Int!  
+  relation_id: Int!  
   target_id: Int!
 }
 
 input PersonRelationUpdateInput {
-  target_id: Int!
+  person_id: Int!
+  institution_id: Int!
   parent_id: Int! 
   relation_id: Int!  
 }

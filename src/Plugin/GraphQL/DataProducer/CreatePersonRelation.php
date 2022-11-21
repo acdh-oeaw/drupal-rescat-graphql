@@ -80,27 +80,26 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
             $node = Node::load($data['parent_id']);
-            //checking the submitted parent node type, because they are storing the
-            //relation in a different field
-            $type = strtolower($node->getType());
-            $field = (isset($this->fields[$type])) ? $this->fields[$type] : $this->fields['person'];
-
+            
             $paragraph = Paragraph::create([
                         'type' => 'person_relations',
                         'parent_id' => $data['parent_id'],
                         'parent_type' => 'node',
-                        'parent_field_name' => $field,
+                        'parent_field_name' => 'field_person_relations',
                         'field_person' => array(
-                            'target_id' => $data['target_id']
+                            'target_id' => $data['person_id']
                         ),
                         'field_relation' => array(
                             'target_id' => $data['relation_id']
+                        ),
+                        'field_institution' => array(
+                            'target_id' => $data['institution_id']
                         )
             ]);
             $paragraph->isNew();
             $paragraph->save();
 
-            $val = $node->get($field)->getValue();
+            $val = $node->get('field_person_relations')->getValue();
 
             $newVal = array(
                 'target_id' => $paragraph->id(),
@@ -109,9 +108,9 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
 
             if (count($val) > 0) {
                 $val[] = $newVal;
-                $node->{$field} = $val;
+                $node->field_person_relations = $val;
             } else {
-                $node->{$field} = $newVal;
+                $node->field_person_relations = $newVal;
             }
 
             $node->save();
