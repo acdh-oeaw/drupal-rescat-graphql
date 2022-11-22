@@ -12,6 +12,8 @@ extend type Mutation {
   deleteInstitution(data: InstitutionDeleteInput): Institution
   
   createInstitutionRelation(data: InstitutionRelationInput): InstitutionRelation
+  updateInstitutionRelation(data: InstitutionRelationUpdateInput): InstitutionRelation
+  deleteInstitutionRelation(data: InstitutionRelationDeleteInput): InstitutionRelation
 
   createDataset(data: DatasetInput): Dataset
   updateDataset(data: DatasetUpdateInput): Dataset
@@ -32,4 +34,9 @@ extend type Mutation {
   createProjectRelation(data: ProjectRelationInput): ProjectRelation
   updateProjectRelation(data: ProjectRelationUpdateInput): ProjectRelation
   deleteProjectRelation(data: ProjectRelationDeleteInput): ProjectRelation
+
+  createIdentifierRelation(data: IdentifierRelationInput): IdentifierRelation
+  updateIdentifierRelation(data: IdentifierRelationUpdateInput): IdentifierRelation
+  deleteIdentifierRelation(data: IdentifierRelationDeleteInput): IdentifierRelation
+
 }

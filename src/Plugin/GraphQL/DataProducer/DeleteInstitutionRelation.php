@@ -6,27 +6,26 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\graphql\Plugin\GraphQL\DataProducer\DataProducerPluginBase;
 use Drupal\node\Entity\Node;
-use Drupal\paragraphs\Entity\Paragraph;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Creates a new Institution relation.
+ * Delete a institution relation entity.
  *
  * @DataProducer(
- *   id = "create_institution_relation",
- *   name = @Translation("Create Institution Relation"),
- *   description = @Translation("Creates a new Institution relation."),
+ *   id = "delete_institution_relation",
+ *   name = @Translation("Delete Institution Relation"),
+ *   description = @Translation("Delete a institution Relation."),
  *   produces = @ContextDefinition("any",
  *     label = @Translation("Institution Relation")
  *   ),
  *   consumes = {
  *     "data" = @ContextDefinition("any",
- *       label = @Translation("Institution relation data")
+ *       label = @Translation("Institution Relation data")
  *     )
  *   }
  * )
  */
-class CreateInstitutionRelation extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class DeleteInstitutionRelation extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
     /**
      * The current user.
@@ -48,7 +47,7 @@ class CreateInstitutionRelation extends DataProducerPluginBase implements Contai
     }
 
     /**
-     * CreateInstitution constructor.
+     * Delete Institution Relation constructor.
      *
      * @param array $configuration
      *   A configuration array containing information about the plugin instance.
@@ -65,55 +64,52 @@ class CreateInstitutionRelation extends DataProducerPluginBase implements Contai
     }
 
     /**
-     * Creates an Institution Relation.
+     * Delete an institution Relation.
      *
      * @param array $data
      *   The title of the job.
      *
      * @return \Drupal\Core\Entity\EntityBase|\Drupal\Core\Entity\EntityInterface
-     *   The newly created Institution.
+     *   The deleted institution.
      *
      * @throws \Exception
      */
     public function resolve(array $data) {
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
-            
-            $node = Node::load($data['parent_id']);
-            
-            $paragraph = Paragraph::create([
-                        'type' => 'institution_relations',
-                        'parent_id' => $data['parent_id'],
-                        'parent_type' => 'node',
-                        'parent_field_name' => 'field_institution_relations',
-                        'field_relation' => array(
-                            'target_id' => $data['relation_id']
-                        ),
-                        'field_institution' => array(
-                            'target_id' => $data['institution_id']
-                        )
-            ]);
-            $paragraph->isNew();
-            $paragraph->save();
+            $node = Node::load($data['node_id']);
+            $paragraphId = $data['relation_target_id'];
 
-            $val = $node->get('field_institution_relations')->getValue();
+            //delete the relation in node
+            $values = ($node->get('field_institution_relations')->getValue()) ? $node->get('field_institution_relations')->getValue() : [];
 
-            $newVal = array(
-                'target_id' => $paragraph->id(),
-                'target_revision_id' => $paragraph->getRevisionId(),
-            );
-
-            if (count($val) > 0) {
-                $val[] = $newVal;
-                $node->field_institution_relations = $val;
-            } else {
-                $node->field_institution_relations = $newVal;
+            foreach ($values as $k => $v) {
+                if (isset($v['target_id']) && $v['target_id'] == $paragraphId) {
+                    unset($values[$k]);
+                    $node->get('field_institution_relations')->removeItem($k);
+                }
             }
-            $node->save();
-         
-            return $paragraph;
+
+            try {
+                $node->save();
+            } catch (\Exception $ex) {
+                throw new \Exception('Problem during the node update');
+            }
+
+            // delete the paragraph 
+            $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+            $entity = $storage->load($paragraphId);
+
+            if ($entity) {
+                try {
+                    $entity->delete();
+                } catch (\Exception $ex) {
+                    throw new \Exception('Problem during the relation paragraph delete');
+                }
+            }
+            return $node;
         }
-        throw new \Exception('You dont have enough permission to create institution relation.');
+        throw new \Exception('You dont have enough permission to Delete a Institution Relation.');
     }
 
 }

@@ -11,23 +11,23 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\rescat_graphql\Helper\UpdateHelper;
 
 /**
- * Update a Dataset relation entity.
+ * Update a institution relation entity.
  *
  * @DataProducer(
- *   id = "update_dataset_relation",
- *   name = @Translation("Update Dataset Relation"),
- *   description = @Translation("Update a Dataset Relation."),
+ *   id = "update_institution_relation",
+ *   name = @Translation("Update institution Relation"),
+ *   description = @Translation("Update a institution Relation."),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("Dataset Relation")
+ *     label = @Translation("Institution Relation")
  *   ),
  *   consumes = {
  *     "data" = @ContextDefinition("any",
- *       label = @Translation("Dataset Relation data")
+ *       label = @Translation("Institution Relation data")
  *     )
  *   }
  * )
  */
-class UpdateDatasetRelation extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class UpdateInstitutionRelation extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
     /**
      * The current user.
@@ -36,7 +36,7 @@ class UpdateDatasetRelation extends DataProducerPluginBase implements ContainerF
      */
     protected $currentUser;
     private $helper;
-
+    
     /**
      * {@inheritdoc}
      */
@@ -50,7 +50,7 @@ class UpdateDatasetRelation extends DataProducerPluginBase implements ContainerF
     }
 
     /**
-     * Update Dataset Relation constructor.
+     * Update Institution Relation constructor.
      *
      * @param array $configuration
      *   A configuration array containing information about the plugin instance.
@@ -68,31 +68,7 @@ class UpdateDatasetRelation extends DataProducerPluginBase implements ContainerF
     }
 
     /**
-     * Creates an Dataset.
-     *
-     * @param array $data
-     *   The title of the job.
-     *
-     * @return \Drupal\Core\Entity\EntityBase|\Drupal\Core\Entity\EntityInterface
-     *   The deleted Dataset.
-     *
-     * @throws \Exception
-     */
-    public function resolve(array $data) {
-      
-        $userRoles = $this->currentUser->getRoles();
-        if (in_array('authenticated', $userRoles)) {
-            $pKey = $this->getKeyFromNode((int) $data['dataset_instance_id'], (int) $data['paragraph_id']);
-            //check the pragraph and change the value
-            $paragraph = Paragraph::load($data['paragraph_id']);
-            $this->changeParagraph($paragraph, $pKey, $data['relation_target_id']);
-            return $paragraph;
-        }
-        throw new \Exception('You dont have enough permission to Update Dataset Relation.');
-    }
-
-    /**
-     * change the Dataset relation id
+     * change the institution relation id
      * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
      * @param int $key
      * @param int $newRelationID
@@ -112,7 +88,50 @@ class UpdateDatasetRelation extends DataProducerPluginBase implements ContainerF
         }
         return false;
     }
+    
+    
+    /**
+     * Change the institution value
+     * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+     * @param int $key
+     * @param int $newInstitutionID
+     * @return bool
+     */
+    private function changeInstitution(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $key, int $newInstitutionID): bool {
+        $relations = $paragraph->get('field_institution');
+        if (isset($relations[$key])) {
+            $relations[$key]->target_id = $newInstitutionID;
+            $paragraph->field_institution = $relations;
+            try {
+                $paragraph->save();
+            } catch (\Exception $exc) {
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
 
+    /**
+     * 
+     * @param array $data
+     * @return type
+     * @throws \Exception
+     */
+    public function resolve(array $data) {
+        $userRoles = $this->currentUser->getRoles();
+       
+        if (in_array('authenticated', $userRoles)) {
+            $pKey = $this->getKeyFromNode((int) $data['parent_id'], (int) $data['paragraph_id']);
+
+            //check the pragraph and change the value
+            $paragraph = Paragraph::load($data['paragraph_id']);
+            $this->changeParagraph($paragraph, $pKey, $data['relation_id']);
+            return $paragraph;
+        }
+        throw new \Exception('You dont have enough permission to Update institution Relation.');
+    }
+    
     /**
      * Get the key from the node
      * @param int $dataset_id
@@ -120,23 +139,24 @@ class UpdateDatasetRelation extends DataProducerPluginBase implements ContainerF
      * @return int
      * @throws \Exception
      */
-    private function getKeyFromNode(int $dataset_id, int $paragraph_id): int {
-        $node = Node::load($dataset_id);
+    private function getKeyFromNode(int $nid, int $paragraph_id): int {
+        $node = Node::load($nid);
         $pKey = null;
         // check the node has the paragraph
-        $nodeValues = ($node->get('field_dataset_relation')->getValue()) ? $node->get('field_dataset_relation')->getValue() : [];
+        $nodeValues = ($node->get('field_institution_relations')->getValue()) ? $node->get('field_institution_relations')->getValue() : [];
+       
         if (count($nodeValues) === 0) {
-            throw new \Exception('This node has no Dataset relation.');
+            throw new \Exception('This node has no institution relation.');
         }
 
         foreach ($nodeValues as $k => $v) {
-            if ((int) $v['target_id'] === (int) $paragraph_id) {
+            if ((int)$v['target_id'] === (int)$paragraph_id) {
                 $pKey = $k;
             }
         }
-
+        
         if ($pKey === null) {
-            throw new \Exception('This node has no Dataset relation with this id.');
+            throw new \Exception('This node has no institution relation with this id.');
         }
         return $pKey;
     }
@@ -149,13 +169,13 @@ class UpdateDatasetRelation extends DataProducerPluginBase implements ContainerF
      * @throws \Exception
      */
     public function changeParagraph(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $pKey, int $relation_target_id) {
-        if (count($paragraph->get('field_dataset')->getValue()) > 0) {
+        if (count($paragraph->get('field_institution')->getValue()) > 0) {
             if (!$this->changeRelation($paragraph, $pKey, $relation_target_id)) {
-                throw new \Exception('Paragraph relation field saving error.');
+                throw new \Exception('Paragraph relation field saving error - relation change.');
             }
         } else {
-            throw new \Exception('This paragraph relation has no Dataset relation.');
+            throw new \Exception('This paragraph relation has no project relation.');
         }
     }
-
+    
 }

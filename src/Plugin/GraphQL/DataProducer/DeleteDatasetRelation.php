@@ -81,7 +81,7 @@ class DeleteDatasetRelation extends DataProducerPluginBase implements ContainerF
      * @throws \Exception
      */
     public function resolve(array $data) {
-        error_log("ittt");
+        
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
             

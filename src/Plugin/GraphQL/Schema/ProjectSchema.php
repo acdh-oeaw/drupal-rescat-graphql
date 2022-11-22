@@ -103,11 +103,7 @@ trait ProjectSchema {
         $registry->addFieldResolver('Project', 'personRelations',
                 $builder->produce('entity_reference_revisions')
                         ->map('entity', $builder->fromParent())
-                        ->map('field', $builder->fromValue('field_person_relations')),
-                $builder->callback(function ($parent) {
-                    error_log('personban: ');
-                    error_log(print_r($parent, true));
-                })
+                        ->map('field', $builder->fromValue('field_person_relations'))
         );
 
         $registry->addTypeResolver('Paragraph', function ($value) {
@@ -211,7 +207,6 @@ trait ProjectSchema {
                     $data[] = $p['target_id'];
                 }
             }
-            //error_log(print_r($v->get('field_project')->getValue(), true));
         }
     }
 

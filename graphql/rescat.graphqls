@@ -341,19 +341,20 @@ input PersonRelationUpdateInput {
 }
 
 input InstitutionRelationInput {
-  target_id: Int!
+  institution_id: Int!
   parent_id: Int! 
   relation_id: Int!  
 }
 
 input InstitutionRelationUpdateInput {
-  target_id: Int!
+  paragraph_id: Int!
   parent_id: Int! 
   relation_id: Int!  
 }
 
 input InstitutionRelationDeleteInput {
-  id: Int!
+  node_id: Int!  
+  relation_target_id: Int!  
 }
 
 input DatasetRelationInput {
@@ -388,6 +389,24 @@ input ProjectRelationUpdateInput {
 input ProjectRelationDeleteInput {
   dataset_id: Int!  
   relation_target_id: Int!  
+}
+
+input IdentifierRelationInput {
+  parent_id: Int!
+  identifier_service_id: Int!
+    
+}
+
+input IdentifierRelationUpdateInput {
+  parent_id: Int!
+  identifier_service_id: Int!
+    
+}
+
+input IdentifierRelationDeleteInput {
+  parent_id: Int!
+  identifier_service_id: Int!
+    
 }
 
 

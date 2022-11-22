@@ -34,8 +34,7 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
-    private $fields = ["person" => "field_person_relations", "dataset" => "field_person_dataset_relations"];
-
+    
     /**
      * {@inheritdoc}
      */
