@@ -78,21 +78,17 @@ class CreateIdentifierRelation extends DataProducerPluginBase implements Contain
     public function resolve(array $data) {
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
-            $node = Node::load($data['parent_id']);
+            $node = Node::load($data['node_id']);
             
             $paragraph = Paragraph::create([
                         'type' => 'identifier_relations',
-                        'parent_id' => $data['parent_id'],
+                        'parent_id' => $data['node_id'],
                         'parent_type' => 'node',
                         'parent_field_name' => 'field_identifier_relations',
-                        'field_identifier' => array(
-                            'target_id' => $data['identifier_id']
-                        ),
-                        'field_relation' => array(
-                            'target_id' => $data['relation_id']
-                        ),
-                        'field_institution' => array(
-                            'target_id' => $data['institution_id']
+                        'field_identifier_label' => $data['identifier_label'],
+                        'field_identifier_value' => $data['identifier_value'],
+                        'field_identifier_service' => array(
+                            'target_id' => $data['identifier_service_id']
                         )
             ]);
             $paragraph->isNew();

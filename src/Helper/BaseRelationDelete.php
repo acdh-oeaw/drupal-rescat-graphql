@@ -1,45 +1,26 @@
 <?php
 
-namespace Drupal\rescat_graphql\Plugin\GraphQL\DataProducer;
+namespace Drupal\rescat_graphql\Helper;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\graphql\Plugin\GraphQL\DataProducer\DataProducerPluginBase;
 use Drupal\node\Entity\Node;
-use Drupal\paragraphs\Entity\Paragraph;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-/**
- * Delete a Project relation entity.
- *
- * @DataProducer(
- *   id = "delete_project_relation",
- *   name = @Translation("Delete Project Relation"),
- *   description = @Translation("Delete a Project Relation."),
- *   produces = @ContextDefinition("any",
- *     label = @Translation("Project Relation")
- *   ),
- *   consumes = {
- *     "data" = @ContextDefinition("any",
- *       label = @Translation("Project Relation data")
- *     )
- *   }
- * )
- */
-class DeleteProjectRelation extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
-
-    /**
+class BaseRelationDelete extends DataProducerPluginBase implements ContainerFactoryPluginInterface { 
+     /**
      * The current user.
      *
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
 
-    /**
-     * The Project node type relation fields
-     * @var type
-     */
-
+    private $relation_field = [
+        'DeleteDatasetRelation' => 'field_dataset_relation',
+        'DeleteInstitutionRelation' => 'field_institution_relations',
+    ];
+    
     /**
      * {@inheritdoc}
      */
@@ -51,9 +32,13 @@ class DeleteProjectRelation extends DataProducerPluginBase implements ContainerF
                 $container->get('current_user')
         );
     }
+    
+    private function setRelationField(string $class) {
+        $this->relation_field = $this->relation_field[$class];
+    }
 
     /**
-     * Delete Project Relation constructor.
+     * Delete Person Relation constructor.
      *
      * @param array $configuration
      *   A configuration array containing information about the plugin instance.
@@ -70,53 +55,54 @@ class DeleteProjectRelation extends DataProducerPluginBase implements ContainerF
     }
 
     /**
-     * Delete an Project Relation.
+     * Delete an person Relation.
      *
      * @param array $data
      *   The title of the job.
      *
      * @return \Drupal\Core\Entity\EntityBase|\Drupal\Core\Entity\EntityInterface
-     *   The deleted Project.
+     *   The deleted person.
      *
      * @throws \Exception
      */
     public function resolve(array $data) {
+        $this->setRelationField(get_class($this));
         $userRoles = $this->currentUser->getRoles();
+        
         if (in_array('authenticated', $userRoles)) {
             $node = Node::load($data['node_id']);
             $paragraphId = $data['paragraph_id'];
 
             //delete the relation in node
-            $values = ($node->get('field_project_relation')->getValue()) ? $node->get('field_project_relation')->getValue() : [];
+            $values = ($node->get($this->relation_field)->getValue()) ? $node->get($this->relation_field)->getValue() : [];
 
             foreach ($values as $k => $v) {
                 if (isset($v['target_id']) && $v['target_id'] == $paragraphId) {
                     unset($values[$k]);
-                    $node->get('field_project_relation')->removeItem($k);
+                    $node->get($this->relation_field)->removeItem($k);
                 }
             }
-            
-            //$node->{$field} = $values;
+
             try {
                 $node->save();
             } catch (\Exception $ex) {
-                throw new \Exception('Problem during the dataset node update');
+                throw new \Exception('Problem during the node update');
             }
 
             // delete the paragraph 
             $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
             $entity = $storage->load($paragraphId);
-               
-            if($entity) {
+
+            if ($entity) {
                 try {
-                     $entity->delete();
+                    $entity->delete();
                 } catch (\Exception $ex) {
                     throw new \Exception('Problem during the relation paragraph delete');
                 }
             }
             return $node;
         }
-        throw new \Exception('You dont have enough permission to Delete a Project Relation.');
+        throw new \Exception('You dont have enough permission to Delete a Person Relation.');
     }
-
 }
+

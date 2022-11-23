@@ -75,10 +75,14 @@ class DeleteInstitutionRelation extends DataProducerPluginBase implements Contai
      * @throws \Exception
      */
     public function resolve(array $data) {
+        
+        $class = substr(get_class($this), strrpos(get_class($this), '\\') + 1);
+       
         $userRoles = $this->currentUser->getRoles();
+        
         if (in_array('authenticated', $userRoles)) {
             $node = Node::load($data['node_id']);
-            $paragraphId = $data['relation_target_id'];
+            $paragraphId = $data['paragraph_id'];
 
             //delete the relation in node
             $values = ($node->get('field_institution_relations')->getValue()) ? $node->get('field_institution_relations')->getValue() : [];

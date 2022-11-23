@@ -85,8 +85,8 @@ class DeleteDatasetRelation extends DataProducerPluginBase implements ContainerF
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
             
-            $node = Node::load($data['dataset_instance_id']);
-            $paragraphId = $data['relation_target_id'];
+            $node = Node::load($data['node_id']);
+            $paragraphId = $data['paragraph_id'];
 
             //delete the relation in node
             $values = ($node->get('field_dataset_relation')->getValue()) ? $node->get('field_dataset_relation')->getValue() : [];

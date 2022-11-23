@@ -1,0 +1,227 @@
+
+############### INPUT ###############
+
+##### Person #####
+
+input PersonInput {
+  title: String!
+  identifiers: String
+}
+
+input PersonDeleteInput {
+    id: Int!
+}
+
+input PersonUpdateInput {
+  id: Int!
+  title: String!
+  description: String
+  identifiers: String
+}
+
+##### Institution #####
+
+input InstitutionInput {
+  title: String!
+  acronyms: String
+}
+
+input InstitutionDeleteInput {
+    id: Int!
+}
+
+input InstitutionUpdateInput {
+  id: Int!
+  title: String!
+  acronyms: String
+}
+
+
+##### DatasetInstance #####
+
+input DatasetInstanceInput {
+  locationPath: String
+  notes: String
+  harvestStatus: String
+  harvestDate: String
+  harvestReport: String
+  size: Int  
+  filesCount: Int  
+}
+
+input DatasetInstanceUpdateInput {
+  id: Int!
+  locationPath: String
+  notes: String
+  harvestStatus: String
+  harvestDate: String
+  harvestReport: String
+  size: Int  
+  filesCount: Int 
+}
+
+input DatasetInstanceDeleteInput {
+  id: Int!
+}
+
+##### Dataset  #####
+
+input DatasetInput {
+  title: String!
+  description: String
+  redmineId: Int
+}
+
+input DatasetDeleteInput {
+  id: Int!
+}
+
+input DatasetUpdateInput {
+  id: Int!  
+  title: String
+  description: String
+  redmineId: Int
+}
+ 
+##### Project #####
+
+input ProjectInput {
+  title: String!
+  description: String
+  shortName: String
+  endDate: String
+  startDate: String
+  redmineId: Int
+}
+
+input ProjectUpdateInput {
+  id: Int!
+  title: String
+  description: String
+  shortName: String
+  endDate: String
+  startDate: String
+  redmineId: Int
+}
+
+input ProjectDeleteInput {
+  id: Int!
+}
+
+##### Relations #####
+
+### Person relation ###
+
+input PersonRelationInput {
+  person_id: Int!
+  institution_id: Int!
+  parent_id: Int!  
+  relation_id: Int!  
+}
+
+input PersonRelationDeleteInput {
+  node_id: Int!  
+  paragraph_id: Int!  
+}
+
+input PersonRelationUpdateInput {
+  institution_id: Int!
+  parent_id: Int! 
+  relation_id: Int!  
+  paragraph_id: Int!
+}
+
+### institution relation ###
+
+input InstitutionRelationInput {
+  institution_id: Int!
+  parent_id: Int! 
+  relation_id: Int!  
+}
+
+input InstitutionRelationUpdateInput {
+  paragraph_id: Int!
+  parent_id: Int! 
+  relation_id: Int!  
+}
+
+input InstitutionRelationDeleteInput {
+  node_id: Int!  
+  paragraph_id: Int!  
+}
+
+### Dataset relation ###
+
+input DatasetRelationInput {
+  dataset_id: Int!
+  dataset_instance_id: Int!
+  relation_target_id: Int!    
+}
+
+input DatasetRelationUpdateInput {
+  paragraph_id: Int!
+  dataset_instance_id: Int!
+  relation_target_id: Int!  
+}
+
+input DatasetRelationDeleteInput {
+  node_id: Int!
+  paragraph_id: Int!   
+}
+
+### Project relation ###
+
+input ProjectRelationInput {
+  project_id: Int!
+  dataset_id: Int!
+  relation_target_id: Int!  
+}
+
+input ProjectRelationUpdateInput {
+  paragraph_id: Int!
+  dataset_id: Int!
+  relation_target_id: Int!    
+}
+
+input ProjectRelationDeleteInput {
+  node_id: Int!  
+  paragraph_id: Int!  
+}
+
+### Identifier relation ###
+
+input IdentifierRelationInput {
+  node_id: Int!
+  identifier_service_id: Int!
+  identifier_value: String
+  identifier_label: String  
+}
+
+input IdentifierRelationUpdateInput {
+  node_id: Int!
+  paragraph_id: Int!  
+  identifier_service_id: Int!
+  identifier_value: String
+  identifier_label: String  
+}
+
+input IdentifierRelationDeleteInput {
+  node_id: Int!
+  paragraph_id: Int!
+}
+
+
+### Identifier service ###
+
+input IdentifierServiceInput {
+  name: String!
+}
+
+input IdentifierServiceUpdateInput {
+  id: Int!
+  name: String!
+}
+
+input IdentifierServiceDeleteInput {
+  id: Int!
+}

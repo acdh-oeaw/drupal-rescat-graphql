@@ -1,4 +1,5 @@
 <?php
+
 namespace Drupal\rescat_graphql\Helper;
 
 class UpdateHelper {
