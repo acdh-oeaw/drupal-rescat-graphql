@@ -48,6 +48,10 @@ trait MutationsSchema {
         $this->includeMutations($registry, $builder, 'createDatasetInstance', 'create_dataset_instance');
         $this->includeMutations($registry, $builder, 'updateDatasetInstance', 'update_dataset_instance');
         $this->includeMutations($registry, $builder, 'deleteDatasetInstance', 'delete_dataset_instance');
+        
+        $this->includeMutations($registry, $builder, 'createIdentifierService', 'create_identifier_service');
+        $this->includeMutations($registry, $builder, 'updateIdentifierService', 'update_identifier_service');
+        $this->includeMutations($registry, $builder, 'deleteIdentifierService', 'delete_identifier_service');      
 
         /////////////// RELATIONS ////////////////////////////////////
         $this->includeMutations($registry, $builder, 'createPersonRelation', 'create_person_relation');
@@ -68,6 +72,6 @@ trait MutationsSchema {
         
         $this->includeMutations($registry, $builder, 'createProjectRelation', 'create_project_relation');
         $this->includeMutations($registry, $builder, 'updateProjectRelation', 'update_project_relation');
-        $this->includeMutations($registry, $builder, 'deleteProjectRelation', 'delete_project_relation');       
+        $this->includeMutations($registry, $builder, 'deleteProjectRelation', 'delete_project_relation');      
     }
 }

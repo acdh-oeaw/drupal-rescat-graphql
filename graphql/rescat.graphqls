@@ -58,7 +58,7 @@ type Relation {
   name: String
 }
 
-type identifierService {
+type IdentifierService {
   id: Int
   name: String
 }
@@ -409,6 +409,18 @@ input IdentifierRelationDeleteInput {
     
 }
 
+input IdentifierServiceInput {
+  name: String!
+}
+
+input IdentifierServiceUpdateInput {
+  id: Int!
+  name: String!
+}
+
+input IdentifierServiceDeleteInput {
+  id: Int!
+}
 
 ##### Interface #####
 

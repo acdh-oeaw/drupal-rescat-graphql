@@ -39,4 +39,8 @@ extend type Mutation {
   updateIdentifierRelation(data: IdentifierRelationUpdateInput): IdentifierRelation
   deleteIdentifierRelation(data: IdentifierRelationDeleteInput): IdentifierRelation
 
+  createIdentifierService(data: IdentifierServiceInput): IdentifierService
+  updateIdentifierService(data: IdentifierServiceUpdateInput): IdentifierService
+  deleteIdentifierService(data: IdentifierServiceDeleteInput): IdentifierService
+
 }
