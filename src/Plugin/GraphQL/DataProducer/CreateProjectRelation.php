@@ -87,7 +87,7 @@ class CreateProjectRelation extends DataProducerPluginBase implements ContainerF
                 'parent_type' => 'node',
                 'parent_field_name' => 'field_project_relation',
                 'field_project' => array(
-                    'target_id' => $data['target_id']
+                    'target_id' => $data['project_id']
                 ),
                 'field_relation' => array(
                     'target_id' => $data['relation_target_id']

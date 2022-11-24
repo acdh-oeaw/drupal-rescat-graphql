@@ -80,8 +80,6 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
         if (in_array('authenticated', $userRoles)) {
             $node = Node::load($data['parent_id']);
             
-            error_log(print_r($this->createDateTime($data['start'])));
-            
             $paragraph = Paragraph::create([
                         'type' => 'person_relations',
                         'parent_id' => $data['parent_id'],

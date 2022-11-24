@@ -17,11 +17,11 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * @DataProducer(
- *   id = "query_taxonomies",
- *   name = @Translation("Load taxonomy"),
- *   description = @Translation("Loads a list of taxonomy."),
+ *   id = "query_entity_relations",
+ *   name = @Translation("Load Entity relations"),
+ *   description = @Translation("Loads a list of Entity relations."),
  *   produces = @ContextDefinition("any",
- *     label = @Translation("Taxonomy")
+ *     label = @Translation("Entity relations")
  *   ),
  *   consumes = {
  *     "offset" = @ContextDefinition("integer",
@@ -39,7 +39,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   }
  * )
  */
-class QueryTaxonomies extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+class QueryEntityRelations extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
 
     const MAX_LIMIT = 100;
 
@@ -71,7 +71,7 @@ class QueryTaxonomies extends DataProducerPluginBase implements ContainerFactory
     }
 
     /**
-     * Taxonomy constructor.
+     * Entity relations constructor.
      *
      * @param array $configuration
      *   The plugin configuration.
@@ -128,41 +128,6 @@ class QueryTaxonomies extends DataProducerPluginBase implements ContainerFactory
 
         return new QueryConnection($query);
 
-        /*
-
-          $vid = 'vocabulary_name';
-          $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree('entity_relations');
-
-          $arr = [];
-          foreach($terms as $k => $v) {
-          $arr[$k]['id'] = $v->tid;
-          $arr[$k]['name'] = $v->name;
-          $arr[$k]['depth'] = $v->depth;
-          }
-          (print_r($terms, true));
-
-          //////////////////////
-
-          return new QueryConnection($arr);
-
-
-
-          //solution 2
-          $query = \Drupal::entityQuery('taxonomy_term');
-
-          $query->condition('vid', 'entity_relations');
-          $query->sort('weight');
-          //we can search by title also
-          if($title) {
-          $query->condition($type->getKey('label'), $title);
-          }
-
-          $query->range($offset, $limit);
-
-
-          return new QueryConnection($query);
-         * 
-         */
     }
 
 }

@@ -68,51 +68,6 @@ class UpdateInstitutionRelation extends DataProducerPluginBase implements Contai
     }
 
     /**
-     * change the institution relation id
-     * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
-     * @param int $key
-     * @param int $newRelationID
-     * @return bool
-     */
-    private function changeRelation(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $key, int $newRelationID): bool {
-        $relations = $paragraph->get('field_relation');
-        if (isset($relations[$key])) {
-            $relations[$key]->target_id = $newRelationID;
-            $paragraph->field_relation = $relations;
-            try {
-                $paragraph->save();
-            } catch (\Exception $exc) {
-                return false;
-            }
-            return true;
-        }
-        return false;
-    }
-    
-    
-    /**
-     * Change the institution value
-     * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
-     * @param int $key
-     * @param int $newInstitutionID
-     * @return bool
-     */
-    private function changeInstitution(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $key, int $newInstitutionID): bool {
-        $relations = $paragraph->get('field_institution');
-        if (isset($relations[$key])) {
-            $relations[$key]->target_id = $newInstitutionID;
-            $paragraph->field_institution = $relations;
-            try {
-                $paragraph->save();
-            } catch (\Exception $exc) {
-                return false;
-            }
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * 
      * @param array $data
      * @return type
@@ -122,7 +77,7 @@ class UpdateInstitutionRelation extends DataProducerPluginBase implements Contai
         $userRoles = $this->currentUser->getRoles();
        
         if (in_array('authenticated', $userRoles)) {
-            $pKey = $this->getKeyFromNode((int) $data['parent_id'], (int) $data['paragraph_id']);
+            $pKey = $this->helper->getKeyFromNode((int) $data['parent_id'], (int) $data['paragraph_id'], 'field_institution_relations');
 
             //check the pragraph and change the value
             $paragraph = Paragraph::load($data['paragraph_id']);
@@ -132,34 +87,6 @@ class UpdateInstitutionRelation extends DataProducerPluginBase implements Contai
         throw new \Exception('You dont have enough permission to Update institution Relation.');
     }
     
-    /**
-     * Get the key from the node
-     * @param int $dataset_id
-     * @param int $paragraph_id
-     * @return int
-     * @throws \Exception
-     */
-    private function getKeyFromNode(int $nid, int $paragraph_id): int {
-        $node = Node::load($nid);
-        $pKey = null;
-        // check the node has the paragraph
-        $nodeValues = ($node->get('field_institution_relations')->getValue()) ? $node->get('field_institution_relations')->getValue() : [];
-       
-        if (count($nodeValues) === 0) {
-            throw new \Exception('This node has no institution relation.');
-        }
-
-        foreach ($nodeValues as $k => $v) {
-            if ((int)$v['target_id'] === (int)$paragraph_id) {
-                $pKey = $k;
-            }
-        }
-        
-        if ($pKey === null) {
-            throw new \Exception('This node has no institution relation with this id.');
-        }
-        return $pKey;
-    }
 
     /**
      * Change the relation inside the paragraph
@@ -184,7 +111,7 @@ class UpdateInstitutionRelation extends DataProducerPluginBase implements Contai
         
         
         if (count($paragraph->get('field_institution')->getValue()) > 0) {
-            if (!$this->changeRelation($paragraph, $pKey, $data['relation_id'])) {
+            if (!$this->helper->changeParagraphRelationship($paragraph, $pKey, $data['relation_id'], 'field_institution')) {
                 throw new \Exception('Paragraph relation field saving error - relation change.');
             }
         } else {

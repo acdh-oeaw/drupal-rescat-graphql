@@ -2,9 +2,10 @@
 
 namespace Drupal\rescat_graphql\Helper;
 
+use Drupal\node\Entity\Node;
+use Drupal\paragraphs\Entity\Paragraph;
+
 class UpdateHelper {
-    
-    
     /**
      * Update node simple property
      * @param \Drupal\node\Entity\Node $node
@@ -110,5 +111,34 @@ class UpdateHelper {
         }
         return false;
     }
+    
+    /**
+     * Get the key from the node
+     * @param int $dataset_id
+     * @param int $paragraph_id
+     * @return int
+     * @throws \Exception
+     */
+    public function getKeyFromNode(int $dataset_id, int $paragraph_id, string $relation_field): int {
+        $node = Node::load($dataset_id);
+        $pKey = null;
+        // check the node has the paragraph
+        $nodeValues = ($node->get($relation_field)->getValue()) ? $node->get($relation_field)->getValue() : [];
+        if (count($nodeValues) === 0) {
+            throw new \Exception('This node has no '.$relation_field.'relation.');
+        }
+
+        foreach ($nodeValues as $k => $v) {
+            if ((int) $v['target_id'] === (int) $paragraph_id) {
+                $pKey = $k;
+            }
+        }
+
+        if ($pKey === null) {
+            throw new \Exception('This node has no '.$relation_field.' relation with this id.');
+        }
+        return $pKey;
+    }
+
 }
 

@@ -81,7 +81,7 @@ class UpdateProjectRelation extends DataProducerPluginBase implements ContainerF
     public function resolve(array $data) {
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
-            $pKey = $this->getKeyFromNode((int) $data['dataset_id'], (int) $data['paragraph_id']);
+            $pKey = $this->helper->getKeyFromNode((int) $data['dataset_id'], (int) $data['paragraph_id'], 'field_project_relation');
 
             //check the pragraph and change the value
             $paragraph = Paragraph::load($data['paragraph_id']);
@@ -91,55 +91,7 @@ class UpdateProjectRelation extends DataProducerPluginBase implements ContainerF
         throw new \Exception('You dont have enough permission to Update Project Relation.');
     }
 
-    /**
-     * change the Project relation id
-     * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
-     * @param int $key
-     * @param int $newRelationID
-     * @return bool
-     */
-    private function changeRelation(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $key, int $newRelationID): bool {
-        $relations = $paragraph->get('field_relation');
-        if (isset($relations[$key])) {
-            $relations[$key]->target_id = $newRelationID;
-            $paragraph->field_relation = $relations;
-            try {
-                $paragraph->save();
-            } catch (\Exception $exc) {
-                return false;
-            }
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Get the key from the node
-     * @param int $dataset_id
-     * @param int $paragraph_id
-     * @return int
-     * @throws \Exception
-     */
-    private function getKeyFromNode(int $dataset_id, int $paragraph_id): int {
-        $node = Node::load($dataset_id);
-        $pKey = null;
-        // check the node has the paragraph
-        $nodeValues = ($node->get('field_project_relation')->getValue()) ? $node->get('field_project_relation')->getValue() : [];
-        if (count($nodeValues) === 0) {
-            throw new \Exception('This node has no project relation.');
-        }
-
-        foreach ($nodeValues as $k => $v) {
-            if ((int) $v['target_id'] === (int) $paragraph_id) {
-                $pKey = $k;
-            }
-        }
-
-        if ($pKey === null) {
-            throw new \Exception('This node has no project relation with this id.');
-        }
-        return $pKey;
-    }
+ 
 
     /**
      * Change the relation inside the paragraph
@@ -150,7 +102,7 @@ class UpdateProjectRelation extends DataProducerPluginBase implements ContainerF
      */
     public function changeParagraph(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $pKey, int $relation_target_id) {
         if (count($paragraph->get('field_project')->getValue()) > 0) {
-            if (!$this->changeRelation($paragraph, $pKey, $relation_target_id)) {
+            if (!$this->helper->changeParagraphRelationship($paragraph, $pKey, $relation_target_id, 'field_relation')) {
                 throw new \Exception('Paragraph relation field saving error.');
             }
         } else {

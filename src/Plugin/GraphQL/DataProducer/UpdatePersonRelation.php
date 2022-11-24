@@ -77,7 +77,7 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
         $userRoles = $this->currentUser->getRoles();
 
         if (in_array('authenticated', $userRoles)) {
-            $pKey = $this->getKeyFromNode((int) $data['parent_id'], (int) $data['paragraph_id']);
+            $pKey = $this->helper->getKeyFromNode((int) $data['parent_id'], (int) $data['paragraph_id'], 'field_person_relations');
            
             //check the pragraph and change the value
             $paragraph = Paragraph::load($data['paragraph_id']);
@@ -87,34 +87,6 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
         throw new \Exception('You dont have enough permission to Update Person Relation.');
     }
 
-    /**
-     * Get the key from the node
-     * @param int $dataset_id
-     * @param int $paragraph_id
-     * @return int
-     * @throws \Exception
-     */
-    private function getKeyFromNode(int $nid, int $paragraph_id): int {
-        $node = Node::load($nid);
-        $pKey = null;
-        // check the node has the paragraph
-        $nodeValues = ($node->get('field_person_relations')->getValue()) ? $node->get('field_person_relations')->getValue() : [];
-
-        if (count($nodeValues) === 0) {
-            throw new \Exception('This node has no person relation.');
-        }
-
-        foreach ($nodeValues as $k => $v) {
-            if ((int) $v['target_id'] === (int) $paragraph_id) {
-                $pKey = $k;
-            }
-        }
-
-        if ($pKey === null) {
-            throw new \Exception('This node has no person relation with this id.');
-        }
-        return $pKey;
-    }
 
     /**
      * Change the relation inside the paragraph

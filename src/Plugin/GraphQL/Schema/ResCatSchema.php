@@ -128,8 +128,22 @@ class ResCatSchema extends SdlSchemaPluginBase {
                         ->map('title', $builder->fromArgument('title'))
         );
     
-        $registry->addFieldResolver('Query', 'taxonomies',
-                $builder->produce('query_taxonomies')
+        $registry->addFieldResolver('Query', 'entity_relations',
+                $builder->produce('query_entity_relations')
+                        ->map('offset', $builder->fromArgument('offset'))
+                        ->map('limit', $builder->fromArgument('limit'))
+                        ->map('name', $builder->fromArgument('name'))
+        );
+        
+        $registry->addFieldResolver('Query', 'identifier_services',
+                $builder->produce('query_identifier_services')
+                        ->map('offset', $builder->fromArgument('offset'))
+                        ->map('limit', $builder->fromArgument('limit'))
+                        ->map('name', $builder->fromArgument('name'))
+        );
+        
+        $registry->addFieldResolver('Query', 'project_statuses',
+                $builder->produce('query_project_statuses')
                         ->map('offset', $builder->fromArgument('offset'))
                         ->map('limit', $builder->fromArgument('limit'))
                         ->map('name', $builder->fromArgument('name'))

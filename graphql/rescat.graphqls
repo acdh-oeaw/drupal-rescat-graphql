@@ -6,10 +6,6 @@ schema {
 ########## QUERY ##########
 type Query {
   project(id: Int!): Project
-  projects_with_relation(
-    offset: Int = 0
-    limit: Int = 10
-    id: Int): ProjectConnection!
   projects(
     offset: Int = 0
     limit: Int = 10
@@ -44,7 +40,17 @@ type Query {
     limit: Int = 10
     title: String
   ): InstitutionConnection!   
-  taxonomies(
+  entity_relations(
+    offset: Int = 0
+    limit: Int = 10
+    name: String
+  ): TaxonomyConnection!
+  identifier_services(
+    offset: Int = 0
+    limit: Int = 10
+    name: String
+  ): TaxonomyConnection!
+  project_statuses(
     offset: Int = 0
     limit: Int = 10
     name: String

@@ -82,7 +82,7 @@ class UpdateDatasetRelation extends DataProducerPluginBase implements ContainerF
       
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
-            $pKey = $this->getKeyFromNode((int) $data['dataset_instance_id'], (int) $data['paragraph_id']);
+            $pKey = $this->helper->getKeyFromNode((int) $data['dataset_instance_id'], (int) $data['paragraph_id'], 'field_dataset_relation' );
             //check the pragraph and change the value
             $paragraph = Paragraph::load($data['paragraph_id']);
             $this->changeParagraph($paragraph, $pKey, $data);
@@ -93,34 +93,7 @@ class UpdateDatasetRelation extends DataProducerPluginBase implements ContainerF
 
    
 
-    /**
-     * Get the key from the node
-     * @param int $dataset_id
-     * @param int $paragraph_id
-     * @return int
-     * @throws \Exception
-     */
-    private function getKeyFromNode(int $dataset_id, int $paragraph_id): int {
-        $node = Node::load($dataset_id);
-        $pKey = null;
-        // check the node has the paragraph
-        $nodeValues = ($node->get('field_dataset_relation')->getValue()) ? $node->get('field_dataset_relation')->getValue() : [];
-        if (count($nodeValues) === 0) {
-            throw new \Exception('This node has no Dataset relation.');
-        }
-
-        foreach ($nodeValues as $k => $v) {
-            if ((int) $v['target_id'] === (int) $paragraph_id) {
-                $pKey = $k;
-            }
-        }
-
-        if ($pKey === null) {
-            throw new \Exception('This node has no Dataset relation with this id.');
-        }
-        return $pKey;
-    }
-
+    
     /**
      * Change the relation inside the paragraph
      * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
@@ -130,7 +103,7 @@ class UpdateDatasetRelation extends DataProducerPluginBase implements ContainerF
      */
     public function changeParagraph(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $pKey, array $data) {
         if (count($paragraph->get('field_dataset')->getValue()) > 0) {
-            if (!$this->changeRelation($paragraph, $pKey, $data['relation_target_id'], 'field_relation')) {
+            if (!$this->helper->changeParagraphRelationship($paragraph, $pKey, $data['relation_target_id'], 'field_relation')) {
                 throw new \Exception('Paragraph relation field saving error.');
             }
         } else {

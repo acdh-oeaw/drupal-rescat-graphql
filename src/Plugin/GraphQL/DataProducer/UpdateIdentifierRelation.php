@@ -82,41 +82,14 @@ class UpdateIdentifierRelation extends DataProducerPluginBase implements Contain
 
         $userRoles = $this->currentUser->getRoles();
         if (in_array('authenticated', $userRoles)) {
-            $pKey = $this->getKeyFromNode((int) $data['node_id'], (int) $data['paragraph_id']);
+            $pKey = $this->helper->getKeyFromNode((int) $data['node_id'], (int) $data['paragraph_id'], 'field_identifier_relations');
             $paragraph = Paragraph::load($data['paragraph_id']);
-            $this->changeParagraph($paragraph, $data);
+            $this->changeParagraph($paragraph, $pKey, $data);
             return $paragraph;
         }
         throw new \Exception('You dont have enough permission to Update Dataset Relation.');
     }
 
-    /**
-     * Get the key from the node
-     * @param int $node_id
-     * @param int $paragraph_id
-     * @return int
-     * @throws \Exception
-     */
-    private function getKeyFromNode(int $node_id, int $paragraph_id): int {
-        $node = Node::load($node_id);
-        $pKey = null;
-        // check the node has the paragraph
-        $nodeValues = ($node->get('field_identifier_relations')->getValue()) ? $node->get('field_identifier_relations')->getValue() : [];
-        if (count($nodeValues) === 0) {
-            throw new \Exception('This node has no Dataset relation.');
-        }
-
-        foreach ($nodeValues as $k => $v) {
-            if ((int) $v['target_id'] === (int) $paragraph_id) {
-                $pKey = $k;
-            }
-        }
-
-        if ($pKey === null) {
-            throw new \Exception('This node has no Dataset relation with this id.');
-        }
-        return $pKey;
-    }
 
     /**
      * Change the relation inside the paragraph
@@ -125,7 +98,7 @@ class UpdateIdentifierRelation extends DataProducerPluginBase implements Contain
      * @param int $relation_target_id
      * @throws \Exception
      */
-    public function changeParagraph(\Drupal\paragraphs\Entity\Paragraph &$paragraph, array $data) {
+    public function changeParagraph(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $pKey, array $data) {
 
         if (count($paragraph->get('field_identifier_label')->getValue()) > 0) {
             if (!$this->helper->updateSimpleField($paragraph, 'field_identifier_label', $data['identifier_label'])) {
