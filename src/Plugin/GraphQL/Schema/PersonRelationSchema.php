@@ -44,6 +44,9 @@ trait PersonRelationSchema {
                         ->map('entity', $builder->fromParent())
                         ->map('field', $builder->fromValue('field_institution'))
         );
+         
+        $this->getValueByEntityNode($registry, $builder, 'PersonRelation', 'start', 'property_path', 'field_start.value');
+        $this->getValueByEntityNode($registry, $builder, 'PersonRelation', 'end', 'property_path', 'field_end.value');
    
     }
     

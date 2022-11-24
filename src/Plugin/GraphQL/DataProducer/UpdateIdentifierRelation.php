@@ -91,24 +91,6 @@ class UpdateIdentifierRelation extends DataProducerPluginBase implements Contain
     }
 
     /**
-     * update the field values
-     * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
-     * @param int $key
-     * @param int $newRelationID
-     * @return bool
-     */
-    private function updateSimpleField(\Drupal\paragraphs\Entity\Paragraph &$paragraph, string $field_name, mixed $field_value): bool {
-
-        $paragraph->{$field_name} = $field_value;
-        try {
-            $paragraph->save();
-        } catch (\Exception $exc) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
      * Get the key from the node
      * @param int $node_id
      * @param int $paragraph_id
@@ -146,43 +128,24 @@ class UpdateIdentifierRelation extends DataProducerPluginBase implements Contain
     public function changeParagraph(\Drupal\paragraphs\Entity\Paragraph &$paragraph, array $data) {
 
         if (count($paragraph->get('field_identifier_label')->getValue()) > 0) {
-            if (!$this->updateSimpleField($paragraph, 'field_identifier_label', $data['identifier_label'])) {
+            if (!$this->helper->updateSimpleField($paragraph, 'field_identifier_label', $data['identifier_label'])) {
                 throw new \Exception('Paragraph relation field saving error. (label)');
             }
         }
         
         if (count($paragraph->get('field_identifier_value')->getValue()) > 0) {
-            if (!$this->updateSimpleField($paragraph, 'field_identifier_value', $data['identifier_value'])) {
+            if (!$this->helper->updateSimpleField($paragraph, 'field_identifier_value', $data['identifier_value'])) {
                 throw new \Exception('Paragraph relation field saving error. (value)');
             }
         }
 
         if (count($paragraph->get('field_identifier_service')->getValue()) > 0) {
-            if (!$this->updateTerm($paragraph, 'field_identifier_service', $data['identifier_service_id'])) {
+            if (!$this->helper->updateTerm($paragraph, 'field_identifier_service', $data['identifier_service_id'])) {
                 throw new \Exception('Paragraph relation field saving error. (service)');
             }
         }
     }
 
-    /**
-     * change the TERM id
-     * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
-     * @param int $key
-     * @param int $newRelationID
-     * @return bool
-     */
-    private function updateTerm(\Drupal\paragraphs\Entity\Paragraph &$paragraph, string $field_name, int $new_target_id): bool {
-        
-        $paragraph->{$field_name} = array(
-            'target_id' => $new_target_id
-        );
-        
-        try {
-            $paragraph->save();
-        } catch (\Exception $exc) {
-            return false;
-        }
-        return true;
-    }
+    
 
 }

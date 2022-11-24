@@ -15,7 +15,7 @@ trait InstitutionRelationSchema {
     
     protected function addInstitutionRelationFields(ResolverRegistry $registry, ResolverBuilder $builder) {
                 
-        // Person relation
+        // institution relation
         $registry->addFieldResolver('InstitutionRelation', 'id',
                 $builder->produce('entity_id')
                         ->map('entity', $builder->fromParent())
@@ -38,8 +38,8 @@ trait InstitutionRelationSchema {
                         ->map('entity', $builder->fromParent())
                         ->map('field', $builder->fromValue('field_relation'))
         );
-   
+        
+        $this->getValueByEntityNode($registry, $builder, 'InstitutionRelation', 'start', 'property_path', 'field_start.value');
+        $this->getValueByEntityNode($registry, $builder, 'InstitutionRelation', 'end', 'property_path', 'field_end.value');
     }
-    
-    
 }

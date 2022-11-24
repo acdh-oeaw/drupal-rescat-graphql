@@ -85,33 +85,13 @@ class UpdateDatasetRelation extends DataProducerPluginBase implements ContainerF
             $pKey = $this->getKeyFromNode((int) $data['dataset_instance_id'], (int) $data['paragraph_id']);
             //check the pragraph and change the value
             $paragraph = Paragraph::load($data['paragraph_id']);
-            $this->changeParagraph($paragraph, $pKey, $data['relation_target_id']);
+            $this->changeParagraph($paragraph, $pKey, $data);
             return $paragraph;
         }
         throw new \Exception('You dont have enough permission to Update Dataset Relation.');
     }
 
-    /**
-     * change the Dataset relation id
-     * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
-     * @param int $key
-     * @param int $newRelationID
-     * @return bool
-     */
-    private function changeRelation(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $key, int $newRelationID): bool {
-        $relations = $paragraph->get('field_relation');
-        if (isset($relations[$key])) {
-            $relations[$key]->target_id = $newRelationID;
-            $paragraph->field_relation = $relations;
-            try {
-                $paragraph->save();
-            } catch (\Exception $exc) {
-                return false;
-            }
-            return true;
-        }
-        return false;
-    }
+   
 
     /**
      * Get the key from the node
@@ -148,9 +128,9 @@ class UpdateDatasetRelation extends DataProducerPluginBase implements ContainerF
      * @param int $relation_target_id
      * @throws \Exception
      */
-    public function changeParagraph(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $pKey, int $relation_target_id) {
+    public function changeParagraph(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $pKey, array $data) {
         if (count($paragraph->get('field_dataset')->getValue()) > 0) {
-            if (!$this->changeRelation($paragraph, $pKey, $relation_target_id)) {
+            if (!$this->changeRelation($paragraph, $pKey, $data['relation_target_id'], 'field_relation')) {
                 throw new \Exception('Paragraph relation field saving error.');
             }
         } else {

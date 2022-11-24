@@ -36,7 +36,7 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
      */
     protected $currentUser;
     private $helper;
-    
+
     /**
      * {@inheritdoc}
      */
@@ -68,51 +68,6 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
     }
 
     /**
-     * change the person relation id
-     * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
-     * @param int $key
-     * @param int $newRelationID
-     * @return bool
-     */
-    private function changeRelation(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $key, int $newRelationID): bool {
-        $relations = $paragraph->get('field_relation');
-        if (isset($relations[$key])) {
-            $relations[$key]->target_id = $newRelationID;
-            $paragraph->field_relation = $relations;
-            try {
-                $paragraph->save();
-            } catch (\Exception $exc) {
-                return false;
-            }
-            return true;
-        }
-        return false;
-    }
-    
-    
-    /**
-     * Change the institution value
-     * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
-     * @param int $key
-     * @param int $newInstitutionID
-     * @return bool
-     */
-    private function changeInstitution(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $key, int $newInstitutionID): bool {
-        $relations = $paragraph->get('field_institution');
-        if (isset($relations[$key])) {
-            $relations[$key]->target_id = $newInstitutionID;
-            $paragraph->field_institution = $relations;
-            try {
-                $paragraph->save();
-            } catch (\Exception $exc) {
-                return false;
-            }
-            return true;
-        }
-        return false;
-    }
-
-    /**
      * 
      * @param array $data
      * @return type
@@ -120,18 +75,18 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
      */
     public function resolve(array $data) {
         $userRoles = $this->currentUser->getRoles();
-       
+
         if (in_array('authenticated', $userRoles)) {
             $pKey = $this->getKeyFromNode((int) $data['parent_id'], (int) $data['paragraph_id']);
-
+           
             //check the pragraph and change the value
             $paragraph = Paragraph::load($data['paragraph_id']);
-            $this->changeParagraph($paragraph, $pKey, $data['relation_id'], $data['institution_id']);
+            $this->changeParagraph($paragraph, $pKey, $data);
             return $paragraph;
         }
         throw new \Exception('You dont have enough permission to Update Person Relation.');
     }
-    
+
     /**
      * Get the key from the node
      * @param int $dataset_id
@@ -144,17 +99,17 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
         $pKey = null;
         // check the node has the paragraph
         $nodeValues = ($node->get('field_person_relations')->getValue()) ? $node->get('field_person_relations')->getValue() : [];
-       
+
         if (count($nodeValues) === 0) {
             throw new \Exception('This node has no person relation.');
         }
 
         foreach ($nodeValues as $k => $v) {
-            if ((int)$v['target_id'] === (int)$paragraph_id) {
+            if ((int) $v['target_id'] === (int) $paragraph_id) {
                 $pKey = $k;
             }
         }
-        
+
         if ($pKey === null) {
             throw new \Exception('This node has no person relation with this id.');
         }
@@ -164,22 +119,34 @@ class UpdatePersonRelation extends DataProducerPluginBase implements ContainerFa
     /**
      * Change the relation inside the paragraph
      * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
-     * @param int $pKey
-     * @param int $relation_target_id
+     * @param array $data
      * @throws \Exception
      */
-    public function changeParagraph(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $pKey, int $relation_target_id, int $institution_id) {
+    public function changeParagraph(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $pKey, array $data) {
+        
+        if (!empty($data['start'])) {
+            if (!$this->helper->updateSimpleField($paragraph, 'field_start', $data['start'])) {
+                throw new \Exception('Paragraph field saving error - field_start .');
+            }
+        }
+        
+        if (!empty($data['end'])) {
+            if (!$this->helper->updateSimpleField($paragraph, 'field_end', $data['end'])) {
+                throw new \Exception('Paragraph field saving error - field_end .');
+            }
+        }
+
         if (count($paragraph->get('field_person')->getValue()) > 0) {
-            if (!$this->changeRelation($paragraph, $pKey, $relation_target_id)) {
+            if (!$this->helper->changeParagraphRelationship($paragraph, $pKey, $data['relation_id'], 'field_relation')) {
                 throw new \Exception('Paragraph relation field saving error - relation change.');
             }
-            
-            if (!$this->changeInstitution($paragraph, $pKey, $institution_id)) {
+
+            if (!$this->helper->changeParagraphRelationship($paragraph, $pKey, $data['institution_id'], 'field_institution')) {
                 throw new \Exception('Paragraph relation field saving error - institution change.');
             }
         } else {
             throw new \Exception('This paragraph relation has no project relation.');
         }
     }
-    
+  
 }

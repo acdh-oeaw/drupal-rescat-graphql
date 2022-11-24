@@ -91,7 +91,9 @@ class CreateInstitutionRelation extends DataProducerPluginBase implements Contai
                         ),
                         'field_institution' => array(
                             'target_id' => $data['institution_id']
-                        )
+                        ),
+                        'field_start' => $data['start'],
+                        'field_end' => $data['end']
             ]);
             $paragraph->isNew();
             $paragraph->save();

@@ -95,6 +95,8 @@ type PersonRelation implements Paragraph {
   relation: [Relation]
   person: [Person]
   institution: [Institution]
+  start: String
+  end: String
 }
 
 type PersonRelationConnection {
@@ -158,6 +160,8 @@ type InstitutionRelation implements Paragraph {
   id: Int!
   uuid: String
   institution: [Institution]
+  start: String
+  end: String
 }
 
 ##### Dataset #####

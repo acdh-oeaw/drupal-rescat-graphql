@@ -113,10 +113,12 @@ input ProjectDeleteInput {
 ### Person relation ###
 
 input PersonRelationInput {
+  relation_id: Int!
   person_id: Int!
   institution_id: Int!
   parent_id: Int!  
-  relation_id: Int!  
+  start: String
+  end: String  
 }
 
 input PersonRelationDeleteInput {
@@ -129,6 +131,8 @@ input PersonRelationUpdateInput {
   parent_id: Int! 
   relation_id: Int!  
   paragraph_id: Int!
+  start: String
+  end: String 
 }
 
 ### institution relation ###
@@ -136,13 +140,17 @@ input PersonRelationUpdateInput {
 input InstitutionRelationInput {
   institution_id: Int!
   parent_id: Int! 
-  relation_id: Int!  
+  relation_id: Int!
+  start: String
+  end: String   
 }
 
 input InstitutionRelationUpdateInput {
   paragraph_id: Int!
   parent_id: Int! 
-  relation_id: Int!  
+  relation_id: Int!
+  start: String
+  end: String   
 }
 
 input InstitutionRelationDeleteInput {

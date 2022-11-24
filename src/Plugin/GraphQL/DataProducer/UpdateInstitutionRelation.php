@@ -126,7 +126,7 @@ class UpdateInstitutionRelation extends DataProducerPluginBase implements Contai
 
             //check the pragraph and change the value
             $paragraph = Paragraph::load($data['paragraph_id']);
-            $this->changeParagraph($paragraph, $pKey, $data['relation_id']);
+            $this->changeParagraph($paragraph, $pKey, $data);
             return $paragraph;
         }
         throw new \Exception('You dont have enough permission to Update institution Relation.');
@@ -168,14 +168,30 @@ class UpdateInstitutionRelation extends DataProducerPluginBase implements Contai
      * @param int $relation_target_id
      * @throws \Exception
      */
-    public function changeParagraph(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $pKey, int $relation_target_id) {
+    public function changeParagraph(\Drupal\paragraphs\Entity\Paragraph &$paragraph, int $pKey, array $data) {
+        
+        if (!empty($data['start'])) {
+            if (!$this->helper->updateSimpleField($paragraph, 'field_start', $data['start'])) {
+                throw new \Exception('Paragraph field saving error - field_start .');
+            }
+        }
+        
+        if (!empty($data['end'])) {
+            if (!$this->helper->updateSimpleField($paragraph, 'field_end', $data['end'])) {
+                throw new \Exception('Paragraph field saving error - field_end .');
+            }
+        }
+        
+        
         if (count($paragraph->get('field_institution')->getValue()) > 0) {
-            if (!$this->changeRelation($paragraph, $pKey, $relation_target_id)) {
+            if (!$this->changeRelation($paragraph, $pKey, $data['relation_id'])) {
                 throw new \Exception('Paragraph relation field saving error - relation change.');
             }
         } else {
             throw new \Exception('This paragraph relation has no project relation.');
         }
     }
+    
+    
     
 }

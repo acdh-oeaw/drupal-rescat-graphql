@@ -8,19 +8,20 @@ use Drupal\graphql\Plugin\GraphQL\DataProducer\DataProducerPluginBase;
 use Drupal\node\Entity\Node;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class BaseRelationDelete extends DataProducerPluginBase implements ContainerFactoryPluginInterface { 
-     /**
+class BaseRelationDelete extends DataProducerPluginBase implements ContainerFactoryPluginInterface {
+
+    /**
      * The current user.
      *
      * @var \Drupal\Core\Session\AccountInterface
      */
     protected $currentUser;
-
-    private $relation_field = [
+    private $relation_fields = [
         'DeleteDatasetRelation' => 'field_dataset_relation',
         'DeleteInstitutionRelation' => 'field_institution_relations',
     ];
-    
+    private $relation_field;
+
     /**
      * {@inheritdoc}
      */
@@ -31,10 +32,6 @@ class BaseRelationDelete extends DataProducerPluginBase implements ContainerFact
                 $plugin_definition,
                 $container->get('current_user')
         );
-    }
-    
-    private function setRelationField(string $class) {
-        $this->relation_field = $this->relation_field[$class];
     }
 
     /**
@@ -54,55 +51,75 @@ class BaseRelationDelete extends DataProducerPluginBase implements ContainerFact
         $this->currentUser = $current_user;
     }
 
+    private function setRelationField(string $class) {
+        $this->relation_field = $this->relation_fields[$class];
+    }
+
     /**
-     * Delete an person Relation.
-     *
-     * @param array $data
-     *   The title of the job.
-     *
-     * @return \Drupal\Core\Entity\EntityBase|\Drupal\Core\Entity\EntityInterface
-     *   The deleted person.
-     *
+     * Get the key from the node
+     * @param int $node_id
+     * @param int $paragraph_id
+     * @return int
      * @throws \Exception
      */
-    public function resolve(array $data) {
-        $this->setRelationField(get_class($this));
-        $userRoles = $this->currentUser->getRoles();
-        
-        if (in_array('authenticated', $userRoles)) {
-            $node = Node::load($data['node_id']);
-            $paragraphId = $data['paragraph_id'];
-
-            //delete the relation in node
-            $values = ($node->get($this->relation_field)->getValue()) ? $node->get($this->relation_field)->getValue() : [];
-
-            foreach ($values as $k => $v) {
-                if (isset($v['target_id']) && $v['target_id'] == $paragraphId) {
-                    unset($values[$k]);
-                    $node->get($this->relation_field)->removeItem($k);
-                }
-            }
-
-            try {
-                $node->save();
-            } catch (\Exception $ex) {
-                throw new \Exception('Problem during the node update');
-            }
-
-            // delete the paragraph 
-            $storage = \Drupal::entityTypeManager()->getStorage('paragraph');
-            $entity = $storage->load($paragraphId);
-
-            if ($entity) {
-                try {
-                    $entity->delete();
-                } catch (\Exception $ex) {
-                    throw new \Exception('Problem during the relation paragraph delete');
-                }
-            }
-            return $node;
+    private function getKeyFromNode(int $node_id, int $paragraph_id): int {
+        $node = Node::load($node_id);
+        $pKey = null;
+        // check the node has the paragraph
+        $nodeValues = ($node->get($this->relation_field)->getValue()) ? $node->get($this->relation_field)->getValue() : [];
+        if (count($nodeValues) === 0) {
+            throw new \Exception('This node has no Dataset relation.');
         }
-        throw new \Exception('You dont have enough permission to Delete a Person Relation.');
-    }
-}
 
+        foreach ($nodeValues as $k => $v) {
+            if ((int) $v['target_id'] === (int) $paragraph_id) {
+                $pKey = $k;
+            }
+        }
+
+        if ($pKey === null) {
+            throw new \Exception('This node has no Dataset relation with this id.');
+        }
+        return $pKey;
+    }
+
+    /**
+     * update the field values
+     * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+     * @param int $key
+     * @param int $newRelationID
+     * @return bool
+     */
+    private function updateSimpleField(\Drupal\paragraphs\Entity\Paragraph &$paragraph, string $field_name, mixed $field_value): bool {
+
+        $paragraph->{$field_name} = $field_value;
+        try {
+            $paragraph->save();
+        } catch (\Exception $exc) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * change the TERM id
+     * @param \Drupal\paragraphs\Entity\Paragraph $paragraph
+     * @param int $key
+     * @param int $newRelationID
+     * @return bool
+     */
+    private function updateTerm(\Drupal\paragraphs\Entity\Paragraph &$paragraph, string $field_name, int $new_target_id): bool {
+
+        $paragraph->{$field_name} = array(
+            'target_id' => $new_target_id
+        );
+
+        try {
+            $paragraph->save();
+        } catch (\Exception $exc) {
+            return false;
+        }
+        return true;
+    }
+
+}

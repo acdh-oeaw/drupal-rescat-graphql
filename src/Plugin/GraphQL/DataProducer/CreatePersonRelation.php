@@ -80,6 +80,8 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
         if (in_array('authenticated', $userRoles)) {
             $node = Node::load($data['parent_id']);
             
+            error_log(print_r($this->createDateTime($data['start'])));
+            
             $paragraph = Paragraph::create([
                         'type' => 'person_relations',
                         'parent_id' => $data['parent_id'],
@@ -93,7 +95,9 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
                         ),
                         'field_institution' => array(
                             'target_id' => $data['institution_id']
-                        )
+                        ),
+                        'field_start' => $data['start'],
+                        'field_end' => $data['end']
             ]);
             $paragraph->isNew();
             $paragraph->save();
@@ -118,5 +122,5 @@ class CreatePersonRelation extends DataProducerPluginBase implements ContainerFa
         }
         throw new \Exception('You dont have enough permission to create a person relation.');    
     }
-
+   
 }
