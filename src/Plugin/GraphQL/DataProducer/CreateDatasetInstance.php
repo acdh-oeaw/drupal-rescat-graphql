@@ -6,6 +6,8 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\graphql\Plugin\GraphQL\DataProducer\DataProducerPluginBase;
 use Drupal\node\Entity\Node;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -76,13 +78,18 @@ class CreateDatasetInstance extends DataProducerPluginBase implements ContainerF
      */
     public function resolve(array $data) {
         $userRoles = $this->currentUser->getRoles();
+        
         if (in_array('authenticated', $userRoles)) {
+            
+            $harvestDate =  DrupalDateTime::createFromTimestamp(strtotime($data['harvestDate']));
+            $harvestDate->setTimezone(new \DateTimeZone('UTC'));
+        
             $values = [
                 'type' => 'dataset_instance',
                 'title' => $data['locationPath'],
                 'body' => $data['description'],
                 'field_harvest_status' => $data['harvestStatus'],
-                'field_harvest_date' => $data['harvestDate'],
+                'field_harvest_date' => $harvestDate->format('Y-m-d\TH:i:s'),
                 'field_harvest_report' => $data['harvestReport'],
                 'field_size' => $data['size'],
                 'field_files_count' => $data['filesCount'],
@@ -94,5 +101,7 @@ class CreateDatasetInstance extends DataProducerPluginBase implements ContainerF
         }
         throw new \Exception('You dont have enough permission to create a dataset instance.');
     }
+    
+    
 
 }

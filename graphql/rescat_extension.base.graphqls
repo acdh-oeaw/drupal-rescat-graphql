@@ -5,7 +5,6 @@
 
 input PersonInput {
   title: String!
-  identifiers: String
 }
 
 input PersonDeleteInput {
@@ -15,8 +14,6 @@ input PersonDeleteInput {
 input PersonUpdateInput {
   id: Int!
   title: String!
-  description: String
-  identifiers: String
 }
 
 ##### Institution #####

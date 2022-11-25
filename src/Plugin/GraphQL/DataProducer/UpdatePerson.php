@@ -85,11 +85,18 @@ class UpdatePerson extends DataProducerPluginBase implements ContainerFactoryPlu
 
             if ($node && strtolower($node->bundle()) == "person") {
                 $this->helper->updateProperty($node, $data, "title", "title");
-                $node->save();
+                try {
+                    $node->save();
+                } catch (\Exception $ex) {
+                    throw new \Exception("Error! Node can't save!"); 
+                }
+                
+            } else {
+                throw new \Exception('This is node is not a person!'); 
             }
             return $node;
         }
-        throw new \Exception('You dont have enough permission to Update Person.'); 
+        throw new \Exception("You don't have enough permission to Update Person."); 
     }
 
 }

@@ -80,6 +80,12 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
         if (in_array('authenticated', $userRoles)) {
 
             $node = Node::load($data['dataset_instance_id']);
+            $val = $node->get('field_dataset_relation')->getValue();
+            
+            if (count($val) > 0) {
+                throw new \Exception("There is already a Dataset Relation definied and it could be only one!");
+            }
+            
             //create the relation paragraph
             $paragraph = Paragraph::create([
                         'type' => 'dataset_relation',
@@ -101,24 +107,14 @@ class CreateDatasetRelation extends DataProducerPluginBase implements ContainerF
                 throw new \Exception('Dataset Relation Paragraph save error.');
             }
 
-            $val = $node->get('field_dataset_relation')->getValue();
+            
 
             $newVal = array(
                 'target_id' => $paragraph->id(),
                 'target_revision_id' => $paragraph->getRevisionId(),
             );
 
-            /*
-             * !!!! ONLY ONE PROJECT RELATION IS AVAILABLE???
-             * 
-             */
-
-            if (count($val) > 0) {
-                $val[] = $newVal;
-                $node->field_dataset_relation = $val;
-            } else {
-                $node->field_dataset_relation = $newVal;
-            }
+            $node->field_dataset_relation = $newVal;
 
             try {
                 $node->save();

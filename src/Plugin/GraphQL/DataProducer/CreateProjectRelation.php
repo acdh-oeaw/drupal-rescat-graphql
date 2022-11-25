@@ -80,6 +80,11 @@ class CreateProjectRelation extends DataProducerPluginBase implements ContainerF
         if (in_array('authenticated', $userRoles)) {
 
             $node = Node::load($data['dataset_id']);
+            
+            $val = $node->get('field_project_relation')->getValue();
+            if (count($val) > 0) {
+                throw new \Exception("There is already a Project Relation definied and it could be only one!");
+            }
             //create the relation paragraph
             $paragraph = Paragraph::create([
                 'type' => 'project_relation',
@@ -100,25 +105,13 @@ class CreateProjectRelation extends DataProducerPluginBase implements ContainerF
             } catch (\Exception $ex) {
                 throw new \Exception('Project Relation Paragraph save error.');
             }
-
-            $val = $node->get('field_project_relation')->getValue();
             
             $newVal = array(
                 'target_id' => $paragraph->id(),
                 'target_revision_id' => $paragraph->getRevisionId(),
             );
             
-            /*
-             * !!!! ONLY ONE PROJECT RELATION IS AVAILABLE???
-             * 
-             */
-            
-            if (count($val) > 0) {
-                $val[] = $newVal;
-                $node->field_project_relation = $val;
-            } else {
-                $node->field_project_relation = $newVal;
-            }
+            $node->field_project_relation = $newVal;
             
             try {
                 $node->save();
@@ -128,7 +121,7 @@ class CreateProjectRelation extends DataProducerPluginBase implements ContainerF
             
             return $paragraph;
         }
-        throw new \Exception('You dont have enough permission to create a Project relation.');
+        throw new \Exception("You don't have enough permission to create a Project relation.");
     }
 
 }
